@@ -212,7 +212,7 @@ Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want
 
 Consider a horizontal line such that each point of $S$ lies above it and let $\pi$ be the closed halfspace supported by this line that contains $S$. After each round of the algorithm, we maintain the invariant that the boundary of $\pi$ does not intersect $R$.
 
-Throughout, we maintain the \emph{escape invariant} which states that for each point $v_j\in S \setminus R$, there is a cone $\Delta_j$ with apex $u_j$ such that (1) $u_j$ lies above $v_j$ (or on $v_j$) and has the same $x$-coordinate as $v_j$, (2) $\Delta_j$ contains $v_j$ and no other point of $S$, (3) $\Delta_j$ contains the ray shooting from $v_j$ in the direction of the negative $y$-axis, (4) $\Delta_j$ does not intersect $R$, (5) $\Delta_i$ and $\Delta_j$ are disjoint inside $\pi$.
+Throughout, we maintain the \emph{escape invariant} which states that for each point $v_j\in S \setminus R$, there is a cone $\Delta_j$ with apex $u_j$ such that (1) $u_j$ lies above $v_j$ (or on $v_j$) and has the same $x$-coordinate as $v_j$, (2) $\Delta_j$ contains $v_j$ and no other point of $S$, (3) $\Delta_j$ contains the ray shooting from $v_j$ in the direction of the negative $y$-axis, (4) $\Delta_j$ does not intersect $R$, and (5) $\Delta_i$ and $\Delta_j$ are disjoint inside $\pi$.
 Before starting the construction, we establish the escape invariant. To do this, for each $0\leq j\leq n$ let $u_j$ be an arbitrary translation of $v_j$ in the direction of the positive $y$-axis and let $\Delta_j$ be a cone with apex on $u_j$ sufficiently narrow such that these cones doe not intersect inside $\pi$; see Figure~\ref{fig:Escape Invariant}.
 
 \begin{figure}[tb]
@@ -230,7 +230,7 @@ As a first step, we translate down the cones $\Delta_j$ and $\Delta_{j+1}$ until
 
 Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing every cone $\Delta_h$, where $1\leq h\leq n$ and $v_h$ is not an internal vertex of $R$; see Figure~\ref{fig:Dented Halfspace}. That is, $\pi_j$ is a halfspace with dents made by the remotion of $n-j+1$ cones.
 Therefore, the length of the boundary of $\pi_j$ is $O(n-j)$. 
-Moreover, the distance between two apexes $u_i$ and $u_h$ along the boundary of $\pi_j$ is proportional to the number of apexes with $x$-coordinate between that of $u_i$ and $u_h$. That is, the length of the path that joins $u_i$ with $u_h$ along $\pi_j$ is $O(|rank(v_i) - rank(v_h)|)$. 
+Moreover, the distance between two apexes $u_i$ and $u_h$ along the boundary of $\pi_j$ is proportional to the number of apexes with $x$-coordinate between those of $u_i$ and $u_h$. That is, the length of the path that joins $u_i$ with $u_h$ along $\pi_j$ is $O(|rank(v_i) - rank(v_h)|)$. 
 
 \begin{figure}[tb]
 \centering
@@ -343,6 +343,7 @@ If $a$ is an attachment corner of $G$, then $\sigma_G(a_1, a) \leq 5n$. Moreover
 Because $|\partial G^*| \leq n + r-1$ and from the fact that $ |\varphi(a_1,a)| \leq |\varphi| = |\partial G^*|$, we know that $|\varphi(a_1,a)|\leq n + r-1$.
 Therefore, since $\sum_{i = 1}^r |\partial C_i|\leq |E(G) | \leq 3n$, we conclude that $\sigma_G(a_1, a)  = |\varphi(a_1,a)| + \sum_{a_i\in A(a_1,a)} |C_i| \leq 4n + r-1\leq 5n$.
 
+Assume without loss of generality that $a$ is visited before $b$ by $\varphi$.
 Because each attachment corner of $G$ visited by $\varphi(a_1, a)$ is also visited by $\varphi(a_1, b)$ and from the fact that $ |\varphi(a_1,b)| - |\varphi(a_1, a)| = |\varphi(a, b)|$, we get that 
 $\sigma_G(a_1, b)- \sigma_G(a_1, a) = |\sigma_G(a_1, a) - \sigma_G(a_1, b)| = |\varphi(a, b)|  + \sum_{a_i\in A(a, b)} |C_i| = \sigma_G(a, b)$.
 \end{proof}
