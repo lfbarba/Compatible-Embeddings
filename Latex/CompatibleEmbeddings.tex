@@ -400,9 +400,9 @@ Let $\mu>0$ be a small constant to be specified later.
 Initially, let $\varepsilon = 2\mu$ and let $\delta = \mu/2$. Let $\lambda < \mu/2^{r+1}$ be a constant sufficiently small so that $\partial_\lambda C_i \cap \partial_\lambda C_j = \emptyset$ for each $1\leq i< j\leq r$.
 Throughout, $\lambda$ remains constant while $\varepsilon$ and $\delta$ are redefined on each round. However, as an invariant we maintain $\lambda < \delta < \varepsilon$.
 
-For each $1\leq i\leq r$, let $w_i$ be $\varepsilon$-copy of  $a_i$.
+For each $1\leq i\leq r$, let $w_i$ be the $\varepsilon$-copy of  $a_i$.
 Split $\partial_\varepsilon G^*$ at $w_1$, i.e., $\partial_\varepsilon G^*$ is a path with both endpoints equal to $w_1$.
-By choosing $\varepsilon$ sufficiently small, we guarantee that $\partial_\varepsilon G^*$ is simple, i.e., $\partial_\varepsilon G^*$ has the same combinatorial structure than $\varphi$.
+By choosing $\varepsilon$ sufficiently small, we guarantee that $\partial_\varepsilon G^*$ is simple, i.e., $\partial_\varepsilon G^*$ is isomorphic to $\varphi$.
 
 We say that two points in the plane are \emph{$R$-visible} if the open segment joining them does not intersect $R$.
 Let $\tau >0$. For each $1\leq i\leq r$ such that $a_i$ is not an interior point of $R$, consider the set of points $N_i\subset \partial_\varepsilon G^*$ that are at distance at most $\tau$ from $w_i$. 
@@ -423,8 +423,8 @@ Note that the escape invariant holds at the beginning, provided that the initial
 
 Assume that we have constructed a path $R$ that connects $a_1$ with $a_j$ for some $1\leq j\leq r$ (initially $j = 1$).
 Moreover, assume that the escape invariant holds.
-To extend $R$, we create a new path that connects $a_j$ with $a_{j+1}$ without crossing $R$ while maintaining the invariant. 
-Recall that we consider $\partial_\varepsilon G_i^*$ to be a path with both endpoints on $w_1$.
+To extend $R$, we create a new path that connects $a_j$ with $a_{j+1}$ without crossing $R$ while maintaining the escape invariant. 
+Recall that we consider $\partial_\varepsilon G_i^*$ to be a path with both endpoints on~$w_1$.
 
 
 If $j>1$, then we need to be careful in our way out of $a_j$ as we want $R$ to leave $C_j$ to its right. 
@@ -457,14 +457,14 @@ Once we go around $C_i$, we are back on $\partial_\varepsilon G^*$ on the other 
 Once we reach an endpoint of $N_{j+1}$, we move directly from this endpoint to $a_{j+1}$.
 
 Because $\partial_\varepsilon G^*$ is isomorphic to $\varphi$, the constructed $a_j$-$a_{j+1}$-path has length at most $|\varphi(a_j, a_{j+1})|$ plus the length of the boundaries of the components that we walked around. 
-Because each avoided component has its attachment corner on the path $\varphi(a_j, a_{j+1})$, the length of the constructed $a_j$-$a_{j+1}$-path is $$O(|\varphi(a_j, a_{j+1})| + \sum_{a_i\in A(a_j, a_{j+1})} |C_i|) = O(\sigma_G(a_j, a_{j+1}))\ .$$
+Because each avoided component has its attachment corner on the path $\varphi(a_j, a_{j+1})$ (i.e. in $A(a_j, a_{j+1})$), the length of the constructed $a_j$-$a_{j+1}$-path is $$O(|\varphi(a_j, a_{j+1})| + \sum_{a_i\in A(a_j, a_{j+1})} |C_i|) = O(\sigma_G(a_j, a_{j+1}))\ .$$
 
 After reaching $a_{j+1}$, we increase $\varepsilon$ by a factor of two. Similarly, we decrease de value of $\delta$ by a factor of two. That is, after reaching $a_{j+1}$, $\varepsilon = \mu 2^{j+1}$ while $\delta = \mu/2^{j+1}$ and hence, we guarantee that $\lambda < \delta < \varepsilon$.
 We can guarantee that $\partial_\varepsilon G^*$ remains simple, provided that the original choice of $\mu$ is sufficiently small. 
-Finally, for each $1\leq i\leq n$, we reduce the size of the neighborhood $N_i$ by reducing $\tau$ by a factor of two and updating the cone $\Delta_i$ accordingly, i.e., we narrow the cone $\Delta_i$; see Figure~\ref{fig:Skip Component} (c). 
+Finally, for each $1\leq i\leq n$, we reduce the size of the neighborhood $N_i$ by reducing $\tau$ by a factor of two and updating the cone $\Delta_i$ accordingly, i.e., we narrow the cone $\Delta_i$; see Figure~\ref{fig:Skip Component}$(c)$. 
 
 Recall that for each $a_i\notin R$, $R$ intersected neither the interior of $\Delta_i$ nor the interior of the polygon bounded by $\partial_\delta C_i$. Moreover, $R$ never went out of $\partial_\varepsilon G^*$.
-Therefore, after increasing (\emph{resp.} reducing) $\varepsilon$ (\emph{resp.} $\delta$), we preserve the correctness invariant should there be a subsequent round of the algorithm.
+Therefore, after increasing (\emph{resp.} reducing) $\varepsilon$ (\emph{resp.} $\delta$), we preserve the escape invariant should there be a subsequent round of the algorithm.
 We repeat this algorithm until all attachment corners of $G$ are visited by $R$.
 
 \begin{lemma}\label{lemma:Path for connected augmentations}
@@ -487,7 +487,7 @@ Let $G_1, \ldots, G_k$ be $k$ plane isomorphic drawings of $\mathcal G$.
 We show how to construct a compatible augmentation of $\mathcal G$ of size $O(nr^{1-1/k})$.
 
 Let $C_1, \ldots, C_r$ be the connected components of $\mathcal G$.
-Because all the plane drawings of $\mathcal G$ that we consider are isomorphic, the boundaries of corresponding components in different drawings are also isomorphic. Thus, for each $1\leq j\leq r$, we can choose an attachment corner $a_j$ in $\partial C_j$ such that $a_j$ is adjacent to the outer face. Note that this corner has isomorphic copies in each of the embeddings of $G$.
+Because all the plane drawings of $\mathcal G$ that we consider are isomorphic, the boundaries of corresponding components in different drawings are also isomorphic. Thus, for each $1\leq j\leq r$, we can choose an attachment corner $a_j$ of $\partial C_j$ such that $a_j$ is adjacent to the outer face. Note that this corner has isomorphic copies in each of the embeddings of $G$.
 
 For each $1\leq j\leq r$, let $G_j^*$ be a connected augmentation of $G_j$ (see Section~\ref{section: connected augmentations} for the construction of such a graph).
 For each $1\leq i\leq k$ and for each $1\leq j\leq r$, let $rank_i(j) = \sigma_{G_i}(a_1, a_j)$.
