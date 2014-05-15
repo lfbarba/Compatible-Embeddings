@@ -23,6 +23,11 @@ Mark Babikov, Diane~L. Souvaine, and Rephael Wenger.
 \newblock Constructing piecewise linear homeomorphisms of polygons with holes.
 \newblock In {\em CCCG}, 1997.
 
+\bibitem{bern.eppstein:worst}
+Marshall~W. Bern and David Eppstein.
+\newblock Worst-case bounds for subadditive geometric graphs.
+\newblock In {\em Symposium on Computational Geometry}, pages 183--188, 1993.
+
 \bibitem{cairns:deformations}
 S.~S. Cairns.
 \newblock Deformations of plane rectilinear complexes.

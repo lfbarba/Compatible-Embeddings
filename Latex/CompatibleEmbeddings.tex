@@ -199,26 +199,44 @@ number of reflex vertices of $p$ and $q$, respectively.
 
 Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of cycles, the embeddings $P$ and $Q$ are such that one cycle, $\mathcal C$, of $\mathcal G$ contains all the others in its interior and other pair of cycles is nested in $P$ or $Q$. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst-case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(n^{3/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
 
-\red{We should mention, maybe later on, that they have to solve similar routing problems as us; they have two paths along the boundaries of $P$ and $Q$ that visit the components in the wrong order.}
 
 \subsection{Outline}
 
-Our upper bound is obtained, roughly, by the following argument (assuming
-all components of $\mathcal G$ are on the outer face of each embedding,
-$G_j$): For each component, $\mathcal C_i$, of $\mathcal G$ we select
-a distinguished \emph{corner} $a_i$ of $G_1$ (a space between two
-consecutive edges incident on some vertex on the outer face). The corner
-$a_i$ is called the \emph{attachment corner} for component $\mathcal C_i$.
-Notice that, since $G_1,\ldots,G_k$ are isomorphic, $a_i$ appears as a
-corner in each of $G_1,\ldots,G_k$.
+To guide the reader, we give a rough sketch of our upper bound proof,
+which is illustrated in Figure~\ref{figure:example}: For each component,
+$\mathcal C_i$, of $\mathcal G$ we select a distinguished \emph{corner},
+$a_i$, of $G_1$. (A corner is the space between two consecutive edges
+incident on some vertex of the outer face). The corner $a_i$ is called
+the \emph{attachment corner} for component $\mathcal C_i$.  Notice that,
+since $G_1,\ldots,G_k$ are isomorphic, $a_i$ appears as a corner in each
+of $G_1,\ldots,G_k$.
+
+\begin{figure}
+  \begin{center}
+   \begin{tabular}{c}
+     \includegraphics{img/example-1} \\[2ex]
+     $\Downarrow$ \\
+     \includegraphics{img/example-2} \\[2ex]
+     $\Downarrow$ \\
+     \includegraphics{img/example-3} \\[2ex]
+     $\Downarrow$ \\
+     Hamiltonian Path Algorithm Gives Path $a_3,a_2,a_1$ \\[2ex]
+     $\Downarrow$ \\
+     \includegraphics{img/example-4} 
+   \end{tabular}
+  \end{center}
+  \caption{The algorithm for making a compatible augmentation of $\mathcal{G}$ works by defining corners $a_1,\ldots,a_r$, taking a spanning path on each embedding $G_i$ that visits all corners, and using this information to compute a permutation of $a_1,\ldots,a_r$ that can be embedded efficiently in each $G_i$.}
+  \label{figure:example}
+\end{figure}
 
 Next, for each embedding, $G_j$, we add $r-1$ edges to create a spanning
 tree of the components of $G_j$ and then traverse the boundary of the
-outer face of the resulting graph to obtain a weakly-simple path, $P_j$,
-that visits every corner.  In particular, this path defines an integer
-distance $d_j(a_\ell,a_m)$ for any two corners $a_\ell$ and $a_m$.
+outer face of the resulting graph to obtain a polygonal path, $P_j$,
+of length $O(n)$ that comes close to every corner.  The path $P_j$ is
+then used to define an integer distance $d_j(a_\ell,a_m)$ for any two
+corners $a_\ell$ and $a_m$.
 
-Next, we take a leap into $k$-dimensions by using the distance
+Next, we take a leap into $k$ dimensions by using the distance
 functions $d_1,\ldots,d_k$ to produce an $k$-dimensional point set
 $P=\{p_1,\ldots,p_r\}$ that lives in a hypercube of side length $O(n)$.
 This mapping has the property that, by adding a path of length $O(\|p_\ell
@@ -227,16 +245,24 @@ in each of $G_1,\ldots,G_k$ while preserving planarity.
 
 Now, since the point set $P$ has $r$ points and lives in a hypercube of
 side-length $O(n)$, it has a spanning path of length $O(nr^{1-1/k})$; this
-is an old result of So and So \cite{x}.  This implies that $\mathcal G$
-can be made connected with a collection of $r-1$ paths, whose endpoints
-are the corners $a_1,\ldots,a_r$, having total length $O(nr^{1-1/k})$,
-and that each of these paths can be embedded in a planar fashion in each
+is an old result, see, e.g., Bern and Eppstein \cite[Corollary~1]{bern.eppstein:worst}
+and references therein.  This implies that $\mathcal G$ can be made
+connected with a collection of $r-1$ paths, whose endpoints are the
+corners $a_1,\ldots,a_r$, having total length $O(nr^{1-1/k})$, and
+that each of these paths can be embedded in a planar fashion in each
 of $G_1,\ldots,G_k$.
 
-At this point, all that remains is to show that these $r-1$ paths can each be embedded in each of $G_1,\ldots,G_k$ without crossing each other.  This part of the proof involves carefully winding these paths around the components in $G_1,\ldots,G_k$. This part of the proof resembles the first part of the proof of Babikov \etal\ \cite{souvaine.wenger:constructing}.
+At this point, all that remains is to show that these $r-1$ paths
+can each be embedded in each of $G_1,\ldots,G_k$ without crossing
+each other.  This part of the proof involves carefully winding
+these paths around the components in $G_1,\ldots,G_k$ using paths
+close to the paths $P_1,\ldots,P_k$ defined above. This part of
+the proof resembles the first part of the proof of Babikov \etal\
+\cite{babikov.souvaine.ea:constructing}, but is complicated by the fact
+that we have to be quite careful that the number of edges in these paths
+remains in $O(nr^{1-1/k})$.
 
 In contrast to the upper bound, the lower-bound is quite simple and just involves a sequence of nested paths whose vertices are the vertices of regular $\lfloor n/r\rfloor$-gons. 
-
 
 The remainder of the paper is organized as follows: In Section~\ref{section:Trivial components} we start by solving the special case in which the graph $G$ has no edges. This special case is already non-trivial and introduces some of the main ideas used in solving the full problem, which is tackled in Section~\ref{section:General}. Section~\ref{section:Lower bound} gives a lower bound construction that matches our upper bound.  The paper concludes with Section~\ref{section:Conclusions}, which summarizes and presents directions for future research.  
 
