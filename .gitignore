@@ -9,3 +9,12 @@
 *.gz
 
 *.bbl
+Latex/CompatibleEmbeddings.aux
+
+Latex/CompatibleEmbeddings.log
+
+Latex/CompatibleEmbeddings.out
+
+Latex/CompatibleEmbeddings.pdf
+
+Latex/CompatibleEmbeddings.synctex.gz
