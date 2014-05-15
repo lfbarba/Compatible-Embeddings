@@ -1,12 +1,12 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{Formal Problem Statement and Main Result}{section.1}% 2
 \BOOKMARK [2][-]{subsection.1.2}{Related Work}{section.1}% 3
-\BOOKMARK [1][-]{section.2}{Upper bounds for trivial components}{}% 4
-\BOOKMARK [2][-]{subsection.2.1}{Spanning paths of point sets}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.2}{Compatible drawings of point sets}{section.2}% 6
-\BOOKMARK [1][-]{section.3}{The general problem}{}% 7
-\BOOKMARK [2][-]{subsection.3.1}{Preliminaries}{section.3}% 8
-\BOOKMARK [2][-]{subsection.3.2}{Connected augmentations}{section.3}% 9
-\BOOKMARK [2][-]{subsection.3.3}{Spanning paths for connected augmentations}{section.3}% 10
-\BOOKMARK [2][-]{subsection.3.4}{Compatible drawings of planar graphs}{section.3}% 11
-\BOOKMARK [1][-]{section.4}{Lower Bounds}{}% 12
+\BOOKMARK [2][-]{subsection.1.3}{Outline}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Spanning paths of point sets}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{Compatible drawings of point sets}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{The general problem}{}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Preliminaries}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.2}{Connected augmentations}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{Spanning paths for connected augmentations}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.4}{Compatible drawings of planar graphs}{section.2}% 11
+\BOOKMARK [1][-]{section.3}{Lower Bounds}{}% 12

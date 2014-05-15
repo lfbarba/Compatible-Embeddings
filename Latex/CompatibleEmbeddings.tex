@@ -65,6 +65,7 @@
 
 \section{Introduction}
 
+
 We consider the following problem, which will be more carefully formalized
 below.  We are given several different planar straight-line drawings
 of the same graph, $\mathcal G$, which is not connected.
@@ -174,18 +175,19 @@ augmentation has size $\Omega(nr^{1-1/k})$.
 To the best of our knowledge, there is very little work on
 compatible connectivity-augmentation of planar graphs, though
 there is work on isomorphic triangulations of polygons.  Refer to
-Figure~\ref{fig:compatible-triangs}.  In this setting, the graph $\mathcal{G}$
-is a cycle and one has two non-crossing drawings, $P$ and $Q$, of
-$\mathcal G$ The goal is to augment $\mathcal G$ (and the two drawings
-$P$ and $Q$) so that $G$ becomes a near-triangulation, and $P$ and $Q$
-become (geometric) triangulations of the polygons whose boundaries are
-$P$ and $Q$.  Aronov \etal\ \cite{aronov.seidel.ea:compatible} showed that this
-can always be accomplished with the addition of $O(n^2)$ vertices and
-that $O(n^2)$ vertices are sometimes necessary.  Kranakis and Urrutia
-\cite{kranakis.urrutia:isomorphic} showed that this result can be made sensitive
-to the number of reflex vertices of $P$ and $Q$, so that the number
-of triangles required is $O(n+pq)$ where $p$ and $q$ are the number of
-reflex vertices of $p$ and $q$, respectively.
+Figure~\ref{fig:compatible-triangs}.  In this setting, the graph
+$\mathcal{G}$ is a cycle and one has two non-crossing drawings, $P$
+and $Q$, of $\mathcal G$. The goal is to augment $\mathcal G$ (and the
+two drawings $P$ and $Q$) so that $G$ becomes a near-triangulation,
+and $P$ and $Q$ become (geometric) triangulations of the interiors
+of the polygons whose boundaries are $P$ and $Q$.  Aronov \etal\
+\cite{aronov.seidel.ea:compatible} showed that this can always
+be accomplished with the addition of $O(n^2)$ vertices and that
+$O(n^2)$ vertices are sometimes necessary.  Kranakis and Urrutia
+\cite{kranakis.urrutia:isomorphic} showed that this result can be made
+sensitive to the number of reflex vertices of $P$ and $Q$, so that the
+number of triangles required is $O(n+pq)$ where $p$ and $q$ are the
+number of reflex vertices of $p$ and $q$, respectively.
 
 \begin{figure}
   \centering{
@@ -195,12 +197,48 @@ reflex vertices of $p$ and $q$, respectively.
   \label{fig:compatible-triangs}
 \end{figure}
 
-Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of cycles and the embeddings $P$ and $Q$ are such that one cycle of $\mathcal G$ contains all the others in its interior.  In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst-case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(n^{3/2})$ edges (but completing this graph to a triangulation may still require $\Omega(n^2)$ edges).
+Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of cycles, the embeddings $P$ and $Q$ are such that one cycle, $\mathcal C$, of $\mathcal G$ contains all the others in its interior and other pair of cycles is nested in $P$ or $Q$. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst-case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(n^{3/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
 
 \red{We should mention, maybe later on, that they have to solve similar routing problems as us; they have two paths along the boundaries of $P$ and $Q$ that visit the components in the wrong order.}
 
-\section{Upper bounds for trivial components}\label{section:Trivial components}
-To provide some intuition, we start by showing the result for the case when $\mathcal G$ is a graph containing $n$ vertices and no edges, i.e., $\mathcal G$ contains $n$ (trivial) connected components. Before constructing the compatible augmentations, we provide a subroutine that constructs a ``short'' plane spanning path of a point set. Later, we use this subroutine on each of the geometric drawings of $\mathcal G$ to obtain isomorphic compatible augmentations of bounded length.
+\subsection{Outline}
+
+Our upper bound is obtained, roughly, by the following argument (assuming
+all components of $\mathcal G$ are on the outer face of each embedding,
+$G_j$): For each component, $\mathcal C_i$, of $\mathcal G$ we select
+a distinguished \emph{corner} $a_i$ of $G_1$ (a space between two
+consecutive edges incident on some vertex on the outer face). The corner
+$a_i$ is called the \emph{attachment corner} for component $\mathcal C_i$.
+Notice that, since $G_1,\ldots,G_k$ are isomorphic, $a_i$ appears as a
+corner in each of $G_1,\ldots,G_k$.
+
+Next, for each embedding, $G_j$, we add $r-1$ edges to create a spanning
+tree of the components of $G_j$ and then traverse the boundary of the
+outer face of the resulting graph to obtain a weakly-simple path, $P_j$,
+that visits every corner.  In particular, this path defines an integer
+distance $d_j(a_\ell,a_m)$ for any two corners $a_\ell$ and $a_m$.
+
+Next, we take a leap into $k$-dimensions by using the distance
+functions $d_1,\ldots,d_k$ to produce an $k$-dimensional point set
+$P=\{p_1,\ldots,p_r\}$ that lives in a hypercube of side length $O(n)$.
+This mapping has the property that, by adding a path of length $O(\|p_\ell
+p_m\|)$ to $\mathcal G$, the corners $a_\ell$ and $a_m$ can be joined
+in each of $G_1,\ldots,G_k$ while preserving planarity.
+
+Now, since the point set $P$ has $r$ points and lives in a hypercube of
+side-length $O(n)$, it has a spanning path of length $O(nr^{1-1/k})$; this
+is an old result of So and So \cite{x}.  This implies that $\mathcal G$
+can be made connected with a collection of $r-1$ paths, whose endpoints
+are the corners $a_1,\ldots,a_r$, having total length $O(nr^{1-1/k})$,
+and that each of these paths can be embedded in a planar fashion in each
+of $G_1,\ldots,G_k$.
+
+At this point, all that remains is to show that these $r-1$ paths can each be embedded in each of $G_1,\ldots,G_k$ without crossing each other.  This part of the proof involves carefully winding these paths around the components in $G_1,\ldots,G_k$. This part of the proof resembles the first part of the proof of Babikov \etal\ \cite{souvaine.wenger:constructing}.
+
+In contrast to the upper bound, the lower-bound is quite simple and just involves a sequence of nested paths whose vertices are the vertices of regular $\lfloor n/r\rfloor$-gons. 
+
+
+The remainder of the paper is organized as follows: In Section~\ref{section:Trivial components} we start by solving the special case in which the graph $G$ has no edges. This special case is already non-trivial and introduces some of the main ideas used in solving the full problem, which is tackled in Section~\ref{section:General}. Section~\ref{section:Lower bound} gives a lower bound construction that matches our upper bound.  The paper concludes with Section~\ref{section:Conclusions}, which summarizes and presents directions for future research.  
 
 
 %%%%%%%%%
