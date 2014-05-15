@@ -1,0 +1,36 @@
+InfoBegin
+InfoKey: ModDate
+InfoValue: D:20140513103746
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20140512162135
+InfoBegin
+InfoKey: Creator
+InfoValue: ipetoipe 7.1.4
+InfoBegin
+InfoKey: Producer
+InfoValue: ipetoipe 7.1.4
+NumberOfPages: 3
+PageMediaBegin
+PageMediaNumber: 1
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 842
+PageMediaDimensions: 595 842
+PageMediaCropRect: 246.088 679.036 325.419 788.494
+PageMediaBegin
+PageMediaNumber: 2
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 842
+PageMediaDimensions: 595 842
+PageMediaCropRect: 246.088 679.036 325.419 788.494
+PageMediaBegin
+PageMediaNumber: 3
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 842
+PageMediaDimensions: 595 842
+PageMediaCropRect: 246.088 679.036 325.419 788.494
+PageLabelBegin
+PageLabelNewIndex: 1
+PageLabelStart: 1
+PageLabelPrefix: 1-
+PageLabelNumStyle: DecimalArabicNumerals
