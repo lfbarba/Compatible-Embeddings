@@ -9,6 +9,13 @@
 *.gz
 
 *.bbl
+
+*~
+
+*.blg
+*.fdb_latexmk
+*.fls
+
 Latex/CompatibleEmbeddings.aux
 
 Latex/CompatibleEmbeddings.log
