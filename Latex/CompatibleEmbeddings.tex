@@ -1,21 +1,26 @@
-\documentclass[a4paper, 11pt]{article}
-
-\usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics,epsf}
-\setcounter{tocdepth}{3}
+\documentclass{patmorin}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics}
+%\setcounter{tocdepth}{3}
 \usepackage{graphicx}
 
-\usepackage{algorithmic}
-\usepackage{algorithm}
-\usepackage{hyperref,color}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{linkblue}{named}{Blue}
+\hypersetup{colorlinks=true, linkcolor=linkblue,  anchorcolor=linkblue,
+citecolor=linkblue, filecolor=linkblue, menucolor=linkblue,
+urlcolor=linkblue} 
+
 %\usepackage{comment}
 %\usepackage{url}
-\usepackage{xspace} 
+%\usepackage{xspace} 
 %\usepackage{lineno}
 %\graphicspath{{img/}} % No need to write this for every figure
 %\linenumbers
 
 
-\usepackage{geometry}
+%\usepackage{geometry}
 
 \newcommand{\etal}{\emph{et al}}
 
@@ -29,37 +34,34 @@
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{question}[theorem]{Question}
 
+\newcommand{\R}{\mathbb{R}}
 
 
 %%
 %% Here you may place your macros using \newcommand{}{}
 %%
-
-
   
-  \newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\red}[1]{{\color{red} #1}}
   
-  \newcommand{\ch}[1]{\ensuremath{\textsc{ch}(#1)}}
+\newcommand{\ch}[1]{\ensuremath{\textsc{ch}(#1)}}
+
+\title{\MakeUppercase{Compatible Connectivity-Augmentation \newline of Disconnected Graphs}}
+
+\author{Second Bellairs Workshop on Geometry and Graphs}
+
 
 
 \begin{document}
 
-
-
-\title{Compatible Connectivity-Augmentation \\ of Disconnected Graphs}
-
-
-
-
-
-\author{Second Bellairs Workshop on Geometry and Graphs}
-\date{}
+\begin{titlepage}
 
 \maketitle
 \begin{abstract}
-
+\setlength{\baselineskip}{16.8pt}
+We consider the following problem: We are given a (not necessarily connected) planar graph $\mathcal{G}$ and $k$ isomorphic planar drawings $G_1,\ldots,G_k$ of $\mathcal{G}$. We wish to add vertices and edges to $\mathcal{G}$ to make it connected and in such a way that these vertices and edges can added to the drawings $G_1,\ldots,G_k$ while preserving planarity.  We show that adding $O(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always sufficient and sometimes necessary to achieve this goal.
 \end{abstract}
 
+\end{titlepage}
 
 %A category including the fourth, optional field follows..
 
@@ -118,18 +120,18 @@ In this setting, animating the face becomes a problem of \emph{morphing}
 (i.e., continuously deforming) one drawing of a planar graph into
 another drawing of the same planar graph while maintaining planarity
 of the drawing throughout the deformation. This morphing problem
-has been studied since 1944, when Cairns \cite{cairns:deformations} showed such a
-transformation always exists between any two drawings of the same graph.
-Since then, a sequence of results has shown that such transformations
-can be done efficiently, so that the motion can be described concisely
-\cite{thomassen:deformations, grunbaum.shephard:geometry,alamdari.angelini.ea:morphing, angelini.dalozzo.ea:morphing}.
-The most recent such result \cite{angelini.dalozzo.ea:morphing} shows that any
-planar drawing of a $n$-vertex connected planar graph can be morphed
-into any compatible drawing\footnote{Two drawings of the same graph are
-compatible if they have the same ordering of edges around vertices and
-the same structure of faces; see Section~\ref{sec:X}.} of the same planar
-using a sequence of $O(n)$ \emph{linear morphs}, in which vertices move
-along linear trajectories at constant speed.
+has been studied since 1944, when Cairns \cite{cairns:deformations}
+showed such a transformation always exists between any two drawings
+of the same graph.  Since then, a sequence of results has shown
+that such transformations can be done efficiently, so that the
+motion can be described concisely \cite{thomassen:deformations,
+grunbaum.shephard:geometry,alamdari.angelini.ea:morphing,
+angelini.dalozzo.ea:morphing}.  The most recent such result
+\cite{angelini.dalozzo.ea:morphing} shows that any planar embedding of
+a $n$-vertex connected planar graph can be morphed into any isomorphic
+embedding of the same planar using a sequence of $O(n)$ \emph{linear
+morphs}, in which vertices move along linear trajectories at constant
+speed.
 
 These morphing algorithms require that the input graph, $\mathcal{G}$,
 be connected. In many applications of morphing (for example in
@@ -155,20 +157,37 @@ the drawings?
 
 \subsection{Formal Problem Statement and Main Result}
 
+Formally, an \emph{embedding} of a graph $\mathcal{G}=(V,E)$
+is a one-to-one function $\varphi\colon V\to\R^2$.  An embedding
+is \emph{planar} if, for every pair of edges $uw$ and $xy$ in $E$,
+the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$ is
+disjoint from the open line segment with endpoints $\varphi(x)$
+and $\varphi(y)$.  Two planar embeddings, $\varphi_1$ and $\varphi_2$,
+of $\mathcal{G}$ are \emph{isomorphic} if there is a continuous family
+of planar embeddings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
+such that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.
 
-Let $\mathcal G$ be a planar graph with $n$ vertices and $r$ connected
-components.  Given $k$ geometric planar isomorphic embeddings $G_1,
-\ldots, G_k$ of $\mathcal G$, a \emph{compatible augmentation},
-$\mathcal H$, of $\mathcal G$ is a supergraph of $\mathcal G$ such that
-(1) $\mathcal H$ is connected, and (2) there exist geometric planar
-isomorphic embeddings, $H_1, \ldots, H_k$, of $\mathcal H$ such that
-$H_i\supset G_i$ for every $1\leq i\leq k$.  In this paper, we show
-that $G$ always has a compatible embedding of size $O(nr^{1-1/k})$
-and that this bound is tight; there exists a graph $\mathcal G$ with $r$
-components and having embeddings $G_1,\ldots,G_k$ for which any compatible
-augmentation has size $\Omega(nr^{1-1/k})$.
+Throughout this paper we will be slightly less formal to avoid
+repeatedly referencing embedding functions like $\varphi$, $\varphi_1$
+and $\varphi_2$.  Instead, we will talk about a graph $\mathcal{G}$
+and $k$ isomorphic geometric graphs $G_1,\ldots,G_k$.  This should be
+understood to mean that each $G_i$ is the embedding of $\mathcal{G}$
+with some function $\varphi_i$ and that $\varphi_1,\ldots,\varphi_k$ are
+pairwise isomorphic.  When necessary, we may talk about the vertex $v$
+in $G_i$ where $v$ is actually a vertex of $\mathcal{G}$; this should
+be taken to mean the vertex $\varphi_i(v)$ in $G_i$.
 
-\red{This needs more details.  In particular, we need to properly define planar isomorphic embeddings. Yuck!}
+With these conventions, we are ready to state our main result.  Given $k$
+geometric planar isomorphic embeddings $G_1, \ldots, G_k$ of $\mathcal
+G$, a \emph{compatible augmentation}, $\mathcal H$, of $\mathcal G$ is a
+supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected, and
+(2) there exist geometric planar isomorphic embeddings, $H_1, \ldots,
+H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every $1\leq i\leq
+k$.  In this paper, we show that $\mathcal{G}$, if $\mathcal{G}$ has $r$
+connected components, then there always exists a compatible augmentation
+of size $O(nr^{1-1/k})$ and that this bound is tight; there exists a graph
+$\mathcal G$ with $r$ components and having embeddings $G_1,\ldots,G_k$
+for which any compatible augmentation has size $\Omega(nr^{1-1/k})$.
 
 \subsection{Related Work}
 
@@ -183,7 +202,7 @@ and $P$ and $Q$ become (geometric) triangulations of the interiors
 of the polygons whose boundaries are $P$ and $Q$.  Aronov \etal\
 \cite{aronov.seidel.ea:compatible} showed that this can always
 be accomplished with the addition of $O(n^2)$ vertices and that
-$O(n^2)$ vertices are sometimes necessary.  Kranakis and Urrutia
+$\Omega(n^2)$ vertices are sometimes necessary.  Kranakis and Urrutia
 \cite{kranakis.urrutia:isomorphic} showed that this result can be made
 sensitive to the number of reflex vertices of $P$ and $Q$, so that the
 number of triangles required is $O(n+pq)$ where $p$ and $q$ are the
@@ -193,11 +212,11 @@ number of reflex vertices of $p$ and $q$, respectively.
   \centering{
     \includegraphics{img/compatible-triangs}
   }
-  \caption{Compatible triangulations of two polygons $P$ and $Q$.}
+  \caption{Compatible triangulations of two 4-gons $P$ and $Q$.}
   \label{fig:compatible-triangs}
 \end{figure}
 
-Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of cycles, the embeddings $P$ and $Q$ are such that one cycle, $\mathcal C$, of $\mathcal G$ contains all the others in its interior and other pair of cycles is nested in $P$ or $Q$. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst-case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(n^{3/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
+Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of $r$ cycles, the embeddings $P$ and $Q$ are such that one cycle, $\mathcal C$, of $\mathcal G$ contains all the others in its interior and no other pair of cycles is nested in $P$ or $Q$. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst-case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(nr^{1/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
 
 
 \subsection{Outline}
@@ -238,7 +257,7 @@ corners $a_\ell$ and $a_m$.
 
 Next, we take a leap into $k$ dimensions by using the distance
 functions $d_1,\ldots,d_k$ to produce an $k$-dimensional point set
-$P=\{p_1,\ldots,p_r\}$ that lives in a hypercube of side length $O(n)$.
+$P=\{p_1,\ldots,p_r\}$ that lives in a hypercube of side-length $O(n)$.
 This mapping has the property that, by adding a path of length $O(\|p_\ell
 p_m\|)$ to $\mathcal G$, the corners $a_\ell$ and $a_m$ can be joined
 in each of $G_1,\ldots,G_k$ while preserving planarity.
@@ -260,7 +279,9 @@ the proof resembles the first part of the proof of Babikov \etal\
 that we have to be quite careful that the number of edges in these paths
 remains in $O(nr^{1-1/k})$.
 
-In contrast to the upper bound, the lower-bound is quite simple and just involves a sequence of nested paths whose vertices are the vertices of regular $\lfloor n/r\rfloor$-gons. 
+In contrast to the upper bound, the lower-bound is quite simple and just
+involves a sequence of nested paths whose vertices are the vertices of
+regular $\lfloor n/r\rfloor$-gons.
 
 The remainder of the paper is organized as follows: In Section~\ref{section:Trivial components} we start by solving the special case in which the graph $G$ has no edges. This special case is already non-trivial and introduces some of the main ideas used in solving the full problem, which is tackled in Section~\ref{section:General}. Section~\ref{section:Lower bound} gives a lower bound construction that matches our upper bound.  The paper concludes with Section~\ref{section:Conclusions}, which summarizes and presents directions for future research.  
 
@@ -356,7 +377,7 @@ Since the vertices of each $G_i$ are connected in the same order, $G_i\cup R_i$ 
 \end{proof}
 
 
-\section{The general problem}
+\section{The general problem}\label{section:General}
 In this section, we extend the result presented in Section~\ref{section:Trivial components} to graphs with non-trivial components.
 As in Section~\ref{section:Trivial components}, we provide a subroutine that constructs a path connecting all components of a plane graph in any given order.
 
@@ -547,7 +568,7 @@ Because $\sum_{j=1}^{n-1} d_j = |P| = O(nr^{1-1/k})$, the length $R_i$ is $O(nr^
 Since each $R_i$ visits each component only at its attachment corner and from the fact that $R_i$ leaves every component to the right when oriented from $a_1$ to $a_r$, we conclude that $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $1\leq i<j\leq k$.
 \end{proof}
 
-\section{Lower Bounds}
+\section{Lower Bounds}\label{section:Lower bound}
 
 Our lower bounds are based on the following lemma. In words, this lemma says that we can find $k$ permutations of $\{1,\ldots,r\}$ such that, for half the indices $i\in\{1,\ldots,r\}$, and every $j\in\{1,\ldots,r\}\setminus\{i\}$, there is a permutation in which $i$ and $j$ are at distance $\Omega(r^{1-1/k})$.
 
@@ -659,6 +680,7 @@ To finish up we note that, since the augmentation $\mathcal{H}$ is minimal,
 it is a tree; $\mathcal G$ contains no cycles, so any cycle in $\mathcal H$ contains an edge not in $\mathcal G$ that could be removed.  Now, observe that if we traverse the outer face of (any planar drawing of) $\mathcal H$ then we obtain a non-simple path, $P$, that traverses each edge of $\mathcal{H}$ exactly twice. If we consider the set of maximal subpaths of $P$ with no vertex of $\mathcal G$ in their interior, we obtain a set of $r$ paths, $Q_1,\ldots,Q_{r}$ and, for every component $\mathcal C_i$ of $\mathcal G$, there is a vertex of $\mathcal C_i$ that is an endpoint of at least one such path.  Therefore, from the preceding discussion, the total length of $Q_1\ldots,Q_{r}$ is $\Omega(nr^{1-1/k})$.  But since each edge of $\mathcal H$ appears at most twice in these subpaths, we conclude that $\mathcal H$ has $\Omega(nr^{1-1/k})$ edges.  Since $\mathcal H$ is a tree, it has $\Omega(nr^{1-1/k})$ vertices.
 \end{proof}
 
+\section{Summary and Conclusions}\label{section:Conclusions}
 
 \bibliographystyle{plain}
 \bibliography{CompatibleEmbeddings}
