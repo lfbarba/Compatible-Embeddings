@@ -12,6 +12,8 @@
 citecolor=linkblue, filecolor=linkblue, menucolor=linkblue,
 urlcolor=linkblue} 
 
+\setlength{\parskip}{2ex}
+
 %\usepackage{comment}
 %\usepackage{url}
 %\usepackage{xspace} 
@@ -33,6 +35,8 @@ urlcolor=linkblue}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{question}[theorem]{Question}
+
+\DeclareMathOperator{\rank}{rank}
 
 \newcommand{\R}{\mathbb{R}}
 
@@ -58,7 +62,16 @@ urlcolor=linkblue}
 \maketitle
 \begin{abstract}
 \setlength{\baselineskip}{16.8pt}
-We consider the following problem: We are given a (not necessarily connected) planar graph $\mathcal{G}$ and $k$ isomorphic planar drawings $G_1,\ldots,G_k$ of $\mathcal{G}$. We wish to add vertices and edges to $\mathcal{G}$ to make it connected and in such a way that these vertices and edges can added to the drawings $G_1,\ldots,G_k$ while preserving planarity.  We show that adding $O(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always sufficient and sometimes necessary to achieve this goal.
+We consider the following \emph{compatible connectivity-augmentation
+problem}: We are given a (not necessarily connected) planar graph
+$\mathcal{G}$ and $k$ isomorphic planar drawings $G_1,\ldots,G_k$ of
+$\mathcal{G}$. We wish to add vertices and edges to $\mathcal{G}$ to make
+it connected and in such a way that these vertices and edges can added to
+the drawings $G_1,\ldots,G_k$ while preserving planarity.  We show that
+adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always
+sufficient and sometimes necessary to achieve this goal.  The upper bound
+is obtained by exhibiting a relationship between compatible connectivity
+augmentation and the travelling salesman problem for points in $\R^k$.
 \end{abstract}
 
 \end{titlepage}
@@ -98,7 +111,7 @@ character's features can be converted into paths and these can be merged
 into components corresponding to the character's eyes, nose, mouth and
 so on.  A correspondence between the same elements in different pictures
 is also given.\footnote{In many cases, the correspondence is a byproduct
-of the creation process. For example, in the Figure~\ref{fig:faces}, the second
+of the creation process. For example, in Figure~\ref{fig:faces}, the second
 two faces were obtained by copying and then editing the first one.}
 
 \begin{figure}
@@ -294,9 +307,9 @@ we provide a subroutine that constructs a ``short'' plane spanning path of a poi
 
 \subsection{Spanning paths of point sets}
 Let $S$ be a set of $n$ points in the plane such that no two points of $S$ have the same $x$-coordinate. 
-Given a point $v\in S$, let $rank(v)$ denote the number of points of $S$ that lie to the left of (having smaller $x$-coordinate than) $v$.
+Given a point $v\in S$, let $\rank(v)$ denote the number of points of $S$ that lie to the left of (having smaller $x$-coordinate than) $v$.
 
-Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in the given order such that:  $$|R|  = O\left(\sum_{i=1}^{n-1} |rank(v_i) - rank(v_{i+1})| \right).$$
+Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in the given order such that:  $$|R|  = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right).$$
 (Here, $|R|$ denotes the number of segments in the path $R$.)
 
 Consider a horizontal line such that each point of $S$ lies above it and let $\pi$ be the closed halfspace supported by this line that contains $S$.  We present an algorithm that constructs the path in $R$ in rounds; during the $i$th round, the path is extended to include $v_i$.  After each round of the algorithm, we maintain the invariant that the boundary of $\pi$ does not intersect $R$.
@@ -317,10 +330,10 @@ Assume that $R$ is a path connecting $v_1$ with $v_j$ (initially, $j=1$ and $R$ 
 We extend $R$ by appending a path that connects $v_j$ with $v_{j+1}$. 
 As a first step, we translate down the cones $\Delta_j$ and $\Delta_{j+1}$ until their apexes $u_j$ and $u_{j+1}$ coincide with $v_j$ and $v_{j+1}$, respectively. Moreover, we narrow the cone $\Delta_j$ while keeping the ray originating downwards from $v_j$ contained in $\Delta_j$.
 
-Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing $\Delta_1,\ldots,\Delta_n$.  
-%every cone $\Delta_h$, where $1\leq h\leq n$ and $v_h$ is not an internal vertex of $R$; see Figure~\ref{fig:Dented Halfspace}. 
-That is, $\pi_j$ is a halfspace with dents made by the removal of $n$ cones.
-Moreover, the distance between two apexes $u_i$ and $u_h$ along the boundary of $\pi_j$ is proportional to the number of apexes with $x$-coordinate between those of $u_i$ and $u_h$. That is, the length of the path that joins $u_i$ with $u_h$ along $\pi_j$ is $O(|rank(v_i) - rank(v_h)|)$. 
+Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing the cone $\Delta_h$, for every $h\in\{j,j+1,\ldots,n\}$; see Figure~\ref{fig:Dented Halfspace}. That is, $\pi_j$ is a halfspace with dents made by the removal of $n-j+1$ cones.
+%Therefore, the number of segments on the boundary of $\pi_j$ is $O(n-j)$. 
+Observe that, for every pair of apexes $u_i$ and $u_h$, the boundary of $\pi_j$
+contains a path from $u_i$ to $u_h$ consisting of $O(|\rank(v_i)-\rank(v_j)|)$ edges.
 
 \begin{figure}[tb]
 \centering
@@ -330,21 +343,22 @@ Moreover, the distance between two apexes $u_i$ and $u_h$ along the boundary of 
 \label{fig:Dented Halfspace}
 \end{figure}
 
+
 Because the boundary of $\pi$ does not intersect $R$ and by property (4) of the escape invariant, the boundary of $\pi_j$ intersects the portion of $R$ constructed so far only at $v_j$. Moreover, by property (2) of the escape invariant, each point of $S\setminus V(R)$ lies outside of~$\pi_j$ except for $v_{j+1}$ that lies on its boundary.
 Because both $v_j$ and $v_{j+1}$ lie on the boundary of $\pi_j$ and since this boundary does not intersect the interior of $R$, we can connect $v_j$ with $v_{j+1}$ with a path contained in the boundary of $\pi_j$. 
-Recall that this path has length $O(|rank(v_j) - rank(v_{j+1})|)$. In this way, we extend $R$ to a planar path that connects $v_1$ with $v_{j+1}$.
+Recall that this path has length $O(|\rank(v_j) - \rank(v_{j+1})|)$. In this way, we extend $R$ to a planar path that connects $v_1$ with $v_{j+1}$.
 
-After connecting $v_j$ with $v_{j+1}$, for each $v_h\notin R$, either $\Delta_h$ is disjoint from $R$, or it shares some portion of its boundary with $R$. However, the interior of $\Delta_h$ does not intersect $R$.
-To preserve the escape invariant, for each $1\leq h\leq n$ such that $v_h\notin R$, translate the cone $\Delta_h$ downwards a distance $\varepsilon>0$. Because the translated cone is contained in the previous one and since its apex $u_h$ lies above $v_h$ by property (1) of the escape invariant, by choosing $\varepsilon$ sufficiently small, we guarantee that the escape invariant is maintained. Similarly, we move $\ell$ a distance $\varepsilon$ in the direction of the negative $y$-axis. Using this algorithm repeatedly until all points of $S$ are connected, we obtain the following result.
+After connecting $v_j$ with $v_{j+1}$, for each $h\in\{j+2,\ldots,n\}$, either $\Delta_h$ is disjoint from $R$, or it shares some portion of its boundary with $R$. However, the interior of $\Delta_h$ does not intersect $R$.
+To preserve the escape invariant, we translate $\pi$ and $\Delta_h$, for each $h\in\{j+1,\ldots,n\}$ downward by a sufficiently small amount, $\varepsilon$. Because each translated cone is contained in the previous one and since its apex $u_h$ lies above $v_h$ by property (1) of the escape invariant, by choosing $\varepsilon$ sufficiently small, we guarantee that the escape invariant is maintained.  Thus, the algorithm is ready to proceed to the next round and doing this $n-1$ times gives the following result.
 
 \begin{lemma}\label{lemma:Compatible augmentation for trivial components}
 Given an arbitrary order $(v_1, \ldots, v_n)$ of the vertices of $S$, the previous algorithm computes a plane path $R$ that connects every point of $S$ in the given order such that 
-$|R| = O\left(\sum_{i=1}^{n-1} |rank(v_i) - rank(v_{i+1})| \right)$. 
+$|R| = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right)$. 
 \end{lemma}
 \begin{proof}
 Recall that in each iteration, the algorithms computes a path connecting $v_j$ with $v_{j+1}$ that does not cross the portion of the path already constructed. Because this invariant is maintained throughout, the resulting path is planar.
 
-Since the path that connects $v_j$ with $v_{j+1}$ follows the boundary of $\pi_j$ and since this boundary has length $O(|rank(v_j) - rank(v_{j+1})|)$ between $v_j$ and $v_{j+1}$, the path that connects $v_j$ with $v_{j+1}$ has length $O(|rank(v_j) - rank(v_{j+1})|)$. Consequently,  the total length of $R$ is given by $O\left(\sum_{i=1}^{n-1} |rank(v_i) - rank(v_{i+1}) |\right)$.
+Since the path that connects $v_j$ with $v_{j+1}$ follows the boundary of $\pi_j$ and since this boundary has length $O(|\rank(v_j) - \rank(v_{j+1})|)$ between $v_j$ and $v_{j+1}$, the path that connects $v_j$ with $v_{j+1}$ has length $O(|\rank(v_j) - \rank(v_{j+1})|)$. Consequently,  the total length of $R$ is given by $O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1}) |\right)$.
 \end{proof}
 
 
@@ -355,9 +369,15 @@ Let $G_1, \ldots, G_k$ be $k$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ i
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate. Otherwise, rotate the coordinate system slightly.
 Given a vertex $v$ of $\mathcal G$, let $rank_{G_i}(v)$ denote the number of points of $G_i$ to the left of $v$.
 
-For each $v$ of $\mathcal G$, let $x_v = (rank_{G_1}(v), rank_{G_2}(v), \ldots, rank_{G_k}(v))$ be a point in the integer grid of side-length $n$ contained in $\mathbb{R}^k$.
-Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest hamiltonian path of $X$, i.e., the shortest path that visits every point of $X$.
-It is known that the length of $P$ is $O(n^{2-1/k})$~\cite{}.
+For each $v$ of $\mathcal G$, let $x_v = (rank_{G_1}(v), rank_{G_2}(v),
+\ldots, rank_{G_k}(v))$ be a point in the integer grid of side-length
+$n$ contained in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$
+and let $P$ be the shortest hamiltonian path of $X$, i.e., the shortest
+path that visits every point of $X$.  It is known that the length of
+$P$ is $O(n^{2-1/k})$~\cite{steele.snyder:worst}. What's more, a path
+of length $O(n^{2-1/k})$ can be obtained from an approximate minimum
+spanning tree of $X$; this approximate MST, and the resulting path, $P$,
+can be computed in $O(n\log n)$ time \cite{callahan.kosaraju:faster}.
 
 Note that the order of the points of $P$ induces an order on the vertices of $\mathcal G$ and hence, an order on the points of each $G_i$. 
 
