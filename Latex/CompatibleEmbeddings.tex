@@ -317,8 +317,9 @@ Assume that $R$ is a path connecting $v_1$ with $v_j$ (initially, $j=1$ and $R$ 
 We extend $R$ by appending a path that connects $v_j$ with $v_{j+1}$. 
 As a first step, we translate down the cones $\Delta_j$ and $\Delta_{j+1}$ until their apexes $u_j$ and $u_{j+1}$ coincide with $v_j$ and $v_{j+1}$, respectively. Moreover, we narrow the cone $\Delta_j$ while keeping the ray originating downwards from $v_j$ contained in $\Delta_j$.
 
-Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing every cone $\Delta_h$, where $1\leq h\leq n$ and $v_h$ is not an internal vertex of $R$; see Figure~\ref{fig:Dented Halfspace}. That is, $\pi_j$ is a halfspace with dents made by the removal of $n-j+1$ cones.
-Therefore, the number of segments on the boundary of $\pi_j$ is $O(n-j)$. 
+Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing $\Delta_1,\ldots,\Delta_n$.  
+%every cone $\Delta_h$, where $1\leq h\leq n$ and $v_h$ is not an internal vertex of $R$; see Figure~\ref{fig:Dented Halfspace}. 
+That is, $\pi_j$ is a halfspace with dents made by the removal of $n$ cones.
 Moreover, the distance between two apexes $u_i$ and $u_h$ along the boundary of $\pi_j$ is proportional to the number of apexes with $x$-coordinate between those of $u_i$ and $u_h$. That is, the length of the path that joins $u_i$ with $u_h$ along $\pi_j$ is $O(|rank(v_i) - rank(v_h)|)$. 
 
 \begin{figure}[tb]
@@ -328,7 +329,6 @@ Moreover, the distance between two apexes $u_i$ and $u_h$ along the boundary of 
 \caption{\small }
 \label{fig:Dented Halfspace}
 \end{figure}
-
 
 Because the boundary of $\pi$ does not intersect $R$ and by property (4) of the escape invariant, the boundary of $\pi_j$ intersects the portion of $R$ constructed so far only at $v_j$. Moreover, by property (2) of the escape invariant, each point of $S\setminus V(R)$ lies outside of~$\pi_j$ except for $v_{j+1}$ that lies on its boundary.
 Because both $v_j$ and $v_{j+1}$ lie on the boundary of $\pi_j$ and since this boundary does not intersect the interior of $R$, we can connect $v_j$ with $v_{j+1}$ with a path contained in the boundary of $\pi_j$. 
