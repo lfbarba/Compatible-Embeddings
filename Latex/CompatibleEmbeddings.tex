@@ -294,9 +294,10 @@ we provide a subroutine that constructs a ``short'' plane spanning path of a poi
 
 \subsection{Spanning paths of point sets}
 Let $S$ be a set of $n$ points in the plane such that no two points of $S$ have the same $x$-coordinate. 
-Given a point $v\in S$, let $rank(v)$ denote the number of points of $S$ that lie to the left of $v$.
+Given a point $v\in S$, let $rank(v)$ denote the number of points of $S$ that lie to the left of (have smaller $x$-coordinate than) $v$.
 
 Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in the given order such that:  $$|R|  = O\left(\sum_{i=1}^{n-1} |rank(v_i) - rank(v_{i+1})| \right).$$
+(Here, $|R|$ denotes the number of segments in the path $R$.)
 
 Consider a horizontal line such that each point of $S$ lies above it and let $\pi$ be the closed halfspace supported by this line that contains $S$. After each round of the algorithm, we maintain the invariant that the boundary of $\pi$ does not intersect $R$.
 
