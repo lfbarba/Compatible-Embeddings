@@ -110,7 +110,7 @@ two faces were obtained by copying and then editing the first one.}
     & \includegraphics{img/face-zoom} &
   \end{tabular}}
   \caption{Computer-assisted animation frequently involves morphing between
-   a sequence of embeddings of the same planar graph.  Zooming in on a section
+   a sequence of drawings of the same planar graph.  Zooming in on a section
    of the image reveals that the artist's strokes are approximated by polygonal
    paths}
   \label{fig:faces}
@@ -127,9 +127,9 @@ that such transformations can be done efficiently, so that the
 motion can be described concisely \cite{thomassen:deformations,
 grunbaum.shephard:geometry,alamdari.angelini.ea:morphing,
 angelini.dalozzo.ea:morphing}.  The most recent such result
-\cite{angelini.dalozzo.ea:morphing} shows that any planar embedding of
-a $n$-vertex connected planar graph can be morphed into any isomorphic
-embedding of the same planar using a sequence of $O(n)$ \emph{linear
+\cite{angelini.dalozzo.ea:morphing} shows that any planar drawing of
+an $n$-vertex connected planar graph can be morphed into any isomorphic
+drawing of the same planar using a sequence of $O(n)$ \emph{linear
 morphs}, in which vertices move along linear trajectories at constant
 speed.
 
@@ -157,21 +157,21 @@ the drawings?
 
 \subsection{Formal Problem Statement and Main Result}
 
-Formally, an \emph{embedding} of a graph $\mathcal{G}=(V,E)$
-is a one-to-one function $\varphi\colon V\to\R^2$.  An embedding
+Formally, a \emph{drawing} of a graph $\mathcal{G}=(V,E)$
+is a one-to-one function $\varphi\colon V\to\R^2$.  A drawing
 is \emph{planar} if, for every pair of edges $uw$ and $xy$ in $E$,
 the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$ is
 disjoint from the open line segment with endpoints $\varphi(x)$
-and $\varphi(y)$.  Two planar embeddings, $\varphi_1$ and $\varphi_2$,
+and $\varphi(y)$.  Two planar drawings, $\varphi_1$ and $\varphi_2$,
 of $\mathcal{G}$ are \emph{isomorphic} if there is a continuous family
-of planar embeddings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
+of planar drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
 such that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.
 
-Throughout this paper we will be slightly less formal to avoid
-repeatedly referencing embedding functions like $\varphi$, $\varphi_1$
-and $\varphi_2$.  Instead, we will talk about a graph $\mathcal{G}$
-and $k$ isomorphic geometric graphs $G_1,\ldots,G_k$.  This should be
-understood to mean that each $G_i$ is the embedding of $\mathcal{G}$
+Throughout this paper we will be slightly less formal to avoid repeatedly
+referencing drawing functions like $\varphi$, $\varphi_1$ and $\varphi_2$.
+Instead, we will talk about a graph $\mathcal{G}$ and $k$ isomorphic
+geometric graphs $G_1,\ldots,G_k$.  This should be understood to mean that
+each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
 with some function $\varphi_i$ and that $\varphi_1,\ldots,\varphi_k$ are
 pairwise isomorphic.  When necessary, we may talk about the vertex $v$
 in $G_i$ where $v$ is actually a vertex of $\mathcal{G}$; this should
@@ -197,7 +197,7 @@ there is work on isomorphic triangulations of polygons.  Refer to
 Figure~\ref{fig:compatible-triangs}.  In this setting, the graph
 $\mathcal{G}$ is a cycle and one has two non-crossing drawings, $P$
 and $Q$, of $\mathcal G$. The goal is to augment $\mathcal G$ (and the
-two drawings $P$ and $Q$) so that $G$ becomes a near-triangulation,
+two drawings $P$ and $Q$) so that $\mathcal G$ becomes a near-triangulation,
 and $P$ and $Q$ become (geometric) triangulations of the interiors
 of the polygons whose boundaries are $P$ and $Q$.  Aronov \etal\
 \cite{aronov.seidel.ea:compatible} showed that this can always
@@ -294,14 +294,14 @@ we provide a subroutine that constructs a ``short'' plane spanning path of a poi
 
 \subsection{Spanning paths of point sets}
 Let $S$ be a set of $n$ points in the plane such that no two points of $S$ have the same $x$-coordinate. 
-Given a point $v\in S$, let $rank(v)$ denote the number of points of $S$ that lie to the left of (have smaller $x$-coordinate than) $v$.
+Given a point $v\in S$, let $rank(v)$ denote the number of points of $S$ that lie to the left of (having smaller $x$-coordinate than) $v$.
 
 Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in the given order such that:  $$|R|  = O\left(\sum_{i=1}^{n-1} |rank(v_i) - rank(v_{i+1})| \right).$$
 (Here, $|R|$ denotes the number of segments in the path $R$.)
 
-Consider a horizontal line such that each point of $S$ lies above it and let $\pi$ be the closed halfspace supported by this line that contains $S$. After each round of the algorithm, we maintain the invariant that the boundary of $\pi$ does not intersect $R$.
+Consider a horizontal line such that each point of $S$ lies above it and let $\pi$ be the closed halfspace supported by this line that contains $S$.  We present an algorithm that constructs the path in $R$ in rounds; during the $i$th round, the path is extended to include $v_i$.  After each round of the algorithm, we maintain the invariant that the boundary of $\pi$ does not intersect $R$.
 
-Throughout, we maintain the \emph{escape invariant} which states that for each point $v_j\in S \setminus R$, there is a cone $\Delta_j$ with apex $u_j$ such that (1) $u_j$ lies above $v_j$ (or on $v_j$) and has the same $x$-coordinate as $v_j$, (2) $\Delta_j$ contains $v_j$ and no other point of $S$, (3) $\Delta_j$ contains the ray shooting from $v_j$ in the direction of the negative $y$-axis, (4) $\Delta_j$ does not intersect $R$, and (5) $\Delta_i$ and $\Delta_j$ are disjoint inside $\pi$.
+Throughout, we also maintain the \emph{escape invariant} which states that for each point $v_j\in S \setminus R$, there is a cone $\Delta_j$ with apex $u_j$ such that (1) $u_j$ lies above $v_j$ (or on $v_j$) and has the same $x$-coordinate as $v_j$, (2) $\Delta_j$ contains $v_j$ and no other point of $S$, (3) $\Delta_j$ contains the ray originating at $v_j$ in the direction of the negative $y$-axis, (4) $\Delta_j$ does not intersect $R$, and (5) $\Delta_i$ and $\Delta_j$ are disjoint inside $\pi$.
 Before starting the construction, we establish the escape invariant. To do this, for each $0\leq j\leq n$ let $u_j$ be an arbitrary translation of $v_j$ in the direction of the positive $y$-axis and let $\Delta_j$ be a cone with apex on $u_j$ sufficiently narrow such that these cones doe not intersect inside $\pi$; see Figure~\ref{fig:Escape Invariant}.
 
 \begin{figure}[tb]
@@ -315,10 +315,10 @@ Before starting the construction, we establish the escape invariant. To do this,
 To construct $R$, we add the points of $S$, one by one, according to the given order while maintaining the escape invariant.
 Assume that $R$ is a path connecting $v_1$ with $v_j$ (initially, $j=1$ and $R$ consists of the single vertex $v_1$).
 We extend $R$ by appending a path that connects $v_j$ with $v_{j+1}$. 
-As a first step, we translate down the cones $\Delta_j$ and $\Delta_{j+1}$ until their apexes $u_j$ and $u_{j+1}$ coincide with $v_j$ and $v_{j+1}$, respectively. Moreover, we narrow the cone $\Delta_j$ while keeping the ray shooting downwards from $v_j$ contained in $\Delta_j$.
+As a first step, we translate down the cones $\Delta_j$ and $\Delta_{j+1}$ until their apexes $u_j$ and $u_{j+1}$ coincide with $v_j$ and $v_{j+1}$, respectively. Moreover, we narrow the cone $\Delta_j$ while keeping the ray originating downwards from $v_j$ contained in $\Delta_j$.
 
-Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing every cone $\Delta_h$, where $1\leq h\leq n$ and $v_h$ is not an internal vertex of $R$; see Figure~\ref{fig:Dented Halfspace}. That is, $\pi_j$ is a halfspace with dents made by the remotion of $n-j+1$ cones.
-Therefore, the length of the boundary of $\pi_j$ is $O(n-j)$. 
+Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing every cone $\Delta_h$, where $1\leq h\leq n$ and $v_h$ is not an internal vertex of $R$; see Figure~\ref{fig:Dented Halfspace}. That is, $\pi_j$ is a halfspace with dents made by the removal of $n-j+1$ cones.
+Therefore, the number of segments on the boundary of $\pi_j$ is $O(n-j)$. 
 Moreover, the distance between two apexes $u_i$ and $u_h$ along the boundary of $\pi_j$ is proportional to the number of apexes with $x$-coordinate between those of $u_i$ and $u_h$. That is, the length of the path that joins $u_i$ with $u_h$ along $\pi_j$ is $O(|rank(v_i) - rank(v_h)|)$. 
 
 \begin{figure}[tb]
