@@ -453,7 +453,7 @@ $v_i$ may be equal to $v_j$ for some $i\neq j$.  A vertex of $v_i$
 in this sequence is called a \emph{corner} of $C$.  In this paper,
 we consider the boundary of $C$, denoted by $\partial C$, to be the
 boundary of the weakly-simple polygon $(v_0, \ldots, v_k, v_0)$ whose
-vertex set is the set of corners of $C$.\footnote{More formally, $\partial C$ is the boundary of the unbounded component of $\mathbb{R}^2\setminus C$.}
+vertex set is the set of corners of $C$.\footnote{More formally, $\partial C$ is the boundary of the unbounded component of $\mathbb{R}^2\setminus C$, where we treat $C$ as the union of all its edges and vertices.}
 
 Let $\varepsilon >0$. For each corner $v_i$ of $\partial C$,
 let $\ell_i$ be the line passing through $v_i$ that bisects the angle between the edges $v_{i-1}v_i$ and $v_i v_{i+1}$.
@@ -462,22 +462,20 @@ Let $\partial_\varepsilon C$ be the polygon defined by the sequence $(z_0, z_1, 
 An $\varepsilon$-fattening $\partial_\varepsilon C$ is \emph{simple} if $\partial_\varepsilon C$  is a simple polygon that contains~$C$.
 Note that $\partial_\varepsilon C$ is simple, provided that $\varepsilon$ is sufficiently small. In this paper, we consider only simple $\varepsilon$-fattenings; see Figure~\ref{fig:Blowing}. Note that the (graph) distance between two corners of $\partial C$ along the boundary of $C$ is the same as the distance between their $\varepsilon$-copies along~$\partial_\varepsilon C$.
 
-\begin{figure}[tb]
-\centering
-\includegraphics{img/Blowing.pdf}
-%[width=1\textwidth]
-\caption{\small }
-\label{fig:Blowing}
-\end{figure}
-
 %%%%%%%%%%%%%%%
 \subsection{Connected augmentations}\label{section: connected augmentations}
 Let $G$ be a geometric plane graph with $r$ connected components such that each component is adjacent to the outer face.
 Consider the visibility graph of $G$ where two vertices are visible if the open segment joining them does not intersect $G$.
 Let $T_G$ be a smallest set of edges of the visibility graph of $G$ that need to be added to $G$ to make it connected.
-Because there are always two components visible from each other, we can connect them and repeat recursively with one less component. Therefore, $r-1$ edges are always sufficient to connect all the components of $G$. Moreover, because $G$ has $r$ connected components, $T_G$ consists of exactly $r-1$ edges.
-Let $G^* = G\cup T_G$. Note that $\partial G^*$ consists of at most  $n+r-1$ edges.
-We say that $G^*$ is a \emph{connected augmentation} of $G$; see Figure~\ref{fig:Blowing}.
+Because there are always two components visible from each other, we can connect them and repeat recursively with one less component.  This implies that $T_G$ has $r-1$ edges. (Loosely, we can think of $T_G$ as a spanning tree of $G$'s components.) Let $G^* = G\cup T_G$. Note that $\partial G^*$ consists of at most  $n+r-1$ so a walk around this boundary has length at most $2(n+r-1)$.  We say that $G^*$ is a \emph{connected augmentation} of $G$; see Figure~\ref{fig:Blowing}.
+
+\begin{figure}[tb]
+\centering
+\includegraphics{img/Blowing.pdf}
+%[width=1\textwidth]
+\caption{The graph $G$ (left); a connected augmentation, $G^*$, of $G$ (middle); and the $\varepsilon$-fattening, $\partial_\varepsilon G^*$ (right).}
+\label{fig:Blowing}
+\end{figure}
 
 Let $C_1, \ldots, C_r$ be the components of $G$. 
 Recall that we consider $\partial C_i$ to be the boundary of a weakly-simple polygon. Therefore, even though a vertex of $C_i$ can appear multiple times along $\partial C_i$, we consider them as different corners of $\partial C_i$. 
@@ -488,25 +486,45 @@ Let $\varphi$ be the path obtained by splitting $\partial G^*$ at the corner $a_
 That is, $\varphi$ is a path with both endpoints equal to $a_1$. 
 Note that $\varphi$ visits every corner of $\partial G^*$ exactly once except for $a_1$.
 
-Given two corners $u$ and $v$ in $\partial G^*$, let $\varphi(u,v)$ denote the shortest path contained in $\varphi$ that connects $u$ with $v$. Let $A(u,v)$ be the set of attachment corners of $G$ visited by $\varphi(u,v)$. 
-Let $\sigma_G(u,v) = |\varphi(u,v)| + \sum_{a_i\in A(u,v)} |C_i|$ be the \emph{cost} of going from $u$ to $v$.
+\red{TODO: We really need to define what $|\cdot|$ means for both paths
+and graphs.}
+
+Given two corners $u$ and $v$ in $\partial G^*$, let $\varphi(u,v)$ denote
+the unique path in $\varphi$ that connects $u$ with $v$. Let $A(u,v)$ be
+the set of attachment corners of $G$ visited by $\varphi(u,v)$. Let $w_i$
+be length of the walk on along the boundary of the outer face of $C_i$.
+Define $\sigma_G(u,v) = |\varphi(u,v)| + \sum_{a_i\in A(u,v)}w_i$,
+which we call the \emph{cost} of going from $u$ to $v$.
 
 
 \begin{lemma}\label{lemma:Contained in integer grid}
-If $a$ is an attachment corner of $G$, then $\sigma_G(a_1, a) \leq 5n$. Moreover, if $b$ is another attachment corner of $G$, then $\sigma_G(a, b) =  |\sigma_G(a_1, a)- \sigma_G(a_1, b)|$. 
+  If $a$ is an attachment corner of $G$, then $\sigma_G(a_1, a) \leq
+  6n$. Moreover, if $b$ is another attachment corner of $G$, then
+  $\sigma_G(a, b) =  |\sigma_G(a_1, a)- \sigma_G(a_1, b)|$.
 \end{lemma}
 \begin{proof}
-Because $|\partial G^*| \leq n + r-1$ and from the fact that $ |\varphi(a_1,a)| \leq |\varphi| = |\partial G^*|$, we know that $|\varphi(a_1,a)|\leq n + r-1$.
-Therefore, since $\sum_{i = 1}^r |\partial C_i|\leq |E(G) | \leq 3n$, we conclude that $\sigma_G(a_1, a)  = |\varphi(a_1,a)| + \sum_{a_i\in A(a_1,a)} |C_i| \leq 4n + r-1\leq 5n$.
+Since $\partial G^*$ uses only the $n+r-1$ edges of $G^*$, the walk around
+it has length at most $2(n+r-1)< 4n$, therefore $|\varphi(a_1,a)|\leq 2(n
++ r-1)$.  Similarly, $\sum_{a_i\in A(a_1,a)} \le \sum_{i=1}^r w_i \le 2n$.
+Therefore, $\sigma_G(a_1,a)\le 6n$, which is the first part of the lemma.
 
-Assume without loss of generality that $a$ is visited before $b$ by $\varphi$.
-Because each attachment corner of $G$ visited by $\varphi(a_1, a)$ is also visited by $\varphi(a_1, b)$ and from the fact that $ |\varphi(a_1,b)| - |\varphi(a_1, a)| = |\varphi(a, b)|$, we get that 
+To prove the second part of the lemma, 
+assume without loss of generality that $a$ is visited before $b$ by $\varphi$.
+We immediately have that $\varphi(a,b)=\varphi(a_1,b)\setminus\varphi(a_1,a)$.
+Furthermre, since each attachment corner of $G$ visited by $\varphi(a_1, a)$ is also visited by $\varphi(a_1, b)$, we have that $A(a,b)=A(a_1,b)\setminus A(a_1,a)$.  So we get
 $\sigma_G(a_1, b)- \sigma_G(a_1, a) = |\sigma_G(a_1, a) - \sigma_G(a_1, b)| = |\varphi(a, b)|  + \sum_{a_i\in A(a, b)} |C_i| = \sigma_G(a, b)$.
 \end{proof}
 
 \subsection{Spanning paths for connected augmentations}\label{section:Spanning paths for connected augmentations}
 Let $a_1, \ldots, a_r$ be an arbitrary order of the attachment corners of $G$ (we can get the incremental indexing by relabeling the components). 
-Given a path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that passes through all attachment corners of $G$, we say that $C_i$ lies to the right of $R$ if (1) $a_i$ is the only vertex of $C_i$ that belongs to $V(R)$, and (2) if $a_i = \rho_j$ for some $1\leq j\leq t$, then $\rho_{j-1}$ and $\rho_{j+1}$ appear as consecutive vertices when sorting the neighbors of $a_i$ in clockwise order around $a_i$.
+Given a path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that passes through all attachment corners of $G$, we say that $C_i$ lies to the right of $R$ if (1) $a_i$ is the only vertex of $C_i$ that belongs to $V(R)$, and (2) if $a_i = \rho_j$ for some $j\in\{1,\ldots,t\}$, then $\rho_{j-1}$ and $\rho_{j+1}$ appear as consecutive vertices when sorting---in the graph $G\cup R$---the neighbors of $a_i$ in clockwise order around $a_i$ (see Figure~\ref{figure:right-of}).
+
+\begin{figure}
+\centering
+  \includegraphics{img/right-of}
+  \caption{The component $C_i$ is to the right of the path $R=(\rho_1,\ldots,\rho_t)$.}
+   \label{figure:right-of}
+\end{figure}
 
 We want to construct a path $R$ (possibly containing Steiner vertices) that connects the attachment corners of $G$ in the given order, i.e., if $i < j$, then $a_i$ is visited before $a_j$ by $R$.
 We want to construct $R$ in such a way that each component $C_i$ of $G$ lies to the right of~$R$.
@@ -515,7 +533,7 @@ We construct such a path incrementally, starting with the trivial path that cont
 
 Recall that  for any given $\varepsilon >0$, $\partial_\varepsilon G^*$ denotes the $\varepsilon$-fattening of $G^*$ (see Section~\ref{section:Preliminaries}). 
 Let $\mu>0$ be a small constant to be specified later.
-Initially, let $\varepsilon = 2\mu$ and let $\delta = \mu/2$. Let $\lambda < \mu/2^{r+1}$ be a constant sufficiently small so that $\partial_\lambda C_i \cap \partial_\lambda C_j = \emptyset$ for each $1\leq i< j\leq r$.
+Initially, let $\varepsilon = 2\mu$ and let $\delta = \mu/2$. Let $\lambda < \mu/2^{r+1}$ be a constant sufficiently small so that $\partial_\lambda C_i \cap \partial_\lambda C_j = \emptyset$ for each $i,j\in\{1,\ldots,r\}$.
 Throughout, $\lambda$ remains constant while $\varepsilon$ and $\delta$ are redefined on each round. However, as an invariant we maintain $\lambda < \delta < \varepsilon$.
 
 For each $1\leq i\leq r$, let $w_i$ be the $\varepsilon$-copy of  $a_i$.
