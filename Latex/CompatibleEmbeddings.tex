@@ -69,9 +69,7 @@ $\mathcal{G}$. We wish to add vertices and edges to $\mathcal{G}$ to make
 it connected and in such a way that these vertices and edges can be added to
 the drawings $G_1,\ldots,G_k$ while preserving planarity.  We show that
 adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always
-sufficient and sometimes necessary to achieve this goal.  The upper bound
-is obtained by exhibiting a relationship between compatible connectivity
-augmentation and the travelling salesman problem for points in $\R^k$.
+sufficient and sometimes necessary to achieve this goal.  
 \end{abstract}
 
 \end{titlepage}
@@ -112,7 +110,8 @@ into components corresponding to the character's eyes, nose, mouth and
 so on.  A correspondence between the same elements in different pictures
 is also given.\footnote{In many cases, the correspondence is a byproduct
 of the creation process. For example, in Figure~\ref{fig:faces}, the second
-two faces were obtained by copying and then editing the first one.}
+two faces were obtained by copying and then editing the first one.}  Thus,
+the input is three isomorphic drawings of the same planar graph.
 
 \begin{figure}
   \centering{ 
@@ -142,7 +141,7 @@ grunbaum.shephard:geometry,alamdari.angelini.ea:morphing,
 angelini.dalozzo.ea:morphing}.  The most recent such result
 \cite{angelini.dalozzo.ea:morphing} shows that any planar drawing of
 an $n$-vertex connected planar graph can be morphed into any isomorphic
-drawing of the same planar using a sequence of $O(n)$ \emph{linear
+drawing using a sequence of $O(n)$ \emph{linear
 morphs}, in which vertices move along linear trajectories at constant
 speed.
 
@@ -156,7 +155,7 @@ of the morph produced by a morphing algorithm depends on the number
 of vertices of $\mathcal H$.  Therefore, we want to find an augmentation
 with the fewest number of vertices.
 
-This raises the question studied in the current paper:  How can we add
+This motivates the elegant theoretical question studied in the current paper:  How can we add
 vertices and edges to $\mathcal{G}$ to obtain a supergraph $\mathcal
 H\supset \mathcal G$ that is connected and such that the vertices and
 edges of $\mathcal{H}$ can also be added to the drawings of $\mathcal{G}$
@@ -176,7 +175,7 @@ is \emph{planar} if, for every pair of edges $uw$ and $xy$ in $E$,
 the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$ is
 disjoint from the open line segment with endpoints $\varphi(x)$
 and $\varphi(y)$.  Two planar drawings, $\varphi_1$ and $\varphi_2$,
-of $\mathcal{G}$ are \emph{isomorphic} if there is a continuous family
+of $\mathcal{G}$ are \emph{isomorphic} if there exists a continuous family
 of planar drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
 such that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.
 
@@ -196,11 +195,12 @@ G$, a \emph{compatible augmentation}, $\mathcal H$, of $\mathcal G$ is
 a supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected,
 and (2) there exist geometric planar isomorphic embeddings, $H_1,
 \ldots, H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every
-$1\leq i\leq k$.  In this paper, we show that, if $\mathcal{G}$ has $r$
-connected components, then there always exists a compatible augmentation
-of size $O(nr^{1-1/k})$ and that this bound is tight; there exists a graph
-$\mathcal G$ with $r$ components and having embeddings $G_1,\ldots,G_k$
-for which any compatible augmentation has size $\Omega(nr^{1-1/k})$.
+$i\in\{1,\ldots,k\}$.  In this paper, we show that, if $\mathcal{G}$ has
+$n$ vertices and $r$ connected components, then there always exists a
+compatible augmentation of size $O(nr^{1-1/k})$ and that this bound is
+tight; there exists a graph $\mathcal G$ with $r$ components and having
+embeddings $G_1,\ldots,G_k$ for which any compatible augmentation has
+size $\Omega(nr^{1-1/k})$.
 
 \subsection{Related Work}
 
@@ -265,7 +265,7 @@ Next, for each embedding, $G_j$, we add $r-1$ edges to make $G_j$ into a
 connected graph, $G_j^*$.  We then traverse the boundary of the outer face
 of $G_j^*$ to obtain a polygonal path, $\varphi_j$, of length $O(n)$ that comes
 close to every corner of $G_j$.  The path $\varphi_j$ is then used to define an
-integer distance $d_j(a_\ell,a_m)$ for any two corners $a_\ell$ and $a_m$.
+integer distance $d_j(a_\ell,a_m)$ for any two corners $a_\ell$ and $a_m$. This distance includes information about the number of edges of $\varphi_j$ between $a_\ell$ and $b_m$ as well the sizes of the some of the components visited while walking from $a_\ell$ to $b_m$ along $\varphi_j$.
 
 Next, we take a leap into $k$ dimensions by using the distance
 functions $d_1,\ldots,d_k$ to produce an $k$-dimensional point set
@@ -281,20 +281,18 @@ and Snyder \cite{steele.snyder:worst} (see also Bern and Eppstein
 length $O(nr^{1-1/k})$.  This implies that $\mathcal G$ can be made
 connected with a collection of $r-1$ paths, whose endpoints are the
 corners $a_1,\ldots,a_r$, having total length $O(nr^{1-1/k})$, and
-that each of these paths can be embedded in a planar fashion in each
+that each of these paths can be drawn in a planar fashion in each
 of $G_1,\ldots,G_k$.
 
 At this point, all that remains is to show that these $r-1$ paths
-can each be embedded in each of $G_1,\ldots,G_k$ without crossing
+can each be drawn in each of $G_1,\ldots,G_k$ without crossing
 each other.  This part of the proof involves carefully winding these
 paths around the components in $G_1,\ldots,G_k$ using paths close
 to the paths $\varphi_1,\ldots,\varphi_k$ defined above. This part
 of the proof resembles the first part of the proof of Babikov \etal\
 \cite{babikov.souvaine.ea:constructing}, but is complicated by the fact
 that we have to be quite careful that the number of edges in these paths
-remains in $O(nr^{1-1/k})$. (These kinds of arguments, which are more
-topological than geometric appear frequently in graph drawing problems
-\cite{XXXXXX}.)
+remains in $O(nr^{1-1/k})$. 
 
 In contrast to the upper bound, the lower-bound is quite simple and just
 involves a sequence of nested paths whose vertices are the vertices of
@@ -307,9 +305,10 @@ special case is already non-trivial and introduces some of the
 main ideas used in solving the full problem, which is tackled in
 Section~\ref{section:General}. Section~\ref{section:Lower bound}
 gives a simple lower bound construction that matches our upper bound
-for all values of $r$, $n$, and $k$.  The paper concludes with
-Section~\ref{section:Conclusions}, which summarizes and presents
-directions for future research.
+for all values of $r$, $n$, and $k$.  
+%The paper concludes with
+%Section~\ref{section:Conclusions}, which summarizes and presents
+%directions for future research.
 
 
 %%%%%%%%%
@@ -324,7 +323,7 @@ connects the points in a prescribed order.
 Let $S$ be a set of $n$ points in the plane such that no two points of $S$ have the same $x$-coordinate. 
 Given a point $v\in S$, let $\rank(v)$ denote the number of points of $S$ that lie to the left of (having smaller $x$-coordinate than) $v$.
 
-Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in the given order such that:  
+Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in this order and such that:  
 \[
    |R|  = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right).
 \]
@@ -424,29 +423,6 @@ between $v_j$ and $v_{j+1}$.
 Since the vertices of each $G_i$ are connected in the same order,
 $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $i,j\in\{1,\ldots,k\}$.
 \end{proof}
-
-% QUESTION: Do we want a discussion of running-time for this algorithm, or
-% only for the general algorithm?
-%
-%Before proceeding to the general case, we remark that Theorem~\ref{theorem:points}
-%yields an efficient algorithm for constructing the augmentation $\mathcal{H}$, and even the embeddings $H_1,\ldots,H_k$.  The main steps involved are: 
-%
-%\begin{enumerate}
-%  \item[Step 1:] Sorting the points in each of $G_1,\ldots,G_k$. This can can be done in $O(kn\log n)$ time using any comparison-based sorting algorithm.
-%
-%  \item[Step 2:] Constructing the point set $X$ and finding the path $P$.  Constructing $X$ takes $O(kn)$ time, while a path $P$ of length $O(n^{2-1/k})$ can be obtained from an (approximate) minimum spanning tree of $X$.
-%  For constant values of $k$,
-%  an approximate MST can be computed in $O(n\log n)$ time using the algorithm of Calahan and Kosaraju \cite{callahan.kosaraju:faster}.  For larger values of $k$, the actual minimum spanning tree can be computed in $O(kn^2)$ time.
-%
-%  \item[Step 3:] Constructing each of the paths $R_1,\ldots,R_k$.  Each of these paths is easily constructed in $O(n^{2-1/k})$ time once we can have a sufficiently small value of $\varepsilon$.  It turns out that a value $\varepsilon \le cm/n$, where $m$ is the minimum difference between $x$ coordinates or $y$ coordinates in $G_1,\ldots,G_k$, and $c$ is a constant, is sufficiently small.  Thus, a suitable $\varepsilon$ can be computed in $O(kn\log n)$ time by sorting.
-%
-%\end{enumerate}
-%
-%Thus, for constant values of $k$, the augmented graph $\mathcal{H}$
-%and augmented drawings $H_1,\ldots,H_k$ can be computed in optimal
-%$O(n^{2-1/k})$ time.  For larger values of $k$, the algorithm takes
-%$O(n^2)$ time.
-
 
 
 \section{The general problem}\label{section:General}
@@ -618,7 +594,9 @@ Once we go around $C_i$, we are back on $\partial_\varepsilon G^*$ on the other 
 Once we reach an endpoint of $N_{j+1}$, we move directly from this endpoint to $a_{j+1}$.
 
 Because $\partial_\varepsilon G^*$ is isomorphic to $\varphi$, the constructed $a_j$-$a_{j+1}$-path has length at most $|\varphi(a_j, a_{j+1})|$ plus the length of the boundaries of the components that we walked around. 
-Because each avoided component has its attachment corner on the path $\varphi(a_j, a_{j+1})$ (i.e. in $A(a_j, a_{j+1})$), the length of the constructed $a_j$-$a_{j+1}$-path is $$O(|\varphi(a_j, a_{j+1})| + \sum_{a_i\in A(a_j, a_{j+1})} |C_i|) = O(\sigma_G(a_j, a_{j+1}))\ .$$
+Because each avoided component has its attachment corner on the path $\varphi(a_j, a_{j+1})$ (i.e. in $A(a_j, a_{j+1})$), the length of the constructed $a_j$-$a_{j+1}$-path is 
+\[ O\left(|\varphi(a_j, a_{j+1})| + \sum_{a_i\in A(a_j, a_{j+1})} |C_i|\right) = O(\sigma_G(a_j, a_{j+1})) \enspace .
+\]
 
 After reaching $a_{j+1}$, we increase $\varepsilon$ by a factor of two. Similarly, we decrease de value of $\delta$ by a factor of two. That is, after reaching $a_{j+1}$, $\varepsilon = \mu 2^{j+1}$ while $\delta = \mu/2^{j+1}$ and hence, we guarantee that $\lambda < \delta < \varepsilon$.
 We can guarantee that $\partial_\varepsilon G^*$ remains simple, provided that the original choice of $\mu$ is sufficiently small. 
@@ -627,6 +605,14 @@ Finally, for each $1\leq i\leq n$, we reduce the size of the neighborhood $N_i$ 
 Recall that for each $a_i\notin R$, $R$ intersected neither the interior of $\Delta_i$ nor the interior of the polygon bounded by $\partial_\delta C_i$. Moreover, $R$ never went out of $\partial_\varepsilon G^*$.
 Therefore, after increasing (\emph{resp.} reducing) $\varepsilon$ (\emph{resp.} $\delta$), we preserve the escape invariant for the next round of the algorithm.
 We repeat this algorithm until all attachment corners of $G$ are visited by $R$.
+
+Figure~\ref{figure:big-example} is a schematic diagram that illustrates the preceding algorithm on a small example.  In this example, the path from $a_1$ to $a_2$ passes by $a_4$, so $R$ detours around $C_4$ in order to preserve the escape invariant at $a_4$.  After $R$ attaches to $a_2$ and $a_3$, it winds around components $C_2$ and $C_3$, respectively, in order to ensure that these components attach to the right of $R$.
+
+\begin{figure}
+   \centering{\includegraphics{img/big-example}}
+   \caption{An example of the algorithm for generating a spanning path that connects $a_1,\ldots,a_4$.}
+   \label{figure:big-example}
+\end{figure}
 
 \begin{lemma}\label{lemma:Path for connected augmentations}
 Given an arbitrary order $a_1, \ldots, a_r$ of the attachment corners of $G$, the previous algorithm computes a path $R$ connecting all attachment corners of $G$ in the given order such that $R\cup G$ is plane, $|R| = O(\sum_{j=1}^{n-1} \sigma_G(a_j, a_{j+1}))$, and for each $i\in\{1,\ldots,r\}$, $C_i$ lies to the right of $R$ when oriented from $a_1$ to $a_r$.
@@ -645,23 +631,30 @@ Because the length of $\gamma_j$ is $O(\sigma_G(a_j, a_{j+1}))$, the total lengt
 \subsection{Compatible drawings of planar graphs}
 Let $\mathcal G$ be a planar graph with $n$ vertices and $r$ connected components.
 Let $G_1, \ldots, G_k$ be $k$ plane isomorphic drawings of $\mathcal G$. 
+For now, we will assume that, in these drawings, every component of $\mathcal G$ has at least one vertex incident on the outer face.  At then of this section, we will show how to remove this restriction.
 We show how to construct a compatible augmentation of $\mathcal G$ of size $O(nr^{1-1/k})$.
 
-Let $C_1, \ldots, C_r$ be the connected components of $\mathcal G$.
-Because all the plane drawings of $\mathcal G$ that we consider are isomorphic, the boundaries of corresponding components in different drawings are also isomorphic. Thus, for each $1\leq j\leq r$, we can choose an attachment corner $a_j$ of $\partial C_j$ such that $a_j$ is adjacent to the outer face. Note that this corner has isomorphic copies in each of the embeddings of $G$.
+Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components
+of $\mathcal G$.  Because the drawings $G_1,\ldots,G_k$, all the plane
+drawings of $\mathcal G$ that we consider are isomorphic, we can select
+one attachment corner from each component in the drawing $G_1$, and this
+attachment corner also appears in each of the drawings $G_2,\ldots,G_k$.
+Thus, for each $j\in\{1,\ldots,r\}$, we can choose an attachment corner
+$a_j$ of $\partial C_j$ such that $a_j$ is adjacent to the outer face
+of $C_j$.
 
-For each $1\leq j\leq r$, let $G_j^*$ be a connected augmentation of $G_j$ (see Section~\ref{section: connected augmentations} for the construction of such a graph).
-For each $1\leq i\leq k$ and for each $1\leq j\leq r$, let $\rank_i(j) = \sigma_{G_i}(a_1, a_j)$.
-For each $1\leq j\leq r$, we define a point $x_j\in \mathbb{R}^k$ that correspond to the component $C_j$ such that 
-$x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}$ be a set of points in $\mathbb{R}^k$. 
-Note that Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $5n$ of dimension~$k$.
+For each $1\leq j\leq r$, let $G_j^*$ be a connected augmentation of $G_j$, as defined in Section~\ref{section: connected augmentations}.
+For each $i\in\{1,\ldots,k\}$ and for each $j\in\{1,\ldots,r\}$, let $\rank_i(j) = \sigma_{G_i}(a_1, a_j)$.
+For each $j\in\{1,\ldots,r\}$, we define a point $x_j\in \mathbb{R}^k$ that correspond to the component $C_j$ such that 
+$x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}\subset\R^k$ denote the resulting set of points
+and observe that Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $4n$.
 
-Let $P$ be the shortest hamiltonian path of $X$, i.e., the shortest path that visits every point of $X$.
-Because $X$ is contained in the $k$-dimensional integer grid of side-length $5n$ and from the fact that $|X| = r$, we known that the length of $P$ is $O(nr^{1-1/k})$~\cite{}.
+Let $P$ be the shortest Euclidean Hamiltonian path of $X$, i.e., the shortest path that visits every point of $X$.
+Because $X$ is contained in the $k$-dimensional integer grid of side-length $4n$ and $|X| = r$, the maximum (Euclidean) length of the path $P$ is
+$O(nr^{1-1/k})$~\cite{steele.snyder:worst}. 
+The order of the points in $P$ induces an order on the components of $\mathcal G$ and hence, an order on the attachment corners of each $G_i$. 
 
-Note that the order of the points of $P$ induces an order on the components of $\mathcal G$ and hence, an order on the attachment corners of each $G_i$. 
-
-\begin{theorem}
+\begin{theorem}\label{theorem:main}
 For each $1\leq i\leq k$, we can construct a path $R_i$ of length $O(nr^{1-1/k})$ that connects every component of $G_i$ such that $G_i\cup R_i$ is plane. Moreover, for each $1\leq i<j\leq k$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
 \end{theorem}
 \begin{proof}
@@ -679,6 +672,70 @@ Because $\sum_{j=1}^{n-1} d_j = |P| = O(nr^{1-1/k})$, the length $R_i$ is $O(nr^
 
 Since each $R_i$ visits each component only at its attachment corner and from the fact that $R_i$ leaves every component to the right when oriented from $a_1$ to $a_r$, we conclude that $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $1\leq i<j\leq k$.
 \end{proof}
+
+\subsection{Handling interior components}
+
+In the preceding section, we assumed that the drawings $G_1,\ldots,G_k$ of $G$ were such that every component was incident to the outer face and promised that this assumption would be removed.
+
+To who the assumption is not necessary, observe that we can first use the preceding algorithm to connect all the components that do appear on the outer face using a polygonal path that is contained on the outer face.  The number of vertices used in this path is $O(n'r^{1-1/k})$, where $n'$ is the number of vertices on the outer face.
+
+Next, for each interior face, $f$, that has multiple components
+$C_1,\ldots,C_t$ on its boundary, we can use (a small modification of)
+the preceding algorithm to connect $C_1,\ldots,C_t$ and the outer
+boundary of $f$ using a path that is contained in $f$.  This path
+has length $O(n_fr^{1-1/k})$.  We then repeat this step on each face.
+The result is a connected augmentation of $\mathcal G$ whose total size
+is $O(Nr^{1-1/k})$ where $N=O(n)$ is the total size of all faces.
+
+\subsection{An algorithm}
+
+
+We remark that Theorem~\ref{theorem:main} yields an efficient algorithm for constructing the augmentation $\mathcal{H}$, and even the embeddings $H_1,\ldots,H_k$.  The main steps involved are: 
+
+\begin{enumerate}
+  \item[Step 1:] Finding connected plane supergraphs $G_1^*,\ldots,G_k^*$
+  of the drawings $G_1,\ldots,G_k$.  For each plane graph $G_i$, this
+  can easily be done in $O(n\log n)$ time using, for example, a plane
+  sweep algorithm that maintains the invariant that all components with
+  a vertex to the left of the sweep-line are already joined by edges.
+  Thus, this step takes $O(kn\log n)$ time.
+
+  \item[Step 2:] Constructing the point set $X$ and finding the path
+  $P$.  Constructing $X$ takes $O(kn)$ time, while a path $P$ of length
+  $O(n^{2-1/k})$ can be obtained from an (approximate) minimum spanning
+  tree of $X$.  For constant values of $k$, an approximate MST can
+  be computed in $O(n\log n)$ time using the algorithm of Calahan and
+  Kosaraju \cite{callahan.kosaraju:faster}.  For larger values of $k$,
+  the actual minimum spanning tree can be computed in $O(kn^2)$ time.
+
+  \item[Step 3:] Constructing each of the paths $R_1,\ldots,R_k$.
+  Each of these paths is easily constructed in $O(n^{2-1/k})$ time
+  once we have determined values of $\epsilon$, $\delta$, $\tau$, and
+  $\lambda$ that are sufficiently small.  A more careful examination
+  of our algorithm will reveal that all that is really needed is
+  a value of $\varepsilon$ such that $\partial_\epsilon G_i^*$ is
+  simple, for each $i\in\{1,\ldots,k\}$.  Once we have this value of
+  $\varepsilon$, the values of the remaining variables can taken from
+  the set $\{i\varepsilon/3r:i\in\{1,\ldots,3r\}\}$.
+
+  It turns out that a value $\varepsilon \le cm/n$, where $m$ is the
+  minimum non-zero difference between $x$ coordinates or $y$ coordinates
+  in $G_1,\ldots,G_k$, and $c$ is a constant, is sufficiently small.
+  Thus, a suitable $\varepsilon$ can be computed in $O(kn\log n)$ time
+  by sorting.
+\end{enumerate}
+
+This yields the following algorithmic result about connected augmentations:
+
+\begin{theorem}
+  An augmentation satisfying the conditions of Theorem~\ref{theorem:main}
+  can be computed in $O(kn^2)$ time for any value of $k$.  If $k$ is
+  constant, then the augmentation can be computed in $O(nr^{1-1/k})$
+  time.
+\end{theorem}
+
+The latter result (for constant $k$) is optimal since, in the next section we will show that there exists inputs where every augmentation has size $\Omega(n^{1-1/k})$.
+
 
 \section{Lower Bounds}\label{section:Lower bound}
 
@@ -792,7 +849,8 @@ To finish up we note that, since the augmentation $\mathcal{H}$ is minimal,
 it is a tree; $\mathcal G$ contains no cycles, so any cycle in $\mathcal H$ contains an edge not in $\mathcal G$ that could be removed.  Now, observe that if we traverse the outer face of (any planar drawing of) $\mathcal H$ then we obtain a non-simple path, $P$, that traverses each edge of $\mathcal{H}$ exactly twice. If we consider the set of maximal subpaths of $P$ with no vertex of $\mathcal G$ in their interior, we obtain a set of $r$ paths, $Q_1,\ldots,Q_{r}$ and, for every component $\mathcal C_i$ of $\mathcal G$, there is a vertex of $\mathcal C_i$ that is an endpoint of at least one such path.  Therefore, from the preceding discussion, the total length of $Q_1\ldots,Q_{r}$ is $\Omega(nr^{1-1/k})$.  But since each edge of $\mathcal H$ appears at most twice in these subpaths, we conclude that $\mathcal H$ has $\Omega(nr^{1-1/k})$ edges.  Since $\mathcal H$ is a tree, it has $\Omega(nr^{1-1/k})$ vertices.
 \end{proof}
 
-\section{Summary and Conclusions}\label{section:Conclusions}
+% \section{Summary and Conclusions}\label{section:Conclusions}
+% I have nothing to write here.  Some open problems might be nice.
 
 \bibliographystyle{plain}
 \bibliography{CompatibleEmbeddings}
