@@ -1,4 +1,5 @@
 \documentclass{patmorin}
+\usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics}
 %\setcounter{tocdepth}{3}
 \usepackage{graphicx}
@@ -51,7 +52,9 @@ urlcolor=linkblue}
 
 \title{\MakeUppercase{Compatible Connectivity-Augmentation \newline of Disconnected Graphs}}
 
-\author{Second Bellairs Workshop on Geometry and Graphs}
+%\author{Second Bellairs Workshop on Geometry and Graphs}
+\author{Greg Aloupis \and Luis Barba \and Paz Carmi \and Fabrizio Frati
+        \and Vida Dujmović \and Pat Morin}
 
 
 
@@ -63,8 +66,8 @@ urlcolor=linkblue}
 \begin{abstract}
 \setlength{\baselineskip}{16.8pt}
 We consider the following \emph{compatible connectivity-augmentation
-problem}: We are given a (not necessarily connected) planar graph
-$\mathcal{G}$ and $k$ isomorphic planar drawings $G_1,\ldots,G_k$ of
+problem}: We are given a planar graph,
+$\mathcal{G}$, that has $r>1$ connected components, and $k$ isomorphic planar drawings, $G_1,\ldots,G_k$, of
 $\mathcal{G}$. We wish to add vertices and edges to $\mathcal{G}$ to make
 it connected and in such a way that these vertices and edges can be added to
 the drawings $G_1,\ldots,G_k$ while preserving planarity.  We show that
@@ -160,7 +163,7 @@ vertices and edges to $\mathcal{G}$ to obtain a supergraph $\mathcal
 H\supset \mathcal G$ that is connected and such that the vertices and
 edges of $\mathcal{H}$ can also be added to the drawings of $\mathcal{G}$
 while maintaining the planarity of each drawing?  In this paper,
-we obtain a tight bound for the extremal question: In the worst-case
+we obtain a tight bound for the extremal question: In the worst case
 (over all $n$ vertex planar graphs, $\mathcal G$, and over all sets of
 $k$ planar drawings of $\mathcal{G}$), how many edges have to be added
 to $\mathcal{G}$ to obtain connectivity while preserving planarity of
@@ -229,7 +232,7 @@ number of reflex vertices of $p$ and $q$, respectively.
   \label{fig:compatible-triangs}
 \end{figure}
 
-Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of $r$ cycles, the embeddings $P$ and $Q$ are such that one cycle, $\mathcal C$, of $\mathcal G$ contains all the others in its interior and no other pair of cycles is nested in $P$ or $Q$. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst-case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(nr^{1/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
+Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of $r$ cycles, the embeddings $P$ and $Q$ are such that one cycle, $\mathcal C$, of $\mathcal G$ contains all the others in its interior and no other pair of cycles is nested in $P$ or $Q$. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(nr^{1/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
 
 
 \subsection{Outline}
@@ -278,9 +281,9 @@ Now, since the point set $X$ is in $\R^k$, has $r$ points, and
 lives in a hypercube of side-length $O(n)$, a result of Steele
 and Snyder \cite{steele.snyder:worst} (see also Bern and Eppstein
 \cite{bern.eppstein:worst}) implies that it has a spanning path of
-length $O(nr^{1-1/k})$.  This implies that $\mathcal G$ can be made
+Euclidean length $O(nr^{1-1/k})$.  This implies that $\mathcal G$ can be made
 connected with a collection of $r-1$ paths, whose endpoints are the
-corners $a_1,\ldots,a_r$, having total length $O(nr^{1-1/k})$, and
+corners $a_1,\ldots,a_r$, having total size $O(nr^{1-1/k})$, and
 that each of these paths can be drawn in a planar fashion in each
 of $G_1,\ldots,G_k$.
 
