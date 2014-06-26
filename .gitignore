@@ -4,8 +4,6 @@
 
 *.out
 
-*.pdf
-
 *.gz
 
 *.bbl
@@ -25,3 +23,5 @@ Latex/CompatibleEmbeddings.out
 Latex/CompatibleEmbeddings.pdf
 
 Latex/CompatibleEmbeddings.synctex.gz
+
+SODA/SODACompatibleEmbeddings.pdf
