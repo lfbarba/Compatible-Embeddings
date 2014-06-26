@@ -26,7 +26,7 @@ urlcolor=linkblue}
 
 %\usepackage{geometry}
 
-\newcommand{\appendixproof}{(proof in appendix)\xspace}
+\newcommand{\appendixproof}{(proof in Appendix)\xspace}
 \newcommand{\etal}{\emph{et al}}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -70,8 +70,8 @@ urlcolor=linkblue}
 We consider the following \emph{compatible connectivity-augmentation
 problem}: We are given a planar graph,
 $\mathcal{G}$, that has $r>1$ connected components, and $k$ isomorphic planar drawings, $G_1,\ldots,G_k$, of
-$\mathcal{G}$. We wish to extend $\mathcal G$ by adding  vertices and edges to make
-it connected and in such a way that these vertices and edges can be added to $G_1,\ldots,G_k$ to obtain planar drawings isomorphic to the extension of $G$.  We show that
+$\mathcal{G}$. We wish to augment $\mathcal G$ by adding  vertices and edges to make
+it connected in such a way that these vertices and edges can be added to $G_1,\ldots,G_k$ to obtain planar drawings isomorphic to the augmentation of $\mathcal G$.  We show that
 adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always
 sufficient and sometimes necessary to achieve this goal.  
 \end{abstract}
@@ -81,41 +81,16 @@ sufficient and sometimes necessary to achieve this goal.
 %A category including the fourth, optional field follows..
 
 \section{Introduction}
-A \emph{drawing} of a graph $\mathcal{G}=(V,E)$
-is a one-to-one function $\varphi\colon V\to\R^2$.  A drawing
-is \emph{planar} if, for every pair of edges $uw$ and $xy$ in $E$,
-the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$ is
-disjoint from the open line segment with endpoints $\varphi(x)$
-and $\varphi(y)$.  Two planar drawings, $\varphi_1$ and $\varphi_2$,
-of $\mathcal{G}$ are \emph{isomorphic} if there exists a continuous family
-of planar drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
-such that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.
 
-Throughout this paper we will be slightly less formal to avoid repeatedly
-referencing drawing functions like $\varphi$, $\varphi_1$ and $\varphi_2$.
-Instead, we will talk about a graph $\mathcal{G}$ and $k$ isomorphic
-geometric graphs $G_1,\ldots,G_k$.  This should be understood to mean that
-each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
-with some function $\varphi_i$ and that $\varphi_1,\ldots,\varphi_k$ are
-pairwise isomorphic.  When necessary, we may talk about the vertex $v$
-in $G_i$ where $v$ is actually a vertex of $\mathcal{G}$; this should
-be taken to mean the vertex $\varphi_i(v)$ in $G_i$.
+We consider the following problem, which will be formalized
+below.  We are given several different planar straight-line drawings
+of the same graph, $\mathcal G$, which is not connected.
+We wish to make $\mathcal G$ connected by adding vertices and edges in
+such a way that these vertices and edges can also be added to the planar
+straight-line drawings of $\mathcal G$ while preserving the planarity of
+the drawings.  The objective is to do this while minimizing the number
+of edges and vertices added.  It is worth noting that it is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
 
-With these conventions, we are ready to state the main problem studied in this papar.  Given $k$
-geometric planar isomorphic embeddings $G_1, \ldots, G_k$ of $\mathcal
-G$, a \emph{compatible augmentation}, $\mathcal H$, of $\mathcal G$ is
-a supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected,
-and (2) there exist geometric planar isomorphic embeddings, $H_1,
-\ldots, H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every
-$i\in\{1,\ldots,k\}$.  In this paper, we study the following extremal question: In the worst case
-(over all $n$ vertex planar graphs, $\mathcal G$, and over all sets of
-$k$ planar drawings of $\mathcal{G}$), what is the size of the smallest compatible augmentation of $\mathcal G$?  
-To answer this question, we show that, if $\mathcal{G}$ has
-$n$ vertices and $r$ connected components, then there always exists a
-compatible augmentation of size $O(nr^{1-1/k})$ and that this bound is
-tight; there exists a graph $\mathcal G$ with $r$ components and having
-embeddings $G_1,\ldots,G_k$ for which any compatible augmentation has
-size $\Omega(nr^{1-1/k})$.
 
 The motivation for studying this problem comes from the problem of morphing
 planar graphs, which has many applications \cite{erten.kobourov.ea:intersection,friedrich.eades:graph,gotsman.surazhsky:guaranteed,surazhsky.gotsman:controllable,surazhsky.gotsman:intrinsic} including
@@ -151,6 +126,44 @@ of the morph produced by a morphing algorithm depends on the number
 of vertices of $\mathcal H$.  Therefore, we want to find an augmentation
 with the fewest number of vertices.
 This motivates the elegant theoretical question studied in the current paper.
+
+\textbf{Formal Problem Statement and Main Result.} A \emph{drawing} of a graph $\mathcal{G}=(V,E)$
+is a one-to-one function $\varphi\colon V\to\R^2$.  A drawing
+is \emph{planar} if, for every pair of edges $uw$ and $xy$ in $E$,
+the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$ is
+disjoint from the open line segment with endpoints $\varphi(x)$
+and $\varphi(y)$.  Two planar drawings, $\varphi_1$ and $\varphi_2$,
+of $\mathcal{G}$ are \emph{isomorphic} if there exists a continuous family
+of planar drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
+such that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.
+
+Throughout this paper we will be slightly less formal to avoid repeatedly
+referencing drawing functions like $\varphi$, $\varphi_1$ and $\varphi_2$.
+Instead, we will talk about a graph $\mathcal{G}$ and $k$ isomorphic
+geometric graphs $G_1,\ldots,G_k$.  This should be understood to mean that
+each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
+with some function $\varphi_i$ and that $\varphi_1,\ldots,\varphi_k$ are
+pairwise isomorphic.  When necessary, we may talk about the vertex $v$
+in $G_i$ where $v$ is actually a vertex of $\mathcal{G}$; this should
+be taken to mean the vertex $\varphi_i(v)$ in $G_i$.
+
+With these conventions, we are ready to state the main problem studied in this papar.  Given $k$
+geometric planar isomorphic embeddings $G_1, \ldots, G_k$ of $\mathcal
+G$, a \emph{compatible augmentation}, $\mathcal H$, of $\mathcal G$ is
+a supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected,
+and (2) there exist geometric planar isomorphic embeddings, $H_1,
+\ldots, H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every
+$i\in\{1,\ldots,k\}$.  In this paper, we study the following extremal question: In the worst case
+(over all $n$ vertex planar graphs, $\mathcal G$, and over all sets of
+$k$ planar drawings of $\mathcal{G}$), what is the size of the smallest compatible augmentation of $\mathcal G$?  
+To answer this question, we show that, if $\mathcal{G}$ has
+$n$ vertices and $r$ connected components, then there always exists a
+compatible augmentation of size $O(nr^{1-1/k})$ and that this bound is
+tight; there exists a graph $\mathcal G$ with $r$ components and having
+embeddings $G_1,\ldots,G_k$ for which any compatible augmentation has
+size $\Omega(nr^{1-1/k})$.
+
+
 
 
 
@@ -221,6 +234,8 @@ main ideas used in solving the full problem, which is tackled in
 Section~\ref{section:General}. Section~\ref{section:Lower bound}
 gives a simple lower bound construction that matches our upper bound
 for all values of $r$, $n$, and $k$.  
+
+Due to space constraints, some of the proofs are deferred to the Appendix.
 %The paper concludes with
 %Section~\ref{section:Conclusions}, which summarizes and presents
 %directions for future research.
@@ -535,7 +550,7 @@ Because each $R_i$ visits each component only at its attachment corner and from 
 \end{proof}
 
 \section{Lower Bounds}\label{section:Lower bound}
-
+\vspace{-.1in}
 Our lower bounds are based on the following lemma. In words, this lemma says that we can find $k$ permutations of $\{1,\ldots,r\}$ such that, for half the indices $i\in\{1,\ldots,r\}$, and every $j\in\{1,\ldots,r\}\setminus\{i\}$, there is a permutation in which $i$ and $j$ are at distance $\Omega(r^{1-1/k})$.
 
 \begin{lemma}\label{lem:permutations}\appendixproof
@@ -569,8 +584,6 @@ origin and having nearly the same size. Refer to Figure~\ref{figure:big-example}
 P_2\subset\cdots\subset P_r$ and the sizes are chosen so that any segment
 joining two non-consecutive vertices of $P_i$ intersects the interior
 of~$P_{i-1}$.
-
-
 The drawings $G_1,\ldots,G_k$ are obtained from the permutations
 $\pi^{(1)},\ldots,\pi^{(k)}$ given by \linebreak Lemma~\ref{lem:permutations}.
 In the drawing $G_x$, the path $\mathcal C_i$ is embedded on the vertices
@@ -584,7 +597,6 @@ $\mathcal{C}_i$ of $G$, let $T_i$ be any path in $\mathcal H$ that has
 one endpoint on $\mathcal C_i$, one endpoint on some other component
 $\mathcal{C}_j$, $j\neq i$, and no vertices of $\mathcal G$ in its
 interior.
-
 Now, for each of the $r/2$ indices $i\in\{1,\ldots,r\}$ that satisfy
 \eqref{eq:perm}, the path $T_i$ joins a vertex of
 $P_{\pi^{(s)}_i}$ to a vertex of $P_{\pi^{(s)}_j}$, $j\neq
