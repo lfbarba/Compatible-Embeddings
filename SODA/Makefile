@@ -1,7 +1,7 @@
-all: CompatibleEmbeddings.pdf
+all: SODACompatibleEmbeddings.pdf
 
-CompatibleEmbeddings.pdf : CompatibleEmbeddings.tex images
-	latexmk -pdf CompatibleEmbeddings.tex
+SODACompatibleEmbeddings.pdf : SODACompatibleEmbeddings.tex images
+	latexmk -pdf SODACompatibleEmbeddings.tex
 
 images:
 	(cd img ; make)
