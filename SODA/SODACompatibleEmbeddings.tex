@@ -81,7 +81,7 @@ sufficient and sometimes necessary to achieve this goal.
 %A category including the fourth, optional field follows..
 
 \section{Introduction}
-
+\vspace{-.1in}
 We consider the following problem, which will be formalized
 below.  We are given several different planar straight-line drawings
 of the same graph, $\mathcal G$, which is not connected.
@@ -253,7 +253,7 @@ connects the points in a prescribed order.
 Let $S$ be a set of $n$ points in the plane such that no two points of $S$ have the same $x$-coordinate. 
 Given a point $v\in S$, let $\rank(v)$ denote the number of points of $S$ that lie to the left of (having smaller $x$-coordinate than) $v$.
 Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in this order  such that 
-$$|R|  = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right)\ .$$ %(this paper (over-)uses the $|\cdot|$ operator in several different ways, depending on the type of its argument.  For a real number, $x$, $|x|$ is the absolute value of $x$.  For a walk, $R=(r_0,\ldots,r_k)$, $|R|=k$ denotes the number of edges traversed by $R$. For a (weakly-)simple polygon, $P$ whose vertices---as encountered during a counterclockwise traversal---are $(a_1,\ldots,a_k)$, $|P|=k$, the number of edges of $P$).
+$$|R|  = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right)\ .$$ This paper (over-)uses the $|\cdot|$ operator in several different ways, depending on its argument.  For a real number, $x$, $|x|$ is the absolute value of $x$.  For a walk, $R=(r_0,\ldots,r_k)$, $|R|=k$ is the number of edges traversed by $R$. For a (weakly-)simple polygon, $P$, whose vertices---as encountered in a counterclockwise traversal---are $(a_1,\ldots,a_k)$, $|P|=k$ denotes the number of edges of~$P$.
 
 Consider a horizontal line such that each point of $S$ lies above it and let $\pi$ be the closed halfspace supported by this line that contains $S$.  We present an algorithm that constructs the path in $R$ in rounds; during the $i$th round, the path is extended to include $v_i$.  After each round of the algorithm, we maintain the invariant that the boundary of $\pi$ does not intersect $R$.
 
@@ -293,13 +293,12 @@ To preserve the escape invariant, for each $h\in\{j+1,\ldots,n\}$, we translate 
 Given an arbitrary order $(v_1, \ldots, v_n)$ of the vertices of $S$, the previous algorithm computes a plane path $R$ that connects every point of $S$ in the given order such that: $|R| = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right)$. 
 \end{lemma}
 
-
-\subsection{Compatible drawings of point sets}
+\vspace{-.1in}
+\subsection{Compatible drawings of point sets}\vspace{-.1in}
 Recall that in this section, $\mathcal G$ is a graph with $n$ trivial components.
 Let $G_1, \ldots, G_k$ be $k$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a set of $n$ points in the plane.
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate. Otherwise, rotate the coordinate system slightly.
 Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ to the left of $v$.
-
 For each $v$ of $\mathcal G$, let $x_v = (\rank_{G_1}(v), \rank_{G_2}(v),
 \ldots, \rank_{G_k}(v))$ be a point in the integer grid of side-length
 $n$ contained in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$
@@ -312,6 +311,7 @@ Note that the order of the points of $P$ induces an order on the vertices of $\m
 \begin{theorem}\label{theorem:points}
 For each $1\leq i\leq n$, we can construct a path $R_i$ of length $O(n^{2-1/k})$ that connects every point of $G_i$ so that $G_i\cup R_i$ is plane. Moreover, for each $1\leq i < j \leq n$, $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
 \end{theorem}
+\vspace{-.2in}
 \begin{proof}
 By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices
 of $\mathcal{G}$ induced by $P$.  The augmented graph $\mathcal{H}$
