@@ -55,8 +55,24 @@ urlcolor=linkblue}
 \title{\MakeUppercase{Compatible Connectivity-Augmentation \newline of Disconnected Graphs}}
 
 %\author{Second Bellairs Workshop on Geometry and Graphs}
-\author{Greg Aloupis, Luis Barba, Paz Carmi, Vida Dujmović, and Fabrizio Frati,
-        Pat Morin}
+\author{Greg Aloupis,\thanks{Department of Computer Science, Tufts University, 
+                             \email{aloupis.greg@gmail.com}}\,\,
+       Luis Barba,\thanks{School of Computer Science, Carleton University
+                          and Département d'Informatique, 
+                          Université Libre de Bruxelles,
+                          \email{lbarbafl@ulb.ac.be}}\,\,
+       Paz Carmi,\thanks{Department of Computer Science,
+                         Ben-Gurion University of the Negev,
+                         \email{carmip@cs.bgu.ac.il}}\,\,
+       Vida Dujmović,\thanks{School of Computer Science 
+                             and Electrical Engineering,
+                             University of Ottawa,
+                             \email{vida@cs.mcgill.ca}}\,\,
+       Fabrizio Frati,\thanks{Dipartimento di Ingegneria,
+                              Università degli Studi Roma Tre,
+                              \email{frati@dia.uniroma3.it}}\,\,
+       and Pat Morin\thanks{School of Computer Science, Carleton University,
+                            \email{morin@scs.carleton.ca}}}
 
 
 
@@ -118,15 +134,19 @@ speed.
 
 The cited morphing algorithms require that the input graph, $\mathcal{G}$, is connected; however, in many applications this is not the case. Thus, before these morphing algorithms can be applied, $\mathcal{G}$ must be augmented to a connected graph, $\mathcal H$, and this augmentation must be compatible with all drawings of $\mathcal{G}$.  Moreover, the complexity of the morph produced by a morphing algorithm depends on the size of $\mathcal H$.  Therefore, an augmentation with a small number of vertices is desirable. This motivates the elegant theoretical question studied in the current paper.
 
-\textbf{Formal Problem Statement and Main Result.} A \emph{drawing} of a graph $\mathcal{G}=(V,E)$
-is a one-to-one function $\varphi\colon V\to\R^2$.  A drawing
-is \emph{planar} if, for every pair of edges $uw$ and $xy$ in $E$,
-the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$ is
-disjoint from the open line segment with endpoints $\varphi(x)$
-and $\varphi(y)$.  Two planar drawings, $\varphi_1$ and $\varphi_2$,
-of $\mathcal{G}$ are \emph{isomorphic} if there exists a continuous family
-of planar drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
-such that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.
+\paragraph{Formal Problem Statement and Main Result.} A \emph{drawing}
+of a graph $\mathcal{G}=(V,E)$ is a one-to-one function $\varphi\colon
+V\to\R^2$.  A drawing is \emph{planar} if, for every pair of edges $uw$
+and $xy$ in $E$, the open line segment with endpoints $\varphi(u)$
+and $\varphi(w)$ is disjoint from the open line segment with endpoints
+$\varphi(x)$ and $\varphi(y)$.  Two planar drawings, $\varphi_1$ and
+$\varphi_2$, of $\mathcal{G}$ are \emph{isomorphic} if there exists
+a continuous family of planar drawings $\{\varphi^{(t)} \colon 0\le
+t\le 1\}$ of $\mathcal{G}$ such that $\varphi^{(0)}=\varphi_1$ and
+$\varphi^{(1)}=\varphi_2$.\footnote{By Cairn's result, this is equivalent to
+saying that the two drawings of $G$ have the same rotation schemes, the same
+cycle-vertex containment relationship, and the same outer face.}
+
 
 Throughout this paper we will avoid repeatedly
 referencing drawing functions like $\varphi$, $\varphi_1$ and $\varphi_2$.
@@ -151,7 +171,7 @@ We show that, if $\mathcal{G}$ has $n$ vertices and $r$ connected components, th
 embeddings $G_1,\ldots,G_k$ for which any compatible augmentation has
 size $\Omega(nr^{1-1/k})$.
 
-\noindent\textbf{Related Work.} To the best of our knowledge, there is very little work on
+\paragraph{Related Work.} To the best of our knowledge, there is very little work on
 compatible connectivity-augmentation of planar graphs, though
 there is work on isomorphic triangulations of polygons.   In this setting, one has two planar polygons, $P$ and $Q$, with the same number of vertices, and the goal is to compatibly triangulate the interior of $P$ and $Q$.
 %the graph $\mathcal{G}$ is a cycle and one has two planar straight-line drawings, $P$ and $Q$, of $\mathcal G$. The goal is to augment $\mathcal G$ (and the two drawings $P$ and $Q$) so that $\mathcal G$ becomes a near-triangulation, and $P$ and $Q$ become (geometric) triangulations of the interiors of the polygons whose boundaries are $P$ and $Q$.
@@ -427,10 +447,14 @@ Figure~\ref{figure:big-example} (left) is a schematic diagram that illustrates t
 
 
 \subsection{Compatible drawings of planar graphs}
-Let $\mathcal G$ be a planar graph with $n$ vertices and $r$ connected components.
-Let $G_1, \ldots, G_k$ be $k$ plane isomorphic drawings of $\mathcal G$.
-For now, we will assume that, in these drawings, every component of $\mathcal G$ has at least one vertex incident to the outer face.  In the Appendix, we show how to remove this restriction.
-We show how to construct a compatible augmentation of $\mathcal G$ of size $O(nr^{1-1/k})$.
+Let $\mathcal G$ be a planar graph with $n$ vertices and $r$ connected
+components.  Let $G_1, \ldots, G_k$ be $k$ plane isomorphic drawings
+of $\mathcal G$.  For now, we will assume that, in these drawings,
+every component of $\mathcal G$ has at least one vertex incident to
+the outer face.  (In the Appendix, we show that this is not a real
+restriction; one can apply the same algorithm to each face of $\mathcal
+G$.)  We show how to construct a compatible augmentation of $\mathcal G$
+of size $O(nr^{1-1/k})$.
 
 Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components of $\mathcal G$.  Because $G_1,\ldots,G_k$ are isomorphic, we can select one attachment corner from each component in the drawing $G_1$, and this attachment corner also appears in each of $G_2,\ldots,G_k$. Thus, for each $j\in\{1,\ldots,r\}$, we choose an attachment corner $a_j$ of $\partial C_j$ such that $a_j$ is incident to the outer face of $C_j$.
 
