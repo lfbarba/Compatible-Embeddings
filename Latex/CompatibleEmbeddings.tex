@@ -17,7 +17,7 @@ urlcolor=linkblue}
 
 %\usepackage{comment}
 %\usepackage{url}
-%\usepackage{xspace} 
+\usepackage{xspace} 
 %\usepackage{lineno}
 %\graphicspath{{img/}} % No need to write this for every figure
 %\linenumbers
@@ -53,8 +53,24 @@ urlcolor=linkblue}
 \title{\MakeUppercase{Compatible Connectivity-Augmentation \newline of Disconnected Graphs}}
 
 %\author{Second Bellairs Workshop on Geometry and Graphs}
-\author{Greg Aloupis, Luis Barba, Paz Carmi, Vida Dujmović, Fabrizio Frati,
-        and Pat Morin}
+\author{Greg Aloupis,\thanks{Department of Computer Science, Tufts University, 
+                             \email{aloupis.greg@gmail.com}}\,\,
+       Luis Barba,\thanks{School of Computer Science, Carleton University
+                          and Département d'Informatique, 
+                          Université Libre de Bruxelles,
+                          \email{lbarbafl@ulb.ac.be}}\,\,
+       Paz Carmi,\thanks{Department of Computer Science,
+                         Ben-Gurion University of the Negev,
+                         \email{carmip@cs.bgu.ac.il}}\,\,
+       Vida Dujmović,\thanks{School of Computer Science 
+                             and Electrical Engineering,
+                             University of Ottawa,
+                             \email{vida@cs.mcgill.ca}}\,\,
+       Fabrizio Frati,\thanks{Dipartimento di Ingegneria,
+                              Università degli Studi Roma Tre,
+                              \email{frati@dia.uniroma3.it}}\,\,
+       and Pat Morin\thanks{School of Computer Science, Carleton University,
+                            \email{morin@scs.carleton.ca}}}
 
 
 
@@ -67,10 +83,10 @@ urlcolor=linkblue}
 \setlength{\baselineskip}{16.8pt}
 We consider the following \emph{compatible connectivity-augmentation
 problem}: We are given a planar graph,
-$\mathcal{G}$, that has $r>1$ connected components, and $k$ isomorphic planar drawings, $G_1,\ldots,G_k$, of
+$\mathcal{G}$, that has $r>1$ connected components, and $k$ isomorphic planar straight-line drawings, $G_1,\ldots,G_k$, of
 $\mathcal{G}$. We wish to add vertices and edges to $\mathcal{G}$ to make
 it connected and in such a way that these vertices and edges can be added to
-the drawings $G_1,\ldots,G_k$ while preserving planarity.  We show that
+the drawings $G_1,\ldots,G_k$ as points and straight-line edges while preserving planarity.  We show that
 adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always
 sufficient and sometimes necessary to achieve this goal.  
 \end{abstract}
@@ -131,15 +147,17 @@ the input is three isomorphic drawings of the same planar graph.
   \label{fig:faces}
 \end{figure}
 
-In this setting, animating the face becomes a problem of \emph{morphing}
-(i.e., continuously deforming) one drawing of a planar graph into
-another drawing of the same planar graph while maintaining planarity
-of the drawing throughout the deformation. This morphing problem
+In this setting, animating the face leads to the problem of computing
+a \emph{morphing} (i.e., a continuously deformation) of one drawing
+of a planar graph into another drawing of the same planar graph while
+maintaining planarity of the drawing throughout the deformation.
+
+The morphing problem
 has been studied since 1944, when Cairns \cite{cairns:deformations}
 showed such a transformation always exists between any two drawings
 of the same graph.  Since then, a sequence of results has shown
 that such transformations can be done efficiently, so that the
-motion can be described concisely \cite{thomassen:deformations,
+vertex motion can be described concisely \cite{thomassen:deformations,
 grunbaum.shephard:geometry,alamdari.angelini.ea:morphing,
 angelini.dalozzo.ea:morphing}.  The most recent such result
 \cite{angelini.dalozzo.ea:morphing} shows that any planar drawing of
@@ -148,17 +166,16 @@ drawing using a sequence of $O(n)$ \emph{linear
 morphs}, in which vertices move along linear trajectories at constant
 speed.
 
-These morphing algorithms require that the input graph, $\mathcal{G}$,
+The morphing algorithms cited above require that the input graph, $\mathcal{G}$,
 be connected. In many applications of morphing (for example in
 Figure~\ref{fig:faces}) the input graph is not connected. Before these
 morphing algorithms can be used, $\mathcal{G}$ must be augmented into a
 connected graph, $\mathcal H$, but this augmentation must be compatible
-with the drawings of $\mathcal{G}$.  At the same time, the complexity
+with the drawings of $\mathcal{G}$.  Moreover, the complexity
 of the morph produced by a morphing algorithm depends on the number
-of vertices of $\mathcal H$.  Therefore, we want to find an augmentation
-with the fewest number of vertices.
+Therefore, an augmentation with a small number of vertices is desirable. This motivates the elegant theoretical question studied in the current paper.
 
-This motivates the elegant theoretical question studied in the current paper:  How can we add
+How can we add
 vertices and edges to $\mathcal{G}$ to obtain a supergraph $\mathcal
 H\supset \mathcal G$ that is connected and such that the vertices and
 edges of $\mathcal{H}$ can also be added to the drawings of $\mathcal{G}$
@@ -172,7 +189,7 @@ the drawings?
 
 \subsection{Formal Problem Statement and Main Result}
 
-Formally, a \emph{drawing} of a graph $\mathcal{G}=(V,E)$
+A \emph{drawing} of a graph $\mathcal{G}=(V,E)$
 is a one-to-one function $\varphi\colon V\to\R^2$.  A drawing
 is \emph{planar} if, for every pair of edges $uw$ and $xy$ in $E$,
 the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$ is
@@ -182,23 +199,26 @@ of $\mathcal{G}$ are \emph{isomorphic} if there exists a continuous family
 of planar drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
 such that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.
 
-Throughout this paper we will be slightly less formal to avoid repeatedly
+Throughout this paper we will avoid repeatedly
 referencing drawing functions like $\varphi$, $\varphi_1$ and $\varphi_2$.
 Instead, we will talk about a graph $\mathcal{G}$ and $k$ isomorphic
-geometric graphs $G_1,\ldots,G_k$.  This should be understood to mean that
+geometric graphs $G_1,\ldots,G_k$.  This means that
 each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
 with some function $\varphi_i$ and that $\varphi_1,\ldots,\varphi_k$ are
-pairwise isomorphic.  When necessary, we may talk about the vertex $v$
+pairwise isomorphic.
+% Fabrizio puts definition of geometric planar embedding here, but do we
+% need it?
+When necessary, we may talk about the vertex $v$
 in $G_i$ where $v$ is actually a vertex of $\mathcal{G}$; this should
 be taken to mean the vertex $\varphi_i(v)$ in $G_i$.
 
-With these conventions, we are ready to state our main result.  Given $k$
+We are now ready to state our main result.  Given $k$
 geometric planar isomorphic embeddings $G_1, \ldots, G_k$ of $\mathcal
 G$, a \emph{compatible augmentation}, $\mathcal H$, of $\mathcal G$ is
-a supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected,
+a supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected
 and (2) there exist geometric planar isomorphic embeddings, $H_1,
 \ldots, H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every
-$i\in\{1,\ldots,k\}$.  In this paper, we show that, if $\mathcal{G}$ has
+$i\in\{1,\ldots,k\}$.  We show that, if $\mathcal{G}$ has
 $n$ vertices and $r$ connected components, then there always exists a
 compatible augmentation of size $O(nr^{1-1/k})$ and that this bound is
 tight; there exists a graph $\mathcal G$ with $r$ components and having
@@ -210,19 +230,14 @@ size $\Omega(nr^{1-1/k})$.
 To the best of our knowledge, there is very little work on
 compatible connectivity-augmentation of planar graphs, though
 there is work on isomorphic triangulations of polygons.  Refer to
-Figure~\ref{fig:compatible-triangs}.  In this setting, the graph
-$\mathcal{G}$ is a cycle and one has two non-crossing drawings, $P$
-and $Q$, of $\mathcal G$. The goal is to augment $\mathcal G$ (and the
-two drawings $P$ and $Q$) so that $\mathcal G$ becomes a near-triangulation,
-and $P$ and $Q$ become (geometric) triangulations of the interiors
-of the polygons whose boundaries are $P$ and $Q$.  Aronov \etal\
+Figure~\ref{fig:compatible-triangs}.  In this setting, one has two planar polygons, $P$ and $Q$ and the goal is compatibly triangulate the interiors of $P$ and $Q$. Aronov \etal\
 \cite{aronov.seidel.ea:compatible} showed that this can always
 be accomplished with the addition of $O(n^2)$ vertices and that
 $\Omega(n^2)$ vertices are sometimes necessary.  Kranakis and Urrutia
 \cite{kranakis.urrutia:isomorphic} showed that this result can be made
 sensitive to the number of reflex vertices of $P$ and $Q$, so that the
 number of triangles required is $O(n+pq)$ where $p$ and $q$ are the
-number of reflex vertices of $p$ and $q$, respectively.
+number of reflex vertices of $P$ and $Q$, respectively.
 
 \begin{figure}
   \centering{
@@ -232,19 +247,20 @@ number of reflex vertices of $p$ and $q$, respectively.
   \label{fig:compatible-triangs}
 \end{figure}
 
-Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of $r$ cycles, the embeddings $P$ and $Q$ are such that one cycle, $\mathcal C$, of $\mathcal G$ contains all the others in its interior and no other pair of cycles is nested in $P$ or $Q$. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(nr^{1/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
+Babikov \etal\ \cite{babikov.souvaine.ea:constructing} extended the result of Aronov \etal\ to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of $r$ cycles, the two embeddings are such that one cycle of $\mathcal G$ contains all the others in its interior and no other pair of cycles is nested. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(nr^{1/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
 
+Finally, several papers~\cite{aghtu-acgg-08,rw-acpgg-12,t-capsg-12} have dealt with the problem of augmenting the connectivity of any (single) geometric planar graph while adding few vertices and edges.
 
 \subsection{Outline}
 
 To guide the reader, we give a rough sketch of our upper bound proof,
-which is illustrated in Figure~\ref{figure:example}: For each component,
-$\mathcal C_i$, of $\mathcal G$ we select a distinguished \emph{corner},
-$a_i$, of $G_1$. (A corner is the space between two consecutive edges
-incident on some vertex of the outer face). The corner $a_i$ is called
-the \emph{attachment corner} for component $\mathcal C_i$.  Notice that,
-since $G_1,\ldots,G_k$ are isomorphic, $a_i$ appears as a corner in each
-of $G_1,\ldots,G_k$.
+which is illustrated in Figure~\ref{figure:example}: For each
+component, $\mathcal C_i$, of $\mathcal G$ we select a distinguished
+\emph{corner}, $a_i$, in $G_1$ (a corner is the space between two
+consecutive edges incident to some vertex of the outer face) and call
+it the \emph{attachment corner} for $\mathcal C_i$.  Notice that, since
+$G_1,\ldots,G_k$ are isomorphic, $a_i$ appears as a corner in each of
+$G_1,\ldots,G_k$.
 
 \begin{figure}
   \begin{center}
@@ -264,11 +280,19 @@ of $G_1,\ldots,G_k$.
   \label{figure:example}
 \end{figure}
 
-Next, for each embedding, $G_j$, we add $r-1$ edges to make $G_j$ into a
-connected graph, $G_j^*$.  We then traverse the boundary of the outer face
-of $G_j^*$ to obtain a polygonal path, $\varphi_j$, of length $O(n)$ that comes
-close to every corner of $G_j$.  The path $\varphi_j$ is then used to define an
-integer distance $d_j(a_\ell,a_m)$ for any two corners $a_\ell$ and $a_m$. This distance includes information about the number of edges of $\varphi_j$ between $a_\ell$ and $b_m$ as well the sizes of the some of the components visited while walking from $a_\ell$ to $b_m$ along $\varphi_j$.
+Next, for $j\in \{1,\dots,k\}$, we define a connected geometric planar
+graph, $G_j^*$, as a graph obtained from $G_j$ after the addition of $r-1$
+edges; these added edges are not, in general, edges that are going to be
+part of the final augmentation of $G_1,\ldots,G_k$ (in fact the edges
+of $G_j^*$ not in $G_j$ might be different from the edges of  $G_h^*$
+not in $G_h$, if $j\neq h$). We traverse the boundary of the outer face
+of $G_j^*$ to obtain a polygonal path, $\varphi_j$, of length $O(n)$
+that comes close to every corner of $G_j$.  The path $\varphi_j$ is then
+used to define an integer distance $d_j(a_\ell,a_m)$ for any two corners
+$a_\ell$ and $a_m$. This distance includes information about the number
+of edges of $\varphi_j$ between $a_\ell$ and $a_m$ as well the sizes of
+the some of the components visited while walking from $a_\ell$ to $a_m$
+along $\varphi_j$.
 
 Next, we take a leap into $k$ dimensions by using the distance
 functions $d_1,\ldots,d_k$ to produce an $k$-dimensional point set
@@ -291,23 +315,24 @@ At this point, all that remains is to show that these $r-1$ paths
 can each be drawn in each of $G_1,\ldots,G_k$ without crossing
 each other.  This part of the proof involves carefully winding these
 paths around the components in $G_1,\ldots,G_k$ using paths close
-to the paths $\varphi_1,\ldots,\varphi_k$ defined above. This part
-of the proof resembles the first part of the proof of Babikov \etal\
-\cite{babikov.souvaine.ea:constructing}, but is complicated by the fact
-that we have to be quite careful that the number of edges in these paths
-remains in $O(nr^{1-1/k})$. 
+to the paths $\varphi_1,\ldots,\varphi_k$ defined above.
+%This part
+%of the proof resembles the first part of the proof of Babikov \etal\
+%\cite{babikov.souvaine.ea:constructing}, but is complicated by the fact
+%that we have to be quite careful that the number of edges in these paths
+%remains in $O(nr^{1-1/k})$. 
 
-In contrast to the upper bound, the lower-bound is quite simple and just
+In contrast to the upper bound, the lower bound is quite simple and just
 involves a sequence of nested paths whose vertices are the vertices of
 a nested set of regular $\lfloor n/r\rfloor$-gons.
 
 The remainder of the paper is organized as follows: In
-Section~\ref{section:Trivial components} we start by solving
+Section~\ref{section:Trivial components} we solve
 the special case in which the graph $G$ has no edges. This
 special case is already non-trivial and introduces some of the
 main ideas used in solving the full problem, which is tackled in
 Section~\ref{section:General}. Section~\ref{section:Lower bound}
-gives a simple lower bound construction that matches our upper bound
+presents a lower bound construction that matches our upper bound
 for all values of $r$, $n$, and $k$.  
 %The paper concludes with
 %Section~\ref{section:Conclusions}, which summarizes and presents
@@ -323,14 +348,19 @@ that constructs a ``short'' plane spanning path of a point set that
 connects the points in a prescribed order.
 
 \subsection{Spanning paths of point sets}
-Let $S$ be a set of $n$ points in the plane such that no two points of $S$ have the same $x$-coordinate. 
-Given a point $v\in S$, let $\rank(v)$ denote the number of points of $S$ that lie to the left of (having smaller $x$-coordinate than) $v$.
+Let $S$ be a set of $n$ points in the plane such that no two points of
+$S$ have the same $x$-coordinate.  Given a point $v\in S$, let $\rank(v)$
+denote the number of points of $S$ having smaller $x$-coordinate than $v$.
 
+%
+% This is where I stopped backporting Fabrizio's changes into the full version.
+% The changes are available here: http://goo.gl/rPWgmN
+%
 Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in this order and such that:  
 \[
    |R|  = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right).
 \]
-(This paper (over-)uses the $|\cdot|$ operator in several different ways, depending on the type of its argument.  For a real number, $x$, $|x|$ is the absolute value of $x$.  For a walk, $R=(r_0,\ldots,r_k)$, $|R|=k$ denotes the number of edges traversed by $R$. For a (weakly-)simple polygon, $P$ whose vertices---as encountered during a counterclockwise traversal---are $(a_1,\ldots,a_k)$, $|P|=k$, the number of edges of $P$.)
+This paper uses the $|\cdot|$ operator in several different ways, depending on the type of its argument.  For a real number, $x$, $|x|$ is the absolute value of $x$.  For a walk, $R=(r_0,\ldots,r_k)$, $|R|=k$ denotes the number of edges traversed by $R$. For a (weakly-)simple polygon, $P$ whose vertices---as encountered during a counterclockwise traversal---are $(a_1,\ldots,a_k)$, $|P|=k$, the number of edges of $P$.)
 
 Consider a horizontal line such that each point of $S$ lies above it and let $\pi$ be the closed halfspace supported by this line that contains $S$.  We present an algorithm that constructs the path in $R$ in rounds; during the $i$th round, the path is extended to include $v_i$.  After each round of the algorithm, we maintain the invariant that the boundary of $\pi$ does not intersect $R$.
 
