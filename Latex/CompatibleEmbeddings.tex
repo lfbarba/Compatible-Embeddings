@@ -50,7 +50,7 @@ urlcolor=linkblue}
   
 \newcommand{\ch}[1]{\ensuremath{\textsc{ch}(#1)}}
 
-\title{\MakeUppercase{Compatible Connectivity-Augmentation \newline of Disconnected Graphs}}
+\title{\MakeUppercase{Compatible Connectivity-Augmentation of Planar Disconnected Graphs}}
 
 %\author{Second Bellairs Workshop on Geometry and Graphs}
 \author{Greg Aloupis, Luis Barba, Paz Carmi, Vida Dujmović, Fabrizio Frati,
@@ -87,8 +87,8 @@ below.  We are given several different planar straight-line drawings
 of the same graph, $\mathcal G$, which is not connected.
 We wish to make $\mathcal G$ connected by adding vertices and edges in
 such a way that these vertices and edges can also be added to the planar
-straight-line drawings of $\mathcal G$ while preserving the planarity of
-the drawings.  The objective is to do this while minimizing the number
+straight-line drawings of $\mathcal G$ while preserving planarity.  
+The objective is to do this while minimizing the number
 of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} shows, it is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
 
 \begin{figure}
@@ -101,7 +101,7 @@ of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} sho
   \label{fig:bad-example}
 \end{figure}
 
-The motivation for studying this problem comes from the problem of morphing
+The motivation for this work comes from the problem of morphing
 planar graphs, which has many applications \cite{erten.kobourov.ea:intersection,friedrich.eades:graph,gotsman.surazhsky:guaranteed,surazhsky.gotsman:controllable,surazhsky.gotsman:intrinsic} including
 computer animation.  Imagine an
 animator who wishes to animate a scene in which a character's expression
@@ -136,8 +136,7 @@ In this setting, animating the face becomes a problem of \emph{morphing}
 another drawing of the same planar graph while maintaining planarity
 of the drawing throughout the deformation. This morphing problem
 has been studied since 1944, when Cairns \cite{cairns:deformations}
-showed such a transformation always exists between any two drawings
-of the same graph.  Since then, a sequence of results has shown
+showed such a transformation always exists.  Since then, a sequence of results has shown
 that such transformations can be done efficiently, so that the
 motion can be described concisely \cite{thomassen:deformations,
 grunbaum.shephard:geometry,alamdari.angelini.ea:morphing,
@@ -158,7 +157,7 @@ of the morph produced by a morphing algorithm depends on the number
 of vertices of $\mathcal H$.  Therefore, we want to find an augmentation
 with the fewest number of vertices.
 
-This motivates the elegant theoretical question studied in the current paper:  How can we add
+This motivates the theoretical question studied in the current paper:  How can we add
 vertices and edges to $\mathcal{G}$ to obtain a supergraph $\mathcal
 H\supset \mathcal G$ that is connected and such that the vertices and
 edges of $\mathcal{H}$ can also be added to the drawings of $\mathcal{G}$
@@ -199,10 +198,10 @@ a supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected,
 and (2) there exist geometric planar isomorphic embeddings, $H_1,
 \ldots, H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every
 $i\in\{1,\ldots,k\}$.  In this paper, we show that, if $\mathcal{G}$ has
-$n$ vertices and $r$ connected components, then there always exists a
+$n$ vertices and $r$ connected components, there always exists a
 compatible augmentation of size $O(nr^{1-1/k})$ and that this bound is
-tight; there exists a graph $\mathcal G$ with $r$ components and having
-embeddings $G_1,\ldots,G_k$ for which any compatible augmentation has
+tight; there exists a graph $\mathcal G$ with $r$ components and $k$
+drawings for which any compatible augmentation has
 size $\Omega(nr^{1-1/k})$.
 
 \subsection{Related Work}
