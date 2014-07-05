@@ -232,7 +232,7 @@ that constructs a ``short'' plane spanning path of a given ordered set  of point
 \subsection{Spanning paths of point sets}
 Let $S$ be a set of $n$ points in the plane with distinct $x$-coordinates.
 Given a point $v\in S$, let $\rank(v)$ denote the number of points of $S$ having smaller $x$-coordinate than $v$.
-Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we show how to construct a plane path that connects them in this order and such that the number of vertices of $R$ between $v_{i-1}$ and $v_{i}$ is $O(|\rank(v_i) - \rank(v_{i-1})|)$, for each $i\in \{2, \dots, n\}$.
+Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we show how to construct a plane path that connects them in this order and such that the number of vertices between $v_{i-1}$ and $v_{i}$ is $O(|\rank(v_i) - \rank(v_{i-1})|)$, for each $i\in \{2, \dots, n\}$.
 
 %want to construct a path $R$ that connects them in this order  such that $$|R|  = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right)\ .$$
 This paper uses the $|\cdot|$ operator in several ways.  Namely, for a real number, $x$, we denote by $|x|$ the absolute value of $x$; for a walk, $R$, we denote by $|R|$ the number of edges traversed by $R$; also, for a (weakly) simple polygon, $P$, we denote by $|P|$ the number of edges of~$P$.
