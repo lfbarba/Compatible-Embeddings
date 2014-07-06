@@ -130,18 +130,21 @@ speed.
 
 The cited morphing algorithms require that the input graph, $\mathcal{G}$, is connected; however, in many applications this is not the case. Thus, before these morphing algorithms can be applied, $\mathcal{G}$ must be augmented to a connected graph, $\mathcal H$, and this augmentation must be compatible with all drawings of $\mathcal{G}$.  The complexity of the morph produced by a morphing algorithm depends on the size of $\mathcal H$.  Therefore, an augmentation with a small number of vertices is desirable. This motivates the theoretical question studied in the current paper.
 
-\paragraph{Formal Problem Statement and Main Result.} A \emph{drawing}
-of a labelled graph $\mathcal{G}=(V,E)$ is a one-to-one function $\varphi\colon
-V\to\R^2$.  A drawing is \emph{planar} if, for every pair of edges $uw$
-and $xy$ in $E$, the line segment with endpoints $\varphi(u)$
-and $\varphi(w)$ is either disjoint from the open line segment with endpoints
-$\varphi(x)$ and $\varphi(y)$, or they share at most one endpoint.  Two planar drawings, $\varphi_1$ and
-$\varphi_2$, of $\mathcal{G}$ are \emph{isomorphic} if there exists
-a continuous family of planar drawings $\{\varphi^{(t)} \colon 0\le
-t\le 1\}$ of $\mathcal{G}$ such that $\varphi^{(0)}=\varphi_1$ and
-$\varphi^{(1)}=\varphi_2$.\footnote{By Cairn's result, this is equivalent to
-saying that the two drawings of $G$ have the same rotation schemes, the same
-cycle-vertex containment relationship, and the same outer face.}
+\paragraph{Formal Problem Statement and Main Result.} 
+A \emph{drawing} of a labelled graph $\mathcal{G}=(V,E)$ is a one-to-one
+function $\varphi\colon V\to\R^2$.  A drawing is \emph{planar} if
+(a)~for every pair of edges $uw$ and $xy$ in $E$, the open line segment
+with endpoints $\varphi(u)$ and $\varphi(w)$ is disjoint from the open
+line segment with endpoints $\varphi(x)$ and $\varphi(y)$ and (b)~for
+every edge $uw$ and every vertex $y$, $\varphi(y)$ is not contained in
+the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$.
+Two planar drawings, $\varphi_1$ and $\varphi_2$, of $\mathcal{G}$
+are \emph{isomorphic} if there exists a continuous family of planar
+drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$ such
+that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.\footnote{By
+Cairn's result, this is equivalent to saying that the two drawings of
+$G$ have the same rotation schemes, the same cycle-vertex containment
+relationship, and the same outer face.}
 
 
 Throughout this paper we will avoid repeatedly
