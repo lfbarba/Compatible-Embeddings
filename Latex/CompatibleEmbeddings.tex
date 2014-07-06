@@ -50,7 +50,7 @@ urlcolor=linkblue}
   
 \newcommand{\ch}[1]{\ensuremath{\textsc{ch}(#1)}}
 
-\title{\MakeUppercase{Compatible Connectivity-Augmentation \newline of Disconnected Graphs}}
+\title{\MakeUppercase{Compatible Connectivity-Augmentation of Planar Disconnected Graphs}}
 
 %\author{Second Bellairs Workshop on Geometry and Graphs}
 \author{Greg Aloupis, Luis Barba, Paz Carmi, Vida Dujmović, Fabrizio Frati,
@@ -87,8 +87,8 @@ below.  We are given several different planar straight-line drawings
 of the same graph, $\mathcal G$, which is not connected.
 We wish to make $\mathcal G$ connected by adding vertices and edges in
 such a way that these vertices and edges can also be added to the planar
-straight-line drawings of $\mathcal G$ while preserving the planarity of
-the drawings.  The objective is to do this while minimizing the number
+straight-line drawings of $\mathcal G$ while preserving planarity.  
+The objective is to do this while minimizing the number
 of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} shows, it is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
 
 \begin{figure}
@@ -101,7 +101,7 @@ of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} sho
   \label{fig:bad-example}
 \end{figure}
 
-The motivation for studying this problem comes from the problem of morphing
+The motivation for this work comes from the problem of morphing
 planar graphs, which has many applications \cite{erten.kobourov.ea:intersection,friedrich.eades:graph,gotsman.surazhsky:guaranteed,surazhsky.gotsman:controllable,surazhsky.gotsman:intrinsic} including
 computer animation.  Imagine an
 animator who wishes to animate a scene in which a character's expression
@@ -136,8 +136,7 @@ In this setting, animating the face becomes a problem of \emph{morphing}
 another drawing of the same planar graph while maintaining planarity
 of the drawing throughout the deformation. This morphing problem
 has been studied since 1944, when Cairns \cite{cairns:deformations}
-showed such a transformation always exists between any two drawings
-of the same graph.  Since then, a sequence of results has shown
+showed such a transformation always exists.  Since then, a sequence of results has shown
 that such transformations can be done efficiently, so that the
 motion can be described concisely \cite{thomassen:deformations,
 grunbaum.shephard:geometry,alamdari.angelini.ea:morphing,
@@ -158,7 +157,7 @@ of the morph produced by a morphing algorithm depends on the number
 of vertices of $\mathcal H$.  Therefore, we want to find an augmentation
 with the fewest number of vertices.
 
-This motivates the elegant theoretical question studied in the current paper:  How can we add
+This motivates the theoretical question studied in the current paper:  How can we add
 vertices and edges to $\mathcal{G}$ to obtain a supergraph $\mathcal
 H\supset \mathcal G$ that is connected and such that the vertices and
 edges of $\mathcal{H}$ can also be added to the drawings of $\mathcal{G}$
@@ -182,8 +181,8 @@ of $\mathcal{G}$ are \emph{isomorphic} if there exists a continuous family
 of planar drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
 such that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.
 
-Throughout this paper we will be slightly less formal to avoid repeatedly
-referencing drawing functions like $\varphi$, $\varphi_1$ and $\varphi_2$.
+Throughout this paper we will avoid repeatedly
+referencing drawing functions like $\varphi$.
 Instead, we will talk about a graph $\mathcal{G}$ and $k$ isomorphic
 geometric graphs $G_1,\ldots,G_k$.  This should be understood to mean that
 each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
@@ -199,10 +198,10 @@ a supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected,
 and (2) there exist geometric planar isomorphic embeddings, $H_1,
 \ldots, H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every
 $i\in\{1,\ldots,k\}$.  In this paper, we show that, if $\mathcal{G}$ has
-$n$ vertices and $r$ connected components, then there always exists a
+$n$ vertices and $r$ connected components, there always exists a
 compatible augmentation of size $O(nr^{1-1/k})$ and that this bound is
-tight; there exists a graph $\mathcal G$ with $r$ components and having
-embeddings $G_1,\ldots,G_k$ for which any compatible augmentation has
+tight; there exists a graph $\mathcal G$ with $r$ components and $k$
+drawings for which any compatible augmentation has
 size $\Omega(nr^{1-1/k})$.
 
 \subsection{Related Work}
@@ -316,14 +315,12 @@ for all values of $r$, $n$, and $k$.
 
 %%%%%%%%%
 \section{Upper bounds for trivial components}\label{section:Trivial components}
-As a warmup, we consider a graph containing $n$ vertices and no edges,
-i.e., a graph that consists of $n$ (trivial) connected components.
-Before constructing the compatible augmentation, we provide a subroutine
-that constructs a ``short'' plane spanning path of a point set that
-connects the points in a prescribed order.
+As a warmup, we consider a (trivial) graph containing $n$ vertices and no edges.
+Before constructing a compatible augmentation, we provide a subroutine
+that constructs a ``short'' plane spanning path of a given ordered set of points.
 
 \subsection{Spanning paths of point sets}
-Let $S$ be a set of $n$ points in the plane such that no two points of $S$ have the same $x$-coordinate. 
+Let $S$ be a set of $n$ points in the plane with distinct $x$-coordinates. 
 Given a point $v\in S$, let $\rank(v)$ denote the number of points of $S$ that lie to the left of (having smaller $x$-coordinate than) $v$.
 
 Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in this order and such that:  
@@ -332,10 +329,10 @@ Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want
 \]
 (This paper (over-)uses the $|\cdot|$ operator in several different ways, depending on the type of its argument.  For a real number, $x$, $|x|$ is the absolute value of $x$.  For a walk, $R=(r_0,\ldots,r_k)$, $|R|=k$ denotes the number of edges traversed by $R$. For a (weakly-)simple polygon, $P$ whose vertices---as encountered during a counterclockwise traversal---are $(a_1,\ldots,a_k)$, $|P|=k$, the number of edges of $P$.)
 
-Consider a horizontal line such that each point of $S$ lies above it and let $\pi$ be the closed halfspace supported by this line that contains $S$.  We present an algorithm that constructs the path in $R$ in rounds; during the $i$th round, the path is extended to include $v_i$.  After each round of the algorithm, we maintain the invariant that the boundary of $\pi$ does not intersect $R$.
+Consider a horizontal line $l$ below $S$ and let $\pi$ be the closed halfspace supported by $l$ that contains $S$.  We present an algorithm that constructs $R$ iteratively; during the $i$th iteration of the algorithm, the path is extended with $O(|\rank(v_i) - \rank(v_{i-1})|)$ vertices to include $v_i$.  For each $i\in \{1,\dots,n\}$, after the $i$th iteration of the algorithm, we maintain the invariant that $\ell$ does not intersect $R$, and we also maintain the \emph{escape invariant} which is defined as follows:
+For each $j\in \{i, \dots, n\}$, there is a closed cone $\Delta_{j}$ with apex $u_{j}$ such that (1) $u_j$ lies above $v_j$ and has the same $x$-coordinate as $v_j$ ($u_j =v_j$ if $j = i$), (2) $\Delta_j$ contains $v_j$ and no other point of $S$, (3) $\Delta_j$ contains the ray originating at $v_j$ in the direction of the negative $y$-axis, (4) $\Delta_j$ does not intersect $R$, and (5) $\Delta_h$ and $\Delta_j$ are disjoint inside $\pi$, for every $h\in \{i,\dots,n\}$ with $h\neq j$.
 
-Throughout, we also maintain the \emph{escape invariant} which states that for each point $v_j\in S \setminus R$, there is a cone $\Delta_j$ with apex $u_j$ such that (1) $u_j$ lies above $v_j$ (or on $v_j$) and has the same $x$-coordinate as $v_j$, (2) $\Delta_j$ contains $v_j$ and no other point of $S$, (3) $\Delta_j$ contains the ray originating at $v_j$ in the direction of the negative $y$-axis, (4) $\Delta_j$ does not intersect $R$, and (5) $\Delta_i$ and $\Delta_j$ are disjoint inside $\pi$.
-Before starting the construction, we establish the escape invariant. To do this, for each $0\leq j\leq n$ let $u_j$ be an arbitrary translation of $v_j$ in the direction of the positive $y$-axis and let $\Delta_j$ be a cone with apex on $u_j$ sufficiently narrow such that these cones doe not intersect inside $\pi$; see Figure~\ref{fig:Escape Invariant}.
+Initialize $R$ as a path that consists of the single vertex $v_1$. In order to establish the escape invariant, we define $u_1=v_1$; also, for each $j\in \{2,\dots,n\}$, we define $u_j$ as an arbitrary translation up of $v_j$; further, for each $j\in \{1,\dots,n\}$, we let $\Delta_j$ be a cone with apex on $u_j$ sufficiently narrow so that these cones do not intersect inside $\pi$; see Figure~\ref{fig:Escape Invariant}.
 
 \begin{figure}[tb]
 \centering 
@@ -352,15 +349,15 @@ consists of the single vertex $v_1$).  We extend $R$ by appending a
 path that connects $v_j$ with $v_{j+1}$.  As a first step, we translate
 down the cones $\Delta_j$ and $\Delta_{j+1}$ until their apexes $u_j$
 and $u_{j+1}$ coincide with $v_j$ and $v_{j+1}$, respectively.
-\red{Pat says: I removed a narrowing operation here that isn't necessary if
-we shift both $\pi$ and $u_{j+2},...,u_n$ downward simultaneously.}
-% Pat says: I don't think this is necessary since we're shifting both $\pi$ and $u_{j+2},...,u_n$ downward:
-% Moreover, we narrow the cone $\Delta_j$ while keeping the ray originating downwards from $v_j$ contained in $\Delta_j$.
 
-Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing the cone $\Delta_h$, for every $h\in\{j,j+1,\ldots,n\}$; see Figure~\ref{fig:Dented Halfspace}. That is, $\pi_j$ is a halfspace with dents made by the removal of $n-j+1$ cones.
-%Therefore, the number of segments on the boundary of $\pi_j$ is $O(n-j)$. 
-Observe that, for every pair of apexes $u_i$ and $u_h$, the boundary of $\pi_j$
-contains a path from $u_i$ to $u_h$ consisting of $O(|\rank(v_i)-\rank(v_j)|)$ edges.
+Now assume that $R$ is a path connecting $v_1$ with $v_j$, for some $j\in \{1,\dots,n-1\}$. We extend $R$ by appending a
+path that connects $v_j$ with $v_{j+1}$.
+
+First, we translate $\Delta_{j+1}$ down until its apex $u_{j+1}$ coincides with $v_{j+1}$. Let $\pi_j$ be the closure of the set obtained from $\pi$ by removing $\Delta_h$, for every $h\in\{j,j+1,\ldots,n\}$; see Figure~\ref{fig:Dented Halfspace} (right). That is, $\pi_j$ is a halfspace with dents made by the removal of $n-j+1$ cones.
+%Therefore, the number of segments on the boundary of $\pi_j$ is $O(n-j)$.
+Observe that, for every pair of apexes $u_i$ and $u_h$, with $i,h\geq j$, the boundary of $\pi_j$
+contains a path from $u_i$ to $u_h$ with $O(|\rank(v_i)-\rank(v_h)|)$ edges.
+Because $\ell$ does not intersect $R$ and by the escape invariant, the boundary of $\pi_j$ intersects $R$ only at $v_j$. Moreover, again by the escape invariant, for each $v_i$ with $i > j$, $v_i$ lies outside of~$\pi_j$ except for $v_{j+1}$ that lies on its boundary. Because both $v_j$ and $v_{j+1}$ lie on the boundary of $\pi_j$, which does not intersect $R$ other than at $v_j$, we can connect $v_j$ with $v_{j+1}$ via a path contained in the boundary of~$\pi_j$ with length $O(|\rank(v_j) - \rank(v_{j+1})|)$. In this way, we extend $R$ to a plane path that connects $v_1$ with $v_{j+1}$.
 
 \begin{figure}[tb]
 \centering
@@ -369,16 +366,11 @@ contains a path from $u_i$ to $u_h$ consisting of $O(|\rank(v_i)-\rank(v_j)|)$ e
 \label{fig:Dented Halfspace}
 \end{figure}
 
-Because the boundary of $\pi$ does not intersect $R$ and by property (4) of the escape invariant, the boundary of $\pi_j$ intersects the portion of $R$ constructed so far only at $v_j$. Moreover, by property (2) of the escape invariant, each point of $S\setminus V(R)$ lies outside of~$\pi_j$ except for $v_{j+1}$ that lies on its boundary.
-Because both $v_j$ and $v_{j+1}$ lie on the boundary of $\pi_j$ and since this boundary does not intersect the interior of $R$, we can connect $v_j$ with $v_{j+1}$ with a path contained in the boundary of $\pi_j$. 
-Recall that this path has length $O(|\rank(v_j) - \rank(v_{j+1})|)$. In this way, we extend $R$ to a planar path that connects $v_1$ with $v_{j+1}$.
-
-After connecting $v_j$ with $v_{j+1}$, for each $h\in\{j+2,\ldots,n\}$, either $\Delta_h$ is disjoint from $R$, or it shares some portion of its boundary with $R$. However, the interior of $\Delta_h$ does not intersect $R$.
-To preserve the escape invariant, we translate $\pi$ and $\Delta_h$, for each $h\in\{j+1,\ldots,n\}$ downward by a sufficiently small amount, $\varepsilon$. Because each translated cone is contained in the previous one and since its apex $u_h$ lies above $v_h$ by property (1) of the escape invariant, by choosing $\varepsilon$ sufficiently small, we guarantee that the escape invariant is maintained.  Thus, the algorithm is ready to proceed to the next round and doing this $n-1$ times gives the following result.
+After connecting $v_j$ with $v_{j+1}$, for each $h\in\{j{+}2,\ldots,n\}$, either $\Delta_h$ is disjoint from $R$, or it shares some portion of its boundary with $R$. However, the interior of $\Delta_h$ does not intersect $R$.
+To preserve the escape invariant, for each $h\in\{j{+}2,\ldots,n\}$, we translate $\pi$ and $\Delta_h$ downwards by a sufficiently small amount, $\varepsilon$, and we scale $\Delta_{j+1}$ horizontally down, while keeping its apex at $v_{j+1}$. To conclude, each translated or scaled cone is contained in the previous one, $u_h$ lies above $v_h$, for each $h\in\{j+2,\ldots,n\}$, and $u_{j+1}$ coincides with $v_{j+1}$. Therefore, by choosing $\varepsilon$ sufficiently small, we maintain the escape invariant and obtain the following result.
 
 \begin{lemma}\label{lemma:Compatible augmentation for trivial components}
-Given an arbitrary order $(v_1, \ldots, v_n)$ of the vertices of $S$, the previous algorithm computes a plane path $R$ that connects every point of $S$ in the given order such that 
-$|R| = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right)$. 
+Given an order $(v_1, \ldots, v_n)$ of the vertices of $S$, there exists a plane path $R$ that connects every point of $S$ in the given order such that the number of vertices of $R$ between $v_{i-1}$ and $v_{i}$ is $O(|\rank(v_i) - \rank(v_{i-1})|)$, for each $i\in \{2,\dots,n\}$.
 \end{lemma}
 \begin{proof}
 Recall that in each iteration, the algorithms computes a path connecting $v_j$ with $v_{j+1}$ that does not cross the portion of the path already constructed. Because this invariant is maintained throughout, the resulting path is planar.
@@ -389,40 +381,28 @@ Since the path that connects $v_j$ with $v_{j+1}$ follows the boundary of $\pi_j
 
 
 \subsection{Compatible drawings of point sets}
-Recall that in this section, $\mathcal G$ is a graph with $n$ trivial components.
+Recall that in this section $\mathcal G$ is a graph with $n$ trivial components.
 Let $G_1, \ldots, G_k$ be $k$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a set of $n$ points in the plane.
-Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate. Otherwise, rotate the coordinate system slightly.
-Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ to the left of $v$.
+Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate.
+Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ using the Euclidean metric.  It is known that the length of
+$P$ is $O(n^{2-1/k})$~\cite{steele.snyder:worst}.
+Note that the order of the points of $P$ induces an order on the vertices of $\mathcal G$ and hence, an order on the vertices of each $G_i$.
 
-For each $v$ of $\mathcal G$, let $x_v = (\rank_{G_1}(v), \rank_{G_2}(v),
-\ldots, \rank_{G_k}(v))$ be a point in the integer grid of side-length
-$n$ contained in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$
-and let $P$ be the Euclidean shortest Hamiltonian path of $X$, i.e., the shortest
-path that visits every point of $X$.  It is known that the length of
-$P$ is $O(n^{2-1/k})$~\cite{steele.snyder:worst}. 
-Note that the order of the points of $P$ induces an order on the vertices of $\mathcal G$ and hence, an order on the points of each $G_i$. 
 
 
 \begin{theorem}\label{theorem:points}
-For each $1\leq i\leq n$, we can construct a path $R_i$ of length $O(n^{2-1/k})$ that connects every point of $G_i$ such that $G_i\cup R_i$ is plane. Moreover, for each $1\leq i < j \leq n$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
+For each $i\in \{1,\dots,n\}$, we can construct a path $R_i$ of length $O(n^{2-1/k})$ that connects every point of $G_i$ so that $G_i\cup R_i$ is plane. Moreover, for any distinct $i,j\in \{1,\dots,n\}$, $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
 \end{theorem}
 \begin{proof}
-By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices
-of $\mathcal{G}$ induced by $P$.  The augmented graph $\mathcal{H}$
-is a path that visits the vertices $v_1,\ldots,v_n$ in this order.
-Letting $d_j$ denote the distance between $x_{v_j}$ and $x_{v_{j+1}}$,
-the path $\mathcal{H}$ includes an addition $O(d_j)$ vertices between
-$v_{j}$ and $v_{j+1}$.  It immediately follows that the number of vertices
+By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices of $\mathcal{G}$ induced by $P$.  The augmented graph $\mathcal{H}$ is a path that visits the vertices $v_1,\ldots,v_n$ in this order. Letting $d_j$ denote the Euclidean distance between $x_{v_j}$ and $x_{v_{j+1}}$, the path $\mathcal{H}$ includes an additional $O(d_j)$ vertices between $v_{j}$ and $v_{j+1}$.  It follows that the number of vertices
 in $\mathcal{H}$ is proportional to the length of $P$, which is $O(n^{2-1/k})$.
 
-Next, for each $G_i$, we use Lemma~\ref{lemma:Compatible augmentation
-for trivial components} to draw $\mathcal{H}$ as a plane path, $R_i$,
-that connects the vertices $v_1,\ldots,v_n$ in the drawing $G_i$.
+For each $G_i$, we use Lemma~\ref{lemma:Compatible augmentation for trivial components} to draw $\mathcal{H}$ as a plane path, $R_i$,
+that connects the vertices $v_1,\ldots,v_n$ in this order in the drawing $G_i$.
 Since $d_j\ge |\rank_{G_i}(v_j) - \rank_{G_i}(v_{j+1})|$, the $O(d_j)$
 vertices in $\mathcal{H}$ between $v_j$ and $v_{j+1}$ are enough to
 draw the $O(|\rank_{G_i}(v_j) - \rank_{G_i}(v_{j+1})|)$ vertices in $R_i$
 between $v_j$ and $v_{j+1}$.
-
 Since the vertices of each $G_i$ are connected in the same order,
 $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $i,j\in\{1,\ldots,k\}$.
 \end{proof}
@@ -434,45 +414,36 @@ Section~\ref{section:Trivial components} to graphs with
 non-trivial components.  We follow the same general scheme used in
 Section~\ref{section:Trivial components} for the case of trivial
 (isolated vertex) components:  We define $k$ different
-orderings on the components of $\mathcal G$ and use these orderings (and
+orderings of the components of $\mathcal G$ and use these orderings (and
 the sizes of these components) to define an $r$-point set, $X$, in $\R^k$. A
 short path that visits all points in $X$ is then translated back into
-a short path, $R$, that visits each component of $\mathcal G$. The path
-$R$ is then 
+a short path, $R$, that visits all components of $\mathcal G$. The path
+$R$ is then
 added, as a polygonal path, $R_i$, to each drawing, $G_i$, of $\mathcal G$.
 
-Things are somewhat more complicated because, unlike the case in which
+Unlike the case in which
 components are isolated vertices, there is no natural ordering of the
-components of $G_i$, so we must define one. Next, the drawing
-of the path $R_i$ is considerably more complicated.  In the Section~\ref{section:Trivial components}, $R_i$ is drawn incrementally and always passes above components that are not yet included in $R_i$ and passes below components that are already included in $R_i$.  In this section, we have to find meaningful definition of ``above'' and ``below'' and be quite careful because the costs of going ``above'' or ``below'' components depends on the size and structure of those components.
-
-We begin with some careful definitions because, when a component is not an
-isolated vertex, we have to be considerably more specific about how the
-path, $R$, to it.
-
+components of $G_i$, so we must define one. Also, the drawing
+of path $R_i$ is considerably more complicated.  In Section~\ref{section:Trivial components}, $R_i$ is drawn incrementally, and always passes above components that are not yet included in $R_i$ and below components that are already included in $R_i$.  In this section, we redefine ``above'' and ``below''. The cost of going above or below a component depends on its size and structure.
 
 \subsection{Preliminaries}\label{section:Preliminaries} 
 Let $C$ be a connected geometric plane graph. Let $v_0, v_1, \ldots, v_k, v_0$ be the sequence of vertices of $C$ visited by a counterclockwise
 Eulerian tour along the boundary of the outer face of $C$. Note that
-$v_i$ may be equal to $v_j$ for some $i\neq j$.  A vertex of $v_i$
-in this sequence is called a \emph{corner} of $C$.  In this paper,
-we consider the boundary of $C$, denoted by $\partial C$, to be the
+$v_i$ may be equal to $v_j$ for some $i\neq j$.  A vertex $v_i$
+in this sequence is called a \emph{corner} of $C$.  We consider the boundary of $C$, denoted by $\partial C$, to be the
 boundary of the weakly-simple polygon $(v_0, \ldots, v_k, v_0)$ whose
-vertex set is the set of corners of $C$.\footnote{More formally, $\partial C$ is the boundary of the unbounded component of $\mathbb{R}^2\setminus C$, where we treat $C$ as the union of all its edges and vertices.}  
+vertex set is the set of corners of $C$.\footnote{More formally, $\partial C$ is the boundary of the unbounded component of $\mathbb{R}^2\setminus C$, where we treat $C$ as the union of all its edges and vertices.}
 
-Let $\varepsilon >0$. For each corner $v_i$ of $\partial C$,
-let $\ell_i$ be the line passing through $v_i$ that bisects the angle between the edges $v_{i-1}v_i$ and $v_i v_{i+1}$.
-Let $z_i$ be the point at distance $\varepsilon$ from $v_i$ along $\ell_i$ such that $v_{i-1} v_i z_i$ either makes a right turn or defines three collinear points such that $v_i\in [v_{i-1}, z_i]$. We call $z_i$ the \emph{$\varepsilon$-copy} of $v_i$.
-Let $\partial_\varepsilon C$ be the polygon defined by the sequence $(z_0, z_1, \ldots, z_k, z_0)$, i.e., $\partial_\varepsilon C$ is isomorphic to $\partial C$ (but not necessarily to $C$). We call $\partial_\varepsilon C$ the \emph{$\varepsilon$-fattening} of $C$.
+Let $\varepsilon >0$. For each corner $v_i$ of $\partial C$, let $\ell_i$ be the half-line starting at $v_i$ that bisects the angle between the edges $v_{i-1}v_i$ and $v_i v_{i+1}$ in the outer face of $C$. Let $z_i$ be the point at distance $\varepsilon$ from $v_i$ along $\ell_i$. We call $z_i$ the \emph{$\varepsilon$-copy} of $v_i$. Let $\partial_\varepsilon C$ be the polygon defined by the sequence $(z_0, z_1, \ldots, z_k, z_0)$, i.e., $\partial_\varepsilon C$ is isomorphic to $\partial C$ (but not necessarily to $C$). We call $\partial_\varepsilon C$ the \emph{$\varepsilon$-fattening} of $C$.
 An $\varepsilon$-fattening $\partial_\varepsilon C$ is \emph{simple} if $\partial_\varepsilon C$  is a simple polygon that contains~$C$.
 Note that $\partial_\varepsilon C$ is simple, provided that $\varepsilon$ is sufficiently small. In this paper, we consider only simple $\varepsilon$-fattenings; see Figure~\ref{fig:Blowing}. Note that the (graph) distance between two corners of $\partial C$ along the boundary of $C$ is the same as the distance between their $\varepsilon$-copies along~$\partial_\varepsilon C$.
 
 %%%%%%%%%%%%%%%
 \subsection{Connected augmentations}\label{section: connected augmentations}
 Let $G$ be a geometric plane graph with $r$ connected components such that each component is adjacent to the outer face.
-Consider the visibility graph of $G$ where two vertices are visible if the open segment joining them does not intersect $G$.
+Two vertices are {\em visible} if the open segment joining them does not intersect $G$.
 Let $T_G$ be a smallest set of edges of the visibility graph of $G$ that need to be added to $G$ to make it connected.
-Because there are always two components visible from each other, we can connect them and repeat recursively with one less component.  This implies that $T_G$ has $r-1$ edges. (Loosely, we can think of $T_G$ as a spanning tree of $G$'s components.) Let $G^* = G\cup T_G$.  We say that $G^*$ is a \emph{connected augmentation} of $G$; see Figure~\ref{fig:Blowing}.
+As there are always two components containing mutually visible vertices, we can connect them and repeat recursively.  Thus, $T_G$ has $r-1$ edges. (Loosely, we can think of $T_G$ as a spanning tree of $G$'s components.) Let $G^* = G\cup T_G$.  We say that $G^*$ is a \emph{connected augmentation} of $G$; see Figure~\ref{fig:Blowing}.
 
 \begin{figure}[tb]
 \centering
@@ -482,25 +453,21 @@ Because there are always two components visible from each other, we can connect 
 \label{fig:Blowing}
 \end{figure}
 
-Let $C_1, \ldots, C_r$ be the components of $G$. 
-Recall that we consider $\partial C_i$ to be the boundary of a weakly-simple polygon. Therefore, even though a vertex of $C_i$ can appear multiple times along $\partial C_i$, we consider them as different corners of $\partial C_i$. 
-For each $1\leq i\leq r$, let $a_i\in C_i$ be an arbitrary corner of $\partial C_i$ (note that $a_i$ is adjacent to the outer face).
+Let $C_1, \ldots, C_r$ be the components of $G$.
+%Recall that we consider $\partial C_i$ to be the boundary of a weakly-simple polygon. Therefore, even though a vertex of $C_i$ can appear multiple times along $\partial C_i$, we consider them as different corners of $\partial C_i$.
+For each $i\in \{1,\dots,r\}$, let $a_i\in C_i$ be an arbitrary corner of $\partial C_i$ (note that $a_i$ is adjacent to the outer face).
 We call $a_i$ the \emph{attachment corner} of $C_i$.
 
-Let $\varphi$ be the path obtained by splitting $\partial G^*$ at the corner $a_1$. 
-That is, $\varphi$ is a path with both endpoints equal to $a_1$. 
-Note that $\varphi$ visits every corner of $\partial G^*$ exactly once except for $a_1$.
+Let $\varphi$ be the path on the corners of $\partial G^*$ (hence $\varphi$ is also a walk on the vertices of $\partial G^*$) obtained by splitting $\partial G^*$ at the corner $a_1$. That is, $\varphi$ is a path that visits every corner of $\partial G^*$ exactly once except for $a_1$, that is visited twice.
 Given two corners $u$ and $v$ in $\partial G^*$, let $\varphi(u,v)$ denote
 the unique path in $\varphi$ that connects $u$ with $v$. Let $A(u,v)$ be
-the set of attachment corners of $G$ visited by $\varphi(u,v)$. Define 
-\[
-     \sigma_G(u,v) = |\varphi(u,v)| + \sum_{a_i\in A(u,v)}|\partial C_i| \enspace ,
-\]
-which we call the \emph{cost} of going from $u$ to $v$.
+the set of attachment corners of $G$ visited by $\varphi(u,v)$. Define
+    $$ \sigma_G(u,v) = |\varphi(u,v)| + \sum_{a_i\in A(u,v)}|\partial C_i|,$$
+which we call the \emph{cost} of going from $u$ to $v$. 
+%Intuitively, the cost of going from $u$ to $v$ depends heavily on the number of corners visited by $\varphi(u,v)$.
 
 \begin{lemma}\label{lemma:Contained in integer grid}
-  If $a$ is an attachment corner of $G$, then $\sigma_G(a_1, a) \leq
-  4n$. Moreover, if $b$ is another attachment corner of $G$, then
+    If $a$ is an attachment corner of $G$, then $\sigma_G(a_1, a) < 4n$. Moreover, if $b$ is another attachment corner of $G$, then
   $\sigma_G(a, b) =  |\sigma_G(a_1, a)- \sigma_G(a_1, b)|$.
 \end{lemma}
 \begin{proof}
@@ -528,28 +495,25 @@ Given a path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that passes through all atta
    \label{figure:right-of}
 \end{figure}
 
-We want to construct a path $R$ (possibly containing Steiner vertices) that connects the attachment corners of $G$ in the given order, i.e., if $i < j$, then $a_i$ is visited before $a_j$ by $R$.
-We want to construct $R$ in such a way that each component $C_i$ of $G$ lies to the right of~$R$.
-Moreover, we want that $|R| = O(\sum_{j=1}^{n-1} \sigma_G(a_j, a_{j+1}))$.
-We construct such a path incrementally, starting with the trivial path that contains only $a_1$.
-
-Recall that  for any given $\varepsilon >0$, $\partial_\varepsilon G^*$ denotes the $\varepsilon$-fattening of $G^*$ (see Section~\ref{section:Preliminaries}). 
+We want $R$ to connect the attachment corners of $G$ in the given order, i.e., if $i < j$, then $a_i$ is visited before $a_j$ by $R$. We want to construct $R$ so that each component $C_i$ of $G$ lies to the right of~$R$.
+Moreover, we want the subpath of $R$ between $a_j$ and $a_{j+1}$ to have $O(\sigma_G(a_j, a_{j+1}))$ vertices. 
+We initialize $R$ with the trivial path that contains only $a_1$, and then modify $R$ iteratively, so that each new corner $a_i$ is included in $R$.
+Recall that  for any given $\varepsilon >0$, $\partial_\varepsilon G^*$ denotes the $\varepsilon$-fattening of $G^*$ (see Section~\ref{section:Preliminaries}).
 Let $\mu>0$ be a small constant to be specified later.
-Initially, let $\varepsilon = 2\mu$ and let $\delta = \mu/2$. Let $\lambda < \mu/2^{r+1}$ be a constant sufficiently small so that $\partial_\lambda C_i \cap \partial_\lambda C_j = \emptyset$ for each $i,j\in\{1,\ldots,r\}$.
-Throughout, $\lambda$ remains constant while $\varepsilon$ and $\delta$ are redefined on each round. However, as an invariant we maintain $\lambda < \delta < \varepsilon$.
+Initially, let $\varepsilon = 2\mu$ and let $\delta = \mu/2$. Let $\lambda < \mu/2^{r+1}$ be a constant sufficiently small so that $\partial_\lambda C_i \cap \partial_\lambda C_j = \emptyset$ for any distinct $i,j\in\{1,\ldots,r\}$.
+Throughout, $\lambda$ remains constant while $\varepsilon$ and $\delta$ are redefined at each iteration. However, as an invariant we maintain $\lambda < \delta < \varepsilon$.
 
-For each $1\leq i\leq r$, let $w_i$ be the $\varepsilon$-copy of  $a_i$.
+For each $i\in \{1,\dots,r\}$, let $w_i$ be the $\varepsilon$-copy of  $a_i$.
 Split $\partial_\varepsilon G^*$ at $w_1$, i.e., $\partial_\varepsilon G^*$ is a path with both endpoints equal to $w_1$.
 By choosing $\varepsilon$ sufficiently small, we guarantee that $\partial_\varepsilon G^*$ is simple, i.e., $\partial_\varepsilon G^*$ is isomorphic to $\varphi$.
-
 We say that two points in the plane are \emph{$R$-visible} if the open segment joining them does not intersect $R$.
-Let $\tau >0$. For each $1\leq i\leq r$ such that $a_i$ is not an interior point of $R$, consider the set of points $N_i\subset \partial_\varepsilon G^*$ that are at distance at most $\tau$ from $w_i$. 
-Let $\Delta_i$ be the convex hull of $\ch{N_i\cup \{a_i\}}$, i.e., $\Delta_i$ is a ``cone'' with apex at $a_i$; see Figure~\ref{fig:Neighborhood}. (We deliberately misuse the word ``cone'' here because the ``cones'' $\Delta_1,\ldots,\Delta_r$ in this section play the same roles as the cones $\Delta_1,\ldots,\Delta_n$ in Section~\ref{section:Trivial components}.)
+Let $\tau >0$. For each $i\in \{1,\dots,r\}$ such that $a_i$ is not an interior point of $R$, consider the set of points $N_i\subset \partial_\varepsilon G^*$ that are at distance at most $\tau$ from $w_i$.
+Let $\Delta_i$ be the convex hull of $N_i\cup \{a_i\}$, i.e., $\Delta_i$ is a ``cone'' with apex at $a_i$; see Figure~\ref{fig:Neighborhood}. We deliberately misuse the word ``cone'' here because the ``cones'' $\Delta_1,\ldots,\Delta_r$ in this section play the same roles as the cones $\Delta_1,\ldots,\Delta_n$ in Section~\ref{section:Trivial components}.
 
-Throughout, we maintain also the \emph{escape invariant} which states that (1) $R$ intersects neither $\partial_\varepsilon G^*$ nor its unbounded face; (2) for each $a_i\notin V(R)$, $R$ intersects neither the simple polygon bounded by $\partial_\delta C_i$ nor the cone $\Delta_i$; and (3) $\Delta_i\cap \Delta_j = \emptyset$, for each $i,j\in\{1,\ldots,r\}$.
 
-In particular, the escape invariant implies that every point in $N_i$ is $R$-visible from $a_i$ (including $w_i$).
-Note that the escape invariant holds at the beginning, provided that the initial choice of $\tau$ is sufficiently small.
+While constructing $R$, we also maintain the \emph{escape invariant} which is defined as follows. Assume that $R$ so far connects $a_1$ with $a_i$, for some $i\in \{1,\dots,r-1\}$. Then: (1) $R$ intersects neither $\partial_\varepsilon G^*$ nor its unbounded face; (2) for each $j>i$, $R$ intersects neither the simple polygon bounded by $\partial_\delta C_j$ nor the cone $\Delta_j$; and (3) $\Delta_h\cap \Delta_j = \emptyset$, for any distinct $h,j\in\{1,\ldots,r\}$. 
+
+In particular, the escape invariant implies that every point in $N_j$ (including $w_j$) is $R$-visible from $a_j$. The escape invariant holds when $R=\{a_1\}$, provided that $\tau$ is sufficiently small.
 
 \begin{figure}[tb]
 \centering
@@ -559,19 +523,9 @@ Note that the escape invariant holds at the beginning, provided that the initial
 \label{fig:Neighborhood}
 \end{figure}
 
-Assume that we have constructed a path $R$ that connects $a_1$ with $a_j$
-for some $j\in\{1,\ldots,r-1\}$.  Moreover, assume that the escape
-invariant holds.  To extend $R$, we create a new path that connects
-$a_j$ with $a_{j+1}$ without crossing $R$ while maintaining the escape
-invariant.  Recall that we consider $\partial_\varepsilon G_i^*$ to be
-a path with both endpoints on~$w_1$.
+Assume that we have constructed a path $R$ that connects $a_1$ with $a_j$, for some $j\in\{1,\ldots,r-1\}$, and that the escape invariant holds.  To extend $R$, we create a new path that connects $a_j$ with $a_{j+1}$ without crossing $R$ while maintaining the escape invariant.  Recall that we consider $\partial_\varepsilon G^*$ to be a path with both endpoints on~$w_1$.
 
-
-If $j>1$, then we need to be careful in the neighbourhood of $a_j$ as we want $R$ to have $C_j$ to its right. 
-If the path $R$ together with the edge $a_j w_j$ leaves $C_j$ to its right, then walk from $a_j$ to $w_j$ in straight line.
-Because the escape invariant holds, we know that $w_j$ is $R$-visible form $a_j$ and hence, this edge does not cross $R$.
-If $R$ together with $a_j w_j$ does not leave $C_j$ to its right, then walk from $a_j$ to $\partial_\lambda C_j$ instead and traverse $\partial_\lambda C_j$ in clockwise order without crossing $R$ before moving to $w_j$ on $\partial_\varepsilon G^*$. In this way, we guarantee that $C_j$ lies to the right of the constructed path; see Figure~\ref{fig: Component to the right} for an illustration. 
-Because $\lambda < \delta < \varepsilon$ and since $a_i\in V(R)$, the escape invariant is preserved.
+The first part of the path connecting $a_j$ with $a_{j+1}$ consists of a path connecting $a_j$ with $w_j$. If $j=1$, or if $j>1$ and $R$ together with the edge $a_j w_j$ leaves $C_j$ to its right, then connect $a_j$ with $w_j$ via a straight-line segment; since $w_j$ is $R$-visible from $a_j$, this segment does not cross $R$. Otherwise, connect $a_j$ with $\partial_\lambda C_j$ via a straight-line segment and traverse $\partial_\lambda C_j$ in clockwise order without crossing $R$ before moving to $w_j$ on $\partial_\varepsilon G^*$. In this way, we guarantee that $C_j$ lies to the right of the constructed path; see Figure~\ref{fig: Component to the right} for an illustration. Because $\lambda < \delta < \varepsilon$ and since $a_i\in V(R)$, the escape invariant is preserved.
 
 \begin{figure}[tb]
 \centering
@@ -581,10 +535,8 @@ Because $\lambda < \delta < \varepsilon$ and since $a_i\in V(R)$, the escape inv
 \label{fig: Component to the right}
 \end{figure}
 
-After reaching $w_j$, we follow $\partial_\varepsilon G^*$ along the unique path that connects $w_j$ with $w_{j+1}$. 
-However, whenever we reach an endpoint of $N_i$ for some $1\leq i\leq r$ such that $a_i\notin V(R)$, we take a detour to the other endpoint of $N_i$ while avoiding its interior so that the points in the interior of $N_i$ remain $R$-visible from $a_i$; see Figure~\ref{fig:Skip Component}. Formally, we walk from the reached endpoint of $N_i$ to $\partial_\delta C_i\setminus \Delta_i$ along the boundary of $\Delta_i$. Then, we traverse the path $\partial_\delta C_i\setminus \Delta_i$ before moving to the other endpoint of $N_i$ from the endpoint of $\partial_\delta C_i \setminus \Delta_i$. In this way, we avoid crossing the cone $\Delta_i$. 
-Note that $R$ does not intersect the interior of the simple polygon bounded by $\partial_\delta C_i$ nor the interior of $\Delta_i$.
-Moreover, $R$ never goes out of the simple polygon bounded by $\partial_\varepsilon G^*$.
+The path from $a_j$ to $a_{j+1}$ continues with a path from $w_j$ to $w_{j+1}$, which follows the unique path in $\partial_\varepsilon G^*$ from $w_j$ to $w_{j+1}$. However, whenever we reach an endpoint of $N_i$ for some $i\in \{1,\dots,r\}$ such that $i>j+1$, we take a detour to the other endpoint of $N_i$ while avoiding its interior so that the points in the interior of $N_i$ remain $R$-visible from $a_i$; see Figure~\ref{fig:Skip Component}. Formally, we walk from the reached endpoint of $N_i$ to $\partial_\delta C_i\setminus \Delta_i$ along the boundary of $\Delta_i$. Then, we traverse the path $\partial_\delta C_i\setminus \Delta_i$ before moving to the other endpoint of $N_i$ from the endpoint of $\partial_\delta C_i \setminus \Delta_i$. In this way, we avoid crossing the cone $\Delta_i$. Note that $R$ does not intersect the interior of the simple polygon bounded by $\partial_\delta C_i$ nor the interior of $\Delta_i$. Moreover, $R$ remains inside the simple polygon bounded by $\partial_\varepsilon G^*$.
+
 
 \begin{figure}[tb]
 \centering
@@ -596,20 +548,19 @@ Moreover, $R$ never goes out of the simple polygon bounded by $\partial_\varepsi
 Once we go around $C_i$, we are back on $\partial_\varepsilon G^*$ on the other endpoint of $N_i$. In this way, we continue going towards~$w_{j+1}$ along $\partial_\varepsilon G^*$ until reaching an endpoint of $N_{j+1}$.
 Once we reach an endpoint of $N_{j+1}$, we move directly from this endpoint to $a_{j+1}$.
 
-Because $\partial_\varepsilon G^*$ is isomorphic to $\varphi$, the constructed $a_j$-$a_{j+1}$-path has length at most $|\varphi(a_j, a_{j+1})|$ plus the length of the boundaries of the components that we walked around. 
-Because each avoided component has its attachment corner on the path $\varphi(a_j, a_{j+1})$ (i.e. in $A(a_j, a_{j+1})$), the length of the constructed $a_j$-$a_{j+1}$-path is 
+Because $\partial_\varepsilon G^*$ is isomorphic to $\varphi$, the constructed path between $a_j$ and $a_{j+1}$ has length at most $|\varphi(a_j, a_{j+1})|$ plus the length of the boundaries of the components that we walked around. Because each component we walked around has its attachment corner on the path $\varphi(a_j, a_{j+1})$, and thus in $A(a_j, a_{j+1})$, the length of the constructed path between $a_j$ and $a_{j+1}$ is
 \[ O\left(|\varphi(a_j, a_{j+1})| + \sum_{a_i\in A(a_j, a_{j+1})} |C_i|\right) = O(\sigma_G(a_j, a_{j+1})) \enspace .
 \]
 
-After reaching $a_{j+1}$, we increase $\varepsilon$ by a factor of two. Similarly, we decrease de value of $\delta$ by a factor of two. That is, after reaching $a_{j+1}$, $\varepsilon = \mu 2^{j+1}$ while $\delta = \mu/2^{j+1}$ and hence, we guarantee that $\lambda < \delta < \varepsilon$.
-We can guarantee that $\partial_\varepsilon G^*$ remains simple, provided that the original choice of $\mu$ is sufficiently small. 
-Finally, for each $1\leq i\leq n$, we reduce the size of the neighborhood $N_i$ by reducing $\tau$ by a factor of two and updating the cone $\Delta_i$ accordingly, i.e., we narrow the cone $\Delta_i$; see Figure~\ref{fig:Skip Component}$(c)$. 
+After reaching $a_{j+1}$, we increase $\varepsilon$ by a factor of two. Similarly, we decrease the value of $\delta$ by a factor of two. That is, after reaching $a_{j+1}$, $\varepsilon = \mu 2^{j+1}$ while $\delta = \mu/2^{j+1}$ and hence, we guarantee that $\lambda < \delta < \varepsilon$.
+Also, $\partial_\varepsilon G^*$ is still simple, provided that $\mu$ is initially chosen to be sufficiently small.
+Finally, we reduce $\tau$ by a factor of two and update $N_i$ and $\Delta_i$ accordingly, for each $i\in \{1,\dots,n\}$; see Figure~\ref{fig:Skip Component} (c).
 
-Recall that for each $a_i\notin R$, $R$ intersected neither the interior of $\Delta_i$ nor the interior of the polygon bounded by $\partial_\delta C_i$. Moreover, $R$ never went out of $\partial_\varepsilon G^*$.
-Therefore, after increasing (\emph{resp.} reducing) $\varepsilon$ (\emph{resp.} $\delta$), we preserve the escape invariant for the next round of the algorithm.
-We repeat this algorithm until all attachment corners of $G$ are visited by $R$.
+Recall that for each $a_i\notin R$, $R$ intersected neither the interior of $\Delta_i$ nor the interior of the polygon bounded by $\partial_\delta C_i$. Moreover, $R$ remained within $\partial_\varepsilon G^*$.
+Therefore, after increasing (\emph{resp.} reducing) $\varepsilon$ (\emph{resp.} $\delta$), we preserve the escape invariant for the next iteration of the algorithm.
+We iterate until all attachment corners of $G$ are visited by $R$.
 
-Figure~\ref{figure:big-example} is a schematic diagram that illustrates the preceding algorithm on a small example.  In this example, the path from $a_1$ to $a_2$ passes by $a_4$, so $R$ detours around $C_4$ in order to preserve the escape invariant at $a_4$.  After $R$ attaches to $a_2$ and $a_3$, it winds around components $C_2$ and $C_3$, respectively, in order to ensure that these components attach to the right of $R$.
+Figure~\ref{figure:big-example} illustrates the preceding algorithm on a small example.  In this example, the path from $a_1$ to $a_2$ passes by $a_4$, so $R$ detours around $C_4$ in order to preserve the escape invariant at $a_4$.  After $R$ attaches to $a_2$ and $a_3$, it winds around components $C_2$ and $C_3$, respectively, in order to ensure that these components attach to the right of $R$.
 
 \begin{figure}
    \centering{\includegraphics{img/big-example}}
@@ -618,7 +569,7 @@ Figure~\ref{figure:big-example} is a schematic diagram that illustrates the prec
 \end{figure}
 
 \begin{lemma}\label{lemma:Path for connected augmentations}
-Given an arbitrary order $a_1, \ldots, a_r$ of the attachment corners of $G$, the previous algorithm computes a path $R$ connecting all attachment corners of $G$ in the given order such that $R\cup G$ is plane, $|R| = O(\sum_{j=1}^{n-1} \sigma_G(a_j, a_{j+1}))$, and for each $i\in\{1,\ldots,r\}$, $C_i$ lies to the right of $R$ when oriented from $a_1$ to $a_r$.
+Given an arbitrary order $a_1, \ldots, a_r$ of the attachment corners of $G$, there is a path $R$ connecting all attachment corners of $G$ in the given order such that $R\cup G$ is plane, every component $C_i$ of $G$ lies to the right of $R$ when oriented from $a_1$~to~$a_r$, and the subpath of $R$ between $a_j$ and $a_{j+1}$ has $O(\sigma_G(a_j, a_{j+1}))$ vertices, for each $j\in \{1,\dots,r-1\}$.
 \end{lemma}
 \begin{proof}
 By construction, the attachment corners are visited by $R$ in the given order. For each component $C_i$, $a_i$ is the only vertex of $C_i$ visited by $R$. Moreover, the construction guarantees that $C_i$ lies to the right of $R$ when oriented from $a_1$ to $a_r$.
@@ -632,48 +583,37 @@ Because the length of $\gamma_j$ is $O(\sigma_G(a_j, a_{j+1}))$, the total lengt
 \end{proof}
 
 \subsection{Compatible drawings of planar graphs}
-Let $\mathcal G$ be a planar graph with $n$ vertices and $r$ connected components.
-Let $G_1, \ldots, G_k$ be $k$ plane isomorphic drawings of $\mathcal G$. 
-For now, we will assume that, in these drawings, every component of $\mathcal G$ has at least one vertex incident on the outer face.  At then of this section, we will show how to remove this restriction.
-We show how to construct a compatible augmentation of $\mathcal G$ of size $O(nr^{1-1/k})$.
+Let $\mathcal G$ be a planar graph with $n$ vertices and $r$ connected
+components.  Let $G_1, \ldots, G_k$ be $k$ plane isomorphic drawings
+of $\mathcal G$.  For now, we will assume that, in these drawings,
+every component of $\mathcal G$ has at least one vertex incident to
+the outer face.  (In the Appendix, we show that this is not a real
+restriction; one can apply the same algorithm to each face of $\mathcal
+G$.)  We show how to construct a compatible augmentation of $\mathcal G$
+of size $O(nr^{1-1/k})$.
 
-Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components
-of $\mathcal G$.  Because the drawings $G_1,\ldots,G_k$, all the plane
-drawings of $\mathcal G$ that we consider are isomorphic, we can select
-one attachment corner from each component in the drawing $G_1$, and this
-attachment corner also appears in each of the drawings $G_2,\ldots,G_k$.
-Thus, for each $j\in\{1,\ldots,r\}$, we can choose an attachment corner
-$a_j$ of $\partial C_j$ such that $a_j$ is adjacent to the outer face
-of $C_j$.
+Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components of $\mathcal G$.  Because $G_1,\ldots,G_k$ are isomorphic, we can select one attachment corner from each component in the drawing $G_1$, and this attachment corner also appears in each of $G_2,\ldots,G_k$. Thus, for each $j\in\{1,\ldots,r\}$, we choose an attachment corner $a_j$ of $\partial C_j$ such that $a_j$ is incident to the outer face of $C_j$.
 
-For each $1\leq j\leq r$, let $G_j^*$ be a connected augmentation of $G_j$, as defined in Section~\ref{section: connected augmentations}.
-For each $i\in\{1,\ldots,k\}$ and for each $j\in\{1,\ldots,r\}$, let $\rank_i(j) = \sigma_{G_i}(a_1, a_j)$.
-For each $j\in\{1,\ldots,r\}$, we define a point $x_j\in \mathbb{R}^k$ that correspond to the component $C_j$ such that 
-$x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}\subset\R^k$ denote the resulting set of points
-and observe that Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $4n$.
+For each $i\in \{1,\dots,k\}$, let $G_i^*$ be a connected augmentation of $G_i$, as defined in Section~\ref{section: connected augmentations}. For each $i\in\{1,\ldots,k\}$ and $j\in\{1,\ldots,r\}$, let $\rank_i(j) = \sigma_{G_i}(a_1, a_j)$. For each $j\in\{1,\ldots,r\}$, let $x_j\in \mathbb{R}^k$ be a point corresponding to the component $C_j$ such that $x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}\subset\R^k$ denote the resulting set of points. Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $4n$.
 
-Let $P$ be the shortest Euclidean Hamiltonian path of $X$, i.e., the shortest path that visits every point of $X$.
-Because $X$ is contained in the $k$-dimensional integer grid of side-length $4n$ and $|X| = r$, the maximum (Euclidean) length of the path $P$ is
-$O(nr^{1-1/k})$~\cite{steele.snyder:worst}. 
-The order of the points in $P$ induces an order on the components of $\mathcal G$ and hence, an order on the attachment corners of each $G_i$. 
+Let $P$ be the shortest Euclidean Hamiltonian path of $X$. Because $X$ is contained in the $k$-dimensional integer grid of side-length $4n$ and $|X| = r$, the maximum (Euclidean) length of $P$ is $O(nr^{1-1/k})$~\cite{steele.snyder:worst}. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
 
 \begin{theorem}\label{theorem:main}
 For each $1\leq i\leq k$, we can construct a path $R_i$ of length $O(nr^{1-1/k})$ that connects every component of $G_i$ such that $G_i\cup R_i$ is plane. Moreover, for each $1\leq i<j\leq k$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
 \end{theorem}
 \begin{proof}
-For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations} to construct a plane path $R_i$ that connects the attachment corners of $G_i$ in the order induced by $P$.
-Assume that $(a_1, \ldots, a_r)$ is the order of the attachment corners of $G_i$ induced by $P$.
-Lemma~\ref{lemma:Path for connected augmentations} implies that $|R_i| = O(\sum_{j=1}^{n-1} \sigma_{G_i}(a_j, a_{j+1}))$.
+By relabelling, let $(a_1, \ldots, a_r)$ denote the order of the attachment corners of $G_i$ induced by $P$.  Letting $d_j$ denote the Euclidean distance between $x_j$ and $x_{j+1}$, we denote by $\mathcal{H}$ a path that passes through (the vertices corresponding to corners) $a_1, \ldots, a_r$ in this order, and that includes an additional $O(d_j)$ vertices between $a_{j}$ and $a_{j+1}$.  Thus, the number of vertices in $\mathcal{H}$ is proportional to the length of $P$, which is $O(nr^{1-1/k})$.
 
-Because $\sigma_{G_i}(a_j, a_{j+1}) = |\sigma_{G_i}(a_1, a_{j+1}) - \sigma_{G_i}(a_1, a_j)|$ by Lemma~\ref{lemma:Contained in integer grid} and from the fact that $\rank_i(j) = \sigma_{G_i}(a_1, a_j)$, we get that  $\sigma_{G_i}(a_j, a_{j+1}) = |\rank_i(j+1) - \rank_i(j)|$.
-Therefore, $|R_i|  = O\left(\sum_{j=1}^{n-1} |\rank_i(j+1) - \rank_i(j)|\right)$.
+For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations} to draw $\mathcal{H}$ as a plane path, $R_i$, that connects $a_1, \ldots, a_r$ in this order. Since $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$. Thus, the $O(d_j)$ vertices in $\mathcal{H}$ between $a_j$ and $a_{j+1}$ are enough to
+draw the $O(|\rank_i(j+1) - \rank_i(j)|)$ vertices in $R_i$ between $a_j$ and $a_{j+1}$. 
 
-Let $d_j$ denote the distance between $x_j$ and $x_{j+1}$ in $P$. 
-Because $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$ . 
-Therefore, the path contained in $R_i$ has length $O\left(\sum_{j=1}^{n-1} |\rank_i(j+1) - \rank_i(j)|\right) = O(\sum_{j=1}^{n-1} d_j)$. 
-Because $\sum_{j=1}^{n-1} d_j = |P| = O(nr^{1-1/k})$, the length $R_i$ is $O(nr^{1-1/k})$.
+% For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations} to construct a plane path $R_i$ that connects the attachment corners of $G_i$ in the order induced by $P$. Assume that $(a_1, \ldots, a_r)$ is the order of the attachment corners of $G_i$ induced by $P$. Lemma~\ref{lemma:Path for connected augmentations} implies that $|R_i| = O(\sum_{j=1}^{n-1} \sigma_{G_i}(a_j, a_{j+1}))$.
 
-Since each $R_i$ visits each component only at its attachment corner and from the fact that $R_i$ leaves every component to the right when oriented from $a_1$ to $a_r$, we conclude that $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $1\leq i<j\leq k$.
+%Because $\sigma_{G_i}(a_j, a_{j+1}) = |\sigma_{G_i}(a_1, a_{j+1}) - \sigma_{G_i}(a_1, a_j)|$ by Lemma~\ref{lemma:Contained in integer grid} and since $\rank_i(j) = \sigma_{G_i}(a_1, a_j)$, we get that  $\sigma_{G_i}(a_j, a_{j+1}) = |\rank_i(j+1) - \rank_i(j)|$. Therefore, $|R_i|  = O\left(\sum_{j=1}^{n-1} |\rank_i(j+1) - \rank_i(j)|\right)$.
+
+% Let $d_j$ denote the distance between $x_j$ and $x_{j+1}$ in $P$. Because $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$ . Thus, the path $R_i$ has length $O\left(\sum_{j=1}^{n-1} |\rank_i(j+1) - \rank_i(j)|\right) = O(\sum_{j=1}^{n-1} d_j)$. Because $\sum_{j=1}^{n-1} d_j = |P| = O(nr^{1-1/k})$, the length $R_i$ is $O(nr^{1-1/k})$.
+
+To conclude, each $R_i$ visits each component only at its attachment corner, the attachment corners of each $G_i$ are connected in the same order, and $R_i$ leaves every component to the right when oriented from $a_1$ to $a_r$. Therefore, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $1\leq i<j\leq k$.
 \end{proof}
 
 \subsection{Handling interior components}
@@ -742,10 +682,10 @@ The latter result (for constant $k$) is optimal since, in the next section we wi
 
 \section{Lower Bounds}\label{section:Lower bound}
 
-Our lower bounds are based on the following lemma. In words, this lemma says that we can find $k$ permutations of $\{1,\ldots,r\}$ such that, for half the indices $i\in\{1,\ldots,r\}$, and every $j\in\{1,\ldots,r\}\setminus\{i\}$, there is a permutation in which $i$ and $j$ are at distance $\Omega(r^{1-1/k})$.
+Our lower bounds are based on the following lemma. It says that we can find $k$ permutations of $\{1,\ldots,r\}$ such that for half the indices $i\in\{1,\ldots,r\}$, and every $j\in\{1,\ldots,r\}\setminus\{i\}$, there is a permutation in which $i$ and $j$ are at distance $\Omega(r^{1-1/k})$.
 
 \begin{lemma}\label{lem:permutations}
-Let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\ldots,\pi^{(k)}$ of $\{1,\ldots,r\}$ such that, for at least half the values of $i\in\{1,\ldots,r\}$ and for every $j\in\{1,\ldots,r\}\setminus\{i\}$, 
+Let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\ldots,\pi^{(k)}$ of $\{1,\ldots,r\}$ such that for at least half the values of $i\in\{1,\ldots,r\}$ and for every $j\in\{1,\ldots,r\}\setminus\{i\}$,
 \begin{equation}
  \max\left\{\left|\pi^{(s)}_i-\pi^{(s)}_j\right|\colon s\in\{1,\ldots,k\} \right\}
  \ge t \enspace .
@@ -794,31 +734,14 @@ loss of generality that $r$ is even and that $2r$ divides $n$.
 The graph $\mathcal G$ consists of $r$ disjoint paths,
 $\mathcal{C}_1,\ldots,\mathcal{C}_r$, each of length $n/r$.  Each of the
 drawings $G_1$,\ldots,$G_k$ embeds the vertices of $\mathcal G$ on the
-same point and segment set. The point set consists of the vertices of
+same point and edge set. The point set consists of the vertices of
 $r$ nested regular $n/r$-gons, $P_1,\ldots,P_r$, each centered at the
-origin and having nearly the same size. Refer to Figure~\ref{fig:lower-bound}.a. More precisely, $P_1\subset
+origin and having nearly the same size. Refer to Figure~\ref{figure:big-example} (middle). More precisely, $P_1\subset
 P_2\subset\cdots\subset P_r$ and the sizes are chosen so that any segment
 joining two non-consecutive vertices of $P_i$ intersects the interior
-of $P_{i-1}$.
-
-\begin{figure}
-  \begin{center}
-  \begin{tabular}{cc}
-    \includegraphics{img/lower-bound-1} &
-    \includegraphics{img/lower-bound-2} \\
-    (a) & (b)
-  \end{tabular}
-  \end{center}
-  \caption{In the lower bound of Theorem~\ref{thm:lower-bound}, (a)~all
-    drawings use the same set of points for vertices and segments for
-    edges and (b)~the drawing of a path that joins $\mathcal{C}_i$ to
-    $\mathcal{C}_j$ must travel around all the paths embedded between the
-    drawing of $\mathcal{C}_i$ and the drawing of $\mathcal{C}_j$.}
-  \label{fig:lower-bound}
-\end{figure}
-
+of~$P_{i-1}$.
 The drawings $G_1,\ldots,G_k$ are obtained from the permutations
-$\pi^{(1)},\ldots,\pi^{(k)}$ given by Lemma~\ref{lem:permutations}.
+$\pi^{(1)},\ldots,\pi^{(k)}$ given by \linebreak Lemma~\ref{lem:permutations}.
 In the drawing $G_x$, the path $\mathcal C_i$ is embedded on the vertices
 of $P_{\pi^{(x)}_i}$. If $y=\pi^{(x)}_i$ is even, the drawing uses
 all the edges of $P_y$ except the left-most edge.  If $y$ is odd, the
@@ -830,14 +753,13 @@ $\mathcal{C}_i$ of $G$, let $T_i$ be any path in $\mathcal H$ that has
 one endpoint on $\mathcal C_i$, one endpoint on some other component
 $\mathcal{C}_j$, $j\neq i$, and no vertices of $\mathcal G$ in its
 interior.
-
 Now, for each of the $r/2$ indices $i\in\{1,\ldots,r\}$ that satisfy
 \eqref{eq:perm}, the path $T_i$ joins a vertex of
 $P_{\pi^{(s)}_i}$ to a vertex of $P_{\pi^{(s)}_j}$, $j\neq
 i$, and $|\pi^{(s)}_i-\pi^{(s)}_i|\ge t$.  This path must
 have length $\Omega(tn/r)$ since it has to ``go around'' the
 paths between $P_{\pi^{(s)}_i}$ and $P_{\pi^{(s)}_j}$; see
-Figure~\ref{fig:lower-bound}.b.
+Figure~\ref{figure:big-example}.
 
 Thus far, we have shown that for at least $r/2$ values of
 $i\in\{1,\ldots,r\}$, the component $C_i$ is the endpoint of a
