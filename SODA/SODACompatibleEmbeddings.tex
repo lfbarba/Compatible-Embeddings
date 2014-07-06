@@ -502,10 +502,11 @@ For $k>1$ and $1\leq r\leq n$, let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There e
 Using Lemma~\ref{lem:permutations}, we can prove a lower bound that matches the upper bound obtained in our general construction.
 
 \begin{theorem}\label{thm:lower-bound}
-  For every integer $n$ and every $r\in\{1,\ldots,\lfloor n/4\rfloor\}$,
-  there exists a graph $\mathcal G$ having $n$ vertices, $1\leq r\leq n$ connected
-  components, and $k>1$ isomorphic drawings $G_1,\ldots,G_k$ such that
-  any compatible augmentation of $G$ has size $\Omega(nr^{1-1/k})$.
+  For every positive integer $n$, every $r\in\{1,\ldots,\lfloor
+  n/4\rfloor\}$, and every integer $k>1$, there exists a graph $\mathcal
+  G$ having $n$ vertices, $1\leq r\leq n$ connected components, and
+  $k$ isomorphic drawings $G_1,\ldots,G_k$ such that any compatible
+  augmentation of $G$ has size $\Omega(nr^{1-1/k})$.
 \end{theorem}
 
 \begin{proof}
