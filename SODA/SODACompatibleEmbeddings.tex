@@ -29,7 +29,7 @@ urlcolor=linkblue}
 %\usepackage{geometry}
 
 \newcommand{\appendixproof}{(proof in Appendix)\xspace}
-\newcommand{\etal}{\emph{et al}}
+\newcommand{\etal}{\emph{et al.}}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}[theorem]{Corollary}
@@ -86,8 +86,8 @@ urlcolor=linkblue}
 \begin{abstract}
 \setlength{\baselineskip}{16.8pt}
 We consider the following \emph{compatible connectivity-augmentation
-problem}: We are given a planar graph,
-$\mathcal{G}$, that has $r>1$ connected components, and $k$ isomorphic planar straight-line drawings, $G_1,\ldots,G_k$, of
+problem}: We are given a labeled planar graph,
+$\mathcal{G}$, with $n$ vertices that has $r>1$ connected components, and $k>1$ isomorphic planar straight-line drawings, $G_1,\ldots,G_k$, of
 $\mathcal{G}$. We wish to augment $\mathcal G$ by adding  vertices and edges to make
 it connected in such a way that these vertices and edges can be added to $G_1,\ldots,G_k$ as points and straight-line segments, respectively, to obtain planar straight-line drawings isomorphic to the augmentation of $\mathcal G$.  We show that
 adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always
@@ -101,11 +101,10 @@ sufficient and sometimes necessary to achieve this goal.
 \section{Introduction}
 \vspace{-.1in}
 We consider the following problem, which will be formalized
-below.  We are given several different planar straight-line drawings
+below.  We are given several different planar straight-line drawings (or simply drawings)
 of the same graph, $\mathcal G$, which is not connected.
 We wish to make $\mathcal G$ connected by adding vertices and edges in
-such a way that these vertices and edges can also be added to the planar
-straight-line drawings of $\mathcal G$ while preserving planarity.  The objective is to do this while minimizing the number
+such a way that these vertices and edges can also be added to the planar drawings of $\mathcal G$ while preserving planarity.  The objective is to do this while minimizing the number
 of edges and vertices added. It is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
 
 
@@ -132,11 +131,11 @@ speed.
 The cited morphing algorithms require that the input graph, $\mathcal{G}$, is connected; however, in many applications this is not the case. Thus, before these morphing algorithms can be applied, $\mathcal{G}$ must be augmented to a connected graph, $\mathcal H$, and this augmentation must be compatible with all drawings of $\mathcal{G}$.  The complexity of the morph produced by a morphing algorithm depends on the size of $\mathcal H$.  Therefore, an augmentation with a small number of vertices is desirable. This motivates the theoretical question studied in the current paper.
 
 \paragraph{Formal Problem Statement and Main Result.} A \emph{drawing}
-of a graph $\mathcal{G}=(V,E)$ is a one-to-one function $\varphi\colon
+of a labeled graph $\mathcal{G}=(V,E)$ is a one-to-one function $\varphi\colon
 V\to\R^2$.  A drawing is \emph{planar} if, for every pair of edges $uw$
-and $xy$ in $E$, the open line segment with endpoints $\varphi(u)$
-and $\varphi(w)$ is disjoint from the open line segment with endpoints
-$\varphi(x)$ and $\varphi(y)$.  Two planar drawings, $\varphi_1$ and
+and $xy$ in $E$, the line segment with endpoints $\varphi(u)$
+and $\varphi(w)$ is either disjoint from the open line segment with endpoints
+$\varphi(x)$ and $\varphi(y)$, or they share at most one endpoint.  Two planar drawings, $\varphi_1$ and
 $\varphi_2$, of $\mathcal{G}$ are \emph{isomorphic} if there exists
 a continuous family of planar drawings $\{\varphi^{(t)} \colon 0\le
 t\le 1\}$ of $\mathcal{G}$ such that $\varphi^{(0)}=\varphi_1$ and
@@ -146,13 +145,13 @@ cycle-vertex containment relationship, and the same outer face.}
 
 
 Throughout this paper we will avoid repeatedly
-referencing drawing functions like $\varphi$, $\varphi_1$ and $\varphi_2$.
-Instead, we will talk about a graph $\mathcal{G}$ and $k$ isomorphic
+referencing drawing functions like $\varphi$.
+Instead, we will talk about a labeled graph $\mathcal{G}$ and $k$ isomorphic
 geometric graphs $G_1,\ldots,G_k$.  This means that
 each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
 with some function $\varphi_i$ and that $\varphi_1,\ldots,\varphi_k$ are
 pairwise isomorphic; we will also say that $G_i$ is a {\em geometric planar embedding} of $\mathcal{G}$. When necessary, we may talk about the vertex $v$
-in $G_i$ where $v$ is actually a vertex of $\mathcal{G}$; this should
+in $G_i$ where $v$ is actually a (labeled) vertex of $\mathcal{G}$; this should
 be taken to mean the vertex $\varphi_i(v)$ in $G_i$.
 
 We are now ready to state the main problem studied in this paper.  Given $k$
@@ -168,7 +167,7 @@ We show that, if $\mathcal{G}$ has $n$ vertices and $r$ connected components, th
 drawings for which any compatible augmentation has
 size $\Omega(nr^{1-1/k})$.
 
-\paragraph{Related Work.} To the best of our knowledge, there is very little work on
+\paragraph{Related Work.} To the best of our knowledge, there is little work on
 compatible connectivity-augmentation of planar graphs, though
 there is work on isomorphic triangulations of polygons.   In this setting, the goal is to compatibly triangulate the interior of two planar polygons $n$-gons $P$ and $Q$.
 %the graph $\mathcal{G}$ is a cycle and one has two planar straight-line drawings, $P$ and $Q$, of $\mathcal G$. The goal is to augment $\mathcal G$ (and the two drawings $P$ and $Q$) so that $\mathcal G$ becomes a near-triangulation, and $P$ and $Q$ become (geometric) triangulations of the interiors of the polygons whose boundaries are $P$ and $Q$.
@@ -489,7 +488,7 @@ To conclude, each $R_i$ visits each component only at its attachment corner, the
 Our lower bounds are based on the following lemma. It says that we can find $k$ permutations of $\{1,\ldots,r\}$ such that for half the indices $i\in\{1,\ldots,r\}$, and every $j\in\{1,\ldots,r\}\setminus\{i\}$, there is a permutation in which $i$ and $j$ are at distance $\Omega(r^{1-1/k})$.
 
 \begin{lemma}\label{lem:permutations}\appendixproof
-Let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\ldots,\pi^{(k)}$ of $\{1,\ldots,r\}$ such that for at least half the values of $i\in\{1,\ldots,r\}$ and for every $j\in\{1,\ldots,r\}\setminus\{i\}$,
+For $k>1$ and $1\leq r\leq n$, let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\ldots,\pi^{(k)}$ of $\{1,\ldots,r\}$ such that for at least half the values of $i\in\{1,\ldots,r\}$ and for every $j\in\{1,\ldots,r\}\setminus\{i\}$,
 \begin{equation}
  \max\left\{\left|\pi^{(s)}_i-\pi^{(s)}_j\right|\colon s\in\{1,\ldots,k\} \right\}
  \ge t \enspace .
@@ -501,8 +500,8 @@ Using Lemma~\ref{lem:permutations}, we can prove a lower bound that matches the 
 
 \begin{theorem}\label{thm:lower-bound}
   For every integer $n$ and every $r\in\{1,\ldots,\lfloor n/4\rfloor\}$,
-  there exists a graph $\mathcal G$ having $n$ vertices, $r$ connected
-  components, and $k$ isomorphic drawings $G_1,\ldots,G_k$ such that
+  there exists a graph $\mathcal G$ having $n$ vertices, $1\leq r\leq n$ connected
+  components, and $k>1$ isomorphic drawings $G_1,\ldots,G_k$ such that
   any compatible augmentation of $G$ has size $\Omega(nr^{1-1/k})$.
 \end{theorem}
 
