@@ -84,9 +84,9 @@ urlcolor=linkblue}
 
 \maketitle
 \begin{abstract}
-\setlength{\baselineskip}{16.8pt}
+%\setlength{\baselineskip}{16.8pt}
 We consider the following \emph{compatible connectivity-augmentation
-problem}: We are given a labeled planar graph,
+problem}: We are given a labelled planar graph,
 $\mathcal{G}$, with $n$ vertices that has $r>1$ connected components, and $k>1$ isomorphic planar straight-line drawings, $G_1,\ldots,G_k$, of
 $\mathcal{G}$. We wish to augment $\mathcal G$ by adding  vertices and edges to make
 it connected in such a way that these vertices and edges can be added to $G_1,\ldots,G_k$ as points and straight-line segments, respectively, to obtain planar straight-line drawings isomorphic to the augmentation of $\mathcal G$.  We show that
@@ -131,7 +131,7 @@ speed.
 The cited morphing algorithms require that the input graph, $\mathcal{G}$, is connected; however, in many applications this is not the case. Thus, before these morphing algorithms can be applied, $\mathcal{G}$ must be augmented to a connected graph, $\mathcal H$, and this augmentation must be compatible with all drawings of $\mathcal{G}$.  The complexity of the morph produced by a morphing algorithm depends on the size of $\mathcal H$.  Therefore, an augmentation with a small number of vertices is desirable. This motivates the theoretical question studied in the current paper.
 
 \paragraph{Formal Problem Statement and Main Result.} A \emph{drawing}
-of a labeled graph $\mathcal{G}=(V,E)$ is a one-to-one function $\varphi\colon
+of a labelled graph $\mathcal{G}=(V,E)$ is a one-to-one function $\varphi\colon
 V\to\R^2$.  A drawing is \emph{planar} if, for every pair of edges $uw$
 and $xy$ in $E$, the line segment with endpoints $\varphi(u)$
 and $\varphi(w)$ is either disjoint from the open line segment with endpoints
@@ -146,12 +146,12 @@ cycle-vertex containment relationship, and the same outer face.}
 
 Throughout this paper we will avoid repeatedly
 referencing drawing functions like $\varphi$.
-Instead, we will talk about a labeled graph $\mathcal{G}$ and $k$ isomorphic
+Instead, we will talk about a labelled graph $\mathcal{G}$ and $k$ isomorphic
 geometric graphs $G_1,\ldots,G_k$.  This means that
 each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
 with some function $\varphi_i$ and that $\varphi_1,\ldots,\varphi_k$ are
 pairwise isomorphic; we will also say that $G_i$ is a {\em geometric planar embedding} of $\mathcal{G}$. When necessary, we may talk about the vertex $v$
-in $G_i$ where $v$ is actually a (labeled) vertex of $\mathcal{G}$; this should
+in $G_i$ where $v$ is actually a (labelled) vertex of $\mathcal{G}$; this should
 be taken to mean the vertex $\varphi_i(v)$ in $G_i$.
 
 We are now ready to state the main problem studied in this paper.  Given $k$
