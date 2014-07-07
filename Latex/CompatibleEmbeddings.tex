@@ -1,4 +1,4 @@
-\documentclass{patmorin}
+\documentclass[11pt]{patmorin}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics}
 %\setcounter{tocdepth}{3}
@@ -13,7 +13,13 @@
 citecolor=linkblue, filecolor=linkblue, menucolor=linkblue,
 urlcolor=linkblue} 
 
-\setlength{\parskip}{2ex}
+% SODA submission space-saving crap; use it here for consistency
+\pagestyle{plain}
+\setlength{\topskip}{0in}
+%\setlength{\parskip}{2ex}
+\usepackage[margin=2.45cm]{geometry}
+
+%\setlength{\parskip}{2ex}
 
 %\usepackage{comment}
 %\usepackage{url}
@@ -64,7 +70,7 @@ urlcolor=linkblue}
 
 \maketitle
 \begin{abstract}
-\setlength{\baselineskip}{16.8pt}
+%\setlength{\baselineskip}{16.8pt}
 Motivated by applications to graph morphing, we consider the following \emph{compatible connectivity-augmentation
 problem}: We are given a labelled planar $n$-vertex graph,
 $\mathcal{G}$, that has $r>1$ connected components, and $k>1$ isomorphic planar straight-line drawings, $G_1,\ldots,G_k$, of
