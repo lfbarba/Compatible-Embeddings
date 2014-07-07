@@ -255,7 +255,7 @@ Section~\ref{section:Trivial components} we solve the special case in which $\ma
 case is already non-trivial and introduces some of the
 main ideas used in solving the full problem, which is tackled in
 Section~\ref{section:General}. Section~\ref{section:Lower bound}
-proves the lower bound. Due to space constraints, some of the proofs are only included in the full version of the paper, which is attached as an Appendix.
+proves the lower bound. Due to space constraints, some of the proofs are only included in the full version of the paper, which is attached as an appendix.
 %The paper concludes with
 %Section~\ref{section:Conclusions}, which summarizes and presents
 %directions for future research.
@@ -313,7 +313,7 @@ Given an order $(v_1, \ldots, v_n)$ of the vertices of $S$, there exists a plana
 Recall that in this section $\mathcal G$ is a graph with $n$ trivial components.
 Let $G_1, \ldots, G_k$ be $k>1$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a sequence of $n$ points in the plane.
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate.
-Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ using the $\ell_\infty$ norm.  It is known that the length of
+Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ when distance is measured using the $\ell_\infty$ norm.  It is known that the length of
 $P$ is $O(n^{2-1/k})$~\cite{few:shortest,moran:on}.
 Note that the order of the points of $P$ induces an order on the vertices of $\mathcal G$ and hence, an order on the vertices of each $G_i$.
 
