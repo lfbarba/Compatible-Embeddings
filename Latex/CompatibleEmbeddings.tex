@@ -193,34 +193,35 @@ the drawings?
 
 \subsection{Formal Problem Statement and Main Result}
 
-A \emph{drawing} of a graph $\mathcal{G}=(V,E)$
-is a one-to-one function $\psi\colon V\to\R^2$.  A drawing
-is \emph{planar} if
-(a)~for every pair of edges $uw$ and $xy$ in $E$, the open line segment
-with endpoints $\psi(u)$ and $\psi(w)$ is disjoint from the open
-line segment with endpoints $\psi(x)$ and $\psi(y)$ and (b)~for
-every edge $uw$ and every vertex $y$, $\psi(y)$ is not contained in
-the open line segment with endpoints $\psi(u)$ and $\psi(w)$. 
-Two planar drawings, $\psi_1$ and $\psi_2$,
-of $\mathcal{G}$ are \emph{isomorphic} if there exists a continuous family
-of planar drawings $\{\psi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$
-such that $\psi^{(0)}=\psi_1$ and $\psi^{(1)}=\psi_2$.
+A \emph{drawing} of a graph $\mathcal{G}=(V,E)$ is a one-to-one
+function $\psi\colon V\to\R^2$.  A drawing is \emph{planar} if (a)~for
+every pair of edges $uw$ and $xy$ in $E$, the open line segment with
+endpoints $\psi(u)$ and $\psi(w)$ is disjoint from the open line
+segment with endpoints $\psi(x)$ and $\psi(y)$ and (b)~for every edge
+$uw$ and every vertex $y$, $\psi(y)$ is not contained in the open line
+segment with endpoints $\psi(u)$ and $\psi(w)$.  Two planar drawings,
+$\psi_1$ and $\psi_2$, of $\mathcal{G}$ are \emph{isomorphic} if
+there exists a continuous family of planar drawings $\{\psi^{(t)}
+\colon 0\le t\le 1\}$ of $\mathcal{G}$ such that $\psi^{(0)}=\psi_1$
+and $\psi^{(1)}=\psi_2$.\footnote{By Cairn's result, this is equivalent
+to saying that the two drawings of $G$ have the same rotation schemes,
+the same cycle-vertex containment relationship, and the same outer face.}
 
-Throughout this paper we will avoid repeatedly
-referencing drawing functions like $\psi$.
-Instead, we will talk about a graph $\mathcal{G}$ and $k$ isomorphic
-geometric graphs $G_1,\ldots,G_k$.  This means that
-each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
-with some function $\psi_i$ and that $\psi_1,\ldots,\psi_k$ are
-pairwise isomorphic.  When necessary, we may talk about the vertex $v$
-in $G_i$ where $v$ is actually a vertex of $\mathcal{G}$; this should
+
+Throughout this paper we will avoid repeatedly referencing drawing
+functions like $\psi$.  Instead, we will talk about a graph $\mathcal{G}$
+and $k$ isomorphic drawings $G_1,\ldots,G_k$ of $\mathcal G$.  This
+means that each $G_i$ is the geometric graph given by the drawing of
+$\mathcal{G}$ with some function $\psi_i$ and that $\psi_1,\ldots,\psi_k$
+are pairwise isomorphic.  When necessary, we may talk about the vertex
+$v$ in $G_i$ where $v$ is actually a vertex of $\mathcal{G}$; this should
 be taken to mean the vertex $\psi_i(v)$ in $G_i$.
 
 We are now ready to state the main problem studied in this paper.
-Given $k>1$ geometric planar isomorphic drawings $G_1, \ldots, G_k$
+Given $k>1$ planar isomorphic drawings $G_1, \ldots, G_k$
 of $\mathcal G$, a \emph{compatible augmentation}, $\mathcal H$, of
 $\mathcal G$ is a supergraph of $\mathcal G$ such that (1) $\mathcal H$
-is connected, and (2) there exist geometric planar isomorphic drawings,
+is connected, and (2) there exist planar isomorphic drawings,
 $H_1, \ldots, H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every
 $i\in\{1,\ldots,k\}$.  In this paper, we show that, if $\mathcal{G}$
 has $n$ vertices and $r$ connected components, there always exists a
@@ -354,7 +355,7 @@ presents a lower bound construction that matches our upper bound.
 \section{Upper bounds for trivial components}\label{section:Trivial components}
 As a warmup, we consider a (trivial) graph containing $n$ vertices and no edges.
 Before constructing a compatible augmentation, we provide a subroutine
-that constructs a ``short'' plane spanning path of a given ordered set of points.
+that constructs a ``short'' planar spanning path of a given ordered set of points.
 
 \subsection{Spanning paths of point sets}
 Let $S$ be a set of $n$ points in the plane with distinct $x$-coordinates. 
@@ -394,7 +395,7 @@ First, we translate $\Delta_{j+1}$ down until its apex $u_{j+1}$ coincides with 
 %Therefore, the number of segments on the boundary of $\pi_j$ is $O(n-j)$.
 Observe that, for every pair of apexes $u_i$ and $u_h$, with $i,h\geq j$, the boundary of $\pi_j$
 contains a path from $u_i$ to $u_h$ with $O(|\rank(v_i)-\rank(v_h)|)$ edges.
-Because $\ell$ does not intersect $R$ and by the escape invariant, the boundary of $\pi_j$ intersects $R$ only at $v_j$. Moreover, again by the escape invariant, for each $v_i$ with $i > j$, $v_i$ lies outside of~$\pi_j$ except for $v_{j+1}$ that lies on its boundary. Because both $v_j$ and $v_{j+1}$ lie on the boundary of $\pi_j$, which does not intersect $R$ other than at $v_j$, we can connect $v_j$ with $v_{j+1}$ via a path contained in the boundary of~$\pi_j$ with length $O(|\rank(v_j) - \rank(v_{j+1})|)$. In this way, we extend $R$ to a plane path that connects $v_1$ with $v_{j+1}$.
+Because $\ell$ does not intersect $R$ and by the escape invariant, the boundary of $\pi_j$ intersects $R$ only at $v_j$. Moreover, again by the escape invariant, for each $v_i$ with $i > j$, $v_i$ lies outside of~$\pi_j$ except for $v_{j+1}$ that lies on its boundary. Because both $v_j$ and $v_{j+1}$ lie on the boundary of $\pi_j$, which does not intersect $R$ other than at $v_j$, we can connect $v_j$ with $v_{j+1}$ via a path contained in the boundary of~$\pi_j$ with length $O(|\rank(v_j) - \rank(v_{j+1})|)$. In this way, we extend $R$ to a planar path that connects $v_1$ with $v_{j+1}$.
 
 \begin{figure}[tb]
 \centering
@@ -407,7 +408,7 @@ After connecting $v_j$ with $v_{j+1}$, for each $h\in\{j{+}2,\ldots,n\}$, either
 To preserve the escape invariant, for each $h\in\{j{+}2,\ldots,n\}$, we translate $\pi$ and $\Delta_h$ downwards by a sufficiently small amount, $\varepsilon$, and we scale $\Delta_{j+1}$ horizontally down, while keeping its apex at $v_{j+1}$. To conclude, each translated or scaled cone is contained in the previous one, $u_h$ lies above $v_h$, for each $h\in\{j+2,\ldots,n\}$, and $u_{j+1}$ coincides with $v_{j+1}$. Therefore, by choosing $\varepsilon$ sufficiently small, we maintain the escape invariant and obtain the following result.
 
 \begin{lemma}\label{lemma:Compatible augmentation for trivial components}
-Given an order $(v_1, \ldots, v_n)$ of the vertices of $S$, there exists a plane path $R$ that connects every point of $S$ in the given order such that the number of vertices of $R$ between $v_{i-1}$ and $v_{i}$ is $O(|\rank(v_i) - \rank(v_{i-1})|)$, for each $i\in \{2,\dots,n\}$.
+Given an order $(v_1, \ldots, v_n)$ of the vertices of $S$, there exists a planar path $R$ that connects every point of $S$ in the given order such that the number of vertices of $R$ between $v_{i-1}$ and $v_{i}$ is $O(|\rank(v_i) - \rank(v_{i-1})|)$, for each $i\in \{2,\dots,n\}$.
 \end{lemma}
 \begin{proof}
 Recall that in each iteration, the algorithms computes a path connecting $v_j$ with $v_{j+1}$ that does not cross the portion of the path already constructed. Because this invariant is maintained throughout, the resulting path is planar.
@@ -427,13 +428,13 @@ $P$ is $O(n^{2-1/k})$ (see Corollary~\ref{cor:tsp} in Appendix~\ref{app:uniform-
 Note that the order of the points of $P$ induces an order on the vertices of $\mathcal G$ and hence, an order on the vertices of each $G_i$.
 
 \begin{theorem}\label{theorem:points}
-For each $i\in \{1,\dots,n\}$, we can construct a path $R_i$ of length $O(n^{2-1/k})$ that connects every point of $G_i$ so that $G_i\cup R_i$ is plane. Moreover, for any distinct $i,j\in \{1,\dots,n\}$, $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
+For each $i\in \{1,\dots,n\}$, we can construct a path $R_i$ of length $O(n^{2-1/k})$ that connects every point of $G_i$ so that $G_i\cup R_i$ is planar. Moreover, for any distinct $i,j\in \{1,\dots,n\}$, $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
 \end{theorem}
 \begin{proof}
 By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices of $\mathcal{G}$ induced by $P$.  The augmented graph $\mathcal{H}$ is a path that visits the vertices $v_1,\ldots,v_n$ in this order. Letting $d_j$ denote the Euclidean distance between $x_{v_j}$ and $x_{v_{j+1}}$, the path $\mathcal{H}$ includes an additional $O(d_j)$ vertices between $v_{j}$ and $v_{j+1}$.  It follows that the number of vertices
 in $\mathcal{H}$ is proportional to the length of $P$, which is $O(n^{2-1/k})$.
 
-For each $G_i$, we use Lemma~\ref{lemma:Compatible augmentation for trivial components} to draw $\mathcal{H}$ as a plane path, $R_i$,
+For each $G_i$, we use Lemma~\ref{lemma:Compatible augmentation for trivial components} to draw $\mathcal{H}$ as a planar path, $R_i$,
 that connects the vertices $v_1,\ldots,v_n$ in this order in the drawing $G_i$.
 Since $d_j\ge |\rank_{G_i}(v_j) - \rank_{G_i}(v_{j+1})|$, the $O(d_j)$
 vertices in $\mathcal{H}$ between $v_j$ and $v_{j+1}$ are enough to
@@ -463,7 +464,7 @@ components of $G_i$, so we must define one. Also, the drawing
 of path $R_i$ is considerably more complicated.  In Section~\ref{section:Trivial components}, $R_i$ is drawn incrementally, and always passes above components that are not yet included in $R_i$ and below components that are already included in $R_i$.  In this section, we redefine ``above'' and ``below''. The cost of going above or below a component depends on its size and structure.
 
 \subsection{Preliminaries}\label{section:Preliminaries} 
-Let $C$ be a connected geometric plane graph. Let $v_0, v_1, \ldots, v_k, v_0$ be the sequence of vertices of $C$ visited by a counterclockwise
+Let $C$ be a connected geometric planar graph. Let $v_0, v_1, \ldots, v_k, v_0$ be the sequence of vertices of $C$ visited by a counterclockwise
 Eulerian tour along the boundary of the outer face of $C$. Note that
 $v_i$ may be equal to $v_j$ for some $i\neq j$.  A vertex $v_i$
 in this sequence is called a \emph{corner} of $C$.  We consider the boundary of $C$, denoted by $\partial C$, to be the
@@ -476,7 +477,7 @@ Note that $\partial_\varepsilon C$ is simple, provided that $\varepsilon$ is suf
 
 %%%%%%%%%%%%%%%
 \subsection{Connected augmentations}\label{section: connected augmentations}
-Let $G$ be a geometric plane graph with $r$ connected components such that each component is adjacent to the outer face.
+Let $G$ be a geometric planar graph with $r$ connected components such that each component is adjacent to the outer face.
 Two vertices are {\em visible} if the open segment joining them does not intersect $G$.
 Let $T_G$ be a smallest set of edges of the visibility graph of $G$ that need to be added to $G$ to make it connected.
 As there are always two components containing mutually visible vertices, we can connect them and repeat recursively.  Thus, $T_G$ has $r-1$ edges. (Loosely, we can think of $T_G$ as a spanning tree of $G$'s components.) Let $G^* = G\cup T_G$.  We say that $G^*$ is a \emph{connected augmentation} of $G$; see Figure~\ref{fig:Blowing}.
@@ -605,15 +606,15 @@ Figure~\ref{figure:big-example} illustrates the preceding algorithm on a small e
 \end{figure}
 
 \begin{lemma}\label{lemma:Path for connected augmentations}
-Given an arbitrary order $a_1, \ldots, a_r$ of the attachment corners of $G$, there is a path $R$ connecting all attachment corners of $G$ in the given order such that $R\cup G$ is plane, every component $C_i$ of $G$ lies to the right of $R$ when oriented from $a_1$~to~$a_r$, and the subpath of $R$ between $a_j$ and $a_{j+1}$ has $O(\sigma_G(a_j, a_{j+1}))$ vertices, for each $j\in \{1,\dots,r-1\}$.
+Given an arbitrary order $a_1, \ldots, a_r$ of the attachment corners of $G$, there is a path $R$ connecting all attachment corners of $G$ in the given order such that $R\cup G$ is planar, every component $C_i$ of $G$ lies to the right of $R$ when oriented from $a_1$~to~$a_r$, and the subpath of $R$ between $a_j$ and $a_{j+1}$ has $O(\sigma_G(a_j, a_{j+1}))$ vertices, for each $j\in \{1,\dots,r-1\}$.
 \end{lemma}
 \begin{proof}
 By construction, the attachment corners are visited by $R$ in the given order. For each component $C_i$, $a_i$ is the only vertex of $C_i$ visited by $R$. Moreover, the construction guarantees that $C_i$ lies to the right of $R$ when oriented from $a_1$ to $a_r$.
 
-To prove that $R$ is plane, recall that in each round we extend $R$ by constructing  a path $\gamma_j$ that connects $a_j$ with $a_{j+1}$. We claim that at this point, no edge of $\gamma_j$ crosses the portion of $R$ constructed so far.
+To prove that $R$ is planar, recall that in each round we extend $R$ by constructing  a path $\gamma_j$ that connects $a_j$ with $a_{j+1}$. We claim that at this point, no edge of $\gamma_j$ crosses the portion of $R$ constructed so far.
 Indeed, because the value of $\varepsilon$ (\emph{resp.} $\delta$) increases (\emph{resp.} decreases) in each round, the edges of $\gamma_j$ that lie on the boundaries of some $\partial_\delta C_i$ or on $\partial_\varepsilon G^*$ cannot cross $R$ by the escape invariant.
 Moreover, this invariant states that for each $a_i\notin R$, $R$ does not intersect~$\Delta_i$.
-Because each cone $\Delta_i$ is narrowed in each round, the edges of $\gamma_j$ that lie on the boundary of this cone cannot cross $R$. Finally, because $\lambda < \delta$, the edges of $\gamma_j$ that lie on $\partial_\lambda C_j$ do not cross $R$. Therefore, we conclude that by concatenating $\gamma_j$ and $R$, we obtain a plane path.
+Because each cone $\Delta_i$ is narrowed in each round, the edges of $\gamma_j$ that lie on the boundary of this cone cannot cross $R$. Finally, because $\lambda < \delta$, the edges of $\gamma_j$ that lie on $\partial_\lambda C_j$ do not cross $R$. Therefore, we conclude that by concatenating $\gamma_j$ and $R$, we obtain a planar path.
 
 Because the length of $\gamma_j$ is $O(\sigma_G(a_j, a_{j+1}))$, the total length of $R$ after connecting every attachment corner is given by $|R| = O(\sum_{j=1}^{n-1} \sigma_G(a_j, a_{j+1}))$.
 \end{proof}
@@ -622,7 +623,7 @@ Figure~\ref{figure:big-example} illustrates the preceding algorithm on a small e
 
 \subsection{Compatible drawings of planar graphs}
 Let $\mathcal G$ be a planar graph with $n$ vertices and $r$ connected
-components.  Let $G_1, \ldots, G_k$ be $k$ plane isomorphic drawings
+components.  Let $G_1, \ldots, G_k$ be $k$ planar isomorphic drawings
 of $\mathcal G$.  For now, we will assume that, in these drawings,
 every component of $\mathcal G$ has at least one vertex incident to
 the outer face.  (In the Appendix, we show that this is not a real
@@ -637,12 +638,12 @@ For each $i\in \{1,\dots,k\}$, let $G_i^*$ be a connected augmentation of $G_i$,
 Let $P$ be the shortest Euclidean Hamiltonian path of $X$. As before, because $X$ is contained in the $k$-dimensional integer grid of side-length $4n$ and $|X| = r$, the maximum ($\ell_2$) length of $P$ is $O(nr^{1-1/k})$. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
 
 \begin{theorem}\label{theorem:main}
-For each $1\leq i\leq k$, we can construct a path $R_i$ of length $O(nr^{1-1/k})$ that connects every component of $G_i$ such that $G_i\cup R_i$ is plane. Moreover, for each $1\leq i<j\leq k$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
+For each $1\leq i\leq k$, we can construct a path $R_i$ of length $O(nr^{1-1/k})$ that connects every component of $G_i$ such that $G_i\cup R_i$ is planar. Moreover, for each $1\leq i<j\leq k$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
 \end{theorem}
 \begin{proof}
 By relabelling, let $(a_1, \ldots, a_r)$ denote the order of the attachment corners of $G_i$ induced by $P$.  Letting $d_j$ denote the Euclidean distance between $x_j$ and $x_{j+1}$, we denote by $\mathcal{H}$ a path that passes through (the vertices corresponding to corners) $a_1, \ldots, a_r$ in this order, and that includes an additional $O(d_j)$ vertices between $a_{j}$ and $a_{j+1}$.  Thus, the number of vertices in $\mathcal{H}$ is proportional to the length of $P$, which is $O(nr^{1-1/k})$.
 
-For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations} to draw $\mathcal{H}$ as a plane path, $R_i$, that connects $a_1, \ldots, a_r$ in this order. Since $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$. Thus, the $O(d_j)$ vertices in $\mathcal{H}$ between $a_j$ and $a_{j+1}$ are enough to
+For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations} to draw $\mathcal{H}$ as a planar path, $R_i$, that connects $a_1, \ldots, a_r$ in this order. Since $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$. Thus, the $O(d_j)$ vertices in $\mathcal{H}$ between $a_j$ and $a_{j+1}$ are enough to
 draw the $O(|\rank_i(j+1) - \rank_i(j)|)$ vertices in $R_i$ between $a_j$ and $a_{j+1}$. 
 
 % For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations} to construct a plane path $R_i$ that connects the attachment corners of $G_i$ in the order induced by $P$. Assume that $(a_1, \ldots, a_r)$ is the order of the attachment corners of $G_i$ induced by $P$. Lemma~\ref{lemma:Path for connected augmentations} implies that $|R_i| = O(\sum_{j=1}^{n-1} \sigma_{G_i}(a_j, a_{j+1}))$.
@@ -674,8 +675,8 @@ is $O(Nr^{1-1/k})$ where $N=O(n)$ is the total size of all faces.
 We remark that Theorem~\ref{theorem:main} yields an efficient algorithm for constructing the augmentation $\mathcal{H}$, and even the drawings $H_1,\ldots,H_k$.  The main steps involved are: 
 
 \begin{enumerate}
-  \item Finding connected plane supergraphs $G_1^*,\ldots,G_k^*$
-  of the drawings $G_1,\ldots,G_k$.  For each plane graph $G_i$, this
+  \item Finding connected planar supergraphs $G_1^*,\ldots,G_k^*$
+  of the drawings $G_1,\ldots,G_k$.  For each planar graph $G_i$, this
   can easily be done in $O(n\log n)$ time using, for example, a plane
   sweep algorithm that maintains the invariant that all components with
   a vertex to the left of the sweep-line are already joined by edges.
