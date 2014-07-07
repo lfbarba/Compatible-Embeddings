@@ -8,7 +8,7 @@
 		[2009/05/11 v0.1a
  Pat Morin's article class]
 
-\RequirePackage{fancyhdr}
+%\RequirePackage{fancyhdr}
 
 % Get rid of some article.cls options
 \DeclareOption{a4paper}{\OptionNotUsed}
@@ -119,13 +119,13 @@
 
 
 %--------------------------- Headers and Footers ------------------------
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
-\fancyfoot[c]{\thepage}
-%\fancyhead[L]{\sf Journal of Computational Geometry}
-%\fancyhead[R]{\texttt{\href{http://jocg.org/}{jocg.org}}}
-\renewcommand{\headrulewidth}{1pt}
-\renewcommand{\footrulewidth}{1pt}
-\pagestyle{fancy}
-
+%\pagestyle{fancy}
+%\fancyhead{}
+%\fancyfoot{}
+%\fancyfoot[c]{\thepage}
+%%\fancyhead[L]{\sf Journal of Computational Geometry}
+%%\fancyhead[R]{\texttt{\href{http://jocg.org/}{jocg.org}}}
+%\renewcommand{\headrulewidth}{1pt}
+%\renewcommand{\footrulewidth}{1pt}
+%\pagestyle{fancy}
+%

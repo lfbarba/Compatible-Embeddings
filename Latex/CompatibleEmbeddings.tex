@@ -3,6 +3,8 @@
 \usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics}
 %\setcounter{tocdepth}{3}
 \usepackage{graphicx}
+%\usepackage{lineno}
+%\linenumbers
 
 %\usepackage{algorithmic}
 %\usepackage{algorithm}
@@ -78,31 +80,35 @@ urlcolor=linkblue}
        and Pat Morin\thanks{School of Computer Science, Carleton University,
                             \email{morin@scs.carleton.ca}}}
 
-
-
+\usepackage{fancyhdr}
 
 \begin{document}
 
-\begin{titlepage}
+%\begin{titlepage}
+%
+%\maketitle
+%\begin{abstract}
+%Motivated by applications to graph morphing, we consider the following
+%\emph{compatible connectivity-augmentation problem}: We are given
+%a labelled $n$-vertex planar graph, $\mathcal{G}$, that has $r>1$
+%connected components, and $k>1$ isomorphic planar straight-line drawings,
+%$G_1,\ldots,G_k$, of $\mathcal{G}$. We wish to augment $\mathcal G$
+%by adding  vertices and edges to make it connected in such a way that
+%these vertices and edges can be added to $G_1,\ldots,G_k$ as points and
+%straight-line segments, respectively, to obtain $k$ planar straight-line
+%drawings isomorphic to the augmentation of $\mathcal G$.  We show that
+%adding $O(k^{1/2}nr^{1-1/k})$ edges and vertices to $\mathcal{G}$
+%is always sufficient and that adding $\Omega(nr^{1-1/k})$ edges and vertices
+%is sometimes necessary to achieve this goal.  These bounds hold for all $1 < r < \Omega(n)$
+%and $k>1$.
+%\end{abstract}
+%
+%\end{titlepage}
 
-\maketitle
-\begin{abstract}
-Motivated by applications to graph morphing, we consider the following
-\emph{compatible connectivity-augmentation problem}: We are given
-a labelled $n$-vertex planar graph, $\mathcal{G}$, that has $r>1$
-connected components, and $k>1$ isomorphic planar straight-line drawings,
-$G_1,\ldots,G_k$, of $\mathcal{G}$. We wish to augment $\mathcal G$
-by adding  vertices and edges to make it connected in such a way that
-these vertices and edges can be added to $G_1,\ldots,G_k$ as points and
-straight-line segments, respectively, to obtain $k$ planar straight-line
-drawings isomorphic to the augmentation of $\mathcal G$.  We show that
-adding $O(k^{1/2}nr^{1-1/k})$ edges and vertices to $\mathcal{G}$
-is always sufficient and that adding $\Omega(nr^{1-1/k})$ edges and vertices
-is sometimes necessary to achieve this goal.  These bounds hold for all $1 < r < \Omega(n)$
-and $k>1$.
-\end{abstract}
-
-\end{titlepage}
+\pagestyle{fancy}
+\lhead{Appendix}
+\rhead{Full Paper}
+\setcounter{page}{13}
 
 %A category including the fourth, optional field follows..
 
