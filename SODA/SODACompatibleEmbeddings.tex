@@ -85,13 +85,18 @@ urlcolor=linkblue}
 \maketitle
 \begin{abstract}
 %\setlength{\baselineskip}{16.8pt}
-We consider the following \emph{compatible connectivity-augmentation
-problem}: We are given a labelled planar graph,
-$\mathcal{G}$, with $n$ vertices that has $r>1$ connected components, and $k>1$ isomorphic planar straight-line drawings, $G_1,\ldots,G_k$, of
-$\mathcal{G}$. We wish to augment $\mathcal G$ by adding  vertices and edges to make
-it connected in such a way that these vertices and edges can be added to $G_1,\ldots,G_k$ as points and straight-line segments, respectively, to obtain planar straight-line drawings isomorphic to the augmentation of $\mathcal G$.  We show that
-adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always
-sufficient and sometimes necessary to achieve this goal.
+Motivated by applications to (graph) morphing, we consider the following
+\emph{compatible connectivity-augmentation problem}: We are given a
+labelled planar graph, $\mathcal{G}$, with $n$ vertices that has $r>1$
+connected components, and $k>1$ isomorphic planar straight-line drawings,
+$G_1,\ldots,G_k$, of $\mathcal{G}$. We wish to augment $\mathcal G$
+by adding  vertices and edges to make it connected in such a way that
+these vertices and edges can be added to $G_1,\ldots,G_k$ as points and
+straight-line segments, respectively, to obtain $k$ planar straight-line
+drawings isomorphic to the augmentation of $\mathcal G$.  We show
+that adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$
+is always sufficient and sometimes necessary to achieve this goal.
+Our upper and lower-bounds hold for all $1 < r < \Omega(n)$ and $k>1$.
 \end{abstract}
 
 \end{titlepage}
@@ -100,9 +105,9 @@ sufficient and sometimes necessary to achieve this goal.
 
 \section{Introduction}
 \vspace{-.1in}
-We consider the following problem, which will be formalized
+Consider the following problem, which will be formalized
 below.  We are given several different planar straight-line drawings (or simply drawings)
-of the same graph, $\mathcal G$, which is not connected.
+of the same disconnected graph, $\mathcal G$.
 We wish to make $\mathcal G$ connected by adding vertices and edges in
 such a way that these vertices and edges can also be added to the planar drawings of $\mathcal G$ while preserving planarity.  The objective is to do this while minimizing the number
 of edges and vertices added. It is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
@@ -119,16 +124,15 @@ of the drawing throughout the deformation.
 The morphing problem has been studied since 1944, when Cairns \cite{cairns:deformations}
 showed that such a transformation always exists.  Since then, a sequence of results has shown
 that such transformations can be done efficiently, so that the
-vertex motion can be described concisely \cite{thomassen:deformations,
-grunbaum.shephard:geometry,alamdari.angelini.ea:morphing,
-angelini.dalozzo.ea:morphing}.  The most recent such result
+vertex motion can be described concisely \cite{alamdari.angelini.ea:morphing,
+angelini.dalozzo.ea:morphing,grunbaum.shephard:geometry,thomassen:deformations}.  The most recent such result
 \cite{angelini.dalozzo.ea:morphing} shows that any planar drawing of
-an $n$-vertex connected planar graph can be morphed into any isomorphic
+an $n$-vertex \emph{connected} planar graph can be morphed into any isomorphic
 drawing using a sequence of $O(n)$ \emph{linear
 morphs}, in which vertices move along linear trajectories at constant
 speed.
 
-The cited morphing algorithms require that the input graph, $\mathcal{G}$, is connected; however, in many applications this is not the case. Thus, before these morphing algorithms can be applied, $\mathcal{G}$ must be augmented to a connected graph, $\mathcal H$, and this augmentation must be compatible with all drawings of $\mathcal{G}$.  The complexity of the morph produced by a morphing algorithm depends on the size of $\mathcal H$.  Therefore, an augmentation with a small number of vertices is desirable. This motivates the theoretical question studied in the current paper.
+The cited morphing algorithms require that the input graph, $\mathcal{G}$, be connected; however, in many applications this is not the case. Thus, before these morphing algorithms can be applied, $\mathcal{G}$ must be augmented to a connected graph, $\mathcal H$, and this augmentation must be compatible with all drawings of $\mathcal{G}$.  The complexity of the morph produced by a morphing algorithm depends on the size of $\mathcal H$.  Therefore, an augmentation with a small number of vertices is desirable. This motivates the theoretical question studied in the current paper.
 
 \paragraph{Formal Problem Statement and Main Result.} 
 A \emph{drawing} of a labelled graph $\mathcal{G}=(V,E)$ is a one-to-one
@@ -277,7 +281,7 @@ Given an order $(v_1, \ldots, v_n)$ of the vertices of $S$, there exists a plane
 \vspace{-.1in}
 \subsection{Compatible drawings of point sets}\vspace{-.1in}
 Recall that in this section $\mathcal G$ is a graph with $n$ trivial components.
-Let $G_1, \ldots, G_k$ be $k$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a set of $n$ points in the plane.
+Let $G_1, \ldots, G_k$ be $k>1$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a sequence of $n$ points in the plane.
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate.
 Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ using the Euclidean metric.  It is known that the length of
 $P$ is $O(n^{2-1/k})$~\cite{steele.snyder:worst}.
@@ -502,11 +506,11 @@ For $k>1$ and $1\leq r\leq n$, let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There e
 Using Lemma~\ref{lem:permutations}, we can prove a lower bound that matches the upper bound obtained in our general construction.
 
 \begin{theorem}\label{thm:lower-bound}
-  For every positive integer $n$, every $r\in\{1,\ldots,\lfloor
+  For every positive integer $n$, every $r\in\{2,\ldots,\lfloor
   n/4\rfloor\}$, and every integer $k>1$, there exists a graph $\mathcal
   G$ having $n$ vertices, $1\leq r\leq n$ connected components, and
   $k$ isomorphic drawings $G_1,\ldots,G_k$ such that any compatible
-  augmentation of $G$ has size $\Omega(nr^{1-1/k})$.
+  augmentation of $\mathcal G$ has size $\Omega(nr^{1-1/k})$.
 \end{theorem}
 
 \begin{proof}
