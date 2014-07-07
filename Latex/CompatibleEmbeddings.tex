@@ -423,7 +423,7 @@ Since the path that connects $v_j$ with $v_{j+1}$ follows the boundary of $\pi_j
 Recall that in this section $\mathcal G$ is a graph with $n$ trivial components.
 Let $G_1, \ldots, G_k$ be $k>1$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a sequence of $n$ points in the plane.
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate.
-Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ using the Euclidean metric.  It is known that the length of
+Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ using the $\ell_\infty$ norm.  It is known that the length of
 $P$ is $O(n^{2-1/k})$ (see Corollary~\ref{cor:tsp} in Appendix~\ref{app:uniform-norm}).
 Note that the order of the points of $P$ induces an order on the vertices of $\mathcal G$ and hence, an order on the vertices of each $G_i$.
 
@@ -431,7 +431,7 @@ Note that the order of the points of $P$ induces an order on the vertices of $\m
 For each $i\in \{1,\dots,n\}$, we can construct a path $R_i$ of length $O(n^{2-1/k})$ that connects every point of $G_i$ so that $G_i\cup R_i$ is planar. Moreover, for any distinct $i,j\in \{1,\dots,n\}$, $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
 \end{theorem}
 \begin{proof}
-By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices of $\mathcal{G}$ induced by $P$.  The augmented graph $\mathcal{H}$ is a path that visits the vertices $v_1,\ldots,v_n$ in this order. Letting $d_j$ denote the Euclidean distance between $x_{v_j}$ and $x_{v_{j+1}}$, the path $\mathcal{H}$ includes an additional $O(d_j)$ vertices between $v_{j}$ and $v_{j+1}$.  It follows that the number of vertices
+By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices of $\mathcal{G}$ induced by $P$.  The augmented graph $\mathcal{H}$ is a path that visits the vertices $v_1,\ldots,v_n$ in this order. Letting $d_j$ denote the $\ell_\infty$ distance between $x_{v_j}$ and $x_{v_{j+1}}$, the path $\mathcal{H}$ includes an additional $O(d_j)$ vertices between $v_{j}$ and $v_{j+1}$.  It follows that the number of vertices
 in $\mathcal{H}$ is proportional to the length of $P$, which is $O(n^{2-1/k})$.
 
 For each $G_i$, we use Lemma~\ref{lemma:Compatible augmentation for trivial components} to draw $\mathcal{H}$ as a planar path, $R_i$,
@@ -635,13 +635,13 @@ Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components of $\mathca
 
 For each $i\in \{1,\dots,k\}$, let $G_i^*$ be a connected augmentation of $G_i$, as defined in Section~\ref{section: connected augmentations}. For each $i\in\{1,\ldots,k\}$ and $j\in\{1,\ldots,r\}$, let $\rank_i(j) = \sigma_{G_i}(a_1, a_j)$. For each $j\in\{1,\ldots,r\}$, let $x_j\in \mathbb{R}^k$ be a point corresponding to the component $C_j$ such that $x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}\subset\R^k$ denote the resulting set of points. Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $4n$.
 
-Let $P$ be the shortest Euclidean Hamiltonian path of $X$. As before, because $X$ is contained in the $k$-dimensional integer grid of side-length $4n$ and $|X| = r$, the maximum ($\ell_2$) length of $P$ is $O(nr^{1-1/k})$. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
+Let $P$ be the shortest Hamiltonian path of $X$ under the $\ell_\infty$ norm. As before, because $X$ is contained in the $k$-dimensional integer grid of side-length $4n$ and $|X| = r$, the maximum ($\ell_\infty$) length of $P$ is $O(nr^{1-1/k})$. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
 
 \begin{theorem}\label{theorem:main}
 For each $1\leq i\leq k$, we can construct a path $R_i$ of length $O(nr^{1-1/k})$ that connects every component of $G_i$ such that $G_i\cup R_i$ is planar. Moreover, for each $1\leq i<j\leq k$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
 \end{theorem}
 \begin{proof}
-By relabelling, let $(a_1, \ldots, a_r)$ denote the order of the attachment corners of $G_i$ induced by $P$.  Letting $d_j$ denote the Euclidean distance between $x_j$ and $x_{j+1}$, we denote by $\mathcal{H}$ a path that passes through (the vertices corresponding to corners) $a_1, \ldots, a_r$ in this order, and that includes an additional $O(d_j)$ vertices between $a_{j}$ and $a_{j+1}$.  Thus, the number of vertices in $\mathcal{H}$ is proportional to the length of $P$, which is $O(nr^{1-1/k})$.
+By relabelling, let $(a_1, \ldots, a_r)$ denote the order of the attachment corners of $G_i$ induced by $P$.  Letting $d_j$ denote the $\ell_\infty$ distance between $x_j$ and $x_{j+1}$, we denote by $\mathcal{H}$ a path that passes through (the vertices corresponding to corners) $a_1, \ldots, a_r$ in this order, and that includes an additional $O(d_j)$ vertices between $a_{j}$ and $a_{j+1}$.  Thus, the number of vertices in $\mathcal{H}$ is proportional to the length of $P$, which is $O(nr^{1-1/k})$.
 
 For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations} to draw $\mathcal{H}$ as a planar path, $R_i$, that connects $a_1, \ldots, a_r$ in this order. Since $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$. Thus, the $O(d_j)$ vertices in $\mathcal{H}$ between $a_j$ and $a_{j+1}$ are enough to
 draw the $O(|\rank_i(j+1) - \rank_i(j)|)$ vertices in $R_i$ between $a_j$ and $a_{j+1}$. 
