@@ -85,7 +85,7 @@ urlcolor=linkblue}
 \maketitle
 \begin{abstract}
 %\setlength{\baselineskip}{16.8pt}
-Motivated by applications to (graph) morphing, we consider the following
+Motivated by applications to graph morphing, we consider the following
 \emph{compatible connectivity-augmentation problem}: We are given a
 labelled planar graph, $\mathcal{G}$, with $n$ vertices that has $r>1$
 connected components, and $k>1$ isomorphic planar straight-line drawings,
@@ -489,6 +489,18 @@ draw the $O(|\rank_i(j+1) - \rank_i(j)|)$ vertices in $R_i$ between $a_j$ and $a
 
 To conclude, each $R_i$ visits each component only at its attachment corner, the attachment corners of each $G_i$ are connected in the same order, and $R_i$ leaves every component to the right when oriented from $a_1$ to $a_r$. Therefore, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $1\leq i<j\leq k$.
 \end{proof}
+
+
+The construction in Theorem~\ref{theorem:main} is implemented fairly easily using existing algorithmic tools, including plane-sweep and minimum spanning trees, yielding an algorithmic version:
+
+\begin{theorem}
+  An augmentation satisfying the conditions of Theorem~\ref{theorem:main}
+  can be computed in $O(kn^2)$ time for any value of $k$.  If $k$ is
+  constant, then the augmentation can be computed in $O(nr^{1-1/k})$
+  time.
+\end{theorem}
+
+
 
 \section{Lower Bounds}\label{section:Lower bound}
 \vspace{-.1in}
