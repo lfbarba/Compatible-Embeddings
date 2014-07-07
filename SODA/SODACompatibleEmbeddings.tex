@@ -96,11 +96,11 @@ $G_1,\ldots,G_k$, of $\mathcal{G}$. We wish to augment $\mathcal G$
 by adding  vertices and edges to make it connected in such a way that
 these vertices and edges can be added to $G_1,\ldots,G_k$ as points and
 straight-line segments, respectively, to obtain $k$ planar straight-line
-drawings isomorphic to the augmentation of $\mathcal G$.  We show that
-adding $O(k^{1/2}nr^{1-1/k})$ edges and vertices to $\mathcal{G}$
-is always sufficient and that adding $\Omega(nr^{1-1/k})$ edges and vertices
-is sometimes necessary to achieve this goal.  These bounds hold for all $1 < r < \Omega(n)$
-and $k>1$.
+drawings isomorphic to the augmentation of $\mathcal G$.  We show
+that adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$
+is always sufficient and sometimes necessary to achieve this goal.
+The upper bound holds for all $r\in\{2,\ldots,n\}$ and $k\ge 2$. The
+lower bound holds for all $r\in\{2,\ldots,n/3\}$ and $k\ge 2$.
 \end{abstract}
 
 \end{titlepage}
@@ -185,9 +185,12 @@ and (2) there exist geometric planar isomorphic embeddings, $H_1,
 $i\in\{1,\ldots,k\}$.  In this paper, we study the following extremal question: In the worst case
 (over all $n$-vertex planar graphs, $\mathcal G$, and over all sets of
 $k$ geometric planar isomorphic embeddings of $\mathcal{G}$), what is the size of the smallest compatible augmentation of $\mathcal G$?
-We show that, if $\mathcal{G}$ has $n$ vertices and $r$ connected components, there always exists a compatible augmentation of size $O(k^{1/2}nr^{1-1/k})$. Furthermore, this bound is tight for constant values of $k$, as there exists a graph $\mathcal G$ with $r$ components and $k$
-drawings for which any compatible augmentation has
-size $\Omega(nr^{1-1/k})$.
+In this paper, we show that, if $\mathcal{G}$
+has $n$ vertices and $r$ connected components, there always exists a
+compatible augmentation of size $O(nr^{1-1/k})$ and that this bound
+is tight; there exists a graph $\mathcal G$
+with $r$ components and $k$ drawings for which any compatible augmentation
+has size $\Omega(nr^{1-1/k})$.  The upper bound holds for all $r\in\{2,\ldots,n\}$ and $k\ge 2$. The lower bound holds for all $r\in\{2,\ldots,n/3\}$ and $k\ge 2$.
 
 \subsection{Related Work} 
 
@@ -222,8 +225,10 @@ x_m\|)$ to $\mathcal G$, the corners $a_\ell$ and $a_m$ can be joined
 in each of $G_1,\ldots,G_k$ while preserving planarity.
 Now, since the point set $X$ is in $\R^k$, has $r$ points, and
 is contained in a hypercube of side-length $O(n)$, a classic
-result on the Euclidean Travelling Salesman Problem \cite{few:shortest} implies that it has a spanning path of
-Euclidean length $O(nr^{1-1/k})$.  This implies that $\mathcal G$ can be made
+result on the Travelling Salesman Problem \cite{few:shortest,moran:on} implies that it has a spanning path whose length, measured in the $\ell_\infty$ norm,
+is $O(nr^{1-1/k})$.\footnote{The original argument was for the standard
+$\ell_2$ norm and has an extra $\sqrt{k}$ factor.  This factor disappears
+in the $\ell_\infty$ norm.}  This implies that $\mathcal G$ can be made
 connected with a collection of $r-1$ paths, whose endpoints are the
 corners $a_1,\ldots,a_r$, having total size $O(nr^{1-1/k})$, and
 that each of these paths can be drawn in a planar fashion in each
@@ -243,7 +248,7 @@ Section~\ref{section:Trivial components} we solve the special case in which $\ma
 case is already non-trivial and introduces some of the
 main ideas used in solving the full problem, which is tackled in
 Section~\ref{section:General}. Section~\ref{section:Lower bound}
-proves the lower bound. Due to space constraints, some of the proofs are deferred to the Appendix.
+proves the lower bound. Due to space constraints, some of the proofs are only included in the full version of the paper, which is attached as an Appendix.
 %The paper concludes with
 %Section~\ref{section:Conclusions}, which summarizes and presents
 %directions for future research.
@@ -302,17 +307,17 @@ Recall that in this section $\mathcal G$ is a graph with $n$ trivial components.
 Let $G_1, \ldots, G_k$ be $k>1$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a sequence of $n$ points in the plane.
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate.
 Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ using the Euclidean metric.  It is known that the length of
-$P$ is $O(k^{1/2}n^{2-1/k})$~\cite{few:shortest}.
+$P$ is $O(n^{2-1/k})$~\cite{few:shortest,moran:on}.
 Note that the order of the points of $P$ induces an order on the vertices of $\mathcal G$ and hence, an order on the vertices of each $G_i$.
 
 
 \begin{theorem}\label{theorem:points}
-For each $i\in \{1,\dots,n\}$, we can construct a path $R_i$ of length $O(k^{1/2}n^{2-1/k})$ that connects every point of $G_i$ so that $G_i\cup R_i$ is plane. Moreover, for any distinct $i,j\in \{1,\dots,n\}$, $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
+For each $i\in \{1,\dots,n\}$, we can construct a path $R_i$ of length $O(n^{2-1/k})$ that connects every point of $G_i$ so that $G_i\cup R_i$ is plane. Moreover, for any distinct $i,j\in \{1,\dots,n\}$, $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
 \end{theorem}
 %\vspace{-.2in}
 \begin{proof}
 By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices of $\mathcal{G}$ induced by $P$.  The augmented graph $\mathcal{H}$ is a path that visits the vertices $v_1,\ldots,v_n$ in this order. Letting $d_j$ denote the Euclidean distance between $x_{v_j}$ and $x_{v_{j+1}}$, the path $\mathcal{H}$ includes an additional $O(d_j)$ vertices between $v_{j}$ and $v_{j+1}$.  It follows that the number of vertices
-in $\mathcal{H}$ is proportional to the length of $P$, which is $O(k^{1/2}n^{2-1/k})$.
+in $\mathcal{H}$ is proportional to the length of $P$, which is $O(n^{2-1/k})$.
 
 For each $G_i$, we use Lemma~\ref{lemma:Compatible augmentation for trivial components} to draw $\mathcal{H}$ as a plane path, $R_i$,
 that connects the vertices $v_1,\ldots,v_n$ in this order in the drawing $G_i$.
@@ -472,7 +477,7 @@ every component of $\mathcal G$ has at least one vertex incident to
 the outer face.  (In the Appendix, we show that this is not a real
 restriction; one can apply the same algorithm to each face of $\mathcal
 G$.)  We show how to construct a compatible augmentation of $\mathcal G$
-of size $O(k^{1/2}nr^{1-1/k})$.
+of size $O(nr^{1-1/k})$.
 
 Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components of $\mathcal G$.  Because $G_1,\ldots,G_k$ are isomorphic, we can select one attachment corner from each component in the drawing $G_1$, and this attachment corner also appears in each of $G_2,\ldots,G_k$. Thus, for each $j\in\{1,\ldots,r\}$, we choose an attachment corner $a_j$ of $\partial C_j$ such that $a_j$ is incident to the outer face of $C_j$.
 
@@ -484,13 +489,13 @@ Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components of $\mathca
 
 For each $i\in \{1,\dots,k\}$, let $G_i^*$ be a connected augmentation of $G_i$, as defined in Section~\ref{section: connected augmentations}. For each $i\in\{1,\ldots,k\}$ and $j\in\{1,\ldots,r\}$, let $\rank_i(j) = \sigma_{G_i}(a_1, a_j)$. For each $j\in\{1,\ldots,r\}$, let $x_j\in \mathbb{R}^k$ be a point corresponding to the component $C_j$ such that $x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}\subset\R^k$ denote the resulting set of points. Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $4n$.
 
-Let $P$ be the shortest Euclidean Hamiltonian path of $X$. Because $X$ is contained in the $k$-dimensional box of side-length $4n$ and $|X| = r$, the maximum (Euclidean) length of $P$ is $O(k^{1/2}nr^{1-1/k})$~\cite{few:shortest}. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
+Let $P$ be the shortest Euclidean Hamiltonian path of $X$. Because $X$ is contained in the $k$-dimensional box of side-length $4n$ and $|X| = r$, the maximum ($\ell_2$) length of $P$ is $O(nr^{1-1/k})$~\cite{few:shortest}. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
 
 \begin{theorem}\label{theorem:main}
-For each $1\leq i\leq k$, we can construct a path $R_i$ of length $O(k^{1/2}nr^{1-1/k})$ that connects every component of $G_i$ such that $G_i\cup R_i$ is plane. Moreover, for each $1\leq i<j\leq k$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
+For each $1\leq i\leq k$, we can construct a path $R_i$ of length $O(nr^{1-1/k})$ that connects every component of $G_i$ such that $G_i\cup R_i$ is plane. Moreover, for each $1\leq i<j\leq k$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
 \end{theorem}
 \begin{proof}
-By relabelling, let $(a_1, \ldots, a_r)$ denote the order of the attachment corners of $G_i$ induced by $P$.  Letting $d_j$ denote the Euclidean distance between $x_j$ and $x_{j+1}$, we denote by $\mathcal{H}$ a path that passes through (the vertices corresponding to corners) $a_1, \ldots, a_r$ in this order, and that includes an additional $O(d_j)$ vertices between $a_{j}$ and $a_{j+1}$.  Thus, the number of vertices in $\mathcal{H}$ is proportional to the length of $P$, which is $O(k^{1/2}nr^{1-1/k})$.
+By relabelling, let $(a_1, \ldots, a_r)$ denote the order of the attachment corners of $G_i$ induced by $P$.  Letting $d_j$ denote the Euclidean distance between $x_j$ and $x_{j+1}$, we denote by $\mathcal{H}$ a path that passes through (the vertices corresponding to corners) $a_1, \ldots, a_r$ in this order, and that includes an additional $O(d_j)$ vertices between $a_{j}$ and $a_{j+1}$.  Thus, the number of vertices in $\mathcal{H}$ is proportional to the length of $P$, which is $O(nr^{1-1/k})$.
 
 For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations} to draw $\mathcal{H}$ as a plane path, $R_i$, that connects $a_1, \ldots, a_r$ in this order. Since $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$. Thus, the $O(d_j)$ vertices in $\mathcal{H}$ between $a_j$ and $a_{j+1}$ are enough to
 draw the $O(|\rank_i(j+1) - \rank_i(j)|)$ vertices in $R_i$ between $a_j$ and $a_{j+1}$. 
@@ -595,8 +600,6 @@ the contribution of the shared portion.
 To finish up we note that, since the augmentation $\mathcal{H}$ is minimal,
 it is a tree; $\mathcal G$ contains no cycles, so any cycle in $\mathcal H$ contains an edge not in $\mathcal G$ that could be removed.  Now, observe that if we traverse the outer face of (any planar drawing of) $\mathcal H$ then we obtain a non-simple path, $P$, that traverses each edge of $\mathcal{H}$ exactly twice. If we consider the set of maximal subpaths of $P$ with no vertex of $\mathcal G$ in their interior, we obtain a set of $r$ paths, $Q_1,\ldots,Q_{r}$ and, for every component $\mathcal C_i$ of $\mathcal G$, there is a vertex of $\mathcal C_i$ that is an endpoint of at least one such path.  Therefore, from the preceding discussion, the total length of $Q_1\ldots,Q_{r}$ is $\Omega(nr^{1-1/k})$.  But since each edge of $\mathcal H$ appears at most twice in these subpaths, we conclude that $\mathcal H$ has $\Omega(nr^{1-1/k})$ edges.  Since $\mathcal H$ is a tree, it has $\Omega(nr^{1-1/k})$ vertices.
 \end{proof}
-
-The main open problem left by this work is that of closing the gap between our upper and lower bounds, which differ by a factor of $k^{1/2}$.
 
 \textbf{Acknowledgements.}
 This work was initiated at the \emph{Second Workshop on Geometry and Graphs},
