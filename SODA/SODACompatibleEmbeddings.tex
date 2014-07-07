@@ -31,7 +31,7 @@ urlcolor=linkblue}
 
 %\usepackage{geometry}
 
-\newcommand{\appendixproof}{(proof in Appendix)\xspace}
+\newcommand{\appendixproof}{(proof ommitted)\xspace}
 \newcommand{\etal}{\emph{et al.}}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -75,7 +75,7 @@ urlcolor=linkblue}
                              \email{vida@cs.mcgill.ca}}\,\,
        Fabrizio Frati,\thanks{Dipartimento di Ingegneria,
                               Università degli Studi Roma Tre,
-                              \email{frati@dia.uniroma3.it}}\,\,
+                              \email{frati@dia.uniroma3.it}}\newline
        and Pat Morin\thanks{School of Computer Science, Carleton University,
                             \email{morin@scs.carleton.ca}}}
 
@@ -114,7 +114,7 @@ below.  We are given several different planar straight-line drawings (or simply 
 of the same disconnected graph, $\mathcal G$.
 We wish to make $\mathcal G$ connected by adding vertices and edges in
 such a way that these vertices and edges can also be added to the drawings of $\mathcal G$ while preserving planarity.  The objective is to do this while minimizing the number
-of edges and vertices added. As Figure~\ref{fig:bad-example} illusrates, it is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
+of edges and vertices added. As Figure~\ref{fig:bad-example} illustrates, it is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
 
 \begin{figure}[b]
   \centering{
@@ -151,46 +151,55 @@ The cited morphing algorithms require that the input graph, $\mathcal{G}$, be co
 \subsection{Formal Problem Statement and Main Result} 
 
 A \emph{drawing} of a labelled graph $\mathcal{G}=(V,E)$ is a one-to-one
-function $\varphi\colon V\to\R^2$.  A drawing is \emph{planar} if
+function $\psi\colon V\to\R^2$.  A drawing is \emph{planar} if
 (a)~for every pair of edges $uw$ and $xy$ in $E$, the open line segment
-with endpoints $\varphi(u)$ and $\varphi(w)$ is disjoint from the open
-line segment with endpoints $\varphi(x)$ and $\varphi(y)$ and (b)~for
-every edge $uw$ and every vertex $y$, $\varphi(y)$ is not contained in
-the open line segment with endpoints $\varphi(u)$ and $\varphi(w)$.
-Two planar drawings, $\varphi_1$ and $\varphi_2$, of $\mathcal{G}$
+with endpoints $\psi(u)$ and $\psi(w)$ is disjoint from the open
+line segment with endpoints $\psi(x)$ and $\psi(y)$ and (b)~for
+every edge $uw$ and every vertex $y$, $\psi(y)$ is not contained in
+the open line segment with endpoints $\psi(u)$ and $\psi(w)$.
+Two planar drawings, $\psi_1$ and $\psi_2$, of $\mathcal{G}$
 are \emph{isomorphic} if there exists a continuous family of planar
-drawings $\{\varphi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$ such
-that $\varphi^{(0)}=\varphi_1$ and $\varphi^{(1)}=\varphi_2$.\footnote{By
+drawings $\{\psi^{(t)} \colon 0\le t\le 1\}$ of $\mathcal{G}$ such
+that $\psi^{(0)}=\psi_1$ and $\psi^{(1)}=\psi_2$.\footnote{By
 Cairn's result, this is equivalent to saying that the two drawings of
 $G$ have the same rotation schemes, the same cycle-vertex containment
 relationship, and the same outer face.}
 
 
 Throughout this paper we will avoid repeatedly
-referencing drawing functions like $\varphi$.
+referencing drawing functions like $\psi$.
 Instead, we will talk about a labelled graph $\mathcal{G}$ and $k$ isomorphic
 geometric graphs $G_1,\ldots,G_k$.  This means that
 each $G_i$ is the geometric graph given by the drawing of $\mathcal{G}$
-with some function $\varphi_i$ and that $\varphi_1,\ldots,\varphi_k$ are
+with some function $\psi_i$ and that $\psi_1,\ldots,\psi_k$ are
 pairwise isomorphic; we will also say that $G_i$ is a {\em geometric planar embedding} of $\mathcal{G}$. When necessary, we may talk about the vertex $v$
 in $G_i$ where $v$ is actually a (labelled) vertex of $\mathcal{G}$; this should
-be taken to mean the vertex $\varphi_i(v)$ in $G_i$.
+be taken to mean the vertex $\psi_i(v)$ in $G_i$.
 
 We are now ready to state the main problem studied in this paper.  Given $k>1$
-geometric planar isomorphic embeddings $G_1, \ldots, G_k$ of $\mathcal
+geometric planar isomorphic drawings $G_1, \ldots, G_k$ of $\mathcal
 G$, a \emph{compatible augmentation}, $\mathcal H$, of $\mathcal G$ is
 a supergraph of $\mathcal G$ such that (1) $\mathcal H$ is connected
-and (2) there exist geometric planar isomorphic embeddings, $H_1,
+and (2) there exist geometric planar isomorphic drawings, $H_1,
 \ldots, H_k$, of $\mathcal H$ such that $H_i\supset G_i$ for every
 $i\in\{1,\ldots,k\}$.  In this paper, we study the following extremal question: In the worst case
 (over all $n$-vertex planar graphs, $\mathcal G$, and over all sets of
-$k$ geometric planar isomorphic embeddings of $\mathcal{G}$), what is the size of the smallest compatible augmentation of $\mathcal G$?
+$k$ geometric planar isomorphic drawings of $\mathcal{G}$), what is the size of the smallest compatible augmentation of $\mathcal G$?
 In this paper, we show that, if $\mathcal{G}$
 has $n$ vertices and $r$ connected components, there always exists a
 compatible augmentation of size $O(nr^{1-1/k})$ and that this bound
 is tight; there exists a graph $\mathcal G$
 with $r$ components and $k$ drawings for which any compatible augmentation
 has size $\Omega(nr^{1-1/k})$.  The upper bound holds for all $r\in\{2,\ldots,n\}$ and $k\ge 2$. The lower bound holds for all $r\in\{2,\ldots,n/3\}$ and $k\ge 2$.
+
+These results show that the (worst-case) cost of an augmentation is very
+sensitive to the number, $k$, of drawings, but only up to a point.
+For a fixed value of $r$, our bounds range from $\Theta(nr^{1/2})$ (when
+$k=2$) to $\Theta(nr)$ (for $k\ge \log r$).  On the other hand, for the
+common case where $k=2$, our bounds vary from $\Theta(n)$ (when $r\in
+O(1)$ up to $\Theta(n^{3/2})$ (when $r\in\Theta(n)$).  Neither $r$ nor $k$
+causes the complexity of the augmentation to blow up beyond $\Theta(n^2)$.
+
 
 \subsection{Related Work} 
 
@@ -206,7 +215,7 @@ number of triangles required is $O(n+pq)$ where $p$ and $q$ are the
 number of reflex vertices of $P$ and $Q$, respectively.
 
 
-Babikov \etal\ \cite{babikov.souvaine.ea:constructing} extended the result of Aronov \etal\ to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, $\mathcal G$ is a collection of $r$ cycles, the two embeddings are such that one cycle of $\mathcal G$ contains all the others in its interior and no other pair of cycles is nested. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(nr^{1/2})$ edges (but completing this graph to a triangulation may still require $\Omega(n^2)$ edges in the worst case).
+Babikov \etal\ \cite{babikov.souvaine.ea:constructing} extended the result of Aronov \etal\ to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, $\mathcal G$ is a collection of $r$ cycles, and the two drawings are such that one cycle of $\mathcal G$ contains all the others in its interior and no other pair of cycles is nested. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst case.  A byproduct of our main theorem is that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(nr^{1/2})$ edges (but completing this graph to a triangulation may still require $\Omega(n^2)$ edges in the worst case).
 
 Finally, several papers~\cite{aghtu-acgg-08,rw-acpgg-12,t-capsg-12} have dealt with the problem of augmenting the connectivity of any (single) geometric planar graph while adding few vertices and edges.
 
@@ -268,7 +277,7 @@ Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we show
 %want to construct a path $R$ that connects them in this order  such that $$|R|  = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right)\ .$$
 This paper uses the $|\cdot|$ operator in several ways.  Namely, for a real number, $x$, we denote by $|x|$ the absolute value of $x$; for a walk, $R$, we denote by $|R|$ the number of edges traversed by $R$; also, for a (weakly) simple polygon, $P$, we denote by $|P|$ the number of edges of~$P$.
 
-Consider a horizontal line $l$ below $S$ and let $\pi$ be the closed halfspace supported by $l$ that contains $S$.  We present an algorithm that constructs $R$ iteratively; during the $i$th iteration of the algorithm, the path is extended with $O(|\rank(v_i) - \rank(v_{i-1})|)$ vertices to include $v_i$.  For each $i\in \{1,\dots,n\}$, after the $i$th iteration of the algorithm, we maintain the invariant that $\ell$ does not intersect $R$, and we also maintain the \emph{escape invariant} which is defined as follows:
+Consider a horizontal line $\ell$ below $S$ and let $\pi$ be the closed halfspace supported by $\ell$ that contains $S$.  We present an algorithm that constructs $R$ iteratively; during the $i$th iteration of the algorithm, the path is extended with $O(|\rank(v_i) - \rank(v_{i-1})|)$ vertices to include $v_i$.  For each $i\in \{1,\dots,n\}$, after the $i$th iteration of the algorithm, we maintain the invariant that $\ell$ does not intersect $R$, and we also maintain the \emph{escape invariant} which is defined as follows:
 For each $j\in \{i, \dots, n\}$, there is a closed cone $\Delta_{j}$ with apex $u_{j}$ such that (1) $u_j$ lies above $v_j$ and has the same $x$-coordinate as $v_j$ ($u_j =v_j$ if $j = i$), (2) $\Delta_j$ contains $v_j$ and no other point of $S$, (3) $\Delta_j$ contains the ray originating at $v_j$ in the direction of the negative $y$-axis, (4) $\Delta_j$ does not intersect $R$, and (5) $\Delta_h$ and $\Delta_j$ are disjoint inside $\pi$, for every $h\in \{i,\dots,n\}$ with $h\neq j$.
 
 %(2) $\Delta_j$ contains the ray originating at $v_j$ in the direction of the negative $y$-axis, (3) $\Delta_{i}$ does not intersect $R$, except at $v_{i}$; also, for every $j\in \{i+1,\dots,n\}$, there is a cone $\Delta_j$ with apex $u_j$ such that (1) $u_j$ lies above $v_j$ and has the same $x$-coordinate as $v_j$, (2) $\Delta_j$ contains $v_j$ and no other point of $S$, (3) $\Delta_j$ contains the ray originating at $v_j$ in the direction of the negative $y$-axis, (4) $\Delta_j$ does not intersect $R$, and (5) $\Delta_h$ and $\Delta_j$ are disjoint inside $\pi$, for every $h\in \{i,\dots,n\}$ with $h\neq j$.
@@ -550,7 +559,7 @@ loss of generality that $r$ is even and that $2r$ divides $n$.
 
 The graph $\mathcal G$ consists of $r$ disjoint paths,
 $\mathcal{C}_1,\ldots,\mathcal{C}_r$, each of length $n/r$.  Each of the
-drawings $G_1$,\ldots,$G_k$ embeds the vertices of $\mathcal G$ on the
+drawings $G_1$,\ldots,$G_k$ draws the vertices of $\mathcal G$ on the
 same point and edge set. The point set consists of the vertices of
 $r$ nested regular $n/r$-gons, $P_1,\ldots,P_r$, each centered at the
 origin and having nearly the same size. Refer to Figure~\ref{figure:lower-bound}. More precisely, $P_1\subset P_2\subset\cdots\subset P_r$ and the sizes are chosen so that any segment
@@ -558,7 +567,7 @@ joining two non-consecutive vertices of $P_i$ intersects the interior
 of~$P_{i-1}$.
 The drawings $G_1,\ldots,G_k$ are obtained from the permutations
 $\pi^{(1)},\ldots,\pi^{(k)}$ given by \linebreak Lemma~\ref{lem:permutations}.
-In the drawing $G_x$, the path $\mathcal C_i$ is embedded on the vertices
+In the drawing $G_x$, the path $\mathcal C_i$ is drawn on the vertices
 of $P_{\pi^{(x)}_i}$. If $y=\pi^{(x)}_i$ is even, the drawing uses
 all the edges of $P_y$ except the left-most edge.  If $y$ is odd, the
 drawing uses all the edges of $P_y$ except the right-most edge.
@@ -566,10 +575,11 @@ drawing uses all the edges of $P_y$ except the right-most edge.
 \begin{figure}
   \centering{
     \begin{tabular}{c@{\hspace{1cm}}c}
-      \includegraphics{img/lower-bound-1} & \includegraphics{img/lower-bound-2}
+      \includegraphics[scale=0.75]{img/lower-bound-1} & 
+      \includegraphics[scale=0.75]{img/lower-bound-2}
     \end{tabular}
   }
-  \caption{In the construction in Theorem~\ref{thm:lower-bound}, all drawings use the same set of vertices and line segments and the drawing of a path that joins $\mathcal C_i$ to $\mathcal C_j$ must travel around all paths embedded between the drawing of $\mathcal C_i$ and $\mathcal C_j$.}
+  \caption{In the construction in Theorem~\ref{thm:lower-bound}, all drawings use the same set of vertices and line segments and the drawing of a path that joins $\mathcal C_i$ to $\mathcal C_j$ must travel around all paths drawn between the drawing of $\mathcal C_i$ and $\mathcal C_j$.}
   \label{figure:lower-bound}
 \end{figure}
 
@@ -601,13 +611,14 @@ To finish up we note that, since the augmentation $\mathcal{H}$ is minimal,
 it is a tree; $\mathcal G$ contains no cycles, so any cycle in $\mathcal H$ contains an edge not in $\mathcal G$ that could be removed.  Now, observe that if we traverse the outer face of (any planar drawing of) $\mathcal H$ then we obtain a non-simple path, $P$, that traverses each edge of $\mathcal{H}$ exactly twice. If we consider the set of maximal subpaths of $P$ with no vertex of $\mathcal G$ in their interior, we obtain a set of $r$ paths, $Q_1,\ldots,Q_{r}$ and, for every component $\mathcal C_i$ of $\mathcal G$, there is a vertex of $\mathcal C_i$ that is an endpoint of at least one such path.  Therefore, from the preceding discussion, the total length of $Q_1\ldots,Q_{r}$ is $\Omega(nr^{1-1/k})$.  But since each edge of $\mathcal H$ appears at most twice in these subpaths, we conclude that $\mathcal H$ has $\Omega(nr^{1-1/k})$ edges.  Since $\mathcal H$ is a tree, it has $\Omega(nr^{1-1/k})$ vertices.
 \end{proof}
 
-\textbf{Acknowledgements.}
+\newpage
+
+\section*{Acknowledgement}
 This work was initiated at the \emph{Second Workshop on Geometry and Graphs},
 held at the Bellairs Research Institute, March 9-14, 2014.  We are
 grateful to the other workshop participants for providing a stimulating
 research environment.
 
-\newpage
 % \section{Summary and Conclusions}\label{section:Conclusions}
 % I have nothing to write here.  Some open problems might be nice.
 \bibliographystyle{plain}
