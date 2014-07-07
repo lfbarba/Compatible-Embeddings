@@ -837,8 +837,59 @@ research environment.
 \bibliographystyle{plain}
 \bibliography{CompatibleEmbeddings}
 
+\appendix
+\newpage
+\section{Shortest Tour in the Uniform Norm}
 
+\begin{lemma}\label{lemma:tsp}
+  Let $P$ be a set of $r\ge 2$ points contained in the $k$-dimensional
+  cube $[0,1]^k$, for $k\ge 2$.  Then there exists a spanning path
+  $p_1,\ldots,p_n$ of $P$ whose length under the uniform (a.k.a.,
+  $L_\infty$) norm is at most $cr^{1-1/k}$, where $c$ is a
+  universal constant. In particular, $c$ does not depend on $k$ or $r$.
+\end{lemma}
 
+\begin{proof}
+This proof is a rehashing of an argument used by Moran \cite{moran:on}.
+First, we note that it is sufficient to upper-bound the $L_\infty$
+length of the minimum spanning-tree of $P$, since this
+can be transformed into a path of at most twice its length.
+
+For any point $p\in\R^k$, the \emph{uniform ball} of radius $d$,
+defined as
+\[
+    B_\infty(p,d)=\{q\in\R^k : \|p-q\|_\infty \le d\}
+\]
+is a cube of side-length $2r$ and has volume $(2r)^k$.  If $d< 1$ and
+$p\in [0,1]^k$, then $B_\infty(p,d)\cap [0,1]^k$ contains a cube of side-length $r$, so $B_\infty(p,d)\cap [0,1]^k$ has volume at least $r^k$.  
+
+The preceding implies that the set $P$ contains two points $p$ and $q$,
+such that $\|p-q\|_\infty \le 2r^{-1/k}$; otherwise, one could pack $r$
+disjoint cubes, each of volume greater then $1/r$ into $[0,1]^k$.
+
+Now, we can construct a spanning tree of $P$ by repeatedly taking the
+pair of points $p,q\in P$ that minimize $\|p-q\|$, adding the edge $pq$
+to our spanning tree and then removing $q$ from $P$. Since, at the $i$th
+step of this algorithm, the set $P$ contains $r-i+1$ points, the total $L_\infty$ length of all the edges added to this tree is
+\begin{align*}
+   \sum_{i=2}^{r} 2i^{-1/k} 
+     & \le 2^{1-1/k} + \int_2^r 2x^{-1/k}\,\mathrm{d}x \\
+     & = 2^{1-1/k} + (2/(1-1/k))\left(r^{1-1/k}-2^{1-1/k}\right) \\
+     & \le 4r^{1-1/k} + O(1) \\
+     & \le Cr^{1-1/k} \enspace ,
+\end{align*}
+for a sufficiently large constant $C$ and $r,k\ge 2$. Thus, the result holds for $c=2C$.
+\end{proof}
+
+By uniformly scaling the point set $P$ by a factor of $n$, we obtain the following corollary of Lemma~\ref{lemma:tsp}, which is used in our algorithm:
+
+\begin{lemma}\label{lemma:tsp}
+  Let $P$ be a set of $r\ge 2$ points contained in 
+  cube $[0,n]^k$, for $k\ge 2$.  Then there exists a spanning path
+  $p_1,\ldots,p_n$ of $P$ whose length under the uniform (a.k.a.,
+  $L_\infty$) norm is at most $cnr^{1-1/k}$, where $c$ is a
+  universal constant. In particular, $c$ does not depend on $k$, $r$, or $n$.
+\end{lemma}
 
 
 
