@@ -15,7 +15,10 @@
 citecolor=linkblue, filecolor=linkblue, menucolor=linkblue,
 urlcolor=linkblue}
 
-\setlength{\parskip}{2ex}
+% SODA submission space-saving crap
+\pagestyle{plain}
+\setlength{\topskip}{0in}
+%\setlength{\parskip}{2ex}
 
 \usepackage[margin=2.45cm]{geometry}
 %\usepackage{comment}
@@ -104,14 +107,23 @@ Our upper and lower-bounds hold for all $1 < r < \Omega(n)$ and $k>1$.
 %A category including the fourth, optional field follows..
 
 \section{Introduction}
-\vspace{-.1in}
+%\vspace{-.1in}
 Consider the following problem, which will be formalized
 below.  We are given several different planar straight-line drawings (or simply drawings)
 of the same disconnected graph, $\mathcal G$.
 We wish to make $\mathcal G$ connected by adding vertices and edges in
 such a way that these vertices and edges can also be added to the planar drawings of $\mathcal G$ while preserving planarity.  The objective is to do this while minimizing the number
-of edges and vertices added. As we will show later, it is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
+of edges and vertices added. As Figure~\ref{fig:bad-example} illusrates, it is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
 
+\begin{figure}[b]
+  \centering{
+    \begin{tabular}{c@{\hspace{2cm}}c}
+      \includegraphics{img/bad-example-1} & \includegraphics{img/bad-example-2}
+    \end{tabular}
+  }
+  \caption{Two drawings of the same graph, $\mathcal{G}$, where making $\mathcal{G}$ connected requires the addition of both edges and vertices. In this case, $\mathcal G$ is made connected by adding the hollow vertex and two dashed edges.}
+  \label{fig:bad-example}
+\end{figure}
 
 The motivation for this work comes from the problem of morphing
 planar graph drawings, which has many applications \cite{erten.kobourov.ea:intersection,friedrich.eades:graph,gotsman.surazhsky:guaranteed,surazhsky.gotsman:controllable,surazhsky.gotsman:intrinsic} including
@@ -278,8 +290,8 @@ To preserve the escape invariant, for each $h\in\{j{+}2,\ldots,n\}$, we translat
 Given an order $(v_1, \ldots, v_n)$ of the vertices of $S$, there exists a plane path $R$ that connects every point of $S$ in the given order such that the number of vertices of $R$ between $v_{i-1}$ and $v_{i}$ is $O(|\rank(v_i) - \rank(v_{i-1})|)$, for each $i\in \{2,\dots,n\}$.
 \end{lemma}
 
-\vspace{-.1in}
-\subsection{Compatible drawings of point sets}\vspace{-.1in}
+%\vspace{-.1in}
+\subsection{Compatible drawings of point sets}%\vspace{-.1in}
 Recall that in this section $\mathcal G$ is a graph with $n$ trivial components.
 Let $G_1, \ldots, G_k$ be $k>1$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a sequence of $n$ points in the plane.
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate.
@@ -291,7 +303,7 @@ Note that the order of the points of $P$ induces an order on the vertices of $\m
 \begin{theorem}\label{theorem:points}
 For each $i\in \{1,\dots,n\}$, we can construct a path $R_i$ of length $O(n^{2-1/k})$ that connects every point of $G_i$ so that $G_i\cup R_i$ is plane. Moreover, for any distinct $i,j\in \{1,\dots,n\}$, $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
 \end{theorem}
-\vspace{-.2in}
+%\vspace{-.2in}
 \begin{proof}
 By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices of $\mathcal{G}$ induced by $P$.  The augmented graph $\mathcal{H}$ is a path that visits the vertices $v_1,\ldots,v_n$ in this order. Letting $d_j$ denote the Euclidean distance between $x_{v_j}$ and $x_{v_{j+1}}$, the path $\mathcal{H}$ includes an additional $O(d_j)$ vertices between $v_{j}$ and $v_{j+1}$.  It follows that the number of vertices
 in $\mathcal{H}$ is proportional to the length of $P$, which is $O(n^{2-1/k})$.
@@ -371,7 +383,7 @@ which we call the \emph{cost} of going from $u$ to $v$.
   If $a$ is an attachment corner of $G$, then $\sigma_G(a_1, a) < 4n$. Moreover, if $b$ is another attachment corner of $G$, then
   $\sigma_G(a, b) =  |\sigma_G(a_1, a)- \sigma_G(a_1, b)|$.
 \end{lemma}
-\vspace{-.1in}
+%\vspace{-.1in}
 \subsection{Spanning paths for connected augmentations}\label{section:Spanning paths for connected augmentations}
 Let $a_1, \ldots, a_r$ be an arbitrary order of the attachment corners of $G$ (we can get the incremental indexing by relabeling the components).
 Consider a plane path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that passes through all attachment corners of $G$ and through no other vertices of $G$ ($R$ may have vertices not in $G$). We say that $C_i$ {\em lies to the right of $R$} if, for each $j\in\{1,\ldots,t\}$ such that $\rho_j=a_i$ is an attachment corner of $G$, $\rho_{j-1}$ and $\rho_{j+1}$ appear as consecutive vertices when sorting the neighbors of $a_i$ in clockwise order around $a_i$ in the graph $G\cup R$; see Figure~\ref{fig:Neighborhood} (left).
@@ -458,13 +470,9 @@ of size $O(nr^{1-1/k})$.
 
 Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components of $\mathcal G$.  Because $G_1,\ldots,G_k$ are isomorphic, we can select one attachment corner from each component in the drawing $G_1$, and this attachment corner also appears in each of $G_2,\ldots,G_k$. Thus, for each $j\in\{1,\ldots,r\}$, we choose an attachment corner $a_j$ of $\partial C_j$ such that $a_j$ is incident to the outer face of $C_j$.
 
-\begin{figure}[b]
+\begin{figure}
    \centering{\includegraphics{img/big-example}}
-   \caption{\small An example of the algorithm for generating a spanning path that connects $a_1,\ldots,a_4$ (left); in the lower bound of Theorem~\ref{thm:lower-bound}, all
-    drawings use the same set of points for vertices and segments for
-    edges (middle); and the drawing of a path that joins $\mathcal{C}_i$ to
-    $\mathcal{C}_j$ must travel around all the paths embedded between the
-    drawing of $\mathcal{C}_i$ and the drawing of $\mathcal{C}_j$ (right).}
+   \caption{\small An example of the algorithm for generating a spanning path that connects $a_1,\ldots,a_4$.}
    \label{figure:big-example}
 \end{figure}
 
@@ -503,7 +511,7 @@ The construction in Theorem~\ref{theorem:main} is implemented fairly easily usin
 
 
 \section{Lower Bounds}\label{section:Lower bound}
-\vspace{-.1in}
+%\vspace{-.1in}
 Our lower bounds are based on the following lemma. It says that we can find $k$ permutations of $\{1,\ldots,r\}$ such that for half the indices $i\in\{1,\ldots,r\}$, and every $j\in\{1,\ldots,r\}\setminus\{i\}$, there is a permutation in which $i$ and $j$ are at distance $\Omega(r^{1-1/k})$.
 
 \begin{lemma}\label{lem:permutations}\appendixproof
@@ -534,8 +542,7 @@ $\mathcal{C}_1,\ldots,\mathcal{C}_r$, each of length $n/r$.  Each of the
 drawings $G_1$,\ldots,$G_k$ embeds the vertices of $\mathcal G$ on the
 same point and edge set. The point set consists of the vertices of
 $r$ nested regular $n/r$-gons, $P_1,\ldots,P_r$, each centered at the
-origin and having nearly the same size. Refer to Figure~\ref{figure:big-example} (middle). More precisely, $P_1\subset
-P_2\subset\cdots\subset P_r$ and the sizes are chosen so that any segment
+origin and having nearly the same size. Refer to Figure~\ref{figure:lower-bound}. More precisely, $P_1\subset P_2\subset\cdots\subset P_r$ and the sizes are chosen so that any segment
 joining two non-consecutive vertices of $P_i$ intersects the interior
 of~$P_{i-1}$.
 The drawings $G_1,\ldots,G_k$ are obtained from the permutations
@@ -544,6 +551,17 @@ In the drawing $G_x$, the path $\mathcal C_i$ is embedded on the vertices
 of $P_{\pi^{(x)}_i}$. If $y=\pi^{(x)}_i$ is even, the drawing uses
 all the edges of $P_y$ except the left-most edge.  If $y$ is odd, the
 drawing uses all the edges of $P_y$ except the right-most edge.
+
+\begin{figure}
+  \centering{
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \includegraphics{img/lower-bound-1} & \includegraphics{img/lower-bound-2}
+    \end{tabular}
+  }
+  \caption{In the construction in Theorem~\ref{thm:lower-bound}, all drawings use the same set of vertices and line segments and the drawing of a path that joins $\mathcal C_i$ to $\mathcal C_j$ must travel around all paths embedded between the drawing of $\mathcal C_i$ and $\mathcal C_j$.}
+  \label{figure:lower-bound}
+\end{figure}
+
 
 Now, without loss of generality, consider some edge-minimal compatible
 augmentation $\mathcal H$ of $\mathcal G$.  For each component
@@ -557,7 +575,7 @@ $P_{\pi^{(s)}_i}$ to a vertex of $P_{\pi^{(s)}_j}$, $j\neq
 i$, and $|\pi^{(s)}_i-\pi^{(s)}_i|\ge t$.  This path must
 have length $\Omega(tn/r)$ since it has to ``go around'' the
 paths between $P_{\pi^{(s)}_i}$ and $P_{\pi^{(s)}_j}$; see
-Figure~\ref{figure:big-example} (right).
+Figure~\ref{figure:lower-bound} (right).
 
 Thus far, we have shown that for at least $r/2$ values of
 $i\in\{1,\ldots,r\}$, the component $C_i$ is the endpoint of a

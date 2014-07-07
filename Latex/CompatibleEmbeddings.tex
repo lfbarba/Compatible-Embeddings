@@ -65,14 +65,14 @@ urlcolor=linkblue}
 \maketitle
 \begin{abstract}
 \setlength{\baselineskip}{16.8pt}
-We consider the following \emph{compatible connectivity-augmentation
-problem}: We are given a planar graph,
-$\mathcal{G}$, that has $r>1$ connected components, and $k$ isomorphic planar drawings, $G_1,\ldots,G_k$, of
+Motivated by applications to graph morphing, we consider the following \emph{compatible connectivity-augmentation
+problem}: We are given a labelled planar $n$-vertex graph,
+$\mathcal{G}$, that has $r>1$ connected components, and $k>1$ isomorphic planar straight-line drawings, $G_1,\ldots,G_k$, of
 $\mathcal{G}$. We wish to add vertices and edges to $\mathcal{G}$ to make
 it connected and in such a way that these vertices and edges can be added to
-the drawings $G_1,\ldots,G_k$ while preserving planarity.  We show that
+the drawings $G_1,\ldots,G_k$ as points and line segments, respectively, while preserving planarity.  We show that
 adding $\Theta(nr^{1-1/k})$ edges and vertices to $\mathcal{G}$ is always
-sufficient and sometimes necessary to achieve this goal.  
+sufficient and sometimes necessary to achieve this goal. These upper and lower-bounds hold for $1 < r \le \Omega(n)$ and $k>1$. 
 \end{abstract}
 
 \end{titlepage}
@@ -82,9 +82,9 @@ sufficient and sometimes necessary to achieve this goal.
 \section{Introduction}
 
 
-We consider the following problem, which will be more carefully formalized
+Consider the following problem, which will be more carefully formalized
 below.  We are given several different planar straight-line drawings
-of the same graph, $\mathcal G$, which is not connected.
+of the same disconnected graph, $\mathcal G$.
 We wish to make $\mathcal G$ connected by adding vertices and edges in
 such a way that these vertices and edges can also be added to the planar
 straight-line drawings of $\mathcal G$ while preserving planarity.  
@@ -138,11 +138,9 @@ of the drawing throughout the deformation. This morphing problem
 has been studied since 1944, when Cairns \cite{cairns:deformations}
 showed such a transformation always exists.  Since then, a sequence of results has shown
 that such transformations can be done efficiently, so that the
-motion can be described concisely \cite{thomassen:deformations,
-grunbaum.shephard:geometry,alamdari.angelini.ea:morphing,
-angelini.dalozzo.ea:morphing}.  The most recent such result
+motion can be described concisely \cite{alamdari.angelini.ea:morphing,angelini.dalozzo.ea:morphing,grunbaum.shephard:geometry,thomassen:deformations}.  The most recent such result
 \cite{angelini.dalozzo.ea:morphing} shows that any planar drawing of
-an $n$-vertex connected planar graph can be morphed into any isomorphic
+an $n$-vertex \emph{connected} planar graph can be morphed into any isomorphic
 drawing using a sequence of $O(n)$ \emph{linear
 morphs}, in which vertices move along linear trajectories at constant
 speed.
@@ -382,7 +380,7 @@ Since the path that connects $v_j$ with $v_{j+1}$ follows the boundary of $\pi_j
 
 \subsection{Compatible drawings of point sets}
 Recall that in this section $\mathcal G$ is a graph with $n$ trivial components.
-Let $G_1, \ldots, G_k$ be $k$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a set of $n$ points in the plane.
+Let $G_1, \ldots, G_k$ be $k>1$ isomorphic drawings of $\mathcal G$, i.e., $G_i$ is a sequence of $n$ points in the plane.
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate.
 Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ using the Euclidean metric.  It is known that the length of
 $P$ is $O(n^{2-1/k})$~\cite{steele.snyder:worst}.
@@ -620,7 +618,7 @@ To conclude, each $R_i$ visits each component only at its attachment corner, the
 
 In the preceding section, we assumed that the drawings $G_1,\ldots,G_k$ of $G$ were such that every component was incident to the outer face and promised that this assumption would be removed.
 
-To who the assumption is not necessary, observe that we can first use the preceding algorithm to connect all the components that do appear on the outer face using a polygonal path that is contained on the outer face.  The number of vertices used in this path is $O(n'r^{1-1/k})$, where $n'$ is the number of vertices on the outer face.
+To see that the assumption is not necessary, observe that we can first use the preceding algorithm to connect all the components that do appear on the outer face using a polygonal path that is contained on the outer face.  The number of vertices used in this path is $O(n'r^{1-1/k})$, where $n'$ is the number of vertices on the outer face.
 
 Next, for each interior face, $f$, that has multiple components
 $C_1,\ldots,C_t$ on its boundary, we can use (a small modification of)
@@ -721,10 +719,10 @@ Let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\
 Using Lemma~\ref{lem:permutations}, we can prove a lower bound that matches the upper bound obtained in our general construction.
 
 \begin{theorem}\label{thm:lower-bound}
-  For every integer $n$ and every $r\in\{1,\ldots,\lfloor n/4\rfloor\}$,
+  For every positive integer $n$ and every $r\in\{2,\ldots,\lfloor n/4\rfloor\}$,
   there exists a graph $\mathcal G$ having $n$ vertices, $r$ connected
   components, and $k$ isomorphic drawings $G_1,\ldots,G_k$ such that
-  any compatible augmentation of $G$ has size $\Omega(nr^{1-1/k})$.
+  any compatible augmentation of $\mathcal G$ has size $\Omega(nr^{1-1/k})$.
 \end{theorem}
 
 \begin{proof}
