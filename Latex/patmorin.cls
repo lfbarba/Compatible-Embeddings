@@ -31,7 +31,7 @@
 \ProcessOptions
 
 % Read the article class
-\LoadClass[letterpaper]{article}
+\LoadClass[a4paper]{article}
 
 \RequirePackage{kpfonts}
 \RequirePackage[sf,bf,small,raggedright,compact]{titlesec}
