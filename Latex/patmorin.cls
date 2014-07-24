@@ -21,8 +21,8 @@
 \DeclareOption{twoside}{\OptionNotUsed}
 \DeclareOption{titlepage}{\OptionNotUsed}
 \DeclareOption{onecolumn}{\OptionNotUsed}
-\DeclareOption{10pt}{\OptionNotUsed}
-\DeclareOption{12pt}{\OptionNotUsed}
+%\DeclareOption{10pt}{\OptionNotUsed}
+%\DeclareOption{12pt}{\OptionNotUsed}
 
 % The default action is to pass options to article class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -31,8 +31,8 @@
 \ProcessOptions
 
 % Read the article class
-\LoadClass[12pt,letterpaper]{article}
-
+\LoadClass[letterpaper]{article}
+\linespread{1.166666667}  % 12pt font with 16.8pt baselineskip
 \RequirePackage{kpfonts}
 \RequirePackage[sf,bf,small,raggedright,compact]{titlesec}
 
@@ -45,7 +45,7 @@
 \setlength{\headheight}{0.200in}
 \setlength{\headsep}{0.4in}
 \setlength{\footskip}{0.500in}
-%\setlength{\parskip}{1ex}
+\setlength{\parskip}{1ex}
 \setlength{\parindent}{1.25cm}
 %\flushbottom
 
@@ -110,12 +110,20 @@
 
 
 %------------- Use this so pdflatex outputs US letter pages -------------
-%\usepackage[letterpaper]{hyperref}
-\usepackage[dvipsnames]{color}
-\definecolor{linkblue}{named}{MidnightBlue}
-%\hypersetup{colorlinks=true, linkcolor=linkblue,  anchorcolor=linkblue,
-%	citecolor=linkblue, filecolor=linkblue, menucolor=linkblue,
-%	urlcolor=linkblue} 
+\usepackage[dvipsnames]{xcolor}
+\definecolor{linkblue}{named}{Blue}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true, 
+  linkcolor=linkblue,  
+  anchorcolor=linkblue,
+  citecolor=linkblue, 
+  filecolor=linkblue, 
+  menucolor=linkblue, 
+  urlcolor=linkblue
+} 
+
+
 
 
 %--------------------------- Headers and Footers ------------------------

@@ -1,4 +1,4 @@
-\documentclass{patmorin}
+\documentclass[11pt]{patmorin}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics}
 %\setcounter{tocdepth}{3}
@@ -13,7 +13,7 @@
 citecolor=linkblue, filecolor=linkblue, menucolor=linkblue,
 urlcolor=linkblue} 
 
-\setlength{\parskip}{2ex}
+%\setlength{\parskip}{2ex}
 
 %\usepackage{comment}
 %\usepackage{url}
@@ -50,7 +50,7 @@ urlcolor=linkblue}
   
 \newcommand{\ch}[1]{\ensuremath{\textsc{ch}(#1)}}
 
-\title{\MakeUppercase{Compatible Connectivity-Augmentation of Planar Disconnected Graphs}}
+\title{\MakeUppercase{Compatible Connectivity-Augmentation \newline of Planar Disconnected Graphs}}
 
 %\author{Second Bellairs Workshop on Geometry and Graphs}
 \author{Greg Aloupis,\thanks{Department of Computer Science, Tufts University, 
@@ -81,7 +81,7 @@ urlcolor=linkblue}
 
 \maketitle
 \begin{abstract}
-\setlength{\baselineskip}{16.8pt}
+%\setlength{\baselineskip}{16.8pt}
 Motivated by applications to graph morphing, we consider the following
 \emph{compatible connectivity-augmentation problem}: We are given
 a labelled $n$-vertex planar graph, $\mathcal{G}$, that has $r>1$
@@ -128,20 +128,21 @@ of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} sho
   \label{fig:bad-example}
 \end{figure}
 
-The motivation for this work comes from the problem of morphing
-planar graphs, which has many applications \cite{erten.kobourov.ea:intersection,friedrich.eades:graph,gotsman.surazhsky:guaranteed,surazhsky.gotsman:controllable,surazhsky.gotsman:intrinsic} including
-computer animation.  Imagine an
-animator who wishes to animate a scene in which a character's expression
-goes from neutral, to surprised, to happy. The animator can draw these
+The motivation for this work comes from the
+problem of morphing planar graphs, which has many applications
+\cite{erten.kobourov.ea:intersection-free,friedrich.eades:graph,gotsman.surazhsky:guaranteed,surazhsky.gotsman:controllable,surazhsky.gotsman:intrinsic}
+including computer animation.  Imagine an animator who wishes to animate a
+scene in which a character's expression goes from neutral, to surprised,
+to happy (see Figure~\ref{fig:faces}). The animator can draw these
 three faces, but does not want to hand-draw the 30--60 frames required
 to animate the change of expression.  The strokes used to draw the
 character's features can be converted into paths and these can be merged
 into components corresponding to the character's eyes, nose, mouth and
 so on.  A correspondence between the same elements in different pictures
 is also given.\footnote{In many cases, the correspondence is a byproduct
-of the creation process. For example, in Figure~\ref{fig:faces}, the second
-two faces were obtained by copying and then editing the first one.}  Thus,
-the input is three isomorphic drawings of the same planar graph.
+of the creation process. For example, in Figure~\ref{fig:faces}, the
+second two faces were obtained by copying and then editing the first one.}
+Thus, the input is three isomorphic drawings of the same planar graph.
 
 \begin{figure}
   \centering{ 
@@ -267,7 +268,7 @@ and $Q$, of $\mathcal G$. The goal is to augment $\mathcal G$ (and the
 two drawings $P$ and $Q$) so that $\mathcal G$ becomes a near-triangulation,
 and $P$ and $Q$ become (geometric) triangulations of the interiors
 of the polygons whose boundaries are $P$ and $Q$.  Aronov \etal\
-\cite{aronov.seidel.ea:compatible} showed that this can always
+\cite{aronov.seidel.ea:on} showed that this can always
 be accomplished with the addition of $O(n^2)$ vertices and that
 $\Omega(n^2)$ vertices are sometimes necessary.  Kranakis and Urrutia
 \cite{kranakis.urrutia:isomorphic} showed that this result can be made
@@ -285,16 +286,17 @@ number of reflex vertices of $p$ and $q$, respectively.
 
 Babikov \etal\ \cite{babikov.souvaine.ea:constructing} showed that the result of Aronov \etal\ can be extended to polygons with holes. This work is the most closely related to ours because it encounters (the special case $k=2$ of) our problem as a subproblem. In their setting, the graph $\mathcal G$ is a collection of $r$ cycles, the drawings $P$ and $Q$ are such that one cycle, $\mathcal C$, of $\mathcal G$ contains all the others in its interior and no other pair of cycles is nested in $P$ or $Q$. In the first stage of their algorithm, they build a connected supergraph $\mathcal{H}'$ of $\mathcal{G}$, but their supergraph has size $\Theta(n^2)$ in the worst case.  The main theorem in the current paper shows that this step of their algorithm could be done with a graph $\mathcal{H}'$ having only $O(nr^{1/2})$ edges (but completing this graph to a triangulation may still requires $\Omega(n^2)$ edges in the worst case).
 
-Finally, several papers have dealt with the problem of increasing the
-connectivity of a (single) geometric planar graph while adding few
-vertices and edges.  Abellenas \etal~\cite{aghtu-acgg-08} consider the
-problem of adding edges to a planar drawing in order to make it 2-edge
-connected \cite{aghtu-acgg-08} and showed that $\lfloor(2n-2)/3\rfloor$
-edge are sometimes necessary and $6n/7$ edges are always sufficient.
-T\'oth \cite{t-capsg-12} later obtained the tight upper-bound of
-$\lfloor(2n-2)/3\rfloor$ for the same problem.  Rutter and Wolff
-\cite{rw-acpgg-12} show that the finding the minimum number of edges
-required to achieve 2-edge connectivity is NP-hard.
+Finally, several papers have dealt with the problem
+of increasing the connectivity of a (single) geometric
+planar graph while adding few vertices and edges.  Abellenas
+\etal~\cite{abellanas.olaverri.ea:augmenting} consider the problem of
+adding edges to a planar drawing in order to make it 2-edge connected
+and showed that $\lfloor(2n-2)/3\rfloor$ edge are sometimes necessary
+and $6n/7$ edges are always sufficient.  T\'oth \cite{toth:connectivity}
+later obtained the tight upper-bound of $\lfloor(2n-2)/3\rfloor$ for
+the same problem.  Rutter and Wolff \cite{rutter.wolff:augmenting} show
+that the finding the minimum number of edges required to achieve 2-edge
+connectivity is NP-hard.
 
 
 \subsection{Outline}
