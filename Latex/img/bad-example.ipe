@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70005" creator="Ipe 7.1.4">
-<info created="D:20140514134124" modified="D:20140514135358"/>
+<info created="D:20140514134124" modified="D:20140724091200"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -233,8 +233,15 @@ h
 <layer name="common"/>
 <layer name="alpha"/>
 <layer name="beta"/>
+<layer name="gamma"/>
 <view layers="common alpha" active="alpha"/>
 <view layers="common beta" active="beta"/>
+<view layers="gamma" active="gamma"/>
+<path layer="gamma" stroke="black" dash="dotted">
+160 704 m
+160 736
+192 736 s
+</path>
 <path layer="common" stroke="black">
 160 752 m
 128 736 l
@@ -291,5 +298,34 @@ h
 224 688 l
 </path>
 <use matrix="1 0 0 1 20.9391 -0.805351" name="mark/fdisk(sfx)" pos="224.204 773.627" size="normal" stroke="black" fill="white"/>
+<path layer="gamma" matrix="1 0 0 1 0 -32" stroke="black">
+16 0 0 16 144 736 e
+</path>
+<text matrix="1 0 0 1 13 -32" transformations="translations" pos="112 736" stroke="black" type="label" width="7.472" height="6.808" depth="0" halign="right" valign="center">A</text>
+<text matrix="1 0 0 1 51 -32" transformations="translations" pos="112 736" stroke="black" type="label" width="7.195" height="6.808" depth="0" valign="center">C</text>
+<text matrix="1 0 0 1 0 19" transformations="translations" pos="144 704" stroke="black" type="label" width="7.61" height="6.808" depth="0" halign="center" valign="bottom">D</text>
+<use matrix="1 0 0 1 0 -32" name="mark/disk(sx)" pos="144 752" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 0 -32" name="mark/disk(sx)" pos="128 736" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 0 -32" name="mark/disk(sx)" pos="144 720" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 0 -32" name="mark/disk(sx)" pos="160 736" size="normal" stroke="black"/>
+<path matrix="1 0 0 1 64 -32" stroke="black">
+16 0 0 16 144 736 e
+</path>
+<text matrix="1 0 0 1 77 -32" transformations="translations" pos="112 736" stroke="black" type="label" width="4.981" height="6.42" depth="0" halign="right" valign="center">1</text>
+<text matrix="1 0 0 1 115 -32" transformations="translations" pos="112 736" stroke="black" type="label" width="4.981" height="6.42" depth="0" valign="center">3</text>
+<text matrix="1 0 0 1 64 19" transformations="translations" pos="144 704" stroke="black" type="label" width="4.981" height="6.42" depth="0" halign="center" valign="bottom">4</text>
+<use matrix="1 0 0 1 64 -32" name="mark/disk(sx)" pos="144 752" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 64 -32" name="mark/disk(sx)" pos="128 736" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 64 -32" name="mark/disk(sx)" pos="144 720" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 64 -32" name="mark/disk(sx)" pos="160 736" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 -16 -32" name="mark/fdisk(sfx)" pos="208 768" size="normal" stroke="black" fill="white"/>
+<path matrix="1 0 0 1 -16 -32" stroke="black" dash="dotted">
+240 736 m
+249.604 749.819
+230.667 767.716
+208 768 s
+</path>
+<text matrix="1 0 0 1 0 -19" transformations="translations" pos="144 704" stroke="black" type="label" width="7.057" height="6.808" depth="0" halign="center" valign="top">B</text>
+<text matrix="1 0 0 1 64 -19" transformations="translations" pos="144 704" stroke="black" type="label" width="4.981" height="6.42" depth="0" halign="center" valign="top">2</text>
 </page>
 </ipe>
