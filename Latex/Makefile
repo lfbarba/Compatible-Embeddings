@@ -1,7 +1,7 @@
-all: CompatibleEmbeddings.pdf
+all: augmentations.pdf
 
-CompatibleEmbeddings.pdf : CompatibleEmbeddings.tex images
-	latexmk -pdf CompatibleEmbeddings.tex
+augmentations.pdf : augmentations.tex images
+	latexmk -pdf augmentations.tex
 
 images:
 	(cd img ; make)
