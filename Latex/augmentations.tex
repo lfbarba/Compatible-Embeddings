@@ -81,8 +81,8 @@ urlcolor=linkblue}
 
 \maketitle
 \begin{abstract}
-%\setlength{\baselineskip}{16.8pt}
-Motivated by applications to graph morphing, we consider the following
+% Motivated by applications to graph morphing, 
+We consider the following
 \emph{compatible connectivity-augmentation problem}: We are given
 a labelled $n$-vertex planar graph, $\mathcal{G}$, that has $r\ge 2$
 connected components, and $k\ge 2$ isomorphic planar straight-line drawings,
@@ -128,39 +128,43 @@ of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} sho
   \label{fig:bad-example}
 \end{figure}
 
-The motivation for this work comes from the
+The original motivation for this work comes from the
 problem of morphing planar graphs, which has many applications
 \cite{erten.kobourov.ea:intersection-free,friedrich.eades:graph,gotsman.surazhsky:guaranteed,surazhsky.gotsman:controllable,surazhsky.gotsman:intrinsic}
-including computer animation.  Imagine an animator who wishes to animate a
-scene in which a character's expression goes from neutral, to surprised,
-to happy (see Figure~\ref{fig:faces}). The animator can draw these
-three faces, but does not want to hand-draw the 30--60 frames required
-to animate the change of expression.  The strokes used to draw the
-character's features can be converted into paths and these can be merged
-into components corresponding to the character's eyes, nose, mouth and
-so on.  A correspondence between the same elements in different pictures
-is also given.\footnote{In many cases, the correspondence is a byproduct
-of the creation process. For example, in Figure~\ref{fig:faces}, the
-second two faces were obtained by copying and then editing the first one.}
-Thus, the input is three isomorphic drawings of the same planar graph.
-
-\begin{figure}
-  \centering{ 
-  \begin{tabular}{c@{\hspace{.3cm}}c@{\hspace{.3cm}}c@{\hspace{.3cm}}c}
-    \includegraphics{img/face-zoom} &
-    \includegraphics{img/faces-1} &
-    \includegraphics{img/faces-2} &
-    \includegraphics{img/faces-3} 
-  \end{tabular}}
-  \caption{Computer-assisted animation frequently involves morphing between
-   a sequence of drawings of the same planar graph.  Zooming in on a section
-   of the image reveals that the artist's strokes are approximated by polygonal
-   paths}
-  \label{fig:faces}
-\end{figure}
-
-In this setting, animating the face becomes a problem of
-\emph{morphing} (i.e., continuously deforming) one drawing of
+including computer animation.  
+%Imagine an animator who wishes to animate a
+%scene in which a character's expression goes from neutral, to surprised,
+%to happy (see Figure~\ref{fig:faces}). The animator can draw these
+%three faces, but does not want to hand-draw the 30--60 frames required
+%to animate the change of expression.  The strokes used to draw the
+%character's features can be converted into paths and these can be merged
+%into components corresponding to the character's eyes, nose, mouth and
+%so on.  A correspondence between the same elements in different pictures
+%is also given.\footnote{In many cases, the correspondence is a byproduct
+%of the creation process. For example, in Figure~\ref{fig:faces}, the
+%second two faces were obtained by copying and then editing the first one.}
+%Thus, the input is three isomorphic drawings of the same planar graph.
+%
+%\begin{figure}
+%  \centering{ 
+%  \begin{tabular}{c@{\hspace{.3cm}}c@{\hspace{.3cm}}c@{\hspace{.3cm}}c}
+%    \includegraphics{img/face-zoom} &
+%    \includegraphics{img/faces-1} &
+%    \includegraphics{img/faces-2} &
+%    \includegraphics{img/faces-3} 
+%  \end{tabular}}
+%  \caption{Computer-assisted animation frequently involves morphing between
+%   a sequence of drawings of the same planar graph.  Zooming in on a section
+%   of the image reveals that the artist's strokes are approximated by polygonal
+%   paths}
+%  \label{fig:faces}
+%\end{figure}
+%
+%In this setting, animating the face becomes a problem of
+%A \emph{morph} of a planar graph drawinng $G$ is a continuous deformation
+%of the drawing that preserves planarity.
+The 
+\emph{morphing} problem is that of continuously deforming one drawing of
 a planar graph into another drawing of the same planar graph
 while maintaining planarity of the drawing throughout the
 deformation. This morphing problem has been studied since 1944,
@@ -175,15 +179,18 @@ can be morphed into any isomorphic drawing using a sequence of $O(n)$
 at constant speed.
 
 The morphing algorithms discussed above require that the input graph,
-$\mathcal{G}$, be connected. In many applications of morphing (for example
-in Figure~\ref{fig:faces}) the input graph is not connected. Before these
-morphing algorithms can be used, $\mathcal{G}$ must be augmented into a
-connected graph, $\mathcal H$, but this augmentation must be compatible
-with the drawings of $\mathcal{G}$.  At the same time, the complexity
-of the morph produced by a morphing algorithm depends on the number of
-vertices of $\mathcal H$.  Therefore, we want to find an augmentation
-with the fewest number of vertices.  This motivates the theoretical
-question studied in the current paper.
+$\mathcal{G}$, be connected. In many applications of morphing 
+%(for example in Figure~\ref{fig:faces}) 
+the input graph is not connected. Before
+these morphing algorithms can be used, $\mathcal{G}$ must be augmented
+into a connected graph, $\mathcal H$, but this augmentation must be
+compatible with the drawings of $\mathcal{G}$.  At the same time, the
+complexity of the morph produced by a morphing algorithm depends on
+the number of vertices of $\mathcal H$.  Therefore, we want to find an
+augmentation with the fewest number of vertices.  This motivates the
+theoretical question studied in the current paper. (Though the answer
+to this question suggests that more research should be done to find
+morphing algorithms that work directly on disconnected graphs.)
 
 
 %:  How can we add
@@ -211,7 +218,7 @@ $\psi_1$ and $\psi_2$, of $\mathcal{G}$ are \emph{isomorphic} if
 there exists a continuous family of planar drawings $\{\psi^{(t)}
 \colon 0\le t\le 1\}$ of $\mathcal{G}$ such that $\psi^{(0)}=\psi_1$
 and $\psi^{(1)}=\psi_2$.\footnote{By Cairn's result, this is equivalent
-to saying that the two drawings of $G$ have the same rotation schemes,
+to saying that the two drawings of $\mathcal{G}$ have the same rotation schemes,
 the same cycle-vertex containment relationship, and the same outer face.}
 
 We call a graph, $G=(V,E)$ a \emph{geometric planar graph} if it is
