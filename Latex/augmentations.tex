@@ -101,7 +101,7 @@ drawings of $\mathcal G$ while preserving planarity.
 The objective is to do this while minimizing the number
 of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} shows, it is not always possible to just add edges to $\mathcal G$; sometimes additional vertices are necessary.
 
-\begin{figure}[hb]
+\begin{figure*}
   \centering{
     \begin{tabular}{ccc}
       \includegraphics{img/bad-example-3} &
@@ -112,7 +112,22 @@ of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} sho
   }
   \caption{Two drawings, $G_1$ and $G_2$, of the same graph, $\mathcal{G}$, where making $\mathcal{G}$ connected requires the addition both of edges and vertices. In this case, $\mathcal G$ is made connected by adding the hollow vertex and two dashed edges.}
   \label{fig:bad-example}
-\end{figure}
+\end{figure*}
+
+\begin{figure*}
+  \centering{ 
+  \begin{tabular}{c@{\hspace{.3cm}}c@{\hspace{.3cm}}c@{\hspace{.3cm}}c}
+    \includegraphics{img/face-zoom} &
+    \includegraphics{img/faces-1} &
+    \includegraphics{img/faces-2} &
+    \includegraphics{img/faces-3} 
+  \end{tabular}}
+  \caption{Computer-assisted animation frequently involves morphing between
+   a sequence of drawings of the same planar graph.  Zooming in on a section
+   of the image reveals that the artist's strokes are approximated by polygonal
+   paths}
+  \label{fig:faces}
+\end{figure*}
 
 The motivation for this work comes from the
 problem of morphing planar graphs, which has many applications
@@ -129,21 +144,6 @@ is also given.\footnote{In many cases, the correspondence is a byproduct
 of the creation process. For example, in Figure~\ref{fig:faces}, the
 second two faces were obtained by copying and then editing the first one.}
 Thus, the input is three isomorphic drawings of the same planar graph.
-
-\begin{figure}
-  \centering{ 
-  \begin{tabular}{c@{\hspace{.3cm}}c@{\hspace{.3cm}}c@{\hspace{.3cm}}c}
-    \includegraphics{img/face-zoom} &
-    \includegraphics{img/faces-1} &
-    \includegraphics{img/faces-2} &
-    \includegraphics{img/faces-3} 
-  \end{tabular}}
-  \caption{Computer-assisted animation frequently involves morphing between
-   a sequence of drawings of the same planar graph.  Zooming in on a section
-   of the image reveals that the artist's strokes are approximated by polygonal
-   paths}
-  \label{fig:faces}
-\end{figure}
 
 In this setting, animating the face becomes a problem of
 \emph{morphing} (i.e., continuously deforming) one drawing of
@@ -301,7 +301,7 @@ are isomorphic, $a_i$ appears as a corner in each of $G_1,\ldots,G_k$.
 The augmentation that we ultimately create will consist of a path that
 connects to each component $\mathcal C_i$ at its attachment corner $a_i$.
 
-\begin{figure}
+\begin{figure*}
   \begin{center}
    \begin{tabular}{c}
      \includegraphics{img/example-1} \\[2ex]
@@ -317,7 +317,7 @@ connects to each component $\mathcal C_i$ at its attachment corner $a_i$.
   \end{center}
   \caption{The algorithm for making a compatible augmentation of $\mathcal{G}$ works by defining corners $a_1,\ldots,a_r$, taking a spanning path on each augmented drawing $G_i^*$ that visits all corners, and using this information to compute a permutation of $a_1,\ldots,a_r$ that can be drawn efficiently in each $G_i$.}
   \label{figure:example}
-\end{figure}
+\end{figure*}
 
 Next, for each drawing, $G_j$, we add $r-1$ edges to make $G_j$ into a
 connected graph, $G_j^*$; these edges are not, in general, edges that
@@ -423,12 +423,12 @@ Observe that, for every pair of apexes $u_i$ and $u_h$, with $i,h\geq j$, the bo
 contains a path from $u_i$ to $u_h$ with $O(|\rank(v_i)-\rank(v_h)|)$ edges.
 Because $\ell$ does not intersect $R$ and by the escape invariant, the boundary of $\pi_j$ intersects $R$ only at $v_j$. Moreover, again by the escape invariant, for each $v_i$ with $i > j$, $v_i$ lies outside of~$\pi_j$ except for $v_{j+1}$ that lies on its boundary. Because both $v_j$ and $v_{j+1}$ lie on the boundary of $\pi_j$, which does not intersect $R$ other than at $v_j$, we can connect $v_j$ with $v_{j+1}$ via a path contained in the boundary of~$\pi_j$ with length $O(|\rank(v_j) - \rank(v_{j+1})|)$. In this way, we extend $R$ to a planar path that contains $v_1,\ldots,v_{j+1}$.
 
-\begin{figure}[tb]
+\begin{figure*}
 \centering
 \includegraphics[width=.98\textwidth]{img/DentedHalfspace.pdf}
 \caption{The boundary of $\pi_2$ is in the path from $v_2$ to $v_3$.}
 \label{fig:Dented Halfspace}
-\end{figure}
+\end{figure*}
 
 After connecting $v_j$ with $v_{j+1}$, for each $h\in\{j{+}2,\ldots,n\}$, either $\Delta_h$ is disjoint from $R$, or it shares some portion of its boundary with $R$. However, the interior of $\Delta_h$ does not intersect $R$.
 To preserve the escape invariant, for each $h\in\{j{+}2,\ldots,n\}$, we translate $\pi$ and $\Delta_h$ downwards by a sufficiently small amount, $\varepsilon$, and we scale $\Delta_{j+1}$ horizontally down, while keeping its apex at $v_{j+1}$. To conclude, each translated or scaled cone is contained in the previous one, $u_h$ lies above $v_h$, for each $h\in\{j+2,\ldots,n\}$, and $u_{j+1}$ coincides with $v_{j+1}$. Therefore, by choosing $\varepsilon$ sufficiently small, we maintain the escape invariant and obtain the following result.
@@ -513,13 +513,13 @@ Two vertices are {\em visible} if the open segment joining them does not interse
 Let $T_G$ be a smallest set of edges of the visibility graph of $G$ that need to be added to $G$ to make it connected.
 As there are always two components containing mutually visible vertices, we can connect them and repeat recursively.  Thus, $T_G$ has $r-1$ edges. (Loosely, we can think of $T_G$ as a spanning tree of $G$'s components.) Let $G^* = G\cup T_G$.  We say that $G^*$ is a \emph{connected augmentation} of $G$; see Figure~\ref{fig:Blowing}.
 
-\begin{figure}[tb]
+\begin{figure*}
 \centering
 \includegraphics{img/Blowing.pdf}
 %[width=1\textwidth]
 \caption{The graph $G$ (left); a connected augmentation, $G^*$, of $G$ (middle); and the $\varepsilon$-fattening, $\partial_\varepsilon G^*$ (right).}
 \label{fig:Blowing}
-\end{figure}
+\end{figure*}
 
 Let $C_1, \ldots, C_r$ be the components of $G$.
 %Recall that we consider $\partial C_i$ to be the boundary of a weakly-simple polygon. Therefore, even though a vertex of $C_i$ can appear multiple times along $\partial C_i$, we consider them as different corners of $\partial C_i$.
@@ -601,35 +601,35 @@ each $j\in\{i,\ldots,r\}$, every point in $N_j$ (including $w_j$) is
 $R$-visible from $a_j$.  The escape invariant holds when $R=\{a_1\}$,
 provided that $\tau$ is sufficiently small.
 
-\begin{figure}[tb]
+\begin{figure*}
 \centering
 \includegraphics{img/Neighborhood.pdf}
 %[width=1\textwidth]
 \caption{The $\epsilon$-fattening of $G^*$ and the ``cones'' $\Delta_1,\ldots,\Delta_r$.}
 \label{fig:Neighborhood}
-\end{figure}
+\end{figure*}
 
 Assume that we have constructed a path $R$ that connects $a_1$ with $a_j$, for some $j\in\{1,\ldots,r-1\}$, and that the escape invariant holds.  To extend $R$, we create a new path that connects $a_j$ with $a_{j+1}$ without crossing $R$ while maintaining the escape invariant.  Recall that we consider $\partial_\varepsilon G^*$ to be a path with both endpoints on~$w_1$.
 
 The first part of the path connecting $a_j$ with $a_{j+1}$ consists of a path connecting $a_j$ with $w_j$. If $j=1$, or if $j>1$ and $R$ together with the edge $a_j w_j$ leaves $C_j$ to its right, then connect $a_j$ with $w_j$ via a straight-line segment; since $w_j$ is $R$-visible from $a_j$, this segment does not cross $R$. Otherwise, connect $a_j$ with $\partial_\lambda C_j$ via a straight-line segment and traverse $\partial_\lambda C_j$ clockwise before moving to $w_j$ on $\partial_\varepsilon G^*$.  By the escape invariant, no crossing occur in this drawing.  In this way, we guarantee that $C_j$ lies to the right of the constructed path; see Figure~\ref{fig: Component to the right} for an illustration. Because $\lambda < \delta < \varepsilon$ and since $a_i\in V(R)$, the escape invariant is preserved.
 
-\begin{figure}[tb]
+\begin{figure*}
 \centering
 \includegraphics[width=1\textwidth]{img/ComponentToTheRight.pdf}
 \caption{When extending $R$ from $a_j$ to $a_{j+1}$ we have to take care to
     keep $C_j$ to the right of $R$.}
 \label{fig: Component to the right}
-\end{figure}
+\end{figure*}
 
 The path from $a_j$ to $a_{j+1}$ continues with a path from $w_j$ to $w_{j+1}$, which follows the unique path in $\partial_\varepsilon G^*$ from $w_j$ to $w_{j+1}$. However, whenever we reach an endpoint of $N_i$ for some $i\in \{j+2,\dots,r\}$, we take a \emph{detour} to the other endpoint of $N_i$ while avoiding its interior so that the points in the interior of $N_i$ remain $R$-visible from $a_i$; see Figure~\ref{fig:Skip Component}. Formally, we walk from the reached endpoint of $N_i$ to $\partial_\delta C_i\setminus \Delta_i$ along the boundary of $\Delta_i$. Then, we traverse the path $\partial_\delta C_i\setminus \Delta_i$ before moving to the other endpoint of $N_i$ from the endpoint of $\partial_\delta C_i \setminus \Delta_i$. Note that $R$ does not intersect the interior of the simple polygon bounded by $\partial_\delta C_i$ nor the interior of $\Delta_i$. Moreover, $R$ remains inside the simple polygon bounded by $\partial_\varepsilon G^*$.
 
 
-\begin{figure}[tb]
+\begin{figure*}
 \centering
 \includegraphics[width=.98\textwidth]{img/SkipComponent.pdf}
 \caption{The ``detour'' taken to avoid crossing the cone $\Delta_i$ (left, middle); and the narrowing of the cone $\Delta_i$ as well as the redefinition of the $\varepsilon$- and $\delta$-fattenings of $G^*$ and $C_i$, respectively.}
 \label{fig:Skip Component}
-\end{figure}
+\end{figure*}
 
 Once we go around $C_i$, we are back on $\partial_\varepsilon G^*$ on the other endpoint of $N_i$. In this way, we continue going towards~$w_{j+1}$ along $\partial_\varepsilon G^*$ until reaching an endpoint of $N_{j+1}$.
 Once we reach an endpoint of $N_{j+1}$, we move directly from this endpoint to $a_{j+1}$.
@@ -842,7 +842,7 @@ of $P_{\pi^{(x)}_i}$. If $y=\pi^{(x)}_i$ is even, the drawing uses
 all the edges of $P_y$ except the left-most edge.  If $y$ is odd, the
 drawing uses all the edges of $P_y$ except the right-most edge.
 
-\begin{figure}
+\begin{figure*}
   \centering{
     \begin{tabular}{c@{\hspace{1cm}}c}
       \includegraphics{img/lower-bound-1} & \includegraphics{img/lower-bound-2}
@@ -850,7 +850,7 @@ drawing uses all the edges of $P_y$ except the right-most edge.
   }
   \caption{In the construction in Theorem~\ref{thm:lower-bound}, all drawings use the same set of vertices and line segments and the drawing of a path that joins $\mathcal C_i$ to $\mathcal C_j$ must travel around all paths drawn between the drawing of $\mathcal C_i$ and $\mathcal C_j$.}
   \label{figure:lower-bound}
-\end{figure}
+\end{figure*}
 
 Now, without loss of generality, consider some edge-minimal compatible
 augmentation $\mathcal H$ of $\mathcal G$.  For each component
