@@ -197,7 +197,7 @@ $\psi_1$ and $\psi_2$, of $\mathcal{G}$ are \emph{isomorphic} if
 there exists a continuous family of planar drawings $\{\psi^{(t)}
 \colon 0\le t\le 1\}$ of $\mathcal{G}$ such that $\psi^{(0)}=\psi_1$
 and $\psi^{(1)}=\psi_2$.\footnote{By Cairn's result, this is equivalent
-to saying that the two drawings of $G$ have the same rotation schemes,
+to saying that the two drawings of $\mathcal G$ have the same rotation schemes,
 the same cycle-vertex containment relationship, and the same outer face.}
 
 We call a graph, $G=(V,E)$ a \emph{geometric planar graph} if it is
@@ -293,9 +293,11 @@ for the sake of simplicity, that every component has at least one vertex
 incident to the outer face.
 
 For each component, $\mathcal C_i$, of $\mathcal G$ we select
-a distinguished \emph{corner}, $a_i$, of $G_1$. (A corner is the
-space between two consecutive edges incident to some vertex of the
-outer face). The corner $a_i$ is called the \emph{attachment corner}
+a distinguished \emph{corner}, $a_i$, of $G_1$. 
+Intuitively, a corner is a copy of a vertex of the
+outer face identified with the
+space between two consecutive edges incident to this vertex. 
+The corner $a_i$ is called the \emph{attachment corner}
 for component $\mathcal C_i$.  Notice that, since $G_1,\ldots,G_k$
 are isomorphic, $a_i$ appears as a corner in each of $G_1,\ldots,G_k$.
 The augmentation that we ultimately create will consist of a path that
@@ -330,7 +332,7 @@ $\varphi_j$ is then used to define an integer distance $d_j(a_\ell,a_m)$
 for any two attachment corners $a_\ell$ and $a_m$. This distance includes
 information about the number of edges of $\varphi_j$ between $a_\ell$
 and $a_m$ as well the sizes of the some of the components visited while
-walking from $a_\ell$ to $a_m$ along $\varphi_j$.
+walking from $a_\ell$ to $a_m$ along~$\varphi_j$.
 
 Next, we take a leap into $k$ dimensions by using the distance
 functions $d_1,\ldots,d_k$ to produce a $k$-dimensional point set
@@ -387,7 +389,7 @@ that constructs a ``short'' planar spanning path of a given ordered set of point
 Let $S$ be a set of $n$ points in the plane with distinct $x$-coordinates. 
 Given a point $v\in S$, let $\rank(v)$ denote the number of points of $S$ that lie to the left of (having smaller $x$-coordinate than) $v$.
 
-Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path $R$ that connects them in this order and such that:  
+Given an arbitrary order $(v_1, v_2, \ldots, v_n)$ of the points of $S$, we want to construct a path, $R$, that connects them in this order and such that:  
 \[
    |R|  = O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1})| \right).
 \]
@@ -451,7 +453,10 @@ Let $G_1, \ldots, G_k$ be $k>1$ isomorphic drawings of $\mathcal G$, i.e., $G_i$
 Assume without loss of generality that no two points of $G_i$ share the same $x$-coordinate.
 Given a vertex $v$ of $\mathcal G$, let $\rank_{G_i}(v)$ denote the number of points of $G_i$ having smaller $x$-coordinate than $v$, and let $x_v = (\rank_{G_1}(v), \ldots, \rank_{G_k}(v))$ be a point in the integer grid $[0;n-1]^k$ in $\mathbb{R}^k$.  Let $X = \{x_v : v\in V(\mathcal G)\}$ and let $P$ be the shortest Hamiltonian path of $X$ when distance is measured using the $\ell_\infty$ norm, so that
 \[
-   \|x_v-x_u\|_\infty = \max\{|\rank_{G_i}(v)-\rank_{G_i}(u)|:i\in\{1,\ldots,k\}\} \enspace .
+\begin{array}{l}
+   \|x_v-x_u\|_\infty = \\
+\quad\quad\  \max\{|\rank_{G_i}(v)-\rank_{G_i}(u)|:i\in\{1,\ldots,k\}\} \enspace .
+ \end{array}
 \]
 It is known that the length of $P$ is $O(n^{2-1/k})$ (see
 Corollary~\ref{cor:tsp} in Appendix~\ref{app:uniform-norm}).  Note that
@@ -526,7 +531,7 @@ Let $C_1, \ldots, C_r$ be the components of $G$.
 For each $i\in \{1,\dots,r\}$, let $a_i\in C_i$ be an arbitrary corner of $\partial C_i$ (note that $a_i$ is adjacent to the outer face).
 We call $a_i$ the \emph{attachment corner} of $C_i$.
 
-Let $\varphi$ be the path on the corners of $\partial G^*$ (hence $\varphi$ is also a walk on the vertices of $\partial G^*$) obtained by splitting $\partial G^*$ at the corner $a_1$. That is, $\varphi$ is a path that visits every corner of $\partial G^*$ exactly once except for $a_1$, which is visited twice.
+Let $\varphi$ be the path on the corners of $\partial G^*$ (hence~$\varphi$ is also a walk on the vertices of $\partial G^*$) obtained by splitting $\partial G^*$ at the corner $a_1$. To avoid visiting $a_1$ twice, orient~$\varphi$ counterclockwise and prune the copy of $a_1$ that lies at the end of this path. That is, $\varphi$ becomes a path that visits every corner of $\partial G^*$ exactly once.
 Given two corners $u$ and $v$ in $\partial G^*$, let $\varphi(u,v)$ denote
 the unique path in $\varphi$ that connects $u$ with $v$. Let $A(u,v)$ be
 the set of attachment corners of $G$ visited by $\varphi(u,v)$. For two attachment corners $u=a_i$ and $v=a_j$, define
@@ -554,7 +559,7 @@ $a_1,a_2,\ldots,a_i=u,a_{i+1},\ldots,a_j=v$. Then $A(a_1,u)
 = \{a_1,\ldots,a_i\}$, $A(a_1,v)=\{a_1,\ldots,a_j\}$, and
 $A(u,v)=\{a_i,\ldots,a_j\}$, so
 \begin{align*}
-    \sigma_{G}(a_1,v)-\sigma_G(a_1,u) 
+   &\quad {} \  \sigma_{G}(a_1,v)-\sigma_G(a_1,u) \\
         & = |\varphi(a_1,v)|-|\varphi(a_1,u)| + 2\sum_{t=1}^j |\partial C_t|
          - 2\sum_{t=1}^i |\partial C_t|  \\
                & \quad {} - |\partial C_1|+|\partial C_1| 
@@ -601,25 +606,25 @@ each $j\in\{i,\ldots,r\}$, every point in $N_j$ (including $w_j$) is
 $R$-visible from $a_j$.  The escape invariant holds when $R=\{a_1\}$,
 provided that $\tau$ is sufficiently small.
 
-\begin{figure*}
+\begin{figure}
 \centering
 \includegraphics{img/Neighborhood.pdf}
 %[width=1\textwidth]
 \caption{The $\epsilon$-fattening of $G^*$ and the ``cones'' $\Delta_1,\ldots,\Delta_r$.}
 \label{fig:Neighborhood}
-\end{figure*}
+\end{figure}
 
 Assume that we have constructed a path $R$ that connects $a_1$ with $a_j$, for some $j\in\{1,\ldots,r-1\}$, and that the escape invariant holds.  To extend $R$, we create a new path that connects $a_j$ with $a_{j+1}$ without crossing $R$ while maintaining the escape invariant.  Recall that we consider $\partial_\varepsilon G^*$ to be a path with both endpoints on~$w_1$.
 
 The first part of the path connecting $a_j$ with $a_{j+1}$ consists of a path connecting $a_j$ with $w_j$. If $j=1$, or if $j>1$ and $R$ together with the edge $a_j w_j$ leaves $C_j$ to its right, then connect $a_j$ with $w_j$ via a straight-line segment; since $w_j$ is $R$-visible from $a_j$, this segment does not cross $R$. Otherwise, connect $a_j$ with $\partial_\lambda C_j$ via a straight-line segment and traverse $\partial_\lambda C_j$ clockwise before moving to $w_j$ on $\partial_\varepsilon G^*$.  By the escape invariant, no crossing occur in this drawing.  In this way, we guarantee that $C_j$ lies to the right of the constructed path; see Figure~\ref{fig: Component to the right} for an illustration. Because $\lambda < \delta < \varepsilon$ and since $a_i\in V(R)$, the escape invariant is preserved.
 
-\begin{figure*}
+\begin{figure}
 \centering
-\includegraphics[width=1\textwidth]{img/ComponentToTheRight.pdf}
+\includegraphics{img/ComponentToTheRight.pdf}
 \caption{When extending $R$ from $a_j$ to $a_{j+1}$ we have to take care to
     keep $C_j$ to the right of $R$.}
 \label{fig: Component to the right}
-\end{figure*}
+\end{figure}
 
 The path from $a_j$ to $a_{j+1}$ continues with a path from $w_j$ to $w_{j+1}$, which follows the unique path in $\partial_\varepsilon G^*$ from $w_j$ to $w_{j+1}$. However, whenever we reach an endpoint of $N_i$ for some $i\in \{j+2,\dots,r\}$, we take a \emph{detour} to the other endpoint of $N_i$ while avoiding its interior so that the points in the interior of $N_i$ remain $R$-visible from $a_i$; see Figure~\ref{fig:Skip Component}. Formally, we walk from the reached endpoint of $N_i$ to $\partial_\delta C_i\setminus \Delta_i$ along the boundary of $\Delta_i$. Then, we traverse the path $\partial_\delta C_i\setminus \Delta_i$ before moving to the other endpoint of $N_i$ from the endpoint of $\partial_\delta C_i \setminus \Delta_i$. Note that $R$ does not intersect the interior of the simple polygon bounded by $\partial_\delta C_i$ nor the interior of $\Delta_i$. Moreover, $R$ remains inside the simple polygon bounded by $\partial_\varepsilon G^*$.
 
@@ -635,8 +640,9 @@ Once we go around $C_i$, we are back on $\partial_\varepsilon G^*$ on the other 
 Once we reach an endpoint of $N_{j+1}$, we move directly from this endpoint to $a_{j+1}$.
 
 Because $\partial_\varepsilon G^*$ is isomorphic to $\varphi$, the constructed path between $a_j$ and $a_{j+1}$ has length at most $|\varphi(a_j, a_{j+1})|$ plus the length of the boundaries of the components for which the path detoured. Because each component we walked around has its attachment corner on the path $\varphi(a_j, a_{j+1})$, and thus in $A(a_j, a_{j+1})$, the length of the constructed path between $a_j$ and $a_{j+1}$ is
-\[ O\left(|\varphi(a_j, a_{j+1})| + \sum_{a_i\in A(a_j, a_{j+1})} |\partial C_i|\right) = O(\sigma_G(a_j, a_{j+1})) \enspace .
+\[ O\left(|\varphi(a_j, a_{j+1})| + \sum_{a_i\in A(a_j, a_{j+1})} |\partial C_i|\right) = 
 \]
+$$O(\sigma_G(a_j, a_{j+1})) \enspace .$$
 
 After reaching $a_{j+1}$, we increase $\varepsilon$ by a factor of two. Similarly, we decrease the value of $\delta$ by a factor of two. That is, after reaching $a_{j+1}$, $\varepsilon = \mu 2^{j+1}$ while $\delta = \mu/2^{j+1}$ and hence, we guarantee that $\lambda < \delta < \varepsilon$.
 Also, $\partial_\varepsilon G^*$ is still simple, provided that $\mu$ is initially chosen to be sufficiently small.
@@ -664,7 +670,7 @@ Because each cone $\Delta_i$ is narrowed in each round, the edges of $\gamma_j$ 
 Figure~\ref{figure:big-example} illustrates the algorithm of Lemma~\ref{lemma:Path for connected augmentations} on a small example.  In this example, the path from $a_1$ to $a_2$ passes by $a_4$, so $R$ detours around $C_4$ in order to preserve the escape invariant at $a_4$.  After $R$ attaches to $a_2$ and $a_3$, it winds around components $C_2$ and $C_3$, respectively, in order to ensure that these components attach to the right of $R$.
 
 \begin{figure}
-   \centering{\includegraphics{img/big-example}}
+   \centering{\includegraphics[width=.48\textwidth]{img/big-example}}
    \caption{An example of the algorithm for generating a spanning path that connects $a_1,\ldots,a_4$.}
    \label{figure:big-example}
 \end{figure}
@@ -779,6 +785,18 @@ The latter result is worst-case optimal since, in the next section we will show 
 
 Our lower bounds are based on the following lemma. It says that we can find $k$ permutations of $\{1,\ldots,r\}$ such that for half the indices $i\in\{1,\ldots,r\}$, and every $j\in\{1,\ldots,r\}\setminus\{i\}$, there is a permutation in which $i$ and $j$ are at distance $\Omega(r^{1-1/k})$.
 
+
+\begin{figure*}
+  \centering{
+    \begin{tabular}{c@{\hspace{1cm}}c}
+      \includegraphics{img/lower-bound-1} & \includegraphics{img/lower-bound-2}
+    \end{tabular}
+  }
+  \caption{In the construction in Theorem~\ref{thm:lower-bound}, all drawings use the same set of vertices and line segments and the drawing of a path that joins $\mathcal C_i$ to $\mathcal C_j$ must travel around all paths drawn between the drawing of $\mathcal C_i$ and $\mathcal C_j$.}
+  \label{figure:lower-bound}
+\end{figure*}
+
+
 \begin{lemma}\label{lem:permutations}
 Let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\ldots,\pi^{(k)}$ of $\{1,\ldots,r\}$ such that for at least half the values of $i\in\{1,\ldots,r\}$ and for every $j\in\{1,\ldots,r\}\setminus\{i\}$,
 \begin{equation}
@@ -800,9 +818,12 @@ Let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\
   replacement from $\{1,\ldots,r\}\setminus \{i\}$.
 
   Therefore, since $\pi^{(1)},\ldots,\pi^{(k)}$ are chosen independently, 
-  \[
-    \Pr\left\{\max\left\{\left|\pi^{(s)}_i-\pi^{(s)}_j\right|\colon s\in\{1,\ldots,k\} \right\}\le t\right\} \le (2t/(r-1))^k = \frac{1}{2(r-1)} \enspace .
-  \]
+  $$
+  \begin{array}{r}
+     \Pr\left\{\max\left\{\left|\pi^{(s)}_i-\pi^{(s)}_j\right|\colon s\in\{1,\ldots,k\} \right\} \le t\right\}\\
+ \le  (2t/(r-1))^k = \frac{1}{2(r-1)} \enspace .
+   \end{array}
+  $$
   In particular, the expected number of such
   $j\in\{1,\ldots,r\}\setminus\{i\}$ is at most $1/2$ so, by Markov's
   Inequality, the probability that there exists at least one such $j$
@@ -815,6 +836,8 @@ Let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\
 
 Using Lemma~\ref{lem:permutations}, we can prove a lower bound that matches the upper bound obtained in our general construction.
 
+
+
 \begin{theorem}\label{thm:lower-bound}
   For every positive integer $n$ and every $r\in\{2,\ldots,\lfloor n/4\rfloor\}$,
   there exists a graph $\mathcal G$ having $n$ vertices, $r$ connected
@@ -824,12 +847,12 @@ Using Lemma~\ref{lem:permutations}, we can prove a lower bound that matches the 
 
 \begin{proof}
 Since the lemma only claims an asymptotic result, we may assume without
-loss of generality that $r$ is even and that $2r$ divides $n$.
+loss of generality that~$r$ is even and that $2r$ divides $n$.
 
 The graph $\mathcal G$ consists of $r$ disjoint paths,
 $\mathcal{C}_1,\ldots,\mathcal{C}_r$, each of length $n/r$.  Each of the
 drawings $G_1$,\ldots,$G_k$ has the vertices of $\mathcal G$ on the
-same point and edge set. The point set consists of the vertices of
+same point set. The point set consists of the vertices of
 $r$ nested regular $n/r$-gons, $P_1,\ldots,P_r$, each centered at the
 origin and having nearly the same size. Refer to Figure~\ref{figure:lower-bound} (left). More precisely, $P_1\subset
 P_2\subset\cdots\subset P_r$ and the sizes are chosen so that any segment
@@ -842,15 +865,6 @@ of $P_{\pi^{(x)}_i}$. If $y=\pi^{(x)}_i$ is even, the drawing uses
 all the edges of $P_y$ except the left-most edge.  If $y$ is odd, the
 drawing uses all the edges of $P_y$ except the right-most edge.
 
-\begin{figure*}
-  \centering{
-    \begin{tabular}{c@{\hspace{1cm}}c}
-      \includegraphics{img/lower-bound-1} & \includegraphics{img/lower-bound-2}
-    \end{tabular}
-  }
-  \caption{In the construction in Theorem~\ref{thm:lower-bound}, all drawings use the same set of vertices and line segments and the drawing of a path that joins $\mathcal C_i$ to $\mathcal C_j$ must travel around all paths drawn between the drawing of $\mathcal C_i$ and $\mathcal C_j$.}
-  \label{figure:lower-bound}
-\end{figure*}
 
 Now, without loss of generality, consider some edge-minimal compatible
 augmentation $\mathcal H$ of $\mathcal G$.  For each component
@@ -880,22 +894,11 @@ it is a tree; $\mathcal G$ contains no cycles, so any cycle in $\mathcal H$ cont
 \end{proof}
 
 
-\section*{Acknowledgement}
-
-This work was initiated at the \emph{Second Workshop on Geometry and Graphs},
-held at the Bellairs Research Institute, March 9-14, 2014.  We are
-grateful to the other workshop participants for providing a stimulating
-research environment.
-
 
 % \section{Summary and Conclusions}\label{section:Conclusions}
 % I have nothing to write here.  Some open problems might be nice.
 
-\bibliographystyle{plain}
-\bibliography{augmentations}
-
 \appendix
-\newpage
 \section{Shortest Tour in the Uniform Norm}
 \label{app:uniform-norm}
 
@@ -951,9 +954,18 @@ By uniformly scaling the point set $P$ by a factor of $n$, we obtain the followi
   for $k\ge 2$.  Then there exists a spanning path of
   $P$ whose length under $\ell_\infty$ metric is at
   most $cnr^{1-1/k}$, where $c$ is a universal constant. In particular,
-  $c$ does not depend on $k$, $r$, or $n$.
+  $c$ does not depend on $k$, $r$, or~$n$.
 \end{corollary}
 
+\section*{Acknowledgement}
+
+This work was initiated at the \emph{Second Workshop on Geometry and Graphs},
+held at the Bellairs Research Institute, March 9-14, 2014.  We are
+grateful to the other workshop participants for providing a stimulating
+research environment.
+
+\bibliographystyle{plain}
+\bibliography{augmentations}
 
 
 \end{document}  
