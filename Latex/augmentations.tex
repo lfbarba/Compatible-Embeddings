@@ -1,17 +1,14 @@
-\documentclass[11pt]{patmorin}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath,amsfonts,amssymb,amsthm,graphicx,graphics}
+\documentclass[twoside,leqno,twocolumn]{article}  
+\usepackage{ltexpprt} 
+
+
+%\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb,graphicx,graphics}
 %\setcounter{tocdepth}{3}
-\usepackage{graphicx}
 
 %\usepackage{algorithmic}
 %\usepackage{algorithm}
-\usepackage{hyperref}
-\usepackage[dvipsnames]{xcolor}
-\definecolor{linkblue}{named}{Blue}
-\hypersetup{colorlinks=true, linkcolor=linkblue,  anchorcolor=linkblue,
-citecolor=linkblue, filecolor=linkblue, menucolor=linkblue,
-urlcolor=linkblue} 
+%\usepackage{hyperref}
 
 %\setlength{\parskip}{2ex}
 
@@ -25,19 +22,12 @@ urlcolor=linkblue}
 
 %\usepackage{geometry}
 
+\newcommand{\email}[1]{\texttt{#1}}
+
 \newcommand{\etal}{\emph{et al.}}
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{observation}[theorem]{Observation}
-\newtheorem{problem}[theorem]{Problem}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{question}[theorem]{Question}
 
-\DeclareMathOperator{\rank}{rank}
+\newcommand{\rank}{rank}
 
 \newcommand{\R}{\mathbb{R}}
 
@@ -50,38 +40,35 @@ urlcolor=linkblue}
   
 \newcommand{\ch}[1]{\ensuremath{\textsc{ch}(#1)}}
 
-\title{\MakeUppercase{Compatible Connectivity-Augmentation \newline of Planar Disconnected Graphs}}
-
-%\author{Second Bellairs Workshop on Geometry and Graphs}
-\author{Greg Aloupis,\thanks{Department of Computer Science, Tufts University, 
-                             \email{aloupis.greg@gmail.com}}\,\,
-       Luis Barba,\thanks{School of Computer Science, Carleton University
-                          and Département d'Informatique, 
-                          Université Libre de Bruxelles,
-                          \email{lbarbafl@ulb.ac.be}}\,\,
-       Paz Carmi,\thanks{Department of Computer Science,
-                         Ben-Gurion University of the Negev,
-                         \email{carmip@cs.bgu.ac.il}}\,\,
-       Vida Dujmović,\thanks{School of Computer Science 
-                             and Electrical Engineering,
-                             University of Ottawa,
-                             \email{vida.dujmovic@uottawa.ca}}\,\,
-       Fabrizio Frati,\thanks{School of Information Technologies,
-                              The University of Sydney,
-                              \email{fabrizio.frati@sydney.edu.au}}\,\,
-       and Pat Morin\thanks{School of Computer Science, Carleton University,
-                            \email{morin@scs.carleton.ca}}}
-
-
-
-
 \begin{document}
 
-\begin{titlepage}
+\title{\Large Compatible Connectivity-Augmentation of Planar Disconnected Graphs}
+
+\author{
+Greg Aloupis \thanks{Department of Computer Science, Tufts University, 
+                             \email{aloupis.greg@gmail.com}} \and
+       Luis Barba \thanks{School of Computer Science, Carleton and
+       D\'epartement d'Informatique, 
+                          Universit\'e Libre de Bruxelles,
+                          \email{lbarbafl@ulb.ac.be}}  \and
+       Paz Carmi \thanks{Department of Computer Science,
+                         Ben-Gurion University of the Negev,
+                         \email{carmip@cs.bgu.ac.il}}\and
+       Vida Dujmovi\'c \thanks{School of Computer Science 
+                             and Electrical Engineering,
+                             University of Ottawa,
+                             \email{vida.dujmovic@uottawa.ca}} \and
+       Fabrizio Frati \thanks{School of Information Technologies,
+                              The University of Sydney,
+                              \email{fabrizio.frati@sydney.edu.au}} \and
+       \and Pat Morin \thanks{School of Computer Science, Carleton University,
+                            \email{morin@scs.carleton.ca}}
+}
+\date{}
 
 \maketitle
-\begin{abstract}
-%\setlength{\baselineskip}{16.8pt}
+
+\begin{abstract} \small\baselineskip=9pt
 Motivated by applications to graph morphing, we consider the following
 \emph{compatible connectivity-augmentation problem}: We are given
 a labelled $n$-vertex planar graph, $\mathcal{G}$, that has $r\ge 2$
@@ -99,7 +86,6 @@ $k=O(1)$ and whose running time is $O(kn^2)$ for general values of $k$.
 The lower bound holds for all $r\in\{2,\ldots,n/4\}$ and $k\ge 2$.
 \end{abstract}
 
-\end{titlepage}
 
 %A category including the fourth, optional field follows..
 
@@ -576,7 +562,7 @@ $A(u,v)=\{a_i,\ldots,a_j\}$, so
         & = |\varphi(u,v)| + 2\sum_{t=i+1}^j |\partial C_t| - |\partial C_j| + |\partial C_i| \\
         & = |\varphi(u,v)| + 2\sum_{t=i}^j |\partial C_t| - |\partial C_j| - |\partial C_i| \\
         & = |\varphi(u,v)| + 2\sum_{a_t\in A(u,v)} |\partial C_t| - |\partial C_j| - |\partial C_i| \\
-        & = \sigma_G(u,v)  \enspace . \qedhere
+        & = \sigma_G(u,v)  \enspace .
 \end{align*}
 \end{proof}
 
@@ -967,15 +953,6 @@ By uniformly scaling the point set $P$ by a factor of $n$, we obtain the followi
   most $cnr^{1-1/k}$, where $c$ is a universal constant. In particular,
   $c$ does not depend on $k$, $r$, or $n$.
 \end{corollary}
-
-
-
-
-
-
-
-
-
 
 
 
