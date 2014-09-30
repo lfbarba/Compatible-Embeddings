@@ -129,43 +129,26 @@ of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} sho
   \label{fig:faces}
 \end{figure*}
 
-The motivation for this work comes from the
+Some motivation for this work comes from the
 problem of morphing planar graphs, which has many applications
 \cite{erten.kobourov.ea:intersection-free,friedrich.eades:graph,gotsman.surazhsky:guaranteed,surazhsky.gotsman:controllable,surazhsky.gotsman:intrinsic}
 including computer animation.  Imagine an animator who wishes to animate a
 scene in which a character's expression goes from neutral, to surprised,
-to happy (see Figure~\ref{fig:faces}). The animator can draw these
-three faces, but does not want to hand-draw the 30--60 frames required
-to animate the change of expression.  The strokes used to draw the
-character's features can be converted into paths and these can be merged
-into components corresponding to the character's eyes, nose, mouth and
-so on.  A correspondence between the same elements in different pictures
-is also given.\footnote{In many cases, the correspondence is a byproduct
-of the creation process. For example, in Figure~\ref{fig:faces}, the
-second two faces were obtained by copying and then editing the first one.}
-Thus, the input is three isomorphic drawings of the same planar graph.
-
+to happy (see Figure~\ref{fig:faces}). 
 In this setting, animating the face becomes a problem of
 \emph{morphing} (i.e., continuously deforming) one drawing of
-a planar graph into another drawing of the same planar graph
+a planar graph into another isomorphic drawing\footnote{In many cases, the correspondence is a byproduct
+of the creation process. For example, in Figure~\ref{fig:faces}, the
+second two faces were obtained by copying and then editing the first one.} of the same planar graph
 while maintaining planarity of the drawing throughout the
-deformation. This morphing problem has been studied since 1944,
-when Cairns \cite{cairns:deformations} showed such a transformation
-always exists.  Since then, a sequence of results has shown that morphs
-can be done efficiently, so that the motion can be described concisely
-\cite{alamdari.angelini.ea:morphing,angelini.dalozzo.ea:morphing,grunbaum.shephard:geometry,thomassen:deformations}.
-The most recent such result \cite{angelini.dalozzo.ea:morphing} shows
-that any planar drawing of an $n$-vertex \emph{connected} planar graph
-can be morphed into any isomorphic drawing using a sequence of $O(n)$
-\emph{linear morphs}, in which vertices move along linear trajectories
-at constant speed.
+deformation. This morphing problem has been studied extensively~\cite{cairns:deformations,alamdari.angelini.ea:morphing,angelini.dalozzo.ea:morphing,grunbaum.shephard:geometry,thomassen:deformations}.
 
-The morphing algorithms discussed above require that the input graph,
+Most morphing algorithms require that the input graph,
 $\mathcal{G}$, be connected. In many applications of morphing (for example
-in Figure~\ref{fig:faces}) the input graph is not connected. Before these
-morphing algorithms can be used, $\mathcal{G}$ must be augmented into a
+in Figure~\ref{fig:faces}) the input graph is not connected. To apply this algorithms
+directly in disconnected graphs, $\mathcal{G}$ must be augmented into a
 connected graph, $\mathcal H$, but this augmentation must be compatible
-with the drawings of $\mathcal{G}$.  At the same time, the complexity
+with all drawings of $\mathcal{G}$.  At the same time, the complexity
 of the morph produced by a morphing algorithm depends on the number of
 vertices of $\mathcal H$.  Therefore, we want to find an augmentation
 with the fewest number of vertices.  This motivates the theoretical
@@ -491,6 +474,14 @@ a short path, $R$, that visits all components of $\mathcal G$. The path
 $R$ is then
 added, as a polygonal path, $R_i$, to each drawing, $G_i$, of~$\mathcal G$.
 
+\begin{figure*}
+\centering
+\includegraphics{img/Blowing.pdf}
+%[width=1\textwidth]
+\caption{\small The graph $G$ (left); a connected augmentation, $G^*$, of $G$ (middle); and the $\varepsilon$-fattening, $\partial_\varepsilon G^*$ (right).}
+\label{fig:Blowing}
+\end{figure*}
+
 Unlike the case in which
 components are isolated vertices, there is no natural ordering of the
 components of $G_i$, so we must define one. Also, the drawing
@@ -504,9 +495,12 @@ in this sequence is called a \emph{corner} of $C$.  We consider the boundary of 
 boundary of the weakly-simple polygon $(v_0, \ldots, v_k, v_0)$ whose
 vertex set is the set of corners of $C$.\footnote{More formally, $\partial C$ is the boundary of the unbounded component of $\mathbb{R}^2\setminus C$, when we treat $C$ as the union of all its edges (line segments) and vertices (points).}
 
+
+
 Let $\varepsilon >0$. For each corner $v_i$ of $\partial C$, let $\ell_i$ be the half-line starting at $v_i$ that bisects the angle between the edges $v_{i-1}v_i$ and $v_i v_{i+1}$ in the outer face of $C$. Let $z_i$ be the point at distance $\varepsilon$ from $v_i$ along $\ell_i$. We call $z_i$ the \emph{$\varepsilon$-copy} of $v_i$. Let $\partial_\varepsilon C$ be the piecewise-linear cycle defined by the sequence $(z_0, z_1, \ldots, z_k, z_0)$. We call $\partial_\varepsilon C$ the \emph{$\varepsilon$-fattening} of $C$.
 An $\varepsilon$-fattening $\partial_\varepsilon C$ is \emph{simple} if $\partial_\varepsilon C$  is a simple polygon that contains~$C$.
 Note that $\partial_\varepsilon C$ is simple, provided that $\varepsilon$ is sufficiently small. In this paper, we consider only simple $\varepsilon$-fattenings; see Figure~\ref{fig:Blowing}. Note that the number of edges between two corners of $\partial C$ along the boundary of $C$ is the same as the number of edges between their $\varepsilon$-copies along~$\partial_\varepsilon C$.
+
 
 %%%%%%%%%%%%%%%
 \subsection{Connected augmentations}\label{section: connected augmentations}
@@ -516,13 +510,6 @@ Two vertices are {\em visible} if the open segment joining them does not interse
 Let $T_G$ be a smallest set of non-crossing edges of the visibility graph of $G$ that need to be added to $G$ to make it connected.
 As there are always two components containing mutually visible vertices, we can connect them and repeat recursively.  Thus, $T_G$ has $r-1$ edges. (Loosely, we can think of $T_G$ as a spanning tree of $G$'s components.) Let $G^* = G\cup T_G$.  We say that $G^*$ is a \emph{connected augmentation} of $G$; see Figure~\ref{fig:Blowing}.
 
-\begin{figure*}
-\centering
-\includegraphics{img/Blowing.pdf}
-%[width=1\textwidth]
-\caption{\small The graph $G$ (left); a connected augmentation, $G^*$, of $G$ (middle); and the $\varepsilon$-fattening, $\partial_\varepsilon G^*$ (right).}
-\label{fig:Blowing}
-\end{figure*}
 
 Let $C_1, \ldots, C_r$ be the components of $G$.
 %Recall that we consider $\partial C_i$ to be the boundary of a weakly-simple polygon. Therefore, even though a vertex of $C_i$ can appear multiple times along $\partial C_i$, we consider them as different corners of $\partial C_i$.
@@ -551,6 +538,14 @@ $|\partial G^*|\le 2n-2<2n$.  Furthermore, $\varphi(a_1,u)\subset
 $2\sum_{a_i\in A(a_1,u)}|\partial C_i| \le 2\sum_{i=1}^r |\partial C_i| < 4n$.
 Therefore, $\sigma_G(a_1,u)< 6n$, which proves the first part of the lemma.
 
+\begin{figure*}
+\centering
+\includegraphics{img/Neighborhood.pdf}
+%[width=1\textwidth]
+\caption{\small The component $C_i$ is to the right of the path $R=(\rho_1,\ldots,\rho_t)$ (left); the $\epsilon$-fattening of $G^*$ and the ``cones'' $\Delta_1,\ldots,\Delta_r$ (middle); and a close look at the ``cone'' $\Delta_1$ (right).}
+\label{fig:Neighborhood}
+\end{figure*}
+
 To prove the second part of the lemma, first observe that $\sigma_G(u,v)=\sigma_G(v,u)$ by definition. To prove the second equality, denote
 the relevant attachment corners of $G^*$ by
 $a_1,a_2,\ldots,a_i=u,a_{i+1},\ldots,a_j=v$. Then $A(a_1,u)
@@ -569,17 +564,14 @@ $A(u,v)=\{a_i,\ldots,a_j\}$, so
 \end{align*}
 \end{proof}
 
+
+
+
+
 \subsection{Spanning paths for connected augmentations}\label{section:Spanning paths for connected augmentations}
 Let $a_1, \ldots, a_r$ be an arbitrary order of the attachment corners of $G$ (we can get the incremental indexing by relabeling the components). 
 Given an embedded path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that passes through all attachment corners of $G$, we say that $C_i$ \emph{lies to the right of} $R$ if (1) $a_i$ is the only vertex of $C_i$ that belongs to $V(R)$, and (2) if $a_i = \rho_j$ for some $j\in\{1,\ldots,t\}$, then either $t\in \{1,t\}$ or $\rho_{j-1}$ and $\rho_{j+1}$ appear consecutively in this order when sorting---in the graph $G\cup R$---the neighbors of $a_i$ in clockwise order around $a_i$; see Figure~\ref{fig:Neighborhood} (left).
 
-\begin{figure*}
-\centering
-\includegraphics{img/Neighborhood.pdf}
-%[width=1\textwidth]
-\caption{\small The component $C_i$ is to the right of the path $R=(\rho_1,\ldots,\rho_t)$ (left); the $\epsilon$-fattening of $G^*$ and the ``cones'' $\Delta_1,\ldots,\Delta_r$ (middle); and a close look at the ``cone'' $\Delta_1$ (right).}
-\label{fig:Neighborhood}
-\end{figure*}
 
 We now show how to construct a path $R$ that connects the attachment corners of $G$ in the given order, i.e., if $i < j$, then $a_i$ is visited before $a_j$ by $R$. We want to construct $R$ so that each component $C_i$ of $G$ lies to the right of~$R$ and so that $G\cup R$ is a planar geometric graph.
 Moreover, we want the subpath of $R$ between $a_j$ and $a_{j+1}$ to have $O(\sigma_G(a_j, a_{j+1}))$ vertices. 
@@ -609,7 +601,7 @@ Assume that we have constructed a path $R$ that connects $a_1$ with $a_j$, for s
 
 The first part of the path connecting $a_j$ with $a_{j+1}$ consists of a path connecting $a_j$ with $w_j$. If $j=1$, or if $j>1$ and $R$ together with the edge $a_j w_j$ leaves $C_j$ to its right, then connect $a_j$ with $w_j$ via a straight-line segment; since $w_j$ is $R$-visible from $a_j$, this segment does not cross $R$. Otherwise, connect $a_j$ with $\partial_\lambda C_j$ via a straight-line segment and traverse $\partial_\lambda C_j$ clockwise before moving to $w_j$ on $\partial_\varepsilon G^*$.  By the escape invariant, no crossing occur in this drawing.  In this way, we guarantee that $C_j$ lies to the right of the constructed path; see Figure~\ref{fig: Component to the right} for an illustration. Because $\lambda < \delta < \varepsilon$ and since $a_i\in V(R)$, the escape invariant is preserved.
 
-\begin{figure}[hb]
+\begin{figure}[t]
 \centering
 \includegraphics{img/ComponentToTheRight.pdf}
 \caption{\small When extending $R$ from $a_j$ to $a_{j+1}$ we have to take care to
