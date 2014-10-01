@@ -31,6 +31,8 @@
 
 \newcommand{\R}{\mathbb{R}}
 
+\newcommand{\qed}{\ensuremath{\hfill\quad\square}}
+
 
 %%
 %% Here you may place your macros using \newcommand{}{}
@@ -422,7 +424,7 @@ Given an order $(v_1, \ldots, v_n)$ of the vertices of $S$, there exists a plana
 Recall that in each iteration, the algorithm computes a path connecting $v_j$ with $v_{j+1}$ that does not cross the portion of the path already constructed. Because this invariant is maintained throughout, the resulting path is planar.
 
 Since the path that connects $v_j$ with $v_{j+1}$ follows the boundary of $\pi_j$ and since this boundary has length $O(|\rank(v_j) - \rank(v_{j+1})|)$ between $v_j$ and $v_{j+1}$, the path that connects $v_j$ with $v_{j+1}$ has length $O(|\rank(v_j) - \rank(v_{j+1})|)$. Consequently,  the total length of $R$ is given by $O\left(\sum_{i=1}^{n-1} |\rank(v_i) - \rank(v_{i+1}) |\right)$.
-\end{proof}
+\qed\end{proof}
 
 
 
@@ -458,7 +460,7 @@ draw the $O(|\rank_{G_i}(v_j) - \rank_{G_i}(v_{j+1})|)$ vertices in $R_i$
 between $v_j$ and $v_{j+1}$.
 Since the vertices of each $G_i$ are connected in the same order,
 $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $i,j\in\{1,\ldots,k\}$.
-\end{proof}
+\qed\end{proof}
 
 
 \section{The general problem}\label{section:General}
@@ -562,7 +564,7 @@ $A(u,v)=\{a_i,\ldots,a_j\}$, so
         & = |\varphi(u,v)| + 2\sum_{a_t\in A(u,v)} |\partial C_t| - |\partial C_j| - |\partial C_i| \\
         & = \sigma_G(u,v)  \enspace .
 \end{align*}
-\end{proof}
+\qed\end{proof}
 
 
 
@@ -639,7 +641,7 @@ We iterate until all attachment corners of $G$ are visited by $R$.
 Given an arbitrary order $a_1, \ldots, a_r$ of the attachment corners of $G$, there is a path $R$ connecting all attachment corners of $G$ in the given order such that $R\cup G$ is planar, every component $C_i$ of $G$ lies to the right of $R$ when oriented from $a_1$~to~$a_r$, and the subpath of $R$ between $a_j$ and $a_{j+1}$ has $O(\sigma_G(a_j, a_{j+1}))$ vertices, for each $j\in \{1,\dots,r-1\}$.
 \end{lemma}
 \begin{proof}
-By construction, the attachment corners are visited by $R$ in the given order; also, the subpath, $\gamma_j$, of $R$ between $a_{j}$ and $a_{j+1}$ has $O(\sigma_G(a_j,a_{j+1}))$ vertices. For each component $C_i$, $a_i$ is the only vertex of $C_i$ visited by $R$. Moreover, the construction guarantees that $C_i$ lies to the right of $R$ when oriented from $a_1$ to $a_r$.
+By construction, the attachment corners are visited by $R$ in the given order; also, the subpath, $\gamma_j$, of $R$ between $a_{j}$ and $a_{j+1}$ has $O(\sigma_G(a_j,a_{j+1}))$ vertices. For each component $C_i$, $a_i$ is the only vertex of $C_i$ visited by $R$. Moreover, the construction guarantees that $C_i$ lies to the right of $R$ when oriented from $a_1$ to~$a_r$.
 
 To prove that $R$ is planar, recall that in each round we extend $R$ by constructing  a path $\gamma_j$ that connects $a_j$ with $a_{j+1}$. We claim that at this point, no edge of $\gamma_j$ crosses the portion of $R$ constructed so far.
 Indeed, because the value of $\varepsilon$ (\emph{resp.} $\delta$) increases (\emph{resp.} decreases) in each round, the edges of $\gamma_j$ that lie on the boundaries of some $\partial_\delta C_i$ or on $\partial_\varepsilon G^*$ cannot cross $R$ by the escape invariant.
@@ -648,11 +650,11 @@ Because each cone $\Delta_i$ is narrowed in each round, the edges of $\gamma_j$ 
 %%% The following is no longer part of the statement of Lemma, so doesn't need
 %% to be proved.
 %Because the length of $\gamma_j$ is $O(\sigma_G(a_j, a_{j+1}))$, the total length of $R$ after connecting every attachment corner is given by $|R| = O(\sum_{j=1}^{n-1} \sigma_G(a_j, a_{j+1}))$.
-\end{proof}
+\qed\end{proof}
 
 Figure~\ref{figure:big-example} illustrates the algorithm of Lemma~\ref{lemma:Path for connected augmentations} on a small example.  In this example, the path from $a_1$ to $a_2$ passes by $a_4$, so $R$ detours around $C_4$ in order to preserve the escape invariant at $a_4$.  After $R$ attaches to $a_2$ and $a_3$, it winds around components $C_2$ and $C_3$, respectively, in order to ensure that these components attach to the right of $R$.
 
-\begin{figure}
+\begin{figure}[h]
    \centering{\includegraphics[width=.48\textwidth]{img/big-example}}
    \caption{\small An example of the algorithm for generating a spanning path that connects $a_1,\ldots,a_4$.}
    \label{figure:big-example}
@@ -699,7 +701,7 @@ $a_{j+1}$, since $\sigma_{G_i}(a_j,a_{j+1}) = \sigma_{G_i}(a_1,a_{j+1})-\sigma_{
 % Let $d_j$ denote the distance between $x_j$ and $x_{j+1}$ in $P$. Because $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$ . Thus, the path $R_i$ has length $O\left(\sum_{j=1}^{n-1} |\rank_i(j+1) - \rank_i(j)|\right) = O(\sum_{j=1}^{n-1} d_j)$. Because $\sum_{j=1}^{n-1} d_j = |P| = O(nr^{1-1/k})$, the length $R_i$ is $O(nr^{1-1/k})$.
 
 To conclude, each $R_i$ visits each component only at its attachment corner, the attachment corners of each $G_i$ are connected in the same order, and $R_i$ leaves every component to the right when oriented from $a_1$ to $a_r$. Therefore, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $1\leq i<j\leq k$.
-\end{proof}
+\qed\end{proof}
 
 \subsection{Handling interior components}\label{sec:Handling interior components}
 
@@ -815,7 +817,7 @@ Let $t=(1/2)^{1+1/k}\cdot(r-1)^{1-1/k}$.  There exists permutations $\pi^{(1)},\
   that satisfy \eqref{eq:perm} is $r/2$.  We conclude that there must exist
   some permutations $\pi^{(1)},\ldots,\pi^{(k)}$ that satisfy \eqref{eq:perm}
   for at least half the indices $i\in\{1,\ldots,r\}$.
-\end{proof}
+\qed\end{proof}
 
 Using Lemma~\ref{lem:permutations}, we can prove a lower bound that matches the upper bound obtained in our general construction.
 
@@ -874,7 +876,7 @@ the contribution of the shared portion.
 
 To finish up we note that, since the augmentation $\mathcal{H}$ is minimal,
 it is a tree; $\mathcal G$ contains no cycles, so any cycle in $\mathcal H$ contains an edge not in $\mathcal G$ that could be removed.  Now, observe that if we traverse the outer face of (any planar drawing of) $\mathcal H$ then we obtain a non-simple path, $P$, that traverses each edge of $\mathcal{H}$ exactly twice. If we consider the set of maximal subpaths of $P$ with no vertex of $\mathcal G$ in their interior, we obtain a set of $r-1$ edge-disjoint paths, $Q_1,\ldots,Q_{r-1}$ and, for every component $\mathcal C_i$ of $\mathcal G$, there is a vertex of $\mathcal C_i$ that is an endpoint of at least one such path.  Therefore, from the preceding discussion, the total length of $Q_1\ldots,Q_{r-1}$ is $\Omega(nr^{1-1/k})$.  But since each edge of $\mathcal H$ appears at most twice in these subpaths,  $\mathcal H$ has $\Omega(nr^{1-1/k})$ edges.  Because $\mathcal H$ is a tree, it has $\Omega(nr^{1-1/k})$ vertices.
-\end{proof}
+\qed\end{proof}
 
 
 
@@ -928,7 +930,7 @@ step of this algorithm, the set $P$ contains $r-i+1$ points, the total $\ell_\in
      & \le Cr^{1-1/k} \enspace ,
 \end{align*}
 for a sufficiently large constant $C$ and any $r,k\ge 2$. Thus, the result holds for $c=2C$.
-\end{proof}
+\qed\end{proof}
 
 By uniformly scaling the point set $P$ by a factor of $n$, we obtain the following corollary of Lemma~\ref{lemma:tsp}, which is used in our algorithm:
 
