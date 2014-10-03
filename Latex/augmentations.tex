@@ -108,8 +108,7 @@ of edges and vertices added.  As the example in Figure~\ref{fig:bad-example} sho
     \begin{tabular}{ccc}
       \includegraphics{img/bad-example-3} &
       \includegraphics{img/bad-example-1} & 
-      \includegraphics{img/bad-example-2} \\
-      $\mathcal{G}$ & $G_1$ & $G_2$ 
+      \includegraphics{img/bad-example-2}
     \end{tabular}
   }
   \caption{\small Two drawings, $G_1$ and $G_2$, of the same graph, $\mathcal{G}$, where making $\mathcal{G}$ connected requires the addition both of edges and vertices. In this case, $\mathcal G$ is made connected by adding the hollow vertex and two dashed edges.}
@@ -143,11 +142,11 @@ a planar graph into another isomorphic drawing\footnote{In many cases, the corre
 of the creation process. For example, in Figure~\ref{fig:faces}, the
 second two faces were obtained by copying and then editing the first one.} of the same planar graph
 while maintaining planarity of the drawing throughout the
-deformation. This morphing problem has been studied extensively~\cite{cairns:deformations,alamdari.angelini.ea:morphing,angelini.dalozzo.ea:morphing,grunbaum.shephard:geometry,thomassen:deformations}.
+deformation. This morphing problem has been studied extensively~\cite{alamdari.angelini.ea:morphing,angelini.dalozzo.ea:morphing,cairns:deformations,grunbaum.shephard:geometry,thomassen:deformations}.
 
 Most morphing algorithms require that the input graph,
 $\mathcal{G}$, be connected. In many applications of morphing (for example
-in Figure~\ref{fig:faces}) the input graph is not connected. To apply this algorithms
+in Figure~\ref{fig:faces}) the input graph is not connected. To apply these algorithms
 directly in disconnected graphs, $\mathcal{G}$ must be augmented into a
 connected graph, $\mathcal H$, but this augmentation must be compatible
 with all drawings of $\mathcal{G}$.  At the same time, the complexity
@@ -173,10 +172,10 @@ question studied in the current paper.
 
 A \emph{drawing} of a graph $\mathcal{G}=(V,E)$ is a one-to-one
 function $\psi\colon V\to\R^2$.  A drawing is \emph{planar} if (a)~for
-every pair of edges $uw$ and $xy$ in $E$, the open line segment with
-endpoints $\psi(u)$ and $\psi(w)$ is disjoint from the open line
+every pair of edges $uw$ and $xy$ in $E$, the open straight-line segment with
+endpoints $\psi(u)$ and $\psi(w)$ is disjoint from the open straight-line
 segment with endpoints $\psi(x)$ and $\psi(y)$ and (b)~for every edge
-$uw$ and every vertex $y$, $\psi(y)$ is not contained in the open line
+$uw$ and every vertex $y$, $\psi(y)$ is not contained in the open straight-line
 segment with endpoints $\psi(u)$ and $\psi(w)$.  Two planar drawings,
 $\psi_1$ and $\psi_2$, of $\mathcal{G}$ are \emph{isomorphic} if
 there exists a continuous family of planar drawings $\{\psi^{(t)}
@@ -185,7 +184,7 @@ and $\psi^{(1)}=\psi_2$.\footnote{By Cairn's result, this is equivalent
 to saying that the two drawings of $\mathcal G$ have the same rotation schemes,
 the same cycle-vertex containment relationship, and the same outer face.}
 
-We call a graph, $G=(V,E)$ a \emph{geometric planar graph} if it is
+We call a graph, $G=(V,E)$, a \emph{geometric planar graph} if it is
 the image of some planar drawing of a graph $\mathcal{G}=(\mathcal
 V, \mathcal E)$.  That is, $V(G)=\{\psi(v): v\in V(\mathcal{G})\}$,
 $E(G)=\{(\psi(u),\psi(w)) : (u,w)\in E(\mathcal G)\}$, and $\psi$ is a planar
@@ -251,7 +250,7 @@ number of reflex vertices of $p$ and $q$, respectively.
   \centering{
     \includegraphics{img/compatible-triangs}
   }
-  \caption{\small Compatible triangulations of two 4-gons $P$ and~$Q$.}
+  \caption{\small Compatible triangulations of two 4-gons.}
   \label{fig:compatible-triangs}
 \end{figure}
 
@@ -279,7 +278,7 @@ incident to the outer face.
 
 For each component, $\mathcal C_i$, of $\mathcal G$ we select
 a distinguished \emph{corner}, $a_i$, of $G_1$. 
-Intuitively, a corner is a copy of a vertex of the
+A corner is a copy of a vertex of the
 outer face identified with the
 space between two consecutive edges incident to this vertex. 
 The corner $a_i$ is called the \emph{attachment corner}
@@ -452,8 +451,8 @@ For each $i\in \{1,\dots,n\}$, we can construct a path $R_i$ with $O(n^{2-1/k})$
 By relabelling, let $(v_1, \ldots, v_n)$ denote the order of the vertices of $\mathcal{G}$ induced by the Hamiltonian path, $P$, described above.  The graph $\mathcal{H}$, which is an augmentation of $\mathcal{G}$, is a path that visits the vertices $v_1,\ldots,v_n$ in this order. Letting $d_j$ denote the $\ell_\infty$ distance between $x_{v_j}$ and $x_{v_{j+1}}$, the path $\mathcal{H}$ includes an additional $O(d_j)$ vertices between $v_{j}$ and $v_{j+1}$.  It follows that the number of vertices
 in $\mathcal{H}$ is proportional to the length of $P$, which is $O(n^{2-1/k})$.
 
-For each $G_i$, we use Lemma~\ref{lemma:Compatible augmentation for trivial components} to draw $\mathcal{H}$ as a planar path, $R_i$,
-that connects the vertices $v_1,\ldots,v_n$ in this order in the drawing $G_i$.
+For each drawing $G_i$, we use Lemma~\ref{lemma:Compatible augmentation for trivial components} to draw $\mathcal{H}$ as a planar path, $R_i$,
+that connects the vertices $v_1,\ldots,v_n$ in this order in $G_i$.
 Since $d_j\ge |\rank_{G_i}(v_j) - \rank_{G_i}(v_{j+1})|$, the $O(d_j)$
 vertices in $\mathcal{H}$ between $v_j$ and $v_{j+1}$ are enough to
 draw the $O(|\rank_{G_i}(v_j) - \rank_{G_i}(v_{j+1})|)$ vertices in $R_i$
@@ -508,7 +507,7 @@ Note that $\partial_\varepsilon C$ is simple, provided that $\varepsilon$ is suf
 \subsection{Connected augmentations}\label{section: connected augmentations}
 Let $G$ be a geometric planar graph with $r$ connected components such that each component is adjacent to the outer face. While this is a particular case, it is the stepping stone to solve the general case as shown in Section~\ref{sec:Handling interior components}.
 
-Two vertices are {\em visible} if the open segment joining them does not intersect $G$.
+Two vertices are {\em visible} if the open straight-line segment joining them does not intersect $G$.
 Let $T_G$ be a smallest set of non-crossing edges of the visibility graph of $G$ that need to be added to $G$ to make it connected.
 As there are always two components containing mutually visible vertices, we can connect them and repeat recursively.  Thus, $T_G$ has $r-1$ edges. (Loosely, we can think of $T_G$ as a spanning tree of $G$'s components.) Let $G^* = G\cup T_G$.  We say that $G^*$ is a \emph{connected augmentation} of $G$; see Figure~\ref{fig:Blowing}.
 
@@ -526,7 +525,7 @@ the set of attachment corners of $G$ visited by $\varphi(u,v)$. For two attachme
        \sigma_G(u,v) = |\varphi(u,v)| + 2\sum_{a_t\in A(u,v)}|\partial C_t|
            - |\partial C_i| - |\partial C_j| ,
 \]
-which we call the \emph{cost} of going from $u$ to $v$.  The definition of $\sigma_G(u,v)$ is designed to capture the fact that, if $u$ and $v$ occur consecutively on the path $R$ we construct, then the portion of $R$ between $u$ and $v$ will have length at least $|\varphi(u,v)|$ since it follows $\varphi$, and it may also take a detour around every attachment corner $a_i\in A(u,v)$.  If it takes this detour at some $a_i\in A(u,v)$, then it does so by walking around $\partial C_i$ which requires an additional $|\partial C_i|$ edges.
+which we call the \emph{cost} of going from $u$ to $v$.  The definition of $\sigma_G(u,v)$ is designed to capture the fact that, if $u$ and $v$ occur consecutively on the path $R$ we construct, then the portion of $R$ between $u$ and $v$ will have length at least $|\varphi(u,v)|$ since it follows $\varphi$, and it may also take a detour around every attachment corner $a_t\in A(u,v)$.  If it takes this detour at some $a_t\in A(u,v)$, then it does so by walking around $\partial C_t$ which requires an additional $|\partial C_t|$ edges.
 
 \begin{lemma}\label{lemma:Contained in integer grid}
     If $u=a_i$ is an attachment corner of $G$, then $\sigma_G(a_1, u) < 6n$. Moreover, if $v=a_j$, with $j> i$, is another attachment corner of $G$, then
@@ -537,7 +536,7 @@ Recall that $G^*$ is a graph with $n$ vertices, so $\partial G^*$
 is a weakly-simple polygon with at most $n$ distinct vertices, so
 $|\partial G^*|\le 2n-2<2n$.  Furthermore, $\varphi(a_1,u)\subset
 \partial G^*$, so $|\varphi(a_1,u)|\le |\partial G^*|< 2n$.  Similarly,
-$2\sum_{a_i\in A(a_1,u)}|\partial C_i| \le 2\sum_{i=1}^r |\partial C_i| < 4n$.
+$2\sum_{a_t\in A(a_1,u)}|\partial C_t| \le 2\sum_{t=1}^r |\partial C_t| < 4n$.
 Therefore, $\sigma_G(a_1,u)< 6n$, which proves the first part of the lemma.
 
 \begin{figure*}
@@ -572,7 +571,7 @@ $A(u,v)=\{a_i,\ldots,a_j\}$, so
 
 \subsection{Spanning paths for connected augmentations}\label{section:Spanning paths for connected augmentations}
 Let $a_1, \ldots, a_r$ be an arbitrary order of the attachment corners of $G$ (we can get the incremental indexing by relabeling the components). 
-Given an embedded path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that passes through all attachment corners of $G$, we say that $C_i$ \emph{lies to the right of} $R$ if (1) $a_i$ is the only vertex of $C_i$ that belongs to $V(R)$, and (2) if $a_i = \rho_j$ for some $j\in\{1,\ldots,t\}$, then either $t\in \{1,t\}$ or $\rho_{j-1}$ and $\rho_{j+1}$ appear consecutively in this order when sorting---in the graph $G\cup R$---the neighbors of $a_i$ in clockwise order around $a_i$; see Figure~\ref{fig:Neighborhood} (left).
+Given an embedded path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that passes through all attachment corners of $G$, we say that $C_i$ \emph{lies to the right of} $R$ if (1) $a_i$ is the only vertex of $C_i$ that belongs to $V(R)$, and (2) if $a_i = \rho_j$ for some $j\in\{1,\ldots,t\}$, then either $j\in \{1,t\}$ or $\rho_{j-1}$ and $\rho_{j+1}$ appear consecutively in this order when sorting---in the graph $G\cup R$---the neighbors of $a_i$ in clockwise order around $a_i$; see Figure~\ref{fig:Neighborhood} (left).
 
 
 We now show how to construct a path $R$ that connects the attachment corners of $G$ in the given order, i.e., if $i < j$, then $a_i$ is visited before $a_j$ by $R$. We want to construct $R$ so that each component $C_i$ of $G$ lies to the right of~$R$ and so that $G\cup R$ is a planar geometric graph.
@@ -586,7 +585,7 @@ Throughout, $\lambda$ remains constant while $\varepsilon$ and $\delta$ are rede
 For each $i\in \{1,\dots,r\}$, let $w_i$ be the $\varepsilon$-copy of  $a_i$.
 Split $\partial_\varepsilon G^*$ at $w_1$, i.e., $\partial_\varepsilon G^*$ is a path with both endpoints equal to $w_1$.
 By choosing $\varepsilon$ sufficiently small, we guarantee that $\partial_\varepsilon G^*$ is simple, i.e., $\partial_\varepsilon G^*$ is isomorphic to $\varphi$.
-We say that two points in the plane are \emph{$R$-visible} if the open segment joining them does not intersect $R$.
+We say that two points in the plane are \emph{$R$-visible} if the open straight-line segment joining them does not intersect $R$.
 Let $\tau >0$. For each $i\in \{1,\dots,r\}$ such that $a_i$ is not an interior point of $R$, consider the set of points $N_i\subset \partial_\varepsilon G^*$ that are at distance at most $\tau$ from $w_i$.
 Let $\Delta_i$ be the convex hull of $N_i\cup \{a_i\}$, i.e., $\Delta_i$ is a ``cone'' with apex at $a_i$; see Figure~\ref{fig:Neighborhood} (middle, right). (We deliberately misuse the word ``cone'' here because the ``cones'' $\Delta_1,\ldots,\Delta_r$ in this section play the same roles as the cones $\Delta_1,\ldots,\Delta_n$ in Section~\ref{section:Trivial components}.)
 
@@ -601,7 +600,7 @@ provided that $\tau$ is sufficiently small.
 
 Assume that we have constructed a path $R$ that connects $a_1$ with $a_j$, for some $j\in\{1,\ldots,r-1\}$, and that the escape invariant holds.  To extend $R$, we create a new path that connects $a_j$ with $a_{j+1}$ without crossing $R$ while maintaining the escape invariant.  Recall that we consider $\partial_\varepsilon G^*$ to be a path with both endpoints~on~$w_1$.
 
-The first part of the path connecting $a_j$ with $a_{j+1}$ consists of a path connecting $a_j$ with $w_j$. If $j=1$, or if $j>1$ and $R$ together with the edge $a_j w_j$ leaves $C_j$ to its right, then connect $a_j$ with $w_j$ via a straight-line segment; since $w_j$ is $R$-visible from $a_j$, this segment does not cross $R$. Otherwise, connect $a_j$ with $\partial_\lambda C_j$ via a straight-line segment and traverse $\partial_\lambda C_j$ clockwise before moving to $w_j$ on $\partial_\varepsilon G^*$.  By the escape invariant, no crossing occur in this drawing.  In this way, we guarantee that $C_j$ lies to the right of the constructed path; see Figure~\ref{fig: Component to the right} for an illustration. Because $\lambda < \delta < \varepsilon$ and since $a_i\in V(R)$, the escape invariant is preserved.
+The first part of the path connecting $a_j$ with $a_{j+1}$ consists of a path connecting $a_j$ with $w_j$. If $j=1$, or if $j>1$ and $R$ together with the edge $a_j w_j$ leaves $C_j$ to its right, then connect $a_j$ with $w_j$ via a straight-line segment; since $w_j$ is $R$-visible from $a_j$, this segment does not cross $R$. Otherwise, connect $a_j$ with $\partial_\lambda C_j$ via a straight-line segment and traverse $\partial_\lambda C_j$ clockwise before moving to $w_j$ on $\partial_\varepsilon G^*$.  By the escape invariant, no crossing occurs in this drawing.  In this way, we guarantee that $C_j$ lies to the right of the constructed path; see Figure~\ref{fig: Component to the right} for an illustration. Because $\lambda < \delta < \varepsilon$ and since $a_i\in V(R)$, the escape invariant is preserved.
 
 \begin{figure}[t]
 \centering
@@ -634,7 +633,7 @@ Also, $\partial_\varepsilon G^*$ is still simple, provided that $\mu$ is initial
 Finally, we reduce $\tau$ by a factor of two and update $N_i$ and $\Delta_i$ accordingly, for each $i\in \{1,\dots,n\}$; see Figure~\ref{fig:Skip Component} (c).
 
 Recall that for each $a_i\notin R$, $R$ intersected neither the interior of $\Delta_i$ nor the interior of the polygon bounded by $\partial_\delta C_i$. Moreover, $R$ remained within $\partial_\varepsilon G^*$.
-Therefore, after increasing (\emph{resp.} reducing) $\varepsilon$ (\emph{resp.} $\delta$), we preserve the escape invariant for the next iteration of the algorithm.
+Therefore, after increasing $\varepsilon$  and reducing $\delta$, we preserve the escape invariant for the next iteration of the algorithm.
 We iterate until all attachment corners of $G$ are visited by $R$.
 
 \begin{lemma}\label{lemma:Path for connected augmentations}
@@ -673,9 +672,9 @@ of size $O(nr^{1-1/k})$.
 
 Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components of $\mathcal G$.  Because $G_1,\ldots,G_k$ are isomorphic, we can select one attachment corner from each component in the drawing $G_1$, and this attachment corner also appears in each of $G_2,\ldots,G_k$. Thus, for each $j\in\{1,\ldots,r\}$, we choose an attachment corner $a_j$ of $\partial C_j$ such that $a_j$ is incident to the outer face of $C_j$.
 
-For each $i\in \{1,\dots,k\}$, let $G_i^*$ be a connected augmentation of $G_i$, as defined in Section~\ref{section: connected augmentations}. For each $i\in\{1,\ldots,k\}$ and $j\in\{1,\ldots,r\}$, let $\rank_i(j) = \sigma_{G_i^*}(a_1, a_j)$. For each $j\in\{1,\ldots,r\}$, let $x_j\in \mathbb{R}^k$ be a point corresponding to the component $C_j$ such that $x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}\subset\R^k$ denote the resulting set of points. Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $4n$.
+For each $i\in \{1,\dots,k\}$, let $G_i^*$ be a connected augmentation of $G_i$, as defined in Section~\ref{section: connected augmentations}. For each $i\in\{1,\ldots,k\}$ and $j\in\{1,\ldots,r\}$, let $\rank_i(j) = \sigma_{G_i^*}(a_1, a_j)$. For each $j\in\{1,\ldots,r\}$, let $x_j\in \mathbb{R}^k$ be a point corresponding to the component $C_j$ such that $x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}\subset\R^k$ denote the resulting set of points. Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $6n$.
 
-Let $P$ be the shortest Hamiltonian path of $X$ under the $\ell_\infty$ norm. As before, because $X$ is contained in the $k$-dimensional integer grid of side-length $4n$ and $|X| = r$, the maximum ($\ell_\infty$) length of $P$ is $O(nr^{1-1/k})$. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
+Let $P$ be the shortest Hamiltonian path of $X$ under the $\ell_\infty$ norm. As before, because $X$ is contained in the $k$-dimensional integer grid of side-length $6n$ and $|X| = r$, the maximum ($\ell_\infty$) length of $P$ is $O(nr^{1-1/k})$. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
 
 \begin{theorem}\label{theorem:main}
 For each $1\leq i\leq k$, we can construct a path $R_i$ with $O(nr^{1-1/k})$ vertices that connects every component of $G_i$ such that $G_i\cup R_i$ is planar. Moreover, for each $1\leq i<j\leq k$, the drawings of $G_i\cup R_i$ and $G_j\cup R_j$ are~isomorphic.
@@ -883,6 +882,16 @@ it is a tree; $\mathcal G$ contains no cycles, so any cycle in $\mathcal H$ cont
 % \section{Summary and Conclusions}\label{section:Conclusions}
 % I have nothing to write here.  Some open problems might be nice.
 
+\section*{Acknowledgement}
+
+This work was initiated at the \emph{Second Workshop on Geometry and Graphs},
+held at the Bellairs Research Institute, March 9-14, 2014.  We are
+grateful to the other workshop participants for providing a stimulating
+research environment.
+
+\bibliographystyle{plain}
+\bibliography{augmentations}
+
 \appendix
 \section{Shortest Tour in the Uniform Norm}
 \label{app:uniform-norm}
@@ -941,16 +950,5 @@ By uniformly scaling the point set $P$ by a factor of $n$, we obtain the followi
   most $cnr^{1-1/k}$, where $c$ is a universal constant. In particular,
   $c$ does not depend on $k$, $r$, or~$n$.
 \end{corollary}
-
-\section*{Acknowledgement}
-
-This work was initiated at the \emph{Second Workshop on Geometry and Graphs},
-held at the Bellairs Research Institute, March 9-14, 2014.  We are
-grateful to the other workshop participants for providing a stimulating
-research environment.
-
-\bibliographystyle{plain}
-\bibliography{augmentations}
-
 
 \end{document}  
