@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
-<ipe version="70005" creator="Ipe 7.0.14">
-<info created="D:20140514134124" modified="D:20141003101053"/>
+<ipe version="70005" creator="Ipe 7.1.4">
+<info created="D:20140514134124" modified="D:20140724091200"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -202,13 +202,13 @@ h
 <dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
 <dashstyle name="dash dot dotted" value="[4 2 1 2 1 2] 0"/>
 <textsize name="large" value="\large"/>
+<textsize name="small" value="\small"/>
+<textsize name="tiny" value="\tiny"/>
 <textsize name="Large" value="\Large"/>
 <textsize name="LARGE" value="\LARGE"/>
 <textsize name="huge" value="\huge"/>
 <textsize name="Huge" value="\Huge"/>
-<textsize name="small" value="\small"/>
 <textsize name="footnote" value="\footnotesize"/>
-<textsize name="tiny" value="\tiny"/>
 <textstyle name="center" begin="\begin{center}" end="\end{center}"/>
 <textstyle name="itemize" begin="\begin{itemize}" end="\end{itemize}"/>
 <textstyle name="item" begin="\begin{itemize}\item{}" end="\end{itemize}"/>
@@ -327,8 +327,5 @@ h
 </path>
 <text matrix="1 0 0 1 0 -19" transformations="translations" pos="144 704" stroke="black" type="label" width="7.057" height="6.808" depth="0" halign="center" valign="top">B</text>
 <text matrix="1 0 0 1 64 -19" transformations="translations" pos="144 704" stroke="black" type="label" width="4.981" height="6.42" depth="0" halign="center" valign="top">2</text>
-<text layer="alpha" matrix="1 0 0 1 3.57957 1.4715" transformations="translations" pos="119.491 754.723" stroke="black" type="label" width="12.302" height="6.812" depth="1.49" valign="baseline">$G_1$</text>
-<text layer="beta" matrix="1 0 0 1 4.62424 1.68184" transformations="translations" pos="119.491 754.723" stroke="black" type="label" width="12.302" height="6.812" depth="1.49" valign="baseline">$G_2$</text>
-<text layer="gamma" matrix="1 0 0 1 3.15274 -4.6246" transformations="translations" pos="119.491 754.723" stroke="black" type="label" width="6.517" height="6.816" depth="0.96" valign="baseline">$\mathcal G$</text>
 </page>
 </ipe>

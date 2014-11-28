@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
-<ipe version="70005" creator="Ipe 7.0.14">
-<info created="D:20140514143733" modified="D:20141003101306"/>
+<ipe version="70005" creator="Ipe 7.1.4">
+<info created="D:20140514143733" modified="D:20140514143733"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -239,10 +239,10 @@ h
 160 720 l
 h
 </path>
-<text matrix="1 0 0 1 9.93836 0" transformations="rigid" pos="80 720" stroke="black" type="label" halign="right" valign="center">A</text>
-<text matrix="1 0 0 1 -32 24.936" transformations="rigid" pos="160 704" stroke="black" type="label" halign="center" valign="top">B</text>
-<text matrix="1 0 0 1 -10.8401 15.6715" transformations="rigid" pos="176 704" stroke="black" type="label" valign="center">C</text>
-<text matrix="1 0 0 1 0 3.94185" transformations="rigid" pos="128 768" stroke="black" type="label" halign="center" valign="baseline">D</text>
+<text matrix="1 0 0 1 9.93836 0" transformations="rigid" pos="80 720" stroke="black" type="label" width="7.472" height="6.808" depth="0" halign="right" valign="center">A</text>
+<text matrix="1 0 0 1 -32 24.936" transformations="rigid" pos="160 704" stroke="black" type="label" width="7.057" height="6.808" depth="0" halign="center" valign="top">B</text>
+<text matrix="1 0 0 1 -10.8401 15.6715" transformations="rigid" pos="176 704" stroke="black" type="label" width="7.195" height="6.808" depth="0" valign="center">C</text>
+<text matrix="1 0 0 1 0 3.94185" transformations="rigid" pos="128 768" stroke="black" type="label" width="7.61" height="6.808" depth="0" halign="center" valign="baseline">D</text>
 <use name="mark/disk(sx)" pos="96 720" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="128 736" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="160 720" size="normal" stroke="black"/>
@@ -254,10 +254,10 @@ h
 160 720 l
 h
 </path>
-<text matrix="0.707107 0.707107 -0.707107 0.707107 685.675 149.076" transformations="rigid" pos="80 720" stroke="black" type="label" halign="right" valign="center">D</text>
-<text matrix="0.707107 0.707107 -0.707107 0.707107 638.388 137.054" transformations="rigid" pos="160 704" stroke="black" type="label" halign="center" valign="top">A</text>
-<text matrix="0.707107 0.707107 -0.707107 0.707107 659.901 145.465" transformations="rigid" pos="176 704" stroke="black" type="label" valign="center">B</text>
-<text matrix="0.707107 0.707107 -0.707107 0.707107 675.86 144.836" transformations="rigid" pos="128 768" stroke="black" type="label" halign="center" valign="baseline">C</text>
+<text matrix="0.707107 0.707107 -0.707107 0.707107 685.675 149.076" transformations="rigid" pos="80 720" stroke="black" type="label" width="7.61" height="6.808" depth="0" halign="right" valign="center">D</text>
+<text matrix="0.707107 0.707107 -0.707107 0.707107 638.388 137.054" transformations="rigid" pos="160 704" stroke="black" type="label" width="7.472" height="6.808" depth="0" halign="center" valign="top">A</text>
+<text matrix="0.707107 0.707107 -0.707107 0.707107 659.901 145.465" transformations="rigid" pos="176 704" stroke="black" type="label" width="7.057" height="6.808" depth="0" valign="center">B</text>
+<text matrix="0.707107 0.707107 -0.707107 0.707107 675.86 144.836" transformations="rigid" pos="128 768" stroke="black" type="label" width="7.195" height="6.808" depth="0" halign="center" valign="baseline">C</text>
 <use matrix="0.707107 0.707107 -0.707107 0.707107 678.648 142.049" name="mark/disk(sx)" pos="96 720" size="normal" stroke="black"/>
 <use matrix="0.707107 0.707107 -0.707107 0.707107 678.648 142.049" name="mark/disk(sx)" pos="128 736" size="normal" stroke="black"/>
 <use matrix="0.707107 0.707107 -0.707107 0.707107 678.648 142.049" name="mark/disk(sx)" pos="160 720" size="normal" stroke="black"/>
@@ -296,7 +296,7 @@ h
 247.965 739.788 l
 </path>
 <use matrix="1 0 0 1 0.761631 13.2016" name="mark/fdisk(sfx)" pos="236.652 751.101" size="normal" stroke="black" fill="white"/>
-<text matrix="1 0 0 1 -37.2115 74.4752" transformations="translations" pos="125.118 699.83" stroke="black" type="label" halign="center" valign="baseline">$P$</text>
-<text matrix="1 0 0 1 -57.6992 73.6597" transformations="translations" pos="256.372 701.607" stroke="black" type="label" halign="center" valign="baseline">$Q$</text>
+<text matrix="1 0 0 1 2.8823 0" transformations="translations" pos="125.118 699.83" stroke="black" type="label" width="7.78" height="6.808" depth="0" halign="center" valign="baseline">$P$</text>
+<text matrix="1 0 0 1 0 0.152861" transformations="translations" pos="256.372 701.607" stroke="black" type="label" width="7.876" height="6.815" depth="1.93" halign="center" valign="baseline">$Q$</text>
 </page>
 </ipe>
