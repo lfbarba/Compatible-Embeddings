@@ -314,7 +314,7 @@ for the sake of simplicity, that every component has at least one vertex
 incident to the outer face.
 
 For each component, $\mathcal C_i$, of $\mathcal G$ we select
-a distinguished \emph{corner}, $a_i$, of $G_1$. (A corner is the
+a distinguished \emph{corner}, $a_i$, of $G_1$. (Roughly speaking, a corner is the
 space between two consecutive edges incident to some vertex of the
 outer face). The corner $a_i$ is called the \emph{attachment corner}
 for component $\mathcal C_i$.  Notice that, since $G_1,\ldots,G_k$
@@ -516,10 +516,12 @@ components of $G_i$, so we must define one. Also, the drawing
 of path $R_i$ is considerably more complicated.  In Section~\ref{section:Trivial components}, $R_i$ is drawn incrementally, and always passes above components that are not yet included in $R_i$ and below components that are already included in $R_i$.  In this section, we redefine ``above'' and ``below''. The number of edges required to go above or below a component depends on its size and structure.
 
 \subsection{Preliminaries}\label{section:Preliminaries} 
-Let $C$ be a connected geometric planar graph. Let $v_0, v_1, \ldots, v_k, v_0$ be the sequence of vertices of $C$ visited by a counterclockwise
-Eulerian tour along the boundary of the outer face of $C$. Note that
-$v_i$ may be equal to $v_j$ for some $i\neq j$.  A vertex $v_i$
-in this sequence is called a \emph{corner} of $C$.  We consider the boundary of $C$, denoted by $\partial C$, to be the
+Let $C$ be a connected geometric planar graph. 
+Let $v_0, v_1, \ldots, v_k, v_0$ be the sequence of vertices of $C$ visited by a counterclockwise
+Eulerian tour along the boundary of the outer face of $C$. 
+Note that $v_i$ may be equal to $v_j$ for some $i\neq j$.  
+An element $v_i$ in this sequence is called a \emph{corner} of $C$.  
+We consider the boundary of $C$, denoted by $\partial C$, to be the
 boundary of the weakly-simple polygon $(v_0, \ldots, v_k, v_0)$ whose
 vertex set is the set of corners of $C$.\footnote{More formally, $\partial C$ is the boundary of the unbounded component of $\mathbb{R}^2\setminus C$, when we treat $C$ as the union of all its edges (line segments) and vertices (points).}
 
@@ -605,14 +607,15 @@ We initialize $R$ with the trivial path that contains only $a_1$, and then exten
 Recall that  for any given $\varepsilon >0$, $\partial_\varepsilon G^*$ denotes the $\varepsilon$-fattening of $G^*$ (see Section~\ref{section:Preliminaries}).
 Let $\mu>0$ be a small constant to be specified later.
 Initially, let $\varepsilon = 2\mu$ and let $\delta = \mu/2$. Let $\lambda < \mu/2^{r+1}$ be a constant sufficiently small so that $\partial_\lambda C_i \cap \partial_\lambda C_j = \emptyset$ for any distinct $i,j\in\{1,\ldots,r\}$.
-Throughout, $\lambda$ remains constant while $\varepsilon$ and $\delta$ are redefined at each iteration. However, as an invariant we maintain $\lambda < \delta < \varepsilon$.
 
 For each $i\in \{1,\dots,r\}$, let $w_i$ be the $\varepsilon$-copy of  $a_i$.
 Split $\partial_\varepsilon G^*$ at $w_1$, i.e., $\partial_\varepsilon G^*$ is a path with both endpoints equal to $w_1$.
-By choosing $\varepsilon$ sufficiently small, we guarantee that $\partial_\varepsilon G^*$ is simple, i.e., $\partial_\varepsilon G^*$ is isomorphic to $\varphi$.
+By choosing $\varepsilon$ sufficiently small, we guarantee that $\partial_\varepsilon G^*$ is simple.
 We say that two points in the plane are \emph{$R$-visible} if the open segment joining them does not intersect $R$.
 Let $\tau >0$. For each $i\in \{1,\dots,r\}$ such that $a_i$ is not an interior point of $R$, consider the set of points $N_i\subset \partial_\varepsilon G^*$ that are at distance at most $\tau$ from $w_i$.
 Let $\Delta_i$ be the convex hull of $N_i\cup \{a_i\}$, i.e., $\Delta_i$ is a ``cone'' with apex at $a_i$; see Figure~\ref{fig:Neighborhood}. (We deliberately misuse the word ``cone'' here because the ``cones'' $\Delta_1,\ldots,\Delta_r$ in this section play the same roles as the cones $\Delta_1,\ldots,\Delta_n$ in Section~\ref{section:Trivial components}.)
+
+Throughout, $\lambda$ remains constant while $\varepsilon, \delta$ and $\tau$ are redefined at each iteration. However, as an invariant we maintain $\lambda < \delta < \varepsilon$.
 
 
 While constructing $R$, we also maintain the \emph{escape invariant} which is defined as follows. Assume that $R$ so far connects $a_1,\ldots,a_i$, for some $i\in \{1,\dots,r-1\}$. Then: (1)~$R$ intersects neither $\partial_\varepsilon G^*$ nor its unbounded face; (2)~for each $j\in\{i+1,\ldots,r\}$, $R$ intersects neither the simple polygon bounded by $\partial_\delta C_j$ nor the cone $\Delta_j$; (3)~$\Delta_h\cap \Delta_j = \emptyset$, for any distinct $h,j\in\{1,\ldots,r\}$; and (4)~$w_i$ is $R$-visible from $a_i$.
@@ -642,7 +645,7 @@ The first part of the path connecting $a_j$ with $a_{j+1}$ consists of a path co
 \label{fig: Component to the right}
 \end{figure}
 
-The path from $a_j$ to $a_{j+1}$ continues with a path from $w_j$ to $w_{j+1}$, which follows the unique path in $\partial_\varepsilon G^*$ from $w_j$ to $w_{j+1}$. However, whenever we reach an endpoint of $N_i$ for some $i\in \{j+2,\dots,r\}$, we take a \emph{detour} to the other endpoint of $N_i$ while avoiding its interior so that the points in the interior of $N_i$ remain $R$-visible from $a_i$; see Figure~\ref{fig:Skip Component}. Formally, we walk from the reached endpoint of $N_i$ to $\partial_\delta C_i\setminus \Delta_i$ along the boundary of $\Delta_i$. Then, we traverse the path $\partial_\delta C_i\setminus \Delta_i$ before moving to the other endpoint of $N_i$ from the endpoint of $\partial_\delta C_i \setminus \Delta_i$. Note that $R$ does not intersect the interior of the simple polygon bounded by $\partial_\delta C_i$ nor the interior of $\Delta_i$. Moreover, $R$ remains inside the simple polygon bounded by $\partial_\varepsilon G^*$.
+The path from $a_j$ to $a_{j+1}$ continues with a path from $w_j$ towards $w_{j+1}$, which follows the unique path in $\partial_\varepsilon G^*$ from $w_j$ to $w_{j+1}$. However, whenever we reach an endpoint of $N_i$ for some $i\in \{j+2,\dots,r\}$, we take a \emph{detour} to the other endpoint of $N_i$ while avoiding its interior so that the points in the interior of $N_i$ remain $R$-visible from $a_i$; see Figure~\ref{fig:Skip Component}. Formally, we walk from the reached endpoint of $N_i$ to $\partial_\delta C_i\setminus \Delta_i$ along the boundary of $\Delta_i$. Then, we traverse the path $\partial_\delta C_i\setminus \Delta_i$ before moving to the other endpoint of $N_i$ from the endpoint of $\partial_\delta C_i \setminus \Delta_i$. Note that $R$ does not intersect the interior of the simple polygon bounded by $\partial_\delta C_i$ nor the interior of $\Delta_i$. Moreover, $R$ remains inside the simple polygon bounded by $\partial_\varepsilon G^*$.
 
 
 \begin{figure}[tb]
@@ -655,7 +658,7 @@ The path from $a_j$ to $a_{j+1}$ continues with a path from $w_j$ to $w_{j+1}$, 
 Once we go around $C_i$, we are back on $\partial_\varepsilon G^*$ on the other endpoint of $N_i$. In this way, we continue going towards~$w_{j+1}$ along $\partial_\varepsilon G^*$ until reaching an endpoint of $N_{j+1}$.
 Once we reach an endpoint of $N_{j+1}$, we move directly from this endpoint to $a_{j+1}$.
 
-Because $\partial_\varepsilon G^*$ is isomorphic to $\varphi$, the constructed path between $a_j$ and $a_{j+1}$ has length at most $|\varphi(a_j, a_{j+1})|$ plus the length of the boundaries of the components for which the path detoured. Because each component we walked around has its attachment corner on the path $\varphi(a_j, a_{j+1})$, and thus in $A(a_j, a_{j+1})$, the length of the constructed path between $a_j$ and $a_{j+1}$ is
+The constructed path between $a_j$ and $a_{j+1}$ has length at most $|\varphi(a_j, a_{j+1})|$ plus the length of the boundaries of the components for which the path detoured. Because each component we walked around has its attachment corner on the path $\varphi(a_j, a_{j+1})$, and thus in $A(a_j, a_{j+1})$, the length of the constructed path between $a_j$ and $a_{j+1}$ is
 \[ O\left(|\varphi(a_j, a_{j+1})| + \sum_{a_i\in A(a_j, a_{j+1})} |\partial C_i|\right) = O(\sigma_G(a_j, a_{j+1})) \enspace .
 \]
 
@@ -777,11 +780,10 @@ We remark that Theorem~\ref{theorem:main} yields an efficient algorithm for cons
   $\varepsilon$, the values of the remaining variables can taken from
   the set $\{i\varepsilon/3r:i\in\{1,\ldots,3r\}\}$.
 
-  It turns out that a value $\varepsilon \le cm/n$, where $m$ is the
-  minimum non-zero difference between $x$ coordinates or $y$ coordinates
-  in $G_1,\ldots,G_k$, and $c$ is a constant, is sufficiently small.
-  Thus, a suitable $\varepsilon$ can be computed in $O(kn\log n)$ time
-  by sorting.
+  It turns out that a value $\varepsilon < m/(2n)$, where $m$ is 
+  the minimum local feature size~\cite{ruppert1995delaunay} of $G_1^*, \ldots, G_k^*$, is sufficiently small.
+  Since $m$ can be computed in linear time~\cite{chin1995finding}, 
+  a suitable $\varepsilon$ can be computed in $O(kn)$ time.
 \end{enumerate}
 
 This yields the following algorithmic result about connected augmentations:
@@ -789,7 +791,7 @@ This yields the following algorithmic result about connected augmentations:
 \begin{theorem}
   An augmentation satisfying the conditions of Theorem~\ref{theorem:main}
   can be computed in $O(kn^2)$ time for any value of $k$.  If $k$ is
-  constant, then the augmentation can be computed in $O(nr^{1-1/k})$
+  constant, then the augmentation can be computed in $O(nr^{1-1/k} + n\log n)$
   time.
 \end{theorem}
 
@@ -845,7 +847,8 @@ Using Lemma~\ref{lem:permutations}, we can prove a lower bound that matches the 
 
 \begin{proof}
 Since the lemma only claims an asymptotic result, we may assume without
-loss of generality that $r$ is even and that $2r$ divides $n$.
+loss of generality that $r$ is even and that $2r$ divides $n$. 
+Furthermore, we may assume that $r = \omega(1)$; otherwise, the lower bound of $\Omega(n)$ is trivial. 
 
 The graph $\mathcal G$ consists of $r$ disjoint paths,
 $\mathcal{C}_1,\ldots,\mathcal{C}_r$, each of length $n/r$.  Each of the
@@ -900,6 +903,8 @@ To finish up we note that, since the augmentation $\mathcal{H}$ is minimal,
 it is a tree; $\mathcal G$ contains no cycles, so any cycle in $\mathcal H$ contains an edge not in $\mathcal G$ that could be removed.  Now, observe that if we traverse the outer face of (any planar drawing of) $\mathcal H$ then we obtain a non-simple path, $P$, that traverses each edge of $\mathcal{H}$ exactly twice. If we consider the set of maximal subpaths of $P$ with no vertex of $\mathcal G$ in their interior, we obtain a set of $r$ edge-disjoint paths, $Q_1,\ldots,Q_{r}$ and, for every component $\mathcal C_i$ of $\mathcal G$, there is a vertex of $\mathcal C_i$ that is an endpoint of at least one such path.  Therefore, from the preceding discussion, the total length of $Q_1\ldots,Q_{r}$ is $\Omega(nr^{1-1/k})$.  But since each edge of $\mathcal H$ appears at most twice in these subpaths, we conclude that $\mathcal H$ has $\Omega(nr^{1-1/k})$ edges.  Since $\mathcal H$ is a tree, it has $\Omega(nr^{1-1/k})$ vertices.
 \end{proof}
 
+The lower bound in Theorem~\ref{thm:lower-bound} can be extended to work with values of $r$ up to $(1-\varepsilon) n$, for any constant $0<\varepsilon < 1$. 
+However, our techniques do not apply for the case presented in Section~\ref{section:Trivial components} where $\mathcal G$ has no edges. It is therefore an open problem to determine if the upper bound presented in Section~\ref{section:Trivial components} is tight.
 
 \section*{Acknowledgement}
 
