@@ -576,7 +576,7 @@ which we call the \emph{cost} of going from $u$ to $v$.  The definition of $\sig
 \end{lemma}
 \begin{proof}
 Recall that $G^*$ is a planar graph with $n$ vertices, 
-$|\partial G^*|\le 3n-6<3n$.  
+so $|\partial G^*|\le 3n-6<3n$.  
 Furthermore, $\varphi(a_1,u)\subset
 \partial G^*$, so $|\varphi(a_1,u)|\le |\partial G^*|< 3n$.  Similarly,
 $2\sum_{a_i\in A(a_1,u)}|\partial C_i| \le 2\sum_{i=1}^r |\partial C_i| < 6n$.
@@ -601,7 +601,7 @@ $A(u,v)=\{a_i,\ldots,a_j\}$, so
 \end{proof}
 
 \subsection{Spanning paths for connected augmentations}\label{section:Spanning paths for connected augmentations}
-Let $a_1, \ldots, a_r$ be an arbitrary order of the attachment corners of $G$ (we can relabel the components to obtain an incremental order of the labels). 
+Let $a_1, \ldots, a_r$ be an arbitrary order of the attachment corners of $G$ (we can relabel the components to obtain this incremental order of the labels). 
 Given a path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that visits every attachment corners of $G$ exactly once, we say that $C_i$ \emph{lies to the right of} $R$ if (1) $a_i$ is the only vertex of $C_i$ that belongs to $V(R)$, and (2) if $a_i = \rho_j$ for some $j\in\{1,\ldots,t\}$, then $\rho_{j-1}$ and $\rho_{j+1}$ appear as consecutive vertices when sorting---in the graph $G\cup R$---the neighbors of $a_i$ in clockwise order around $a_i$ (see Figure~\ref{figure:right-of}).
 
 
@@ -753,7 +753,7 @@ In the preceding section, we assumed that the drawings $G_1,\ldots,G_k$ of $G$ w
 To see that the assumption is not necessary, observe that we can first use the preceding algorithm to connect all the $r'$ components that do appear on the outer face using a polygonal path that is contained on the outer face.  The number of vertices used in this path is $O(n'r'^{1-1/k})$, where $n'$ is the number of vertices of the $r'$ components that appear on the outer face.
 
 Next, for each interior face, $f$, whose boundary consists of multiple components
-$C_1,\ldots,C_t$ ($t\leq r$), we can use (a small modification of)
+$C_1,\ldots,C_t$  for some $t\leq r$, we can use (a small modification of)
 the preceding algorithm to connect $C_1,\ldots,C_t$ and the outer
 boundary of $f$ using a path that is contained in $f$.  This path
 has length $O(n_ft^{1-1/k})$, where $n_f$ is the total number of vertices on the face $f$.  
