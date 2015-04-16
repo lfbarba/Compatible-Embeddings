@@ -67,9 +67,9 @@ urlcolor=linkblue}
                              and Electrical Engineering,
                              University of Ottawa,
                              \email{vida.dujmovic@uottawa.ca}}\,\,
-       Fabrizio Frati,\thanks{School of Information Technologies,
-                              The University of Sydney,
-                              \email{fabrizio.frati@sydney.edu.au}}\,\,
+       Fabrizio Frati,\thanks{Department of Engineering, 
+       				Roma Tre University, 
+                              \email{frati@dia.uniroma3.it}}\,\,
        and Pat Morin\thanks{School of Computer Science, Carleton University,
                             \email{morin@scs.carleton.ca}}}
 
@@ -315,11 +315,11 @@ for the sake of simplicity, that every component has at least one vertex
 incident to the outer face.
 
 For each component, $\mathcal C_i$, of $\mathcal G$ we select
-a distinguished \emph{corner}, $a_i$, of $G_1$. (Roughly speaking, a corner is the
-space between two consecutive edges incident to some vertex of the
-outer face.) The corner $a_i$ is called the \emph{attachment corner}
+a distinguished \emph{corner}, $a_i$, of this component in the drawing $G_1$. (Roughly speaking, 
+a corner is a vertex of the weakly-simple polygon obtained by walking along the boundary of $\mathcal C_i$ in the drawing $G_1$.) 
+This corner $a_i$ is called the \emph{attachment corner}
 for component $\mathcal C_i$.  Notice that, since $G_1,\ldots,G_k$
-are isomorphic, $a_i$ appears as a corner in each of $G_1,\ldots,G_k$.
+are isomorphic, $a_i$ appears as a corner of $\mathcal C_i$ in each of $G_1,\ldots,G_k$.
 The augmentation that we ultimately create will consist of a path that
 connects to each component $\mathcal C_i$ at its attachment corner $a_i$.
 
@@ -347,7 +347,7 @@ take part in the final augmentation of $G_1,\ldots,G_k$. In fact the
 edges of $G_j^*\setminus G_j$ might be different from the edges of
 $G_h^*\setminus G_h$, if $j\neq h$.  We then traverse the boundary
 of the outer face of $G_j^*$ to obtain a polygonal path, $\varphi_j$,
-of length $O(n)$ that comes close to every corner of $G_j$.  The path
+of length $O(n)$ that comes close to every corner of $G_j^*$.  The path
 $\varphi_j$ is then used to define an integer distance $d_j(a_\ell,a_m)$
 for any two attachment corners $a_\ell$ and $a_m$. This distance includes
 information about the number of edges of $\varphi_j$ between $a_\ell$
@@ -426,7 +426,7 @@ For each $j\in \{i, \dots, n\}$, there is a closed cone $\Delta_{j}$ with apex $
 \end{enumerate}
 
 Initialize $R$ as a path that consists of the single vertex $v_1$. In order to establish the escape invariant, we define $u_1=v_1$; also, for each $j\in \{2,\dots,n\}$, we define $u_j$ as an arbitrary translation up of $v_j$; further, for each $j\in \{1,\dots,n\}$, let $\Delta_j$ be a cone with apex on $u_j$ sufficiently narrow so that these cones do not intersect inside $\pi$; see Figure~\ref{fig:Escape Invariant}.
-The cones and their apexes will be redefined in iteration of the algorithm.
+The cones and their apexes will be redefined during each iteration of the algorithm.
 
 \begin{figure}[tb]
 \centering 
@@ -532,14 +532,13 @@ Let $v_0, v_1, \ldots, v_k, v_0$ be the sequence of vertices of $C$ visited by a
 Eulerian tour along the boundary of the outer face of~$C$. 
 Note that $v_i$ may be equal to $v_j$ for some $i\neq j$.  
 %Each element $v_i$ in this sequence is called a \emph{corner} of $C$.
-We consider the boundary of $C$, denoted by $\partial C$, to be the
-boundary of the weakly-simple polygon $(v_0, \ldots, v_k, v_0)$ whose
-vertex set is the set of \emph{corners} of $C$.\footnote{More formally, $\partial C$ is the boundary of the unbounded component of $\mathbb{R}^2\setminus C$, when we treat $C$ as the union of all its edges (line segments) and vertices (points).}
-Thus, each corner of $C$ coincides with a vertex of $C$ (several corners may coincide with the same vertex of $C$).
+We consider the boundary of $C$, denoted by $\partial C$,\footnote{More formally, $\partial C$ is the boundary of the unbounded component of $\mathbb{R}^2\setminus C$, when we treat $C$ as the union of all its edges (line segments) and vertices (points).} to be the boundary of the weakly-simple polygon $(v_0, \ldots, v_k, v_0)$ whose
+vertex set is the set of \emph{corners} of $\partial C$ (or simply of $C$).
+Thus, each corner of $C$ coincides with a vertex of $\partial C$ (several corners may coincide with the same vertex of $\partial C$).
 
 Let $\varepsilon >0$. For each corner $v_i$ of $\partial C$, let $\ell_i$ be the half-line starting at $v_i$ that bisects the angle between the edges $v_{i-1}v_i$ and $v_i v_{i+1}$ in the outer face of $C$. Let $z_i$ be the point at distance $\varepsilon$ from $v_i$ along $\ell_i$. We call $z_i$ the \emph{$\varepsilon$-copy} of $v_i$. Let $\partial_\varepsilon C$ be the piecewise-linear cycle defined by the sequence $(z_0, z_1, \ldots, z_k, z_0)$. We call $\partial_\varepsilon C$ the \emph{$\varepsilon$-fattening} of $C$.
 An $\varepsilon$-fattening $\partial_\varepsilon C$ is \emph{simple} if $\partial_\varepsilon C$  is a simple polygon that contains~$C$.
-Note that $\partial_\varepsilon C$ is simple, provided that $\varepsilon$ is sufficiently small. In this paper, we consider only simple $\varepsilon$-fattenings; see Figure~\ref{fig:Blowing}. Note that the number of edges between two corners of $\partial C$ along the boundary of $C$ is the same as the number of edges between the $\varepsilon$-copies of the two corners along~$\partial_\varepsilon C$.
+Note that $\partial_\varepsilon C$ is simple, provided that $\varepsilon$ is sufficiently small. In this paper, we consider only simple $\varepsilon$-fattenings; see Figure~\ref{fig:Blowing}. Note that the number of edges between two corners of $C$ along the boundary of $C$ is the same as the number of edges between the $\varepsilon$-copies of the two corners along~$\partial_\varepsilon C$.
 
 %%%%%%%%%%%%%%%
 \subsection{Connected augmentations}\label{section: connected augmentations}
@@ -558,21 +557,21 @@ As there are always two components containing mutually visible vertices, we can 
 
 Let $C_1, \ldots, C_r$ be the components of $G$.
 %Recall that we consider $\partial C_i$ to be the boundary of a weakly-simple polygon. Therefore, even though a vertex of $C_i$ can appear multiple times along $\partial C_i$, we consider them as different corners of $\partial C_i$.
-For each $i\in \{1,\dots,r\}$, let $a_i\in C_i$ be an arbitrary corner of $\partial C_i$ (note that $a_i$ is adjacent to the outer face).
+For each $i\in \{1,\dots,r\}$, let $a_i$ be an arbitrary corner of $C_i$ (note that $a_i$ is adjacent to the outer face).
 We call $a_i$ the \emph{attachment corner} of $C_i$.
 
-Let $\varphi$ be the path on the corners of $\partial G^*$ (hence $\varphi$ is also a walk on the vertices of $\partial G^*$) obtained by splitting $\partial G^*$ at the corner $a_1$. That is, $\varphi$ is a path that visits every corner of $\partial G^*$ exactly once except for $a_1$, which is visited twice.
+Let $\varphi$ be the path on the corners of $G^*$ obtained by splitting $\partial G^*$ at the corner $a_1$. That is, $\varphi$ is a path that visits every corner of $G^*$ exactly once except for $a_1$, which is visited twice.
 Given two corners $u$ and $v$ in $\partial G^*$, let $\varphi(u,v)$ denote
 the unique path in $\varphi$ that connects $u$ with $v$. Let $A(u,v)$ be
-the set of attachment corners of $G$ visited by $\varphi(u,v)$. For two attachment corners $u=a_i$ and $v=a_j$, define
+the set of attachment corners of $G^*$ visited by $\varphi(u,v)$. For two attachment corners $u=a_i$ and $v=a_j$, define
 \[
        \sigma_G(u,v) = |\varphi(u,v)| + 2\left (\sum_{a_t\in A(u,v)}|\partial C_t|\right)
-           - |\partial C_i| - |\partial C_j| ,
+           - |\partial C_i| - |\partial C_j| \ ,
 \]
 which we call the \emph{cost} of going from $u$ to $v$.  The definition of $\sigma_G(u,v)$ is designed to capture the fact that, if $u$ and $v$ occur consecutively on the path $R$ we construct, then the portion of $R$ between $u$ and $v$ will have length at least $|\varphi(u,v)|$ since it follows $\varphi$, and it may also take a detour around every attachment corner $a_i\in A(u,v)$.  If it takes this detour at some $a_t\in A(u,v)$, then it does so by walking around $\partial C_t$ which requires an additional $|\partial C_t|$ edges.
 
 \begin{lemma}\label{lemma:Contained in integer grid}
-    If $u=a_i$ is an attachment corner of $G$, then $\sigma_G(a_1, u) < 9n$. Moreover, if $v=a_j$, with $j> i$, is another attachment corner of $G$, then
+    If $u=a_i$ is an attachment corner of $G^*$, then $\sigma_G(a_1, u) < 9n$. Moreover, if $v=a_j$, with $j> i$, is another attachment corner of $G^*$, then
   $\sigma_G(u, v) = \sigma_G(v, u) = \sigma_G(a_1, v)- \sigma_G(a_1, u)$.
 \end{lemma}
 \begin{proof}
@@ -602,8 +601,9 @@ $A(u,v)=\{a_i,\ldots,a_j\}$, so
 \end{proof}
 
 \subsection{Spanning paths for connected augmentations}\label{section:Spanning paths for connected augmentations}
-Let $a_1, \ldots, a_r$ be an arbitrary order of the attachment corners of $G$ (we can relabel the components to obtain this incremental order of the labels). 
-Given a path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that visits every attachment corners of $G$ exactly once, we say that $C_i$ \emph{lies to the right of} $R$ if (1) $a_i$ is the only vertex of $C_i$ that belongs to $V(R)$, and (2) if $a_i = \rho_j$ for some $j\in\{1,\ldots,t\}$, then $\rho_{j-1}$ and $\rho_{j+1}$ appear as consecutive vertices when sorting---in the graph $G\cup R$---the neighbors of $a_i$ in clockwise order around $a_i$ (see Figure~\ref{figure:right-of}).
+Let $a_1, \ldots, a_r$ be an arbitrary order of the attachment corners of $G^*$ (we can relabel the components to obtain this incremental order of the labels). 
+Given a geometric path $R = (\rho_1, \rho_2, \ldots, \rho_t)$, we say that $R$ \emph{visits a corner} $a_i$ of $G^*$ if the point $a_i$ is a vertex of $R$, i.e., if $a_i = \rho_j$ for some $1\leq j\leq t$.
+If $R$ visits each attachment corner of $G^*$ exactly once, then we say that $C_i$ \emph{lies to the right of} $R$ if (1) $a_i$ is the only vertex of $C_i$ that is also a vertex of $R$, and (2) if $a_i = \rho_j$ for some $j\in\{1,\ldots,t\}$, then $\rho_{j-1}$ and $\rho_{j+1}$ appear as consecutive vertices when sorting---in the connected graph $G\cup R$---the neighbors of $a_i$ in clockwise order around $a_i$ (see Figure~\ref{figure:right-of}).
 
 
 \begin{figure}
@@ -613,7 +613,7 @@ Given a path $R = (\rho_1, \rho_2, \ldots, \rho_t)$ that visits every attachment
    \label{figure:right-of}
 \end{figure}
 
-We now show how to construct a path $R$ that connects the attachment corners of $G$ in the given order, i.e., if $i < j$, then $a_i$ is visited before $a_j$ by $R$. We want to construct $R$ so that each component $C_i$ of $G$ lies to the right of~$R$ and so that $G\cup R$ is a plane geometric graph.
+We now show how to construct a path $R$ that visits the attachment corners of $G^*$ in the given order, i.e., if $i < j$, then $a_i$ is visited before $a_j$ by $R$. We want to construct $R$ so that each component $C_i$ of $G$ lies to the right of~$R$ and so that $G\cup R$ is a plane geometric graph.
 Moreover, we want the subpath of $R$ between $a_j$ and $a_{j+1}$ to have $O(\sigma_G(a_j, a_{j+1}))$ vertices. 
 We initialize $R$ with the trivial path that contains only $a_1$, and then extend $R$ iteratively, so that each new corner $a_i$ is included in $R$.
 Recall that  for any given $\varepsilon >0$, $\partial_\varepsilon G^*$ denotes the $\varepsilon$-fattening of $G^*$ (see Section~\ref{section:Preliminaries}).
@@ -630,7 +630,12 @@ Let $\Delta_i$ be the convex hull of $N_i\cup \{a_i\}$, i.e., $\Delta_i$ is a ``
 Throughout, $\lambda$ remains constant while $\varepsilon, \delta$ and $\tau$ are redefined at each iteration. However, as an invariant we maintain $\lambda < \delta < \varepsilon$.
 
 
-While constructing $R$, we also maintain the \emph{escape invariant} which is defined as follows. Assume that $R$ so far connects $a_1,\ldots,a_i$, for some $i\in \{1,\dots,r-1\}$. Then: (1)~$R$ intersects neither $\partial_\varepsilon G^*$ nor its unbounded face; (2)~for each $j\in\{i+1,\ldots,r\}$, $R$ intersects neither the simple polygon bounded by $\partial_\delta C_j$ nor the cone $\Delta_j$; (3)~$\Delta_h\cap \Delta_j = \emptyset$, for any distinct $h,j\in\{1,\ldots,r\}$; and (4)~$w_i$ is $R$-visible from $a_i$.
+While constructing $R$, we also maintain the \emph{escape invariant} which is defined as follows. Assume that $R$ so far visits $a_1,\ldots,a_i$, for some $i\in \{1,\dots,r-1\}$. Then: 
+\begin{enumerate}
+\item $R$ intersects neither $\partial_\varepsilon G^*$ nor its unbounded face; 
+\item for each $j\in\{i+1,\ldots,r\}$, $R$ intersects neither the simple polygon bounded by $\partial_\delta C_j$ nor the cone $\Delta_j$; \item $\Delta_h\cap \Delta_j = \emptyset$, for any distinct $h,j\in\{1,\ldots,r\}$; and 
+\item $w_i$ is $R$-visible from $a_i$.
+\end{enumerate}
 
 In particular, Conditions~(2) and (4) of the escape invariant imply that, for
 each $j\in\{i,\ldots,r\}$, every point in $N_j$ (including $w_j$) is
@@ -679,17 +684,17 @@ Also, $\partial_\varepsilon G^*$ is still simple, provided that $\mu$ is initial
 Finally, we reduce $\tau$ by a factor of two and update $N_i$ and $\Delta_i$ accordingly, for each $i\in \{1,\dots,n\}$; see Figure~\ref{fig:Skip Component} (c).
 
 Recall that, for each $a_i\notin R$, $R$ intersected neither the interior of $\Delta_i$ nor the interior of the polygon bounded by $\partial_\delta C_i$. Moreover, $R$ remained within $\partial_\varepsilon G^*$.
-Therefore, after increasing (\emph{resp.} reducing) $\varepsilon$ (\emph{resp.} $\delta$), we preserve the escape invariant for the next iteration of the algorithm.
-We iterate until all attachment corners of $G$ are visited by $R$.
+Therefore, after increasing $\varepsilon$ and reducing $\delta$, we preserve the escape invariant for the next iteration of the algorithm.
+We iterate until all attachment corners of $ G^*$ are visited by $R$.
 
 \begin{lemma}\label{lemma:Path for connected augmentations}
-Given an arbitrary order $a_1, \ldots, a_r$ of the attachment corners of $G$, there is a path $R$ connecting all attachment corners of $G$ in the given order such that $R\cup G$ is plane, every component $C_i$ of $G$ lies to the right of $R$ when oriented from $a_1$~to~$a_r$, and the subpath of $R$ between $a_j$ and $a_{j+1}$ has $O(\sigma_G(a_j, a_{j+1}))$ vertices, for each $j\in \{1,\dots,r-1\}$.
+Given an arbitrary order $a_1, \ldots, a_r$ of the attachment corners of $ G^*$, there is a path $R$ connecting all attachment corners of $G^*$ in the given order such that $R\cup G$ is plane, every component $C_i$ of $G$ lies to the right of $R$ when oriented from $a_1$~to~$a_r$, and the subpath of $R$ between $a_j$ and $a_{j+1}$ has $O(\sigma_G(a_j, a_{j+1}))$ vertices, for each $j\in \{1,\dots,r-1\}$.
 \end{lemma}
 \begin{proof}
 By construction, the attachment corners are visited by $R$ in the given order; also, the subpath, $\gamma_j$, of $R$ between $a_{j}$ and $a_{j+1}$ has $O(\sigma_G(a_j,a_{j+1}))$ vertices. For each component $C_i$, $a_i$ is the only vertex of $C_i$ visited by $R$. Moreover, the construction guarantees that $C_i$ lies to the right of $R$ when oriented from $a_1$ to $a_r$.
 
 To prove that $R$ is plane, recall that in each round we extend $R$ by constructing  a path $\gamma_j$ that connects $a_j$ with $a_{j+1}$. We claim that at this point, no edge of $\gamma_j$ crosses the portion of $R$ constructed so far.
-Indeed, because the value of $\varepsilon$ (\emph{resp.} $\delta$) increases (\emph{resp.} decreases) in each round, the edges of $\gamma_j$ that lie on the boundaries of some $\partial_\delta C_i$ or on $\partial_\varepsilon G^*$ cannot cross $R$ by the escape invariant.
+Indeed, because the value of $\varepsilon$ increases while the value of $\delta$ decreases in each round, the edges of $\gamma_j$ that lie on the boundaries of some $\partial_\delta C_i$ or on $\partial_\varepsilon G^*$ cannot cross $R$ by the escape invariant.
 Moreover, this invariant states that for each $a_i\notin R$, $R$ does not intersect~$\Delta_i$.
 Because each cone $\Delta_i$ is narrowed in each round, the edges of $\gamma_j$ that lie on the boundary of this cone cannot cross $R$. Finally, because $\lambda < \delta$, the edges of $\gamma_j$ that lie on $\partial_\lambda C_j$ do not cross $R$. Therefore, we conclude that by concatenating $\gamma_j$ and $R$, we obtain a plane path.
 %%% The following is no longer part of the statement of Lemma, so doesn't need
@@ -720,13 +725,13 @@ Let $\mathcal C_1, \ldots, \mathcal C_r$ be the connected components of $\mathca
 
 For each $i\in \{1,\dots,k\}$, let $G_i^*$ be a connected augmentation of $G_i$, as defined in Section~\ref{section: connected augmentations}. For each $i\in\{1,\ldots,k\}$ and $j\in\{1,\ldots,r\}$, let $\rank_i(j) = \sigma_{G_i^*}(a_1, a_j)$. For each $j\in\{1,\ldots,r\}$, let $x_j\in \mathbb{R}^k$ be a point corresponding to the component $C_j$ such that $x_j = (\rank_1(a_j), \rank_2(a_j), \ldots, \rank_k(a_j))$. Let $X = \{x_1, \ldots, x_r\}\subset\R^k$ denote the resulting set of points. Lemma~\ref{lemma:Contained in integer grid} implies that $X$ is contained in an integer grid of side length $9n$.
 
-Let $P$ be the shortest Hamiltonian path of $X$ under the $\ell_\infty$ norm. As before, because $X$ is contained in the $k$-dimensional integer grid of side-length $9n$ and $|X| = r$, the maximum ($\ell_\infty$) length of $P$ is $O(nr^{1-1/k})$. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i$.
+Let $P$ be the shortest Hamiltonian path of $X$ under the $\ell_\infty$ norm. As before, because $X$ is contained in the $k$-dimensional integer grid of side-length $9n$ and $|X| = r$, the maximum ($\ell_\infty$) length of $P$ is $O(nr^{1-1/k})$. Note that the order of the points in $P$ induces an order of the components of $\mathcal G$ and hence an order of the attachment corners of each $G_i^*$.
 
 \begin{theorem}\label{theorem:main}
 For each $1\leq i\leq k$, we can construct a path $R_i$ of length $O(nr^{1-1/k})$ that connects all components of $G_i$ such that $G_i\cup R_i$ is plane. Moreover, for each $1\leq i<j\leq k$, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$.
 \end{theorem}
 \begin{proof}
-By relabelling, let $(a_1, \ldots, a_r)$ denote the order of the attachment corners of $G_i$ induced by $P$.  Letting $d_j$ denote the $\ell_\infty$ distance between $x_j$ and $x_{j+1}$, we denote by $\mathcal{H}$ a path that passes through (the vertices corresponding to corners) $a_1, \ldots, a_r$ in this order, and that includes an additional $\Theta(d_j)$ vertices between $a_{j}$ and $a_{j+1}$.  Thus, the number of vertices in $\mathcal{H}$ is proportional to the length of $P$, which is $O(nr^{1-1/k})$.
+By relabelling, let $(a_1, \ldots, a_r)$ denote the order of the attachment corners of $G_i^*$ induced by $P$.  Letting $d_j$ denote the $\ell_\infty$ distance between $x_j$ and $x_{j+1}$, we denote by $\mathcal{H}$ a path that passes through (the vertices corresponding to corners) $a_1, \ldots, a_r$ in this order, and that includes an additional $\Theta(d_j)$ vertices between $a_{j}$ and $a_{j+1}$.  Thus, the number of vertices in $\mathcal{H}$ is proportional to the length of $P$, which is $O(nr^{1-1/k})$.
 
 For each $G_i$, we use Lemma~\ref{lemma:Path for connected augmentations}
 to draw $\mathcal{H}$ as a plane path, $R_i$, that connects $a_1,
@@ -745,7 +750,7 @@ $a_{j+1}$ since $\sigma_{G_i}(a_j,a_{j+1}) = \sigma_{G_i}(a_1,a_{j+1})-\sigma_{G
 
 % Let $d_j$ denote the distance between $x_j$ and $x_{j+1}$ in $P$. Because $|\rank_i(j+1) - \rank_i(j)|$ represents the difference in the $i$-th coordinates of $x_j$ and $x_{j+1}$, by the triangle inequality we infer that $|\rank_i(j+1) - \rank_i(j)| \leq  d_j$ . Thus, the path $R_i$ has length $O\left(\sum_{j=1}^{n-1} |\rank_i(j+1) - \rank_i(j)|\right) = O(\sum_{j=1}^{n-1} d_j)$. Because $\sum_{j=1}^{n-1} d_j = |P| = O(nr^{1-1/k})$, the length $R_i$ is $O(nr^{1-1/k})$.
 
-To conclude, each $R_i$ visits each component of $G_i$ only at its attachment corner, the attachment corners of each $G_i$ are connected in the same order, and $R_i$ leaves every component to the right when oriented from $a_1$ to $a_r$. Therefore, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $1\leq i<j\leq k$.
+To conclude, each $R_i$ visits each component of $G_i$ only at its attachment corner, the attachment corners of each $G_i^*$ are connected in the same order, and $R_i$ leaves every component to the right when oriented from $a_1$ to $a_r$. Therefore, $G_i\cup R_i$ is isomorphic to $G_j\cup R_j$ for each $1\leq i<j\leq k$.
 \end{proof}
 
 \subsection{Handling interior components}\label{sec:Interior Components}
@@ -775,7 +780,7 @@ We remark that Theorem~\ref{theorem:main} yields an efficient algorithm for cons
   a vertex to the left of the sweep-line are already joined by edges.
   Thus, this step takes $O(kn\log n)$ time.
 
-  \item Construct the point set $X$ and finding the path
+  \item Construct the point set $X$ and find the path
   $P$ in $\mathbb{R}^k$.  Constructing $X$ takes $O(kn)$ time, while a path $P$ of length
   $O(n^{2-1/k})$ can be obtained from an (approximate) minimum spanning
   tree of $X$.  For constant values of $k$, an approximate MST can
@@ -953,12 +958,12 @@ Under the \emph{$\ell_\infty$ metric}, the distance between two points $x=(x_1,\
 
 \begin{proof}
 The following proof is a rehashing of an argument used by Moran
-\cite{moran:on}. An argument of Few \cite{few:shortest}, which begins
+\cite{moran:on} which in turn uses ideas that go back to Fejes~\cite{fejes1940geometrischen} and Verblunsky~\cite{verblunsky1951shortest}. An argument of Few \cite{few:shortest}, which begins
 by stabbing $[0,1]^k$ with a grid of $\Theta(r^{1-1/k})$ lines, could
 also be used to establish the same asymptotic result.
 
 First, we note that it is sufficient to upper-bound the $\ell_\infty$-length of the minimum spanning-tree of $P$ since this
-can be transformed into a path of at most twice its length \cite{rosenkrantz.stearns.ea:analysis}.
+can be transformed into a path of at most twice its length~\cite{rosenkrantz.stearns.ea:analysis}.
 
 For any point $p\in\R^k$, the \emph{uniform ball} of radius $d$ centered at $p$,
 defined as
@@ -970,7 +975,7 @@ $p\in [0,1]^k$, then $B_\infty(p,d)\cap [0,1]^k$ contains a cube of side-length 
 
 The preceding implies that the set $P$ contains two points $p$ and $q$
 such that $\|p-q\|_\infty \le 2r^{-1/k}$; otherwise, one could pack $r$
-disjoint cubes, each of volume greater than $1/r$ into $[0,1]^k$.
+disjoint cubes, each of volume greater than $1/r$ into~$[0,1]^k$.
 
 Now, we can construct a spanning tree of $P$ by repeatedly taking the
 pair of points $p,q\in P$ that minimize $\|p-q\|_\infty$, adding the edge $pq$
